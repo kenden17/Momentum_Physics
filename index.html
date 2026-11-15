@@ -380,27 +380,26 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <span class="nav-brand" id="navBrand">Physics Study Hub</span>
   <div class="nav-links">
-    <button class="nav-link" data-panel="classes">Classes</button>
-    <button class="nav-link" data-panel="formulas">Formulas</button>
-    <button class="nav-link" data-panel="projectile">Projectile</button>
-    <button class="nav-link" data-panel="timer">Timer</button>
-    <button class="nav-link" data-panel="flashcards">Flashcards</button>
-    <button class="nav-link" data-panel="gpa">GPA</button>
-    <button class="nav-link" data-panel="countdown">Countdown</button>
+    <button class="nav-link" data-panel="classes"    onclick="showPanel('classes')">Classes</button>
+    <button class="nav-link" data-panel="formulas"   onclick="showPanel('formulas')">Formulas</button>
+    <button class="nav-link" data-panel="projectile" onclick="showPanel('projectile')">Projectile</button>
+    <button class="nav-link" data-panel="timer"      onclick="showPanel('timer')">Timer</button>
+    <button class="nav-link" data-panel="flashcards" onclick="showPanel('flashcards')">Flashcards</button>
+    <button class="nav-link" data-panel="countdown"  onclick="showPanel('countdown')">Countdown</button>
   </div>
   <div class="nav-right">
     <button class="streak-badge" id="streakBadge" onclick="showPanel('home')">&#x1F525; <span id="streakBadgeNum">-</span></button>
-    <button class="nav-link" data-panel="hotline" style="color:#6366f1;font-weight:700;border:1.5px solid #6366f1;border-radius:8px;margin-right:4px;">&#x1F4DE; Hotline</button>
+    <button class="nav-link" data-panel="hotline" onclick="showPanel('hotline')" style="color:#6366f1;font-weight:700;border:1.5px solid #6366f1;border-radius:8px;margin-right:4px;">&#x1F4DE; Hotline</button>
     <button class="theme-btn" id="themeToggle">&#x1F319;</button>
   </div>
 </nav>
 
 <!-- BOTTOM TAB BAR -->
 <nav class="tab-bar" role="navigation" aria-label="Bottom navigation">
-  <button class="tab-btn" data-panel="home"><span class="tab-icon">&#x1F3E0;</span><span class="tab-label">Home</span></button>
-  <button class="tab-btn" data-panel="classes"><span class="tab-icon">&#x1F4DA;</span><span class="tab-label">Classes</span></button>
-  <button class="tab-btn" data-panel="formulas"><span class="tab-icon">&#x1F4D0;</span><span class="tab-label">Formulas</span></button>
-  <button class="tab-btn" data-panel="projectile"><span class="tab-icon">&#x1F680;</span><span class="tab-label">Projectile</span></button>
+  <button class="tab-btn" data-panel="home"       onclick="showPanel('home')"><span class="tab-icon">&#x1F3E0;</span><span class="tab-label">Home</span></button>
+  <button class="tab-btn" data-panel="classes"    onclick="showPanel('classes')"><span class="tab-icon">&#x1F4DA;</span><span class="tab-label">Classes</span></button>
+  <button class="tab-btn" data-panel="formulas"   onclick="showPanel('formulas')"><span class="tab-icon">&#x1F4D0;</span><span class="tab-label">Formulas</span></button>
+  <button class="tab-btn" data-panel="projectile" onclick="showPanel('projectile')"><span class="tab-icon">&#x1F680;</span><span class="tab-label">Projectile</span></button>
   <button class="tab-btn" id="moreTabBtn"><span class="tab-icon">&#x22EF;</span><span class="tab-label">More</span></button>
 </nav>
 
@@ -411,14 +410,14 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
     <div class="more-sheet-handle"></div>
     <div class="more-sheet-title">Tools</div>
     <div class="more-sheet-grid">
-      <button class="more-sheet-btn" data-panel="flashcards"><span class="more-sheet-icon">&#x1F0CF;</span> Flashcards</button>
-      <button class="more-sheet-btn" data-panel="timer"><span class="more-sheet-icon">&#x23F1;</span> Focus Timer</button>
-      <button class="more-sheet-btn" data-panel="todo"><span class="more-sheet-icon">&#x2705;</span> To-Do List</button>
-      <button class="more-sheet-btn" data-panel="notes"><span class="more-sheet-icon">&#x1F4DD;</span> Notes</button>
-      <button class="more-sheet-btn" data-panel="converter"><span class="more-sheet-icon">&#x1F522;</span> Converter</button>
-      <button class="more-sheet-btn" data-panel="hotline" style="border-color:#6366f1;color:#6366f1;"><span class="more-sheet-icon">&#x1F4DE;</span> Hotline</button>
-      <button class="more-sheet-btn" data-panel="gpa"><span class="more-sheet-icon">&#x1F393;</span> GPA</button>
-      <button class="more-sheet-btn" data-panel="countdown"><span class="more-sheet-icon">&#x23F3;</span> Countdown</button>
+      <button class="more-sheet-btn" data-panel="flashcards" onclick="showPanel('flashcards')"><span class="more-sheet-icon">&#x1F0CF;</span> Flashcards</button>
+      <button class="more-sheet-btn" data-panel="timer"      onclick="showPanel('timer')"><span class="more-sheet-icon">&#x23F1;</span> Focus Timer</button>
+      <button class="more-sheet-btn" data-panel="todo"       onclick="showPanel('todo')"><span class="more-sheet-icon">&#x2705;</span> To-Do List</button>
+      <button class="more-sheet-btn" data-panel="notes"      onclick="showPanel('notes')"><span class="more-sheet-icon">&#x1F4DD;</span> Notes</button>
+      <button class="more-sheet-btn" data-panel="converter"  onclick="showPanel('converter')"><span class="more-sheet-icon">&#x1F522;</span> Converter</button>
+      <button class="more-sheet-btn" data-panel="hotline"    onclick="showPanel('hotline')" style="border-color:#6366f1;color:#6366f1;"><span class="more-sheet-icon">&#x1F4DE;</span> Hotline</button>
+      <button class="more-sheet-btn" data-panel="gpa"        onclick="showPanel('gpa')"><span class="more-sheet-icon">&#x1F393;</span> GPA</button>
+      <button class="more-sheet-btn" data-panel="countdown"  onclick="showPanel('countdown')"><span class="more-sheet-icon">&#x23F3;</span> Countdown</button>
     </div>
   </div>
 </div>
