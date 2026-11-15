@@ -451,6 +451,11 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
       </div>
     </div>
 
+    <div class="dash-card">
+      <div class="dash-card-title">Tip of the Day</div>
+      <div class="tip-of-day" id="tipOfDay"></div>
+    </div>
+
     <div class="dash-primary">
       <div class="dash-card">
         <div class="dash-card-title">&#x1F4DA; Your Classes</div>
@@ -493,21 +498,6 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
         </div>
       </div>
     </div>
-
-    <div class="dash-tools-strip">
-      <button class="quick-tool-btn" onclick="showPanel('projectile')"><span class="quick-tool-icon">&#x1F680;</span><div class="quick-tool-label">Projectile</div></button>
-      <button class="quick-tool-btn" onclick="showPanel('flashcards')"><span class="quick-tool-icon">&#x1F0CF;</span><div class="quick-tool-label">Flashcards</div></button>
-      <button class="quick-tool-btn" onclick="showPanel('timer')"><span class="quick-tool-icon">&#x23F1;</span><div class="quick-tool-label">Timer</div></button>
-      <button class="quick-tool-btn" onclick="showPanel('todo')"><span class="quick-tool-icon">&#x2705;</span><div class="quick-tool-label">To-Do</div></button>
-      <button class="quick-tool-btn" onclick="showPanel('notes')"><span class="quick-tool-icon">&#x1F4DD;</span><div class="quick-tool-label">Notes</div></button>
-      <button class="quick-tool-btn" onclick="showPanel('converter')"><span class="quick-tool-icon">&#x1F522;</span><div class="quick-tool-label">Converter</div></button>
-    </div>
-
-    <div class="dash-card">
-      <div class="dash-card-title">Tip of the Day</div>
-      <div class="tip-of-day" id="tipOfDay"></div>
-    </div>
-  </div>
 </div>
 
 <!-- CLASSES -->
@@ -1104,7 +1094,15 @@ buildFormulas();
 var quizStates={};
 function runQuiz(containerId,topicId){
  var bank=physicsQuizBanks[topicId];if(!bank)return;
+ // Pick up to 10 questions at random, then shuffle each question's answer options
  var items=bank.questions.slice().sort(function(){return Math.random()-.5;}).slice(0,Math.min(10,bank.questions.length));
+ // For each question, shuffle the opts array and update ans to point to the new position of the correct answer
+ items=items.map(function(q){
+  var correctText=q.opts[q.ans];
+  var shuffled=q.opts.slice().sort(function(){return Math.random()-.5;});
+  // Keep shuffling until the correct answer is not in its original slot (adds randomness)
+  return {q:q.q,opts:shuffled,ans:shuffled.indexOf(correctText),exp:q.exp};
+ });
  var id='qz_'+topicId+'_'+Date.now();
  quizStates[id]={items:items,current:0,score:0,answered:false,done:false};
  var cont=document.getElementById(containerId);if(!cont)return;
@@ -1854,7 +1852,13 @@ function launchExam(examId){
  var exam=practiceExams[examId];if(!exam)return;
  var area=document.getElementById('examArea');if(!area)return;
  var mcqStates={};
- var mcqHTML=exam.mcq.map(function(q,qi){
+ // Shuffle each question's options and remap ans to the new correct position
+ var shuffledMCQ=exam.mcq.map(function(q){
+  var correctText=q.opts[q.ans];
+  var shuffled=q.opts.slice().sort(function(){return Math.random()-.5;});
+  return {q:q.q,opts:shuffled,ans:shuffled.indexOf(correctText),exp:q.exp};
+ });
+ var mcqHTML=shuffledMCQ.map(function(q,qi){
   var id='ex_'+examId+'_'+qi;
   mcqStates[id]={q:q,answered:false};
   return '<div style="background:var(--surface2);border-radius:10px;padding:14px 16px;margin-bottom:10px;"><div class="quiz-q-text" style="margin-bottom:12px;">'+(qi+1)+'. '+q.q+'</div><div id="opts_'+id+'">'+q.opts.map(function(o,oi){return '<button class="quiz-option" onclick="answerExamQ(\''+id+'\','+oi+')" id="eopt_'+id+'_'+oi+'"><span class="quiz-option-letter">'+['A','B','C','D'][oi]+'</span><span>'+o+'</span></button>';}).join('')+'</div><div class="quiz-explanation" id="eexp_'+id+'">'+q.exp+'</div></div>';
@@ -1864,7 +1868,7 @@ function launchExam(examId){
  }).join('');
  area.innerHTML='<div class="card"><div class="exam-running-header"><div class="exam-title-label">'+exam.title+'</div><div style="display:flex;gap:8px;"><span class="exam-score-badge" id="exScore_'+examId+'">Score: 0/'+exam.mcq.length+'</span><button class="btn btn-ghost btn-sm" onclick="showExamAnswers(\''+examId+'\')">Show All Answers</button></div></div><div class="exam-section-header">Multiple Choice \u2014 '+exam.mcq.length+' Questions</div>'+mcqHTML+'<div class="exam-section-header">Free Response \u2014 '+exam.frq.length+' Questions</div><p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">Work these on paper. Click \u201CShow All Answers\u201D when done to reveal the MCQ explanations. FRQ guidance is embedded in each question.</p>'+frqHTML+'</div>';
  window._examStates=window._examStates||{};
- window._examStates[examId]={score:0,total:exam.mcq.length,q:exam.mcq,answered:{}};
+ window._examStates[examId]={score:0,total:shuffledMCQ.length,q:shuffledMCQ,answered:{}};
  area.scrollIntoView({behavior:'smooth'});
 }
 
