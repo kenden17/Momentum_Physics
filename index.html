@@ -2101,8 +2101,9 @@ function projCalc(){
 }
 
 function projDraw(v0,angle,h0,g,vx,vy0,tFlight,range,hPeak){
- var canvas=document.getElementById('projCanvas');if(!canvas)return;
- var ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;
+ var canvas=document.getElementById('projCanvas');if(!canvas||!canvas.getContext)return;
+ var ctx=canvas.getContext('2d');if(!ctx)return;
+ var W=canvas.width,H=canvas.height;
  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
  ctx.clearRect(0,0,W,H);
  ctx.fillStyle=isDark?'#271c0e':'#f5f0e8';ctx.fillRect(0,0,W,H);
@@ -2131,8 +2132,9 @@ function projDraw(v0,angle,h0,g,vx,vy0,tFlight,range,hPeak){
 }
 
 function projDrawEmpty(){
- var canvas=document.getElementById('projCanvas');if(!canvas)return;
- var ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;
+ var canvas=document.getElementById('projCanvas');if(!canvas||!canvas.getContext)return;
+ var ctx=canvas.getContext('2d');if(!ctx)return;
+ var W=canvas.width,H=canvas.height;
  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
  ctx.clearRect(0,0,W,H);ctx.fillStyle=isDark?'#271c0e':'#f5f0e8';ctx.fillRect(0,0,W,H);
  ctx.strokeStyle=isDark?'#3a2a18':'#e8ddd0';ctx.lineWidth=1;
@@ -2146,7 +2148,7 @@ var _psTheme=window.setTheme;
 if(typeof _psTheme==='function'){window.setTheme=function(dark){_psTheme(dark);var v=document.getElementById('projV0');if(v&&v.value)projCalc();else projDrawEmpty();};}
 projDrawEmpty();
 
-window.addEventListener('beforeunload',function(){fcSave();todoSave();noteSave();});
+if(window.addEventListener){window.addEventListener('beforeunload',function(){fcSave();todoSave();noteSave();});}
 </script>
 </body>
 </html>
