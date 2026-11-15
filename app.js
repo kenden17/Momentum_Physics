@@ -96,14 +96,14 @@ function pomoToggle() {
             clearInterval(pomoInterval); pomoRunning = false;
             document.getElementById('pomoStart').textContent = '▶ Start';
             document.getElementById('pomoMode').textContent = '🎉 Done!';
-            if (Notification.permission === 'granted') new Notification('CHS Study Tools', { body: 'All sessions complete! Great work, Bulldog! 🐾' });
+            if (Notification.permission === 'granted') new Notification('AP Study Tools', { body: 'All sessions complete! Great work! 🎉' });
             return;
           }
           pomoIsFocus = false; pomoTotal = v.brk * 60;
-          if (Notification.permission === 'granted') new Notification('CHS Study Tools', { body: 'Break time!' });
+          if (Notification.permission === 'granted') new Notification('AP Study Tools', { body: 'Break time!' });
         } else {
           pomoSession++; pomoIsFocus = true; pomoTotal = v.focus * 60;
-          if (Notification.permission === 'granted') new Notification('CHS Study Tools', { body: 'Focus time!' });
+          if (Notification.permission === 'granted') new Notification('AP Study Tools', { body: 'Focus time!' });
         }
         pomoRemaining = pomoTotal;
       }
@@ -581,7 +581,7 @@ const diffLevels = [
     badge: 'HON',
     color: '#3b82f6',
     tagline: 'Accelerated pace — deeper critical thinking required',
-    gpa: '4.0 (same as Regular at CHS)',
+    gpa: '4.0 (same as Regular — varies by school)',
     workload: 'Heavy — 3–5 hrs/week per class',
     diffRating: 2,
     apRate: null,
@@ -616,7 +616,7 @@ const diffLevels = [
     badge: 'AP',
     color: '#e8650a',
     tagline: 'College-level rigor — national exam in May',
-    gpa: '5.0 (+1.0 bonus at CHS)',
+    gpa: '5.0 (+1.0 bonus — varies by school)',
     workload: 'Very heavy — 5–8 hrs/week, homework every night',
     diffRating: 3,
     apRate: null,
@@ -640,7 +640,7 @@ const diffLevels = [
   },
 ];
 
-// Real CHS AP classes with 2024 national pass rates (College Board score distributions, 3+)
+// AP classes with 2024 national pass rates (College Board score distributions, 3+)
 const apClasses = [
   // English
   { name: 'AP English Language & Composition', dept: 'English', passRate: 54.6, difficulty: 3, note: 'Heavy writing focus; DBQ and synthesis essays on exam' },
@@ -999,7 +999,7 @@ ptBuild();
 // STUDY TIPS
 // =========================================================
 // =========================================================
-// STUDY TIPS — categorized, CHS-relevant
+// STUDY TIPS — categorized, AP-focused
 // =========================================================
 const tipsData = {
   'Test Prep': [
@@ -1141,7 +1141,7 @@ ptBuild();
   const now = new Date();
   const hour = now.getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-  document.getElementById('dashGreeting').textContent = greeting + ', Bulldog.';
+  document.getElementById('dashGreeting').textContent = greeting + '.';
   document.getElementById('dashDay').textContent = now.getDate();
   document.getElementById('dashDateStr').textContent =
     now.toLocaleDateString('en-US', { weekday:'long', month:'long', year:'numeric' });
@@ -3383,3 +3383,416 @@ function quizRestart(id) {
 
 buildGuidesSidebar();
 
+
+
+// =========================================================
+// CLASSES MENU & PORTAL
+// =========================================================
+
+// Class definitions — each maps to a portal with available features
+const classPortalData = [
+  {
+    dept: 'Math',
+    classes: [
+      { id: 'apcalcab', name: 'AP Calculus AB', icon: '📐', tags: ['ap','guide','print'], hasGuide: true, hasProjectile: false, printKey: 'apcalcab', exam: 'May 2026 · MCQ + FRQ' },
+      { id: 'apcalcbc', name: 'AP Calculus BC', icon: '📐', tags: ['ap','guide','print'], hasGuide: true, hasProjectile: false, printKey: 'apcalcbc', exam: 'May 2026 · MCQ + FRQ' },
+      { id: 'apstats',  name: 'AP Statistics',  icon: '📊', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'apstats', exam: 'May 2026' },
+      { id: 'precalc',  name: 'Pre-Calculus',   icon: '📐', tags: [],  hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'alg2',     name: 'Algebra II',     icon: '➕', tags: [],  hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'geo',      name: 'Geometry',       icon: '📏', tags: [],  hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+    ]
+  },
+  {
+    dept: 'Science',
+    classes: [
+      { id: 'apphysics1', name: 'AP Physics 1',       icon: '🚀', tags: ['ap','guide','print','proj'], hasGuide: false, hasProjectile: true, printKey: 'apphysics1', exam: 'May 2026' },
+      { id: 'apbio',      name: 'AP Biology',         icon: '🧬', tags: ['ap','guide','print'], hasGuide: true,  hasProjectile: false, printKey: 'apbio', exam: 'May 2026' },
+      { id: 'apchem',     name: 'AP Chemistry',       icon: '⚗️', tags: ['ap','guide','print'], hasGuide: true,  hasProjectile: false, printKey: 'apchem', exam: 'May 2026' },
+      { id: 'apes',       name: 'AP Env. Science',    icon: '🌿', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'apes', exam: 'May 2026' },
+      { id: 'honphys',    name: 'Honors Physics',     icon: '🔭', tags: ['proj'], hasGuide: false, hasProjectile: true, printKey: null, exam: '' },
+      { id: 'honbio',     name: 'Honors Biology',     icon: '🧬', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'honchem',    name: 'Honors Chemistry',   icon: '⚗️', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'regphys',    name: 'Physics',            icon: '🔭', tags: ['proj'], hasGuide: false, hasProjectile: true, printKey: null, exam: '' },
+      { id: 'regbio',     name: 'Biology',            icon: '🧬', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'regchem',    name: 'Chemistry',          icon: '⚗️', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+    ]
+  },
+  {
+    dept: 'English',
+    classes: [
+      { id: 'aplang', name: 'AP English Language', icon: '✍️', tags: ['ap','guide','print'], hasGuide: true,  hasProjectile: false, printKey: 'aplang', exam: 'May 2026' },
+      { id: 'aplit',  name: 'AP English Literature', icon: '📖', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'aplit', exam: 'May 2026' },
+      { id: 'honeng', name: 'Honors English 9/10',  icon: '📖', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'regeng', name: 'English 9/10/11',      icon: '📖', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+    ]
+  },
+  {
+    dept: 'Social Studies',
+    classes: [
+      { id: 'apush',   name: 'AP U.S. History',       icon: '🇺🇸', tags: ['ap','guide','print'], hasGuide: true,  hasProjectile: false, printKey: 'apush', exam: 'May 2026' },
+      { id: 'apworld', name: 'AP World History',      icon: '🌍', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'apworld', exam: 'May 2026' },
+      { id: 'apgov',   name: 'AP Gov & Politics',     icon: '🏛️', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'apgov', exam: 'May 2026' },
+      { id: 'appsych', name: 'AP Psychology',         icon: '🧠', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'appsych', exam: 'May 2026' },
+      { id: 'honush',  name: 'Honors U.S. History',   icon: '📜', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'usgov',   name: 'U.S. Government',       icon: '🏛️', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+      { id: 'wh',      name: 'World History',         icon: '🌍', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+    ]
+  },
+  {
+    dept: 'Computer Science',
+    classes: [
+      { id: 'apcsa',  name: 'AP Computer Science A',         icon: '💻', tags: ['ap','guide','print'], hasGuide: true,  hasProjectile: false, printKey: 'apcsa', exam: 'May 2026' },
+      { id: 'apcsps', name: 'AP Computer Science Principles', icon: '💻', tags: ['ap','guide','print'], hasGuide: false, hasProjectile: false, printKey: 'apcsps', exam: 'May 2026' },
+    ]
+  },
+  {
+    dept: 'Language',
+    classes: [
+      { id: 'apspanish', name: 'AP Spanish Language', icon: '🇪🇸', tags: ['ap','print'], hasGuide: false, hasProjectile: false, printKey: 'apspanish', exam: 'May 2026' },
+      { id: 'apfrench',  name: 'AP French Language',  icon: '🇫🇷', tags: ['ap','print'], hasGuide: false, hasProjectile: false, printKey: 'apfrench', exam: 'May 2026' },
+      { id: 'apgerman',  name: 'AP German Language',  icon: '🇩🇪', tags: ['ap','print'], hasGuide: false, hasProjectile: false, printKey: 'apgerman', exam: 'May 2026' },
+      { id: 'honspanish',name: 'Honors Spanish',      icon: '🇪🇸', tags: [], hasGuide: false, hasProjectile: false, printKey: null, exam: '' },
+    ]
+  },
+];
+
+// Printable data keyed by class id (pulled from existing printables logic)
+const classPrintables = {
+  apcalcab:   [{ title:'AP Calculus AB — Full Study Guide', desc:'All 8 units: limits, derivatives, integrals, differential equations, applications.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-calculus-ab/exam/past-exam-questions', guideKey:'apcalcab' }],
+  apcalcbc:   [{ title:'AP Calculus BC — Full Study Guide', desc:'AB content + series, sequences, parametric, polar, vector functions.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-calculus-bc/exam/past-exam-questions', guideKey:'apcalcbc' }],
+  apstats:    [{ title:'AP Statistics — Full Study Guide', desc:'Exploring data, sampling, probability, inference, regression.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-statistics/exam/past-exam-questions', guideKey:null }],
+  apbio:      [{ title:'AP Biology — Full Study Guide', desc:'All 8 units: chemistry of life through ecology and evolution.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-biology/exam/past-exam-questions', guideKey:'apbio' }],
+  apchem:     [{ title:'AP Chemistry — Full Study Guide', desc:'Atomic structure, bonding, thermodynamics, kinetics, equilibrium, electrochemistry.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-chemistry/exam/past-exam-questions', guideKey:'apchem' }],
+  apphysics1: [{ title:'AP Physics 1 — Full Study Guide', desc:'Kinematics, dynamics, energy, momentum, rotation, waves, circuits.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-physics-1/exam/past-exam-questions', guideKey:null }],
+  apes:       [{ title:'AP Env. Science — Full Study Guide', desc:'Earth systems, biodiversity, populations, land use, energy, pollution.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-environmental-science/exam/past-exam-questions', guideKey:null }],
+  apush:      [{ title:'AP U.S. History — Full Study Guide', desc:'9 periods from 1491 to present — all units, key themes, DBQ prep.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-united-states-history/exam/past-exam-questions', guideKey:'apush' }],
+  apworld:    [{ title:'AP World History — Full Study Guide', desc:'1200 CE to present — all units, comparison essay prep.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-world-history/exam/past-exam-questions', guideKey:null }],
+  apgov:      [{ title:'AP Gov & Politics — Study Guide', desc:'Constitutional foundations, civil liberties, Congress, Presidency, courts.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-united-states-government-and-politics/exam/past-exam-questions', guideKey:null }],
+  appsych:    [{ title:'AP Psychology — Study Guide', desc:'Biological bases, sensation, states of consciousness, learning, cognition, development, social.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-psychology/exam/past-exam-questions', guideKey:null }],
+  aplang:     [{ title:'AP English Language — Study Guide', desc:'Rhetorical analysis, argumentation, synthesis essay, MCQ strategies.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-english-language-and-composition/exam/past-exam-questions', guideKey:'aplang' }],
+  aplit:      [{ title:'AP English Literature — Study Guide', desc:'Poetry, fiction, and drama analysis — close reading, essay writing.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-english-literature-and-composition/exam/past-exam-questions', guideKey:null }],
+  apcsa:      [{ title:'AP Computer Science A — Study Guide', desc:'Java OOP, arrays, ArrayLists, 2D arrays, algorithms, recursion.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-computer-science-a/exam/past-exam-questions', guideKey:'apcsa' }],
+  apcsps:     [{ title:'AP CS Principles — Study Guide', desc:'Computational thinking, algorithms, data, internet, cybersecurity.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-computer-science-principles/exam/past-exam-questions', guideKey:null }],
+  apspanish:  [{ title:'AP Spanish Language — Study Guide', desc:'Speaking, writing, reading comprehension, cultural comparisons.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-spanish-language-and-culture/exam/past-exam-questions', guideKey:null }],
+  apfrench:   [{ title:'AP French Language — Study Guide', desc:'All communication modes — interpersonal, interpretive, presentational.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-french-language-and-culture/exam/past-exam-questions', guideKey:null }],
+  apgerman:   [{ title:'AP German Language — Study Guide', desc:'All communication modes — interpersonal, interpretive, presentational.', frqUrl:'https://apcentral.collegeboard.org/courses/ap-german-language-and-culture/exam/past-exam-questions', guideKey:null }],
+};
+
+// ── Build the classes menu ────────────────────────────────
+function buildClassesMenu() {
+  const container = document.getElementById('classesMenuSections');
+  if (!container) return;
+  container.innerHTML = '';
+  classPortalData.forEach(dept => {
+    const section = document.createElement('div');
+    section.className = 'classes-section';
+    section.dataset.dept = dept.dept;
+    section.innerHTML = `<div class="classes-section-label">${dept.dept}</div>
+      <div class="classes-row" id="classrow-${dept.dept.replace(/\s/g,'')}"></div>`;
+    container.appendChild(section);
+    const row = section.querySelector('.classes-row');
+    dept.classes.forEach(cls => {
+      const card = document.createElement('button');
+      card.className = 'class-card';
+      card.dataset.classId = cls.id;
+      card.dataset.classSearch = cls.name.toLowerCase();
+      const tagHTML = cls.tags.map(t => {
+        const labels = { ap:'AP', guide:'Study Guide', print:'Printables', proj:'Projectile' };
+        return `<span class="class-card-tag ${t}">${labels[t] || t}</span>`;
+      }).join('');
+      card.innerHTML = `
+        <span class="class-card-icon">${cls.icon}</span>
+        <div class="class-card-body">
+          <div class="class-card-name">${cls.name}</div>
+          ${tagHTML ? `<div class="class-card-tags">${tagHTML}</div>` : ''}
+        </div>
+        <span class="class-card-arrow">›</span>
+      `;
+      card.addEventListener('click', () => openClassPortal(cls.id));
+      row.appendChild(card);
+    });
+  });
+}
+
+function classesFilter() {} // no-op — search removed
+
+// ── Open a class portal ──────────────────────────────────
+function openClassPortal(classId) {
+  // Ensure guides data is loaded before opening portal
+  if (typeof guidesLoaded !== 'undefined' && !guidesLoaded) {
+    loadGuides(() => openClassPortal(classId));
+    return;
+  }
+  // Find the class data
+  let cls = null;
+  let deptName = '';
+  for (const dept of classPortalData) {
+    const found = dept.classes.find(c => c.id === classId);
+    if (found) { cls = found; deptName = dept.dept; break; }
+  }
+  if (!cls) return;
+
+  // Set title/meta
+  document.getElementById('classPortalTitle').textContent = cls.name;
+  document.getElementById('classPortalMeta').textContent =
+    [deptName, cls.exam].filter(Boolean).join(' · ');
+
+  // Build tabs
+  const tabs = [];
+  if (cls.hasGuide && apGuides[cls.id]) tabs.push({ id: 'guide',      label: '📖 Study Guide' });
+  tabs.push({ id: 'review',     label: '🃏 Review' });
+  tabs.push({ id: 'practice',   label: '📝 Practice Quiz' });
+  if (cls.hasProjectile)         tabs.push({ id: 'projectile', label: '🚀 Projectile' });
+  const printables = classPrintables[cls.id];
+  if (printables && printables.length) tabs.push({ id: 'printables', label: '🖨️ Printables' });
+
+  const tabsEl = document.getElementById('classPortalTabs');
+  tabsEl.innerHTML = tabs.map((t, i) =>
+    `<button class="class-portal-tab${i === 0 ? ' active' : ''}" data-tab="${t.id}" onclick="switchPortalTab('${t.id}')">${t.label}</button>`
+  ).join('');
+
+  // Build content sections
+  const content = document.getElementById('classPortalContent');
+  content.innerHTML = '';
+
+  tabs.forEach((t, i) => {
+    const section = document.createElement('div');
+    section.className = 'portal-section' + (i === 0 ? ' active' : '');
+    section.dataset.tab = t.id;
+
+    if (t.id === 'guide') {
+      section.innerHTML = buildPortalGuide(cls.id);
+    } else if (t.id === 'review') {
+      section.innerHTML = buildPortalReview(cls.id);
+    } else if (t.id === 'practice') {
+      section.innerHTML = buildPortalPractice(cls.id);
+    } else if (t.id === 'projectile') {
+      section.innerHTML = buildPortalProjectile();
+    } else if (t.id === 'printables') {
+      section.innerHTML = buildPortalPrintables(cls.id);
+    }
+
+    content.appendChild(section);
+  });
+
+  // If guide tab is first, initialize the guide renderer
+  if (tabs[0] && tabs[0].id === 'guide') {
+    setTimeout(() => initPortalGuide(cls.id), 50);
+  }
+
+  showPanel('class-portal');
+}
+
+function switchPortalTab(tabId) {
+  document.querySelectorAll('.class-portal-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.tab === tabId));
+  document.querySelectorAll('.portal-section').forEach(s =>
+    s.classList.toggle('active', s.dataset.tab === tabId));
+}
+
+// ── Portal section builders ──────────────────────────────
+
+function buildPortalGuide(classId) {
+  const g = apGuides[classId];
+  if (!g) return '<div style="padding:24px;color:var(--muted);text-align:center;"><p>Study guide coming soon for this class.</p></div>';
+  return `<div class="portal-guide-wrap">
+    <div class="portal-guide-sidebar" id="portalGuideSidebar-${classId}">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);">
+        <input type="text" placeholder="Search chapters…" id="portalGuideSearch-${classId}"
+          oninput="portalGuideFilter('${classId}')" style="font-size:.85rem;" />
+      </div>
+      <div id="portalGuideChapList-${classId}"></div>
+    </div>
+    <div class="portal-guide-content" id="portalGuideContent-${classId}">
+      <div class="guides-placeholder"><h3>Select a chapter</h3><p>Choose a chapter from the list to view notes, vocab, and tips.</p></div>
+    </div>
+  </div>`;
+}
+
+function initPortalGuide(classId) {
+  const g = apGuides[classId];
+  if (!g) return;
+  const sidebar = document.getElementById('portalGuideChapList-' + classId);
+  if (!sidebar) return;
+  sidebar.innerHTML = '';
+  g.chapters.forEach((ch, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'guides-course-btn';
+    btn.dataset.chIndex = i;
+    btn.textContent = `${ch.num}. ${ch.title}`;
+    btn.onclick = () => {
+      sidebar.querySelectorAll('.guides-course-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPortalChapter(classId, i);
+    };
+    sidebar.appendChild(btn);
+  });
+  // Auto-open first chapter
+  if (g.chapters.length > 0) {
+    sidebar.querySelectorAll('.guides-course-btn')[0].classList.add('active');
+    renderPortalChapter(classId, 0);
+  }
+}
+
+function renderPortalChapter(classId, chIndex) {
+  const g = apGuides[classId];
+  if (!g) return;
+  const ch = g.chapters[chIndex];
+  const contentEl = document.getElementById('portalGuideContent-' + classId);
+  if (!contentEl) return;
+  const body = renderChapterBody(ch, classId);
+  contentEl.innerHTML = `
+    <div class="guides-course-title" style="font-size:1.1rem;font-weight:800;margin-bottom:12px;">Chapter ${ch.num}: ${ch.title}</div>
+    <div class="guides-chapter-list">
+      <div class="guides-chapter open">
+        <div class="guides-chapter-body" style="display:block;padding:0 0 16px;">${body}</div>
+      </div>
+    </div>`;
+}
+
+function portalGuideFilter(classId) {
+  const q = document.getElementById('portalGuideSearch-' + classId).value.toLowerCase();
+  const sidebar = document.getElementById('portalGuideChapList-' + classId);
+  if (!sidebar) return;
+  sidebar.querySelectorAll('.guides-course-btn').forEach(btn => {
+    btn.style.display = (!q || btn.textContent.toLowerCase().includes(q)) ? '' : 'none';
+  });
+}
+
+function buildPortalReview(classId) {
+  const g = apGuides[classId];
+  const sections = [];
+  sections.push(`<div class="panel-inner wide">`);
+  sections.push(`<div class="card"><div class="card-title">🃏 Flashcard Review</div>
+    <p style="font-size:.82rem;color:var(--muted);">Use the site's Flashcard tool to make a custom deck for this class.</p>
+    <button class="btn btn-primary" onclick="showPanel('flashcards')" style="align-self:flex-start;">Open Flashcards →</button>
+  </div>`);
+
+  if (g) {
+    sections.push(`<div class="card"><div class="card-title">📋 Key Vocab by Chapter</div>`);
+    g.chapters.forEach(ch => {
+      const vocabSec = ch.sections.find(s => s.type === 'vocab');
+      if (vocabSec && vocabSec.items.length) {
+        sections.push(`<div style="margin-top:12px;">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin-bottom:8px;">Ch ${ch.num}: ${ch.title}</div>
+          <div class="guides-vocab">${vocabSec.items.map(v =>
+            `<div class="guides-vocab-item"><span class="guides-vocab-term">${v.term}</span><span class="guides-vocab-def">${v.def}</span></div>`
+          ).join('')}</div>
+        </div>`);
+      }
+    });
+    sections.push(`</div>`);
+  } else {
+    sections.push(`<div class="card"><p style="color:var(--muted);">Detailed review content coming soon for this class.</p></div>`);
+  }
+  sections.push(`</div>`);
+  return sections.join('');
+}
+
+function buildPortalPractice(classId) {
+  const g = apGuides[classId];
+  if (!g) {
+    return `<div class="panel-inner wide"><div class="card">
+      <div class="card-title">📝 Practice Quiz</div>
+      <p style="color:var(--muted);">Practice quiz coming soon for this class.</p>
+    </div></div>`;
+  }
+  // Find chapters with quizzes
+  const quizChapters = g.chapters.filter(ch => ch.sections.some(s => s.type === 'quiz'));
+  if (quizChapters.length === 0) {
+    return `<div class="panel-inner wide"><div class="card">
+      <div class="card-title">📝 Practice Quiz</div>
+      <p style="color:var(--muted);">Practice quiz coming soon for this class.</p>
+    </div></div>`;
+  }
+  const cards = quizChapters.map(ch => {
+    const quizSec = ch.sections.find(s => s.type === 'quiz');
+    return `<div class="portal-practice-card">
+      <div class="portal-practice-label">Chapter ${ch.num}</div>
+      <div class="portal-practice-title">${ch.title}</div>
+      <div class="portal-practice-desc">${quizSec.items.length} questions · multiple choice with explanations</div>
+      <button class="btn btn-primary btn-sm" onclick="launchPortalQuiz('${classId}', ${ch.num - 1})">Start Quiz →</button>
+    </div>`;
+  }).join('');
+  return `<div class="portal-practice-grid">${cards}</div>
+    <div id="portalQuizDisplay-${classId}" style="padding:0 16px 24px;"></div>`;
+}
+
+function launchPortalQuiz(classId, chIndex) {
+  const g = apGuides[classId];
+  if (!g) return;
+  const ch = g.chapters[chIndex];
+  const quizSec = ch.sections.find(s => s.type === 'quiz');
+  if (!quizSec) return;
+  const display = document.getElementById('portalQuizDisplay-' + classId);
+  if (!display) return;
+  const qHtml = renderQuizSection(classId, ch.num, [...quizSec.items]);
+  display.innerHTML = `<div class="card" style="margin-top:0;">
+    <div class="card-title">📝 Chapter ${ch.num}: ${ch.title}</div>
+    ${qHtml}
+  </div>`;
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+
+function buildPortalProjectile() {
+  return `<div class="portal-projectile">
+    <div class="card">
+      <div class="card-title">🚀 Projectile Motion Calculator</div>
+      <div class="card-subtitle">Full trajectory analysis with live diagram and step-by-step solution</div>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:4px;">Enter your launch conditions below and get max height, range, flight time, and a visual trajectory diagram.</p>
+      <button class="btn btn-primary" onclick="showPanel('projectile')" style="margin-top:8px;align-self:flex-start;">Open Projectile Calculator →</button>
+    </div>
+    <div class="card" style="margin-top:0;">
+      <div class="card-title">📐 Key Projectile Formulas</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <div class="formula-item"><div class="formula-name">Horizontal Velocity</div><div class="formula-eq">Vx = V₀ · cos(θ)</div><div class="formula-desc">Constant throughout flight (no air resistance)</div></div>
+        <div class="formula-item"><div class="formula-name">Vertical Velocity</div><div class="formula-eq">Vy = V₀ · sin(θ) − g·t</div><div class="formula-desc">Changes due to gravity</div></div>
+        <div class="formula-item"><div class="formula-name">Max Height</div><div class="formula-eq">H = (V₀·sin(θ))² / (2g)</div><div class="formula-desc">At peak, Vy = 0</div></div>
+        <div class="formula-item"><div class="formula-name">Range</div><div class="formula-eq">R = V₀²·sin(2θ) / g</div><div class="formula-desc">Maximum at θ = 45°</div></div>
+        <div class="formula-item"><div class="formula-name">Flight Time</div><div class="formula-eq">T = 2·V₀·sin(θ) / g</div><div class="formula-desc">Time for full parabolic arc</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildPortalPrintables(classId) {
+  const items = classPrintables[classId];
+  if (!items || !items.length) {
+    return `<div class="portal-printables"><div class="card"><p style="color:var(--muted);">Printables coming soon for this class.</p></div></div>`;
+  }
+  const cards = items.map(item => `
+    <div class="print-card">
+      <div class="print-card-title">${item.title}</div>
+      <div class="print-card-meta">${item.desc}</div>
+      <div class="print-card-actions">
+        ${item.guideKey ? `<button class="print-btn print-btn-primary" onclick="printGuide('${item.guideKey}')">🖨️ Print / Save PDF</button>` : ''}
+        ${item.frqUrl  ? `<a class="print-btn print-btn-outline" href="${item.frqUrl}" target="_blank" rel="noopener">📄 Official FRQs ↗</a>` : ''}
+      </div>
+    </div>`).join('');
+  return `<div class="portal-printables"><div class="portal-printables-grid">${cards}</div></div>`;
+}
+
+// ── Guide preview on home dashboard — now links to classes portal ──
+function showGuide(courseKey) {
+  if (!guidesLoaded) {
+    loadGuides(() => openClassPortal(courseKey));
+  } else {
+    openClassPortal(courseKey);
+  }
+}
+
+// Update the guide preview pills on the home dashboard to show class cards
+function buildGuidePreviewPills() {
+  const previewEl = document.getElementById('guidePreviewList');
+  if (!previewEl) return;
+  const featured = ['apcalcab','apush','apbio','aplang','apchem','apcsa'];
+  previewEl.innerHTML = featured.map(key => {
+    const g = apGuides[key];
+    if (!g) return '';
+    return `<button class="guide-pill" onclick="openClassPortal('${key}')">${g.title}</button>`;
+  }).join('');
+}
+
+// Initialize everything
+buildClassesMenu();
+buildGuidePreviewPills();
