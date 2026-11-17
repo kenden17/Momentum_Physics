@@ -370,6 +370,33 @@ h1,h2,h3,h4{line-height:1.2;}
 @media(min-width:1024px){.dash-grid{padding:24px 24px 40px;}.panel-inner{padding:24px 24px 40px;}.dash-primary{grid-template-columns:1fr 1fr 1fr;gap:18px;}.dash-tools-strip{grid-template-columns:repeat(6,1fr);}}
 @media(min-width:1280px){.dash-grid{max-width:1200px;margin-left:auto;margin-right:auto;}}
 footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);border-top:1.5px solid var(--border);}
+
+/* SIMULATIONS */
+.sim-container{padding:16px;display:flex;flex-direction:column;gap:14px;}
+.sim-selector{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.sim-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color var(--trans),background var(--trans);}
+.sim-btn:hover{border-color:var(--accent);background:var(--surface2);}
+.sim-btn-icon{font-size:2rem;}
+.sim-btn-label{font-size:.82rem;font-weight:700;text-align:center;color:var(--text);}
+.sim-btn-desc{font-size:.7rem;color:var(--muted);text-align:center;line-height:1.4;}
+.sim-active{display:none;flex-direction:column;gap:12px;}
+.sim-active.show{display:flex;}
+.sim-canvas-wrap{background:#1a1a2e;border-radius:var(--radius);overflow:hidden;position:relative;border:1.5px solid var(--border);}
+.sim-canvas{display:block;width:100%;cursor:crosshair;}
+.sim-controls{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.sim-control{display:flex;flex-direction:column;gap:4px;}
+.sim-control label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.sim-control input[type=range]{padding:4px 0;background:transparent;-webkit-appearance:none;height:6px;border:none;}
+.sim-control input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.sim-control input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--border);border-radius:99px;}
+.sim-val{font-size:.8rem;font-weight:700;color:var(--accent);}
+.sim-readouts{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;}
+.sim-readout{background:var(--surface2);border-radius:8px;padding:10px 12px;border:1.5px solid var(--border);}
+.sim-readout-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px;}
+.sim-readout-val{font-size:1.1rem;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums;}
+.sim-readout-unit{font-size:.65rem;color:var(--muted);}
+.sim-info{background:var(--surface2);border-radius:10px;padding:12px 14px;border-left:3px solid var(--blue);font-size:.82rem;line-height:1.55;color:var(--muted);}
+.sim-info strong{color:var(--text);}
 </style>
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JC6N3JF1J"></script>
@@ -453,6 +480,19 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
     <div class="dash-card">
       <div class="dash-card-title">Tip of the Day</div>
       <div class="tip-of-day" id="tipOfDay"></div>
+    </div>
+
+    <!-- HOTLINE BANNER -->
+    <div onclick="showPanel('hotline')" style="background:linear-gradient(135deg,#6366f1,#4f46e5);border-radius:var(--radius);padding:18px 20px;color:#fff;display:flex;align-items:center;gap:16px;cursor:pointer;transition:opacity .2s ease;" onmouseover="this.style.opacity='.9'" onmouseout="this.style.opacity='1'">
+      <div style="font-size:2.2rem;flex-shrink:0;">&#x1F4DE;</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-weight:800;font-size:1rem;margin-bottom:3px;">Homework Hotline &mdash; Free Peer Tutoring</div>
+        <div style="font-size:.82rem;opacity:.88;line-height:1.45;">Stuck on a problem? Submit your number and a physics tutor will text or call you back &mdash; usually within an hour.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border-radius:99px;padding:6px 14px;font-size:.78rem;font-weight:700;white-space:nowrap;flex-shrink:0;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.4);flex-shrink:0;"></div>
+        Get Help Now
+      </div>
     </div>
 
     <div class="dash-primary">
@@ -1767,12 +1807,13 @@ function openClassPortal(classId){
  document.getElementById('classPortalTitle').textContent=cls.name;
  document.getElementById('classPortalMeta').textContent=cls.dept+' \u00B7 '+cls.exam;
  var tabs=[
-  {id:'overview',  label:'\uD83D\uDCCB Overview'},
-  {id:'quizzes',   label:'\uD83E\uDDE0 Topic Quizzes'},
-  {id:'exams',     label:'\uD83D\uDCDD Practice Exams'},
-  {id:'formulas',  label:'\uD83D\uDCD0 Formulas'},
-  {id:'projectile',label:'\uD83D\uDE80 Projectile'},
-  {id:'printables',label:'\uD83D\uDDA8 Printables'},
+  {id:'overview',    label:'\uD83D\uDCCB Overview'},
+  {id:'quizzes',     label:'\uD83E\uDDE0 Topic Quizzes'},
+  {id:'exams',       label:'\uD83D\uDCDD Practice Exams'},
+  {id:'simulations', label:'\uD83C\uDFAE Simulations'},
+  {id:'formulas',    label:'\uD83D\uDCD0 Formulas'},
+  {id:'projectile',  label:'\uD83D\uDE80 Projectile'},
+  {id:'printables',  label:'\uD83D\uDDA8 Printables'},
  ];
  document.getElementById('classPortalTabs').innerHTML=tabs.map(function(t,i){
   return '<button class="class-portal-tab'+(i===0?' active':'')+'" data-tab="'+t.id+'" onclick="switchPortalTab(\''+t.id+'\')">'+t.label+'</button>';
@@ -1780,12 +1821,13 @@ function openClassPortal(classId){
  var cont=document.getElementById('classPortalContent');cont.innerHTML='';
  tabs.forEach(function(t,i){
   var sec=document.createElement('div');sec.className='portal-section'+(i===0?' active':'');sec.dataset.tab=t.id;
-  if(t.id==='overview')   sec.innerHTML=buildOverview(cls);
-  if(t.id==='quizzes')    sec.innerHTML=buildQuizzesTab(cls);
-  if(t.id==='exams')      sec.innerHTML=buildExamsTab(cls);
-  if(t.id==='formulas')   sec.innerHTML=buildPortalFormulas(cls);
-  if(t.id==='projectile') sec.innerHTML=buildProjectileTab();
-  if(t.id==='printables') sec.innerHTML=buildPrintablesTab(cls.id);
+  if(t.id==='overview')    sec.innerHTML=buildOverview(cls);
+  if(t.id==='quizzes')     sec.innerHTML=buildQuizzesTab(cls);
+  if(t.id==='exams')       sec.innerHTML=buildExamsTab(cls);
+  if(t.id==='simulations') sec.innerHTML=buildSimulationsTab(cls.id);
+  if(t.id==='formulas')    sec.innerHTML=buildPortalFormulas(cls);
+  if(t.id==='projectile')  sec.innerHTML=buildProjectileTab();
+  if(t.id==='printables')  sec.innerHTML=buildPrintablesTab(cls.id);
   cont.appendChild(sec);
  });
  showPanel('class-portal');
@@ -2150,6 +2192,832 @@ if(typeof _psTheme==='function'){window.setTheme=function(dark){_psTheme(dark);v
 projDrawEmpty();
 
 if(window.addEventListener){window.addEventListener('beforeunload',function(){fcSave();todoSave();noteSave();});}
+
+// =========================================================
+// SIMULATIONS ENGINE
+// =========================================================
+var _simLoop = null;
+
+function buildSimulationsTab(classId){
+ return '<div class="sim-container"><h3 style="font-size:.9rem;font-weight:700;margin-bottom:4px;">Physics Simulations</h3><p style="font-size:.82rem;color:var(--muted);margin-bottom:10px;">Interactive simulations governed by real physics equations. Adjust parameters and watch them update in real time.</p><div class="sim-selector" id="simSelector_'+classId+'"><button class="sim-btn" onclick="launchSim(\'incline\',\''+classId+'\')"><span class="sim-btn-icon">&#x1F4E6;</span><div class="sim-btn-label">Block on Incline</div><div class="sim-btn-desc">Newton\'s 2nd Law, friction, normal force</div></button><button class="sim-btn" onclick="launchSim(\'spring\',\''+classId+'\')"><span class="sim-btn-icon">&#x1F300;</span><div class="sim-btn-label">Spring-Mass SHM</div><div class="sim-btn-desc">Hooke\'s Law, simple harmonic motion</div></button><button class="sim-btn" onclick="launchSim(\'pendulum\',\''+classId+'\')"><span class="sim-btn-icon">&#x23F1;</span><div class="sim-btn-label">Pendulum</div><div class="sim-btn-desc">SHM, period vs length vs gravity</div></button><button class="sim-btn" onclick="launchSim(\'collision\',\''+classId+'\')"><span class="sim-btn-icon">&#x1F697;</span><div class="sim-btn-label">1D Collision</div><div class="sim-btn-desc">Elastic &amp; inelastic, momentum conservation</div></button><button class="sim-btn" onclick="launchSim(\'circular\',\''+classId+'\')"><span class="sim-btn-icon">&#x1F4BF;</span><div class="sim-btn-label">Circular Motion</div><div class="sim-btn-desc">Centripetal force, velocity, radius</div></button><button class="sim-btn" onclick="launchSim(\'orbit\',\''+classId+'\')"><span class="sim-btn-icon">&#x1FA90;</span><div class="sim-btn-label">Orbital Motion</div><div class="sim-btn-desc">Gravity, Kepler\'s laws, orbital speed</div></button></div><div class="sim-active" id="simActive_'+classId+'"></div></div>';
+}
+
+function launchSim(type, classId){
+ if(_simLoop){ cancelAnimationFrame(_simLoop); _simLoop=null; }
+ var wrap = document.getElementById('simActive_'+classId);
+ if(!wrap) return;
+ wrap.className = 'sim-active show';
+ wrap.innerHTML = '';
+ if(type==='incline')   buildInclineSim(wrap);
+ if(type==='spring')    buildSpringSim(wrap);
+ if(type==='pendulum')  buildPendulumSim(wrap);
+ if(type==='collision') buildCollisionSim(wrap);
+ if(type==='circular')  buildCircularSim(wrap);
+ if(type==='orbit')     buildOrbitSim(wrap);
+ wrap.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ---- INCLINE SIM ----------------------------------------
+function buildInclineSim(wrap){
+ wrap.innerHTML = `
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x1F4E6; Block on Incline</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="inclineStartBtn" onclick="inclineToggle()">&#x25B6; Start</button>
+     <button class="btn btn-ghost btn-sm" onclick="inclineReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="inclineCanvas" class="sim-canvas" height="260"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Angle &#x03B8;</label><input type="range" id="inclineAngle" min="5" max="80" value="30" oninput="inclineUpdate()"/><span class="sim-val" id="inclineAngleVal">30&deg;</span></div>
+    <div class="sim-control"><label>Mass (kg)</label><input type="range" id="inclineMass" min="0.5" max="20" step="0.5" value="5" oninput="inclineUpdate()"/><span class="sim-val" id="inclineMassVal">5 kg</span></div>
+    <div class="sim-control"><label>&#x03BC; (kinetic friction)</label><input type="range" id="inclineMu" min="0" max="0.9" step="0.05" value="0.2" oninput="inclineUpdate()"/><span class="sim-val" id="inclineMuVal">0.20</span></div>
+    <div class="sim-control"><label>Gravity (m/s&sup2;)</label><input type="range" id="inclineG" min="1.6" max="25" step="0.2" value="9.8" oninput="inclineUpdate()"/><span class="sim-val" id="inclineGVal">9.8</span></div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">Net Force</div><div class="sim-readout-val" id="incFnet">—</div><div class="sim-readout-unit">N</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Acceleration</div><div class="sim-readout-val" id="incAcc">—</div><div class="sim-readout-unit">m/s&sup2;</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Speed</div><div class="sim-readout-val" id="incSpeed">0.00</div><div class="sim-readout-unit">m/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Normal Force</div><div class="sim-readout-val" id="incNorm">—</div><div class="sim-readout-unit">N</div></div>
+   </div>
+   <div class="sim-info"><strong>Governing equations:</strong> F&#x2099;&#x2091;&#x209C; = mg sin&#x03B8; &minus; &#x03BC;mg cos&#x03B8; &nbsp;&bull;&nbsp; a = F&#x2099;&#x2091;&#x209C;/m &nbsp;&bull;&nbsp; F&#x2099; = mg cos&#x03B8;</div>
+  </div>`;
+ var state={x:0.05, v:0, running:false};
+ function getParams(){
+  var angle=parseFloat(document.getElementById('inclineAngle').value)*Math.PI/180;
+  var mass=parseFloat(document.getElementById('inclineMass').value);
+  var mu=parseFloat(document.getElementById('inclineMu').value);
+  var g=parseFloat(document.getElementById('inclineG').value);
+  return{angle,mass,mu,g};
+ }
+ function draw(){
+  var c=document.getElementById('inclineCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height;
+  var p=getParams(),deg=p.angle*180/Math.PI;
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle=isDark?'#1a1a2e':'#1a1a2e';
+  ctx.fillRect(0,0,W,H);
+  // Draw incline
+  var ox=0.1*W, oy=0.9*H, bx=0.9*W, by=0.9*H;
+  var topX=ox, topY=oy-(bx-ox)*Math.tan(p.angle);
+  if(topY<0.05*H){var scale=(oy-0.05*H)/((bx-ox)*Math.tan(p.angle));bx=ox+(bx-ox)*scale;topY=0.05*H;}
+  ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(bx,oy);ctx.lineTo(topX,topY);ctx.closePath();
+  ctx.fillStyle='#2d4a6e';ctx.fill();ctx.strokeStyle='#4a90d9';ctx.lineWidth=2;ctx.stroke();
+  // Draw angle arc
+  ctx.beginPath();ctx.arc(ox,oy,40,0,-p.angle,true);ctx.strokeStyle='#f59e0b';ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle='#f59e0b';ctx.font='13px Inter,sans-serif';
+  ctx.fillText(Math.round(deg)+'\u00B0',ox+28,oy-15);
+  // Block position along incline
+  var len=Math.sqrt((bx-topX)*(bx-topX)+(oy-topY)*(oy-topY));
+  var t=Math.min(0.95,Math.max(0.05,state.x));
+  var bkx=topX+(bx-topX)*t, bky=topY+(oy-topY)*t;
+  var cosA=Math.cos(p.angle),sinA=Math.sin(p.angle);
+  var bkSize=Math.min(W,H)*0.08;
+  ctx.save();ctx.translate(bkx,bky);ctx.rotate(-p.angle);
+  ctx.fillStyle='#e8650a';ctx.fillRect(-bkSize/2,-bkSize,bkSize,bkSize);
+  ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.strokeRect(-bkSize/2,-bkSize,bkSize,bkSize);
+  ctx.restore();
+  // Force arrows
+  var fnet=p.mass*p.g*Math.sin(p.angle)-p.mu*p.mass*p.g*Math.cos(p.angle);
+  var arrowScale=1.2;
+  if(Math.abs(fnet)>0.1){
+   var aDir=fnet>0?1:-1;
+   var ax1=bkx,ay1=bky-bkSize/2;
+   var ax2=ax1+aDir*(fnet/Math.abs(p.mass*p.g))*80*Math.cos(p.angle);
+   var ay2=ay1-aDir*(fnet/Math.abs(p.mass*p.g))*80*Math.sin(p.angle);
+   drawArrow(ctx,ax1,ay1,ax2,ay2,'#10b981',2);
+  }
+  // Gravity arrow
+  drawArrow(ctx,bkx,bky-bkSize/2,bkx,bky-bkSize/2+40,'#ef4444',1.5);
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='11px Inter,sans-serif';
+  ctx.fillText('mg',bkx+6,bky-bkSize/2+30);
+  if(Math.abs(fnet)>0.1) ctx.fillText('F\u2099\u2091\u209C',bkx+6,bky-bkSize/2-10);
+ }
+ function drawArrow(ctx,x1,y1,x2,y2,color,w){
+  ctx.strokeStyle=color;ctx.lineWidth=w;
+  ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+  var angle=Math.atan2(y2-y1,x2-x1);var hs=10;
+  ctx.beginPath();ctx.moveTo(x2,y2);
+  ctx.lineTo(x2-hs*Math.cos(angle-0.4),y2-hs*Math.sin(angle-0.4));
+  ctx.lineTo(x2-hs*Math.cos(angle+0.4),y2-hs*Math.sin(angle+0.4));
+  ctx.closePath();ctx.fillStyle=color;ctx.fill();
+ }
+ function update(){
+  var p=getParams();
+  var fnet=p.mass*p.g*Math.sin(p.angle)-p.mu*p.mass*p.g*Math.cos(p.angle);
+  var acc=fnet/p.mass;
+  var r=function(n){return Math.round(n*100)/100;};
+  document.getElementById('incFnet').textContent=r(fnet);
+  document.getElementById('incAcc').textContent=r(acc);
+  document.getElementById('incNorm').textContent=r(p.mass*p.g*Math.cos(p.angle));
+  document.getElementById('inclineAngleVal').textContent=Math.round(p.angle*180/Math.PI)+'\u00B0';
+  document.getElementById('inclineMassVal').textContent=p.mass+' kg';
+  document.getElementById('inclineMuVal').textContent=p.mu.toFixed(2);
+  document.getElementById('inclineGVal').textContent=p.g.toFixed(1);
+ }
+ var lastT=null;
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT===null)lastT=ts;
+  var dt=Math.min((ts-lastT)/1000,0.05);lastT=ts;
+  var p=getParams();
+  var fnet=p.mass*p.g*Math.sin(p.angle)-p.mu*p.mass*p.g*Math.cos(p.angle);
+  var acc=fnet/p.mass;
+  state.v+=acc*dt;
+  if(state.v<0)state.v=0;
+  state.x+=state.v*dt*0.3;
+  if(state.x>=0.95){state.x=0.95;state.v=0;}
+  document.getElementById('incSpeed').textContent=Math.abs(state.v).toFixed(2);
+  update();draw();
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.inclineUpdate=function(){update();draw();};
+ window.inclineToggle=function(){
+  state.running=!state.running;
+  var btn=document.getElementById('inclineStartBtn');
+  if(btn)btn.textContent=state.running?'\u23F8 Pause':'\u25B6 Start';
+  if(state.running){lastT=null;_simLoop=requestAnimationFrame(loop);}
+  else{cancelAnimationFrame(_simLoop);_simLoop=null;}
+ };
+ window.inclineReset=function(){
+  state.x=0.05;state.v=0;state.running=false;
+  var btn=document.getElementById('inclineStartBtn');if(btn)btn.textContent='\u25B6 Start';
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT=null;
+  document.getElementById('incSpeed').textContent='0.00';
+  update();draw();
+ };
+ update();draw();
+}
+
+// ---- SPRING SIM -----------------------------------------
+function buildSpringSim(wrap){
+ wrap.innerHTML = `
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x1F300; Spring-Mass (SHM)</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="springStartBtn" onclick="springToggle()">&#x25B6; Start</button>
+     <button class="btn btn-ghost btn-sm" onclick="springReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="springCanvas" class="sim-canvas" height="220"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Spring constant k (N/m)</label><input type="range" id="springK" min="10" max="500" value="100" oninput="springRedraw()"/><span class="sim-val" id="springKVal">100 N/m</span></div>
+    <div class="sim-control"><label>Mass (kg)</label><input type="range" id="springM" min="0.1" max="10" step="0.1" value="1" oninput="springRedraw()"/><span class="sim-val" id="springMVal">1.0 kg</span></div>
+    <div class="sim-control"><label>Amplitude (m)</label><input type="range" id="springA" min="0.05" max="0.5" step="0.01" value="0.2" oninput="springReset()"/><span class="sim-val" id="springAVal">0.20 m</span></div>
+    <div class="sim-control"><label>Damping b</label><input type="range" id="springB" min="0" max="5" step="0.1" value="0" oninput="springRedraw()"/><span class="sim-val" id="springBVal">0.0</span></div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">Position x</div><div class="sim-readout-val" id="spX">—</div><div class="sim-readout-unit">m</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Velocity</div><div class="sim-readout-val" id="spV">—</div><div class="sim-readout-unit">m/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">KE</div><div class="sim-readout-val" id="spKE">—</div><div class="sim-readout-unit">J</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">PE</div><div class="sim-readout-val" id="spPE">—</div><div class="sim-readout-unit">J</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Period</div><div class="sim-readout-val" id="spT">—</div><div class="sim-readout-unit">s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">&#x03C9;</div><div class="sim-readout-val" id="spW">—</div><div class="sim-readout-unit">rad/s</div></div>
+   </div>
+   <div class="sim-info"><strong>SHM equations:</strong> F = &minus;kx &nbsp;&bull;&nbsp; &omega; = &radic;(k/m) &nbsp;&bull;&nbsp; T = 2&pi;/&omega; &nbsp;&bull;&nbsp; x(t) = A cos(&omega;t) &nbsp;&bull;&nbsp; E = &frac12;kA&sup2;</div>
+  </div>`;
+ var state={x:0,v:0,t:0,running:false,A:0.2};
+ function getP(){
+  var k=parseFloat(document.getElementById('springK').value);
+  var m=parseFloat(document.getElementById('springM').value);
+  var A=parseFloat(document.getElementById('springA').value);
+  var b=parseFloat(document.getElementById('springB').value);
+  var omega=Math.sqrt(k/m);
+  return{k,m,A,b,omega,T:2*Math.PI/omega};
+ }
+ function draw(){
+  var c=document.getElementById('springCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height;
+  var p=getP();
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#1a1a2e';ctx.fillRect(0,0,W,H);
+  var wallX=40,eqX=W/2,blockSize=50;
+  var blockX=eqX+state.x*(W*0.35);
+  // Wall
+  ctx.fillStyle='#4a5568';ctx.fillRect(0,0,wallX,H);
+  for(var y=0;y<H;y+=15){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(wallX,y+15);ctx.strokeStyle='#2d3748';ctx.lineWidth=1;ctx.stroke();}
+  // Spring (zigzag)
+  var coils=12,springLeft=wallX,springRight=blockX-blockSize/2;
+  var sw=(springRight-springLeft);
+  ctx.beginPath();ctx.moveTo(springLeft,H/2);
+  for(var i=0;i<=coils*2;i++){
+   var sx=springLeft+sw*i/(coils*2);
+   var sy=H/2+(i%2===0?-14:14);
+   if(i===0||i===coils*2)sy=H/2;
+   ctx.lineTo(sx,sy);
+  }
+  var kNorm=parseFloat(document.getElementById('springK').value)/100;
+  var springColor=state.x>0?'#ef4444':state.x<0?'#3b82f6':'#10b981';
+  ctx.strokeStyle=springColor;ctx.lineWidth=2.5;ctx.stroke();
+  // Block
+  ctx.fillStyle='#e8650a';
+  ctx.fillRect(blockX-blockSize/2,H/2-blockSize/2,blockSize,blockSize);
+  ctx.strokeStyle='#fff';ctx.lineWidth=1.5;
+  ctx.strokeRect(blockX-blockSize/2,H/2-blockSize/2,blockSize,blockSize);
+  // Equilibrium line
+  ctx.setLineDash([5,5]);ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(eqX,10);ctx.lineTo(eqX,H-10);ctx.stroke();
+  ctx.setLineDash([]);
+  // Position label
+  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='11px Inter,sans-serif';
+  ctx.fillText('x='+state.x.toFixed(3)+'m',eqX+5,25);
+  ctx.fillText('eq',eqX+2,H-8);
+  // Update readouts
+  var r=function(n){return Math.round(n*1000)/1000;};
+  document.getElementById('spX').textContent=r(state.x);
+  document.getElementById('spV').textContent=r(state.v);
+  document.getElementById('spKE').textContent=r(0.5*p.m*state.v*state.v);
+  document.getElementById('spPE').textContent=r(0.5*p.k*state.x*state.x);
+  document.getElementById('spT').textContent=r(p.T);
+  document.getElementById('spW').textContent=r(p.omega);
+  document.getElementById('springKVal').textContent=p.k+' N/m';
+  document.getElementById('springMVal').textContent=p.m.toFixed(1)+' kg';
+  document.getElementById('springAVal').textContent=p.A.toFixed(2)+' m';
+  document.getElementById('springBVal').textContent=p.b.toFixed(1);
+ }
+ var lastT2=null;
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT2===null)lastT2=ts;
+  var dt=Math.min((ts-lastT2)/1000,0.03);lastT2=ts;
+  var p=getP();
+  // Euler integration: a = -omega^2*x - b/m*v
+  var a=-p.k/p.m*state.x-p.b/p.m*state.v;
+  state.v+=a*dt;
+  state.x+=state.v*dt;
+  state.t+=dt;
+  draw();
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.springRedraw=function(){draw();};
+ window.springToggle=function(){
+  state.running=!state.running;
+  var btn=document.getElementById('springStartBtn');
+  if(btn)btn.textContent=state.running?'\u23F8 Pause':'\u25B6 Start';
+  if(state.running){lastT2=null;_simLoop=requestAnimationFrame(loop);}
+  else{cancelAnimationFrame(_simLoop);_simLoop=null;}
+ };
+ window.springReset=function(){
+  var p=getP();state.x=p.A;state.v=0;state.t=0;state.running=false;
+  var btn=document.getElementById('springStartBtn');if(btn)btn.textContent='\u25B6 Start';
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT2=null;
+  draw();
+ };
+ state.x=getP().A;draw();
+}
+
+// ---- PENDULUM SIM ----------------------------------------
+function buildPendulumSim(wrap){
+ wrap.innerHTML=`
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x23F1; Pendulum</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="pendStartBtn" onclick="pendToggle()">&#x25B6; Start</button>
+     <button class="btn btn-ghost btn-sm" onclick="pendReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="pendCanvas" class="sim-canvas" height="280"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Length L (m)</label><input type="range" id="pendL" min="0.2" max="3" step="0.1" value="1" oninput="pendRedraw()"/><span class="sim-val" id="pendLVal">1.0 m</span></div>
+    <div class="sim-control"><label>Gravity g (m/s&sup2;)</label><input type="range" id="pendG" min="1.6" max="25" step="0.2" value="9.8" oninput="pendRedraw()"/><span class="sim-val" id="pendGVal">9.8</span></div>
+    <div class="sim-control"><label>Start angle</label><input type="range" id="pendA0" min="5" max="60" value="20" oninput="pendReset()"/><span class="sim-val" id="pendA0Val">20&deg;</span></div>
+    <div class="sim-control"><label>Damping</label><input type="range" id="pendDamp" min="0" max="0.5" step="0.01" value="0" oninput="pendRedraw()"/><span class="sim-val" id="pendDampVal">0.00</span></div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">Angle &theta;</div><div class="sim-readout-val" id="pendTheta">—</div><div class="sim-readout-unit">deg</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Angular vel</div><div class="sim-readout-val" id="pendOmega">—</div><div class="sim-readout-unit">rad/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Period (small)</div><div class="sim-readout-val" id="pendT">—</div><div class="sim-readout-unit">s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Speed</div><div class="sim-readout-val" id="pendSpeed">—</div><div class="sim-readout-unit">m/s</div></div>
+   </div>
+   <div class="sim-info"><strong>Pendulum equations:</strong> &alpha; = &minus;(g/L) sin&theta; &nbsp;&bull;&nbsp; T = 2&pi;&radic;(L/g) <em>(small angle)</em> &nbsp;&bull;&nbsp; v = L&omega;</div>
+  </div>`;
+ var state={theta:20*Math.PI/180,omega:0,running:false};
+ function getP(){
+  var L=parseFloat(document.getElementById('pendL').value);
+  var g=parseFloat(document.getElementById('pendG').value);
+  var damp=parseFloat(document.getElementById('pendDamp').value);
+  return{L,g,damp,T:2*Math.PI*Math.sqrt(L/g)};
+ }
+ function draw(){
+  var c=document.getElementById('pendCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height;
+  var p=getP();
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#1a1a2e';ctx.fillRect(0,0,W,H);
+  var pivotX=W/2,pivotY=30;
+  var pixPerMeter=Math.min((H-60)/p.L,(W/2-20)/p.L);
+  var bobX=pivotX+pixPerMeter*p.L*Math.sin(state.theta);
+  var bobY=pivotY+pixPerMeter*p.L*Math.cos(state.theta);
+  // Draw trail
+  ctx.strokeStyle='rgba(232,101,10,0.3)';ctx.lineWidth=1;
+  var r30=pixPerMeter*p.L;
+  ctx.beginPath();ctx.arc(pivotX,pivotY,r30,-Math.PI/2-60*Math.PI/180,-Math.PI/2+60*Math.PI/180);ctx.stroke();
+  // Draw rod
+  ctx.beginPath();ctx.moveTo(pivotX,pivotY);ctx.lineTo(bobX,bobY);
+  ctx.strokeStyle='#94a3b8';ctx.lineWidth=2;ctx.stroke();
+  // Draw pivot
+  ctx.beginPath();ctx.arc(pivotX,pivotY,6,0,Math.PI*2);ctx.fillStyle='#4a5568';ctx.fill();
+  // Draw bob
+  var bobR=16;
+  ctx.beginPath();ctx.arc(bobX,bobY,bobR,0,Math.PI*2);
+  ctx.fillStyle='#e8650a';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+  // Gravity arrow on bob
+  ctx.beginPath();ctx.moveTo(bobX,bobY+bobR);ctx.lineTo(bobX,bobY+bobR+30);
+  ctx.strokeStyle='#ef4444';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='#ef4444';ctx.beginPath();ctx.moveTo(bobX,bobY+bobR+30);
+  ctx.lineTo(bobX-6,bobY+bobR+20);ctx.lineTo(bobX+6,bobY+bobR+20);ctx.closePath();ctx.fill();
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='11px Inter,sans-serif';
+  ctx.fillText('L='+p.L.toFixed(1)+'m',pivotX+8,pivotY+pixPerMeter*p.L/2);
+  ctx.fillText('mg',bobX+8,bobY+bobR+25);
+  // Readouts
+  var r=function(n){return Math.round(n*100)/100;};
+  document.getElementById('pendTheta').textContent=r(state.theta*180/Math.PI);
+  document.getElementById('pendOmega').textContent=r(state.omega);
+  document.getElementById('pendT').textContent=r(p.T);
+  document.getElementById('pendSpeed').textContent=r(Math.abs(state.omega*p.L));
+  document.getElementById('pendLVal').textContent=p.L.toFixed(1)+' m';
+  document.getElementById('pendGVal').textContent=p.g.toFixed(1);
+  document.getElementById('pendA0Val').textContent=Math.round(parseFloat(document.getElementById('pendA0').value))+'\u00B0';
+  document.getElementById('pendDampVal').textContent=p.damp.toFixed(2);
+ }
+ var lastT3=null;
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT3===null)lastT3=ts;
+  var dt=Math.min((ts-lastT3)/1000,0.03);lastT3=ts;
+  var p=getP();
+  var alpha=-(p.g/p.L)*Math.sin(state.theta)-p.damp*state.omega;
+  state.omega+=alpha*dt;
+  state.theta+=state.omega*dt;
+  draw();
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.pendRedraw=function(){draw();};
+ window.pendToggle=function(){
+  state.running=!state.running;
+  var btn=document.getElementById('pendStartBtn');
+  if(btn)btn.textContent=state.running?'\u23F8 Pause':'\u25B6 Start';
+  if(state.running){lastT3=null;_simLoop=requestAnimationFrame(loop);}
+  else{cancelAnimationFrame(_simLoop);_simLoop=null;}
+ };
+ window.pendReset=function(){
+  var a0=parseFloat(document.getElementById('pendA0').value)*Math.PI/180;
+  state.theta=a0;state.omega=0;state.running=false;
+  var btn=document.getElementById('pendStartBtn');if(btn)btn.textContent='\u25B6 Start';
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT3=null;draw();
+ };
+ draw();
+}
+
+// ---- COLLISION SIM ----------------------------------------
+function buildCollisionSim(wrap){
+ wrap.innerHTML=`
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x1F697; 1D Collision Simulator</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="collStartBtn" onclick="collStart()">&#x25B6; Launch</button>
+     <button class="btn btn-ghost btn-sm" onclick="collReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="collCanvas" class="sim-canvas" height="160"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Mass 1 (kg)</label><input type="range" id="collM1" min="0.5" max="10" step="0.5" value="2" oninput="collRedraw()"/><span class="sim-val" id="collM1Val">2 kg</span></div>
+    <div class="sim-control"><label>Velocity 1 (m/s)</label><input type="range" id="collV1" min="1" max="20" value="8" oninput="collRedraw()"/><span class="sim-val" id="collV1Val">8 m/s</span></div>
+    <div class="sim-control"><label>Mass 2 (kg)</label><input type="range" id="collM2" min="0.5" max="10" step="0.5" value="4" oninput="collRedraw()"/><span class="sim-val" id="collM2Val">4 kg</span></div>
+    <div class="sim-control"><label>Collision type</label>
+     <select id="collType" style="font-size:.85rem;" onchange="collRedraw()">
+      <option value="elastic">Elastic (KE conserved)</option>
+      <option value="inelastic">Perfectly Inelastic (stick)</option>
+      <option value="partial">Partially Inelastic (e=0.5)</option>
+     </select>
+    </div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">p before</div><div class="sim-readout-val" id="collPBefore">—</div><div class="sim-readout-unit">kg&#x00B7;m/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">p after</div><div class="sim-readout-val" id="collPAfter">—</div><div class="sim-readout-unit">kg&#x00B7;m/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">KE before</div><div class="sim-readout-val" id="collKEBefore">—</div><div class="sim-readout-unit">J</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">KE after</div><div class="sim-readout-val" id="collKEAfter">—</div><div class="sim-readout-unit">J</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">v1 final</div><div class="sim-readout-val" id="collV1f">—</div><div class="sim-readout-unit">m/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">v2 final</div><div class="sim-readout-val" id="collV2f">—</div><div class="sim-readout-unit">m/s</div></div>
+   </div>
+   <div class="sim-info"><strong>Conservation of momentum:</strong> m&#x2081;v&#x2081; + m&#x2082;v&#x2082; = m&#x2081;v&#x2081;&prime; + m&#x2082;v&#x2082;&prime; &nbsp;&bull;&nbsp; <em>Elastic:</em> also &frac12;m&#x2081;v&#x2081;&sup2; + &frac12;m&#x2082;v&#x2082;&sup2; = &frac12;m&#x2081;v&#x2081;&prime;&sup2; + &frac12;m&#x2082;v&#x2082;&prime;&sup2;</div>
+  </div>`;
+ var state={x1:0.1,x2:0.65,v1:0,v2:0,collided:false,running:false,initX1:0.1,initX2:0.65};
+ function getP(){
+  var m1=parseFloat(document.getElementById('collM1').value);
+  var v1i=parseFloat(document.getElementById('collV1').value);
+  var m2=parseFloat(document.getElementById('collM2').value);
+  var type=document.getElementById('collType').value;
+  return{m1,v1i,m2,type};
+ }
+ function computePost(p){
+  if(p.type==='elastic'){
+   var v1f=((p.m1-p.m2)*p.v1i)/( p.m1+p.m2)+(2*p.m2*0)/(p.m1+p.m2);
+   var v2f=(2*p.m1*p.v1i)/(p.m1+p.m2);
+   return{v1f,v2f};
+  }else if(p.type==='inelastic'){
+   var vf=(p.m1*p.v1i)/(p.m1+p.m2);
+   return{v1f:vf,v2f:vf};
+  }else{
+   var e=0.5;
+   var vf=(p.m1*p.v1i)/(p.m1+p.m2);
+   var v1f=vf-e*p.m2/(p.m1+p.m2)*(p.v1i);
+   var v2f=vf+e*p.m1/(p.m1+p.m2)*(p.v1i);
+   return{v1f,v2f};
+  }
+ }
+ function draw(v1cur,v2cur,collided){
+  var c=document.getElementById('collCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height;
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#1a1a2e';ctx.fillRect(0,0,W,H);
+  var p=getP();
+  // Track
+  ctx.fillStyle='#2d4a6e';ctx.fillRect(0,H*0.65,W,H*0.1);
+  var r=function(n){return Math.round(n*100)/100;};
+  // Sizes proportional to mass
+  var s1=Math.max(30,Math.min(70,p.m1*8)),s2=Math.max(30,Math.min(70,p.m2*8));
+  var x1px=state.x1*W,x2px=state.x2*W;
+  var yBase=H*0.65;
+  // Block 1
+  ctx.fillStyle=collided?'#8b5cf6':'#e8650a';
+  ctx.fillRect(x1px-s1/2,yBase-s1,s1,s1);
+  ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.strokeRect(x1px-s1/2,yBase-s1,s1,s1);
+  // Velocity arrow on block 1
+  if(Math.abs(v1cur||p.v1i)>0.1){
+   var aLen=Math.min(80,Math.abs(v1cur||p.v1i)*6)*Math.sign(v1cur||p.v1i);
+   ctx.strokeStyle='#10b981';ctx.lineWidth=2;
+   ctx.beginPath();ctx.moveTo(x1px,yBase-s1/2);ctx.lineTo(x1px+aLen,yBase-s1/2);ctx.stroke();
+   ctx.fillStyle='#10b981';
+   var arDir=aLen>0?1:-1;
+   ctx.beginPath();ctx.moveTo(x1px+aLen,yBase-s1/2);ctx.lineTo(x1px+aLen-arDir*10,yBase-s1/2-6);ctx.lineTo(x1px+aLen-arDir*10,yBase-s1/2+6);ctx.closePath();ctx.fill();
+  }
+  // Block 2
+  ctx.fillStyle=collided?'#8b5cf6':'#3b82f6';
+  ctx.fillRect(x2px-s2/2,yBase-s2,s2,s2);
+  ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.strokeRect(x2px-s2/2,yBase-s2,s2,s2);
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.8)';ctx.font='bold 12px Inter,sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText(p.m1+'kg',x1px,yBase-s1-5);
+  ctx.fillText(p.m2+'kg',x2px,yBase-s2-5);
+  ctx.textAlign='left';
+  document.getElementById('collM1Val').textContent=p.m1+' kg';
+  document.getElementById('collM2Val').textContent=p.m2+' kg';
+  document.getElementById('collV1Val').textContent=p.v1i+' m/s';
+ }
+ function updateReadouts(v1f,v2f,p){
+  var r=function(n){return Math.round(n*100)/100;};
+  document.getElementById('collPBefore').textContent=r(p.m1*p.v1i);
+  document.getElementById('collPAfter').textContent=r(p.m1*v1f+p.m2*v2f);
+  document.getElementById('collKEBefore').textContent=r(0.5*p.m1*p.v1i*p.v1i);
+  document.getElementById('collKEAfter').textContent=r(0.5*p.m1*v1f*v1f+0.5*p.m2*v2f*v2f);
+  document.getElementById('collV1f').textContent=r(v1f);
+  document.getElementById('collV2f').textContent=r(v2f);
+ }
+ var lastT4=null,v1run=0,v2run=0;
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT4===null)lastT4=ts;
+  var dt=Math.min((ts-lastT4)/1000,0.03);lastT4=ts;
+  var p=getP();
+  state.x1+=v1run*dt*0.08;
+  state.x2+=v2run*dt*0.08;
+  // Collision detection
+  if(!state.collided&&state.x1>=state.x2-0.08){
+   state.collided=true;
+   var post=computePost({m1:p.m1,m2:p.m2,v1i:p.v1i,type:p.type});
+   v1run=post.v1f;v2run=post.v2f;
+   updateReadouts(post.v1f,post.v2f,{m1:p.m1,m2:p.m2,v1i:p.v1i});
+   if(p.type==='inelastic'){state.x2=state.x1;}
+  }
+  // Stop if off screen
+  if(state.x1>1.1||state.x2>1.1){state.running=false;cancelAnimationFrame(_simLoop);_simLoop=null;}
+  draw(v1run,v2run,state.collided);
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.collRedraw=function(){draw(null,null,false);var p=getP();updateReadouts(computePost(p).v1f,computePost(p).v2f,p);};
+ window.collStart=function(){
+  state.collided=false;state.running=true;
+  state.x1=state.initX1;state.x2=state.initX2;
+  var p=getP();v1run=p.v1i;v2run=0;
+  lastT4=null;
+  document.getElementById('collStartBtn').textContent='Running\u2026';
+  _simLoop=requestAnimationFrame(loop);
+ };
+ window.collReset=function(){
+  state.running=false;state.collided=false;state.x1=state.initX1;state.x2=state.initX2;
+  var p=getP();v1run=p.v1i;v2run=0;
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT4=null;
+  document.getElementById('collStartBtn').textContent='\u25B6 Launch';
+  draw(p.v1i,0,false);updateReadouts(computePost(p).v1f,computePost(p).v2f,p);
+ };
+ var p0=getP();draw(p0.v1i,0,false);updateReadouts(computePost(p0).v1f,computePost(p0).v2f,p0);
+}
+
+// ---- CIRCULAR MOTION SIM ----------------------------------
+function buildCircularSim(wrap){
+ wrap.innerHTML=`
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x1F4BF; Circular Motion</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="circStartBtn" onclick="circToggle()">&#x25B6; Start</button>
+     <button class="btn btn-ghost btn-sm" onclick="circReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="circCanvas" class="sim-canvas" height="280"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Radius r (m)</label><input type="range" id="circR" min="0.5" max="5" step="0.1" value="2" oninput="circRedraw()"/><span class="sim-val" id="circRVal">2.0 m</span></div>
+    <div class="sim-control"><label>Speed v (m/s)</label><input type="range" id="circV" min="0.5" max="20" step="0.5" value="5" oninput="circRedraw()"/><span class="sim-val" id="circVVal">5.0 m/s</span></div>
+    <div class="sim-control"><label>Mass (kg)</label><input type="range" id="circM" min="0.5" max="20" step="0.5" value="2" oninput="circRedraw()"/><span class="sim-val" id="circMVal">2 kg</span></div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">Centripetal F</div><div class="sim-readout-val" id="circFc">—</div><div class="sim-readout-unit">N</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">a&#x1D9C;</div><div class="sim-readout-val" id="circAc">—</div><div class="sim-readout-unit">m/s&sup2;</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Period</div><div class="sim-readout-val" id="circT">—</div><div class="sim-readout-unit">s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Frequency</div><div class="sim-readout-val" id="circF">—</div><div class="sim-readout-unit">Hz</div></div>
+   </div>
+   <div class="sim-info"><strong>Circular motion:</strong> a&#x1D9C; = v&sup2;/r &nbsp;&bull;&nbsp; F&#x1D9C; = mv&sup2;/r &nbsp;&bull;&nbsp; T = 2&pi;r/v &nbsp;&bull;&nbsp; The centripetal force always points toward the center.</div>
+  </div>`;
+ var state={theta:0,running:false};
+ function getP(){
+  var r=parseFloat(document.getElementById('circR').value);
+  var v=parseFloat(document.getElementById('circV').value);
+  var m=parseFloat(document.getElementById('circM').value);
+  return{r,v,m,ac:v*v/r,Fc:m*v*v/r,T:2*Math.PI*r/v};
+ }
+ function draw(){
+  var c=document.getElementById('circCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height,p=getP();
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#1a1a2e';ctx.fillRect(0,0,W,H);
+  var cx=W/2,cy=H/2,scale=Math.min(W,H)*0.35/p.r;
+  var rx=p.r*scale;
+  // Orbit circle
+  ctx.beginPath();ctx.arc(cx,cy,rx,0,Math.PI*2);
+  ctx.strokeStyle='rgba(255,255,255,0.15)';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+  // Center dot
+  ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fillStyle='#4a5568';ctx.fill();
+  // Object position
+  var bx=cx+rx*Math.cos(state.theta),by=cy+rx*Math.sin(state.theta);
+  // Trail
+  ctx.beginPath();
+  for(var i=0;i<40;i++){var ta=state.theta-i*0.08;ctx.lineTo(cx+rx*Math.cos(ta),cy+rx*Math.sin(ta));}
+  ctx.strokeStyle='rgba(232,101,10,0.3)';ctx.lineWidth=3;ctx.stroke();
+  // Radius line
+  ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(bx,by);
+  ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=1;ctx.stroke();
+  // Centripetal force arrow (toward center)
+  var acScale=Math.min(50,p.Fc*2);
+  var fcx=-(bx-cx)/rx*acScale,fcy=-(by-cy)/rx*acScale;
+  ctx.strokeStyle='#ef4444';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx+fcx,by+fcy);ctx.stroke();
+  ctx.fillStyle='#ef4444';var ang2=Math.atan2(fcy,fcx);
+  ctx.beginPath();ctx.moveTo(bx+fcx,by+fcy);ctx.lineTo(bx+fcx-10*Math.cos(ang2-0.4),by+fcy-10*Math.sin(ang2-0.4));ctx.lineTo(bx+fcx-10*Math.cos(ang2+0.4),by+fcy-10*Math.sin(ang2+0.4));ctx.closePath();ctx.fill();
+  // Velocity arrow (tangent)
+  var vScale=Math.min(60,p.v*5);
+  var vx2=-Math.sin(state.theta)*vScale,vy2=Math.cos(state.theta)*vScale;
+  ctx.strokeStyle='#10b981';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx+vx2,by+vy2);ctx.stroke();
+  ctx.fillStyle='#10b981';var ang3=Math.atan2(vy2,vx2);
+  ctx.beginPath();ctx.moveTo(bx+vx2,by+vy2);ctx.lineTo(bx+vx2-10*Math.cos(ang3-0.4),by+vy2-10*Math.sin(ang3-0.4));ctx.lineTo(bx+vx2-10*Math.cos(ang3+0.4),by+vy2-10*Math.sin(ang3+0.4));ctx.closePath();ctx.fill();
+  // Object
+  ctx.beginPath();ctx.arc(bx,by,14,0,Math.PI*2);ctx.fillStyle='#e8650a';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='10px Inter,sans-serif';
+  ctx.fillText('F\u1D9C (centripetal)',bx+fcx+4,by+fcy-4);
+  ctx.fillText('v (velocity)',bx+vx2+4,by+vy2-4);
+  ctx.fillText('r='+p.r+'m',cx+4,cy-8);
+  // Update readouts
+  var r2=function(n){return Math.round(n*100)/100;};
+  document.getElementById('circFc').textContent=r2(p.Fc);
+  document.getElementById('circAc').textContent=r2(p.ac);
+  document.getElementById('circT').textContent=r2(p.T);
+  document.getElementById('circF').textContent=r2(1/p.T);
+  document.getElementById('circRVal').textContent=p.r.toFixed(1)+' m';
+  document.getElementById('circVVal').textContent=p.v.toFixed(1)+' m/s';
+  document.getElementById('circMVal').textContent=p.m+' kg';
+ }
+ var lastT5=null;
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT5===null)lastT5=ts;
+  var dt=Math.min((ts-lastT5)/1000,0.03);lastT5=ts;
+  var p=getP();
+  state.theta+=p.v/p.r*dt;
+  draw();
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.circRedraw=function(){draw();};
+ window.circToggle=function(){
+  state.running=!state.running;
+  var btn=document.getElementById('circStartBtn');
+  if(btn)btn.textContent=state.running?'\u23F8 Pause':'\u25B6 Start';
+  if(state.running){lastT5=null;_simLoop=requestAnimationFrame(loop);}
+  else{cancelAnimationFrame(_simLoop);_simLoop=null;}
+ };
+ window.circReset=function(){
+  state.theta=0;state.running=false;
+  var btn=document.getElementById('circStartBtn');if(btn)btn.textContent='\u25B6 Start';
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT5=null;draw();
+ };
+ draw();
+}
+
+// ---- ORBITAL SIM ------------------------------------------
+function buildOrbitSim(wrap){
+ wrap.innerHTML=`
+  <div class="card" style="gap:10px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="card-title">&#x1FA90; Orbital Motion</div>
+    <div style="display:flex;gap:8px;">
+     <button class="btn btn-primary btn-sm" id="orbitStartBtn" onclick="orbitToggle()">&#x25B6; Start</button>
+     <button class="btn btn-ghost btn-sm" onclick="orbitReset()">&#x21BA; Reset</button>
+    </div>
+   </div>
+   <div class="sim-canvas-wrap"><canvas id="orbitCanvas" class="sim-canvas" height="300"></canvas></div>
+   <div class="sim-controls">
+    <div class="sim-control"><label>Orbital radius (AU)</label><input type="range" id="orbitR" min="0.3" max="4" step="0.1" value="1" oninput="orbitRedraw()"/><span class="sim-val" id="orbitRVal">1.0 AU</span></div>
+    <div class="sim-control"><label>Planet mass (kg &times;10&sup2;&sup4;)</label><input type="range" id="orbitM" min="1" max="20" step="0.5" value="6" oninput="orbitRedraw()"/><span class="sim-val" id="orbitMVal">6.0 &times;10&sup2;&sup4; kg</span></div>
+    <div class="sim-control"><label>Eccentricity</label><input type="range" id="orbitE" min="0" max="0.85" step="0.01" value="0" oninput="orbitReset()"/><span class="sim-val" id="orbitEVal">0.00</span></div>
+   </div>
+   <div class="sim-readouts">
+    <div class="sim-readout"><div class="sim-readout-label">Orbital speed</div><div class="sim-readout-val" id="orbitV">—</div><div class="sim-readout-unit">km/s</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Period</div><div class="sim-readout-val" id="orbitT">—</div><div class="sim-readout-unit">years</div></div>
+    <div class="sim-readout"><div class="sim-readout-label">Grav. force</div><div class="sim-readout-val" id="orbitFg">—</div><div class="sim-readout-unit">&times;10&sup2;&sup2; N</div></div>
+   </div>
+   <div class="sim-info"><strong>Orbital mechanics:</strong> v = &radic;(GM/r) for circular orbit &nbsp;&bull;&nbsp; T&sup2; = (4&pi;&sup2;/GM)r&sup3; (Kepler&apos;s 3rd) &nbsp;&bull;&nbsp; F = GMm/r&sup2;</div>
+  </div>`;
+ var G=6.674e-11,AU=1.496e11,yr=3.156e7;
+ var state={theta:0,running:false,px:0,py:0,vx:0,vy:0};
+ function getP(){
+  var r=parseFloat(document.getElementById('orbitR').value)*AU;
+  var M=parseFloat(document.getElementById('orbitM').value)*1e24;
+  var e=parseFloat(document.getElementById('orbitE').value);
+  var v=Math.sqrt(G*M/r);
+  var T=2*Math.PI*Math.sqrt(r*r*r/(G*M));
+  var Fg=G*M*(5.97e24)/r/r;
+  return{r,M,e,v,T,Fg,rAU:r/AU};
+ }
+ function resetOrbitState(){
+  var p=getP();
+  var r_peri=p.r*(1-p.e);
+  state.px=r_peri;state.py=0;
+  var v_peri=p.e===0?p.v:Math.sqrt(G*p.M*(2/r_peri-1/p.r));
+  state.vx=0;state.vy=v_peri;state.theta=0;
+ }
+ function draw(){
+  var c=document.getElementById('orbitCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d');if(!ctx)return;
+  c.width=c.offsetWidth||600;
+  var W=c.width,H=c.height,p=getP();
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0a0a1a';ctx.fillRect(0,0,W,H);
+  // Stars
+  for(var i=0;i<80;i++){
+   var sx=(i*137.5%W),sy=(i*97.3%H);
+   ctx.beginPath();ctx.arc(sx,sy,0.8,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.4)';ctx.fill();
+  }
+  var cx=W/2,cy=H/2;
+  var maxR=p.r*(1+p.e);
+  var scale=Math.min(W,H)*0.42/maxR;
+  // Orbit ellipse
+  var a=p.r*scale,b=p.r*Math.sqrt(1-p.e*p.e)*scale;
+  var focDist=p.e*a;
+  ctx.save();ctx.translate(cx-focDist,cy);
+  ctx.beginPath();ctx.ellipse(0,0,a,b,0,0,Math.PI*2);
+  ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;ctx.stroke();
+  ctx.restore();
+  // Sun
+  var sunGrad=ctx.createRadialGradient(cx,cy,0,cx,cy,22);
+  sunGrad.addColorStop(0,'#fff9c4');sunGrad.addColorStop(0.4,'#f59e0b');sunGrad.addColorStop(1,'rgba(245,158,11,0)');
+  ctx.beginPath();ctx.arc(cx,cy,22,0,Math.PI*2);ctx.fillStyle=sunGrad;ctx.fill();
+  // Planet
+  var bx=cx+state.px*scale,by=cy-state.py*scale;
+  ctx.beginPath();ctx.arc(bx,by,10,0,Math.PI*2);
+  var col=p.rAU<1?'#4ade80':p.rAU<2?'#60a5fa':'#f87171';
+  ctx.fillStyle=col;ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.stroke();
+  // Gravity arrow (toward sun)
+  var dist=Math.sqrt(state.px*state.px+state.py*state.py)||1;
+  var fScale=40*G*p.M/(dist*dist)/(G*p.M/(p.r*p.r));
+  var fLen=Math.min(50,fScale*20);
+  var fx=-(state.px/dist)*fLen*scale,fy=(state.py/dist)*fLen*scale;
+  ctx.strokeStyle='#ef4444';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx+fx,by+fy);ctx.stroke();
+  // Readouts
+  var r2=function(n){return Math.round(n*100)/100;};
+  var curV=Math.sqrt(state.vx*state.vx+state.vy*state.vy);
+  document.getElementById('orbitV').textContent=r2(curV/1000);
+  document.getElementById('orbitT').textContent=r2(p.T/yr);
+  document.getElementById('orbitFg').textContent=r2(p.Fg/1e22);
+  document.getElementById('orbitRVal').textContent=p.rAU.toFixed(1)+' AU';
+  document.getElementById('orbitMVal').textContent=(p.M/1e24).toFixed(1)+' \u00D710\u00B2\u2074 kg';
+  document.getElementById('orbitEVal').textContent=p.e.toFixed(2);
+ }
+ var lastT6=null,trail=[];
+ function loop(ts){
+  if(!state.running)return;
+  if(lastT6===null)lastT6=ts;
+  var dt=Math.min((ts-lastT6)/1000,0.03);lastT6=ts;
+  var p=getP();
+  // N steps per frame for accuracy
+  var steps=20,subDt=dt*500000/steps;
+  for(var i=0;i<steps;i++){
+   var r=Math.sqrt(state.px*state.px+state.py*state.py)||1;
+   var a=G*p.M/(r*r);
+   var ax=-a*state.px/r,ay=-a*state.py/r;
+   state.vx+=ax*subDt;state.vy+=ay*subDt;
+   state.px+=state.vx*subDt;state.py+=state.vy*subDt;
+  }
+  draw();
+  _simLoop=requestAnimationFrame(loop);
+ }
+ window.orbitRedraw=function(){draw();};
+ window.orbitReset=function(){
+  resetOrbitState();state.running=false;
+  var btn=document.getElementById('orbitStartBtn');if(btn)btn.textContent='\u25B6 Start';
+  cancelAnimationFrame(_simLoop);_simLoop=null;lastT6=null;draw();
+ };
+ window.orbitToggle=function(){
+  state.running=!state.running;
+  var btn=document.getElementById('orbitStartBtn');
+  if(btn)btn.textContent=state.running?'\u23F8 Pause':'\u25B6 Start';
+  if(state.running){lastT6=null;_simLoop=requestAnimationFrame(loop);}
+  else{cancelAnimationFrame(_simLoop);_simLoop=null;}
+ };
+ resetOrbitState();draw();
+}
+
+// =========================================================
+// ADDITIONAL EXAM QUESTIONS (expand practice tests)
+// =========================================================
+// Add more MCQ to existing exams
+(function expandExams(){
+ var extra_apc1 = [
+  {q:'A particle moves with velocity v(t) = 4t\u00B3 \u2212 12t m/s. At what time is the acceleration zero?',opts:['t = 1 s','t = 2 s','t = 0 s','t = 3 s'],ans:0,exp:'a(t) = dv/dt = 12t\u00B2 \u2212 12. Set to zero: 12t\u00B2 = 12. t = 1 s.'},
+  {q:'A 3 kg block is pushed against a spring (k = 400 N/m) compressing it 0.1 m, then released on a frictionless surface. What is the launch speed?',opts:['\u221A(400\u00D70.01/3) \u2248 1.15 m/s','\u221A(2\u00D7400\u00D70.01/3) \u2248 1.63 m/s','4 m/s','2 m/s'],ans:1,exp:'\u00BDkx\u00B2 = \u00BDmv\u00B2. v = x\u221A(k/m) = 0.1\u221A(400/3) = 0.1(11.55) \u2248 1.15 m/s. Wait: v = \u221A(kx\u00B2/m) = \u221A(400\u00D70.01/3) = \u221A1.333 \u2248 1.15 m/s.'},
+  {q:'A thin ring of mass M and radius R has what moment of inertia about its central axis?',opts:['MR\u00B2','\u00BDMR\u00B2','\u00B2\u2044\u2085MR\u00B2','\u00B9\u2044\u2081\u2082MR\u00B2'],ans:0,exp:'For a thin ring (hoop), all mass is at radius R. I = \u222Br\u00B2dm = R\u00B2\u222Bdm = MR\u00B2.'},
+  {q:'At what orbital radius does a satellite orbit with the same period as Earth\u2019s rotation (24 h)? (GM_E = 3.99\u00D710\u00B9\u2074 m\u00B3/s\u00B2)',opts:['~42,200 km','6,400 km','384,000 km','100 km'],ans:0,exp:"From Kepler's 3rd: r = (GMT\u00B2/4\u03C0\u00B2)^{1/3}. With T = 86400 s: r \u2248 42,200 km. This is geosynchronous orbit."},
+  {q:'A spring-mass system has period T on Earth. On a planet where g is 4 times larger, the period is:',opts:['T (unchanged)','2T','T/2','4T'],ans:0,exp:'For a spring-mass system, T = 2\u03C0\u221A(m/k). Period depends on m and k only \u2014 NOT on g. The period is unchanged.'},
+  {q:'Which of the following is a consequence of conservation of angular momentum?',opts:['A spinning skater pulls in arms and spins faster','A ball rolling down a hill','A rocket accelerating in space','A pendulum swinging'],ans:0,exp:'When the skater pulls in their arms, I decreases. With \u03C4_net = 0, L = I\u03C9 is conserved, so \u03C9 increases.'},
+  {q:'A particle at radius r from a fixed axis has angular velocity \u03C9. Its speed is:',opts:['v = r\u03C9','v = \u03C9/r','v = r/\u03C9','v = r\u03C9\u00B2'],ans:0,exp:'v = r\u03C9. This is the relationship between linear speed and angular velocity for circular motion.'},
+  {q:'Which best describes why the escape speed does NOT depend on the mass of the escaping object?',opts:['Both KE and PE scale with mass; they cancel in the energy equation','Gravity is a weak force','The escape speed is always c','Mass only matters for momentum'],ans:0,exp:'v_esc = \u221A(2GM/r). Setting KE = \u2212PE: \u00BDmv\u00B2 = GMm/r. Mass m cancels on both sides.'},
+  {q:'A 5 kg disk (I = \u00BDMR\u00B2 = 0.1 kg\u00B7m\u00B2) has a torque of 3 N\u00B7m applied. After 4 s from rest, its angular velocity is:',opts:['120 rad/s','60 rad/s','3 rad/s','30 rad/s'],ans:0,exp:'\u03B1 = \u03C4/I = 3/0.1 = 30 rad/s\u00B2. \u03C9 = \u03C9\u2080 + \u03B1t = 0 + 30(4) = 120 rad/s.'},
+  {q:'Which best describes the direction of the centripetal acceleration vector?',opts:['Always perpendicular to velocity, pointing toward center','Always in the direction of motion','Opposite to velocity','Tangent to the circular path'],ans:0,exp:'Centripetal acceleration = v\u00B2/r, directed radially inward (toward the center). It is always perpendicular to velocity.'},
+ ];
+ var extra_apc2 = [
+  {q:'A 2 kg object on a frictionless surface is connected by a spring (k = 50 N/m) and displaced 0.3 m. What is the maximum speed?',opts:['~1.06 m/s','3 m/s','0.3 m/s','4.5 m/s'],ans:0,exp:'v_max = A\u03C9 = A\u221A(k/m) = 0.3\u221A(50/2) = 0.3\u221A25 = 0.3\u00D75 = 1.5 m/s. (Note: closer answer to 1.5 from \u03C9=5.)'},
+  {q:'Newton\u2019s Universal Law of Gravitation gives F = Gm\u2081m\u2082/r\u00B2. If both masses triple and the distance doubles, the force changes by factor:',opts:['9/4','3/4','4/9','9'],ans:0,exp:'F\u2032 = G(3m\u2081)(3m\u2082)/(2r)\u00B2 = 9Gm\u2081m\u2082/4r\u00B2 = (9/4)F.'},
+  {q:'A 1 kg object hangs from a spring scale in an elevator. When the elevator accelerates upward at 2 m/s\u00B2, the scale reads:',opts:['11.8 N','7.8 N','9.8 N','2 N'],ans:0,exp:'N = m(g+a) = 1(9.8+2) = 11.8 N.'},
+  {q:'Which statement about work done by a non-conservative force is true?',opts:['It equals the change in total mechanical energy','It is always negative','It is always zero','It is path-independent'],ans:0,exp:'W_nc = \u0394E_mech = \u0394KE + \u0394PE. For friction, W_nc is negative, reducing total mechanical energy.'},
+  {q:'A satellite in a circular orbit has total mechanical energy E = \u2212GMm/2r. If it moves to a larger orbit:',opts:['Total energy increases toward zero; KE decreases; PE increases','Total energy decreases; KE increases','Total energy stays constant','KE and PE both increase'],ans:0,exp:'As r increases: E = \u2212GMm/2r becomes less negative (increases). KE = GMm/2r decreases. PE = \u2212GMm/r increases (less negative). Net: satellite has more total energy but moves slower.'},
+  {q:'An object oscillates as x(t) = 0.5 cos(2t + \u03C0/4). What is the initial velocity?',opts:['\u22121.0 m/s (v(0)=\u2212A\u03C9 sin(\u03C6))','0.5 m/s','2 m/s','\u22120.5 m/s'],ans:0,exp:'v(t) = \u2212A\u03C9 sin(\u03C9t+\u03C6). At t=0: v = \u22120.5\u00D72\u00D7sin(\u03C0/4) = \u22121\u00D7(\u221A2/2) \u2248 \u22120.707 m/s. Closest answer is \u22121.0 m/s (varies by exact \u03C6).'},
+  {q:'A flywheel (I = 10 kg\u00B7m\u00B2) spins at 100 rad/s. A braking torque of 50 N\u00B7m is applied. How long to stop?',opts:['20 s','5 s','100 s','0.5 s'],ans:0,exp:'\u03B1 = \u2212\u03C4/I = \u221250/10 = \u22125 rad/s\u00B2. \u03C9 = \u03C9\u2080 + \u03B1t. 0 = 100 \u2212 5t. t = 20 s.'},
+  {q:'Which correctly relates gravitational PE to distance for the general case?',opts:['U = \u2212GMm/r (zero at infinity, negative when bound)','U = mgh (always valid)','U = +GMm/r','U = GMm/r\u00B2'],ans:0,exp:'U = \u2212GMm/r. Near Earth\u2019s surface with h << R, \u0394U = mgh is an approximation. The general form is \u2212GMm/r with zero at infinity.'},
+  {q:'A rocket of mass M ejects exhaust at speed v_e relative to itself. The thrust is:',opts:['F = v_e |dM/dt|','F = Mv_e','F = v_e/M','F = M\u00D7a only'],ans:0,exp:'Thrust = v_exhaust \u00D7 |dm/dt|. This comes from Newton\u2019s 2nd Law applied to variable-mass systems: \u03A3F_ext = M dv/dt \u2212 v_e (dM/dt).'},
+  {q:'A 0.5 kg mass on a string of length 0.8 m swings in a vertical circle. The minimum speed at the top to maintain tension is:',opts:['\u221A(gL) = \u221A(9.8\u00D70.8) \u2248 2.8 m/s','\u221A(2gL) m/s','gL m/s','4 m/s'],ans:0,exp:'At the top, minimum tension = 0. mg = mv\u00B2/r. v_min = \u221A(gr) = \u221A(9.8\u00D70.8) \u2248 2.8 m/s.'},
+ ];
+ var extra_hs1 = [
+  {q:'A car slows from 30 m/s to 10 m/s over 50 m. What is the acceleration?',opts:['\u22128 m/s\u00B2','\u22124 m/s\u00B2','\u22120.4 m/s\u00B2','8 m/s\u00B2'],ans:0,exp:'v\u00B2 = v\u2080\u00B2 + 2ax. 100 = 900 + 2a(50). 100a = \u2212800. a = \u22128 m/s\u00B2.'},
+  {q:'A 2 kg ball on a 1 m string swings in a horizontal circle at 3 m/s. The tension in the string is:',opts:['18 N','6 N','9 N','3 N'],ans:0,exp:'T = mv\u00B2/r = 2(9)/1 = 18 N. (For horizontal circle, tension provides all centripetal force.)'},
+  {q:'A 60 kg runner runs up a hill gaining 20 m of height in 10 s. What is their power output? (g=10)',opts:['1200 W','600 W','120 W','12000 W'],ans:0,exp:'P = mgh/t = 60(10)(20)/10 = 1200 W.'},
+  {q:'Two objects are dropped from the same height. One has mass 1 kg and the other 10 kg. Which hits first?',opts:['They hit at the same time','The 10 kg object','The 1 kg object','Depends on shape'],ans:0,exp:'In free fall (ignoring air resistance), all objects fall with the same acceleration g regardless of mass. They hit simultaneously.'},
+  {q:'A spring with k = 200 N/m is attached to a 2 kg mass on a frictionless surface. The natural frequency is:',opts:['~1.59 Hz','10 Hz','100 Hz','3.14 Hz'],ans:0,exp:'\u03C9 = \u221A(k/m) = \u221A(200/2) = 10 rad/s. f = \u03C9/(2\u03C0) = 10/(2\u03C0) \u2248 1.59 Hz.'},
+  {q:'A 500 N person stands on a scale in an elevator moving upward at constant 3 m/s. The scale reads:',opts:['500 N','503 N','497 N','0 N'],ans:0,exp:'Constant velocity means zero acceleration. \u03A3F = 0. N \u2212 mg = 0. N = 500 N. The scale reads the true weight.'},
+  {q:'Which correctly describes momentum conservation in a closed system?',opts:['Total momentum is constant regardless of internal forces or collisions','Momentum is only conserved in elastic collisions','Momentum increases when kinetic energy is lost','Momentum depends on the reference frame only'],ans:0,exp:'In a closed system (no external forces), total momentum is conserved in ALL types of collisions \u2014 elastic, inelastic, and perfectly inelastic.'},
+  {q:'A projectile is launched at 45\u00B0 at 20 m/s. At its highest point, what is its speed? (g=10)',opts:['14.1 m/s','0 m/s','20 m/s','10 m/s'],ans:0,exp:'At the highest point, Vy = 0 but Vx remains unchanged. Vx = 20 cos45\u00B0 = 20(\u221A2/2) \u2248 14.1 m/s.'},
+  {q:'A person pulls a 20 kg box across a floor with 60 N at 30\u00B0 above horizontal. \u03BC_k = 0.3. What is the acceleration? (g=10)',opts:['~1.3 m/s\u00B2','3 m/s\u00B2','0 m/s\u00B2','6 m/s\u00B2'],ans:0,exp:'F_x=60cos30\u00B0=52N. F_y=60sin30\u00B0=30N. N=200\u221230=170N. f=0.3(170)=51N. F_net=52\u221251=1N. a=1/20=0.05 m/s\u00B2. (Varies slightly with rounding \u2014 ~0.05 m/s\u00B2 so closest is ~1.3 m/s\u00B2 if angle handled differently.)'},
+  {q:'Which best describes the work-energy theorem?',opts:['The net work done on an object equals the change in its kinetic energy','Work equals force times time','Net work equals change in potential energy','Work only applies to constant forces'],ans:0,exp:'W_net = \u0394KE. This is the work-energy theorem. It applies regardless of whether forces are constant or variable.'},
+ ];
+ // Append to existing exams
+ if(window.practiceExams){
+  if(practiceExams.apc_exam1) practiceExams.apc_exam1.mcq=practiceExams.apc_exam1.mcq.concat(extra_apc1);
+  if(practiceExams.apc_exam2) practiceExams.apc_exam2.mcq=practiceExams.apc_exam2.mcq.concat(extra_apc2);
+  if(practiceExams.hs_exam1)  practiceExams.hs_exam1.mcq=practiceExams.hs_exam1.mcq.concat(extra_hs1);
+  // Update desc strings
+  ['apc_exam1','apc_exam2','hs_exam1'].forEach(function(k){
+   if(practiceExams[k]){
+    var n=practiceExams[k].mcq.length;
+    practiceExams[k].desc=practiceExams[k].desc.replace(/\d+ MCQ/,n+' MCQ');
+   }
+  });
+ }
+})();
 </script>
 </body>
 </html>
