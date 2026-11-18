@@ -371,7 +371,40 @@ h1,h2,h3,h4{line-height:1.2;}
 @media(min-width:1280px){.dash-grid{max-width:1200px;margin-left:auto;margin-right:auto;}}
 footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);border-top:1.5px solid var(--border);}
 
-/* SIMULATIONS */
+/* PRACTICE */
+.pf-btn{background:var(--surface2);border:1.5px solid var(--border);border-radius:99px;padding:7px 16px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all var(--trans);}
+.pf-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.practice-topic-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;transition:border-color var(--trans);}
+.practice-topic-card:hover{border-color:var(--accent);}
+.practice-topic-header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;}
+.practice-topic-icon{font-size:1.4rem;flex-shrink:0;}
+.practice-topic-info{flex:1;min-width:0;}
+.practice-topic-name{font-size:.95rem;font-weight:700;color:var(--text);}
+.practice-topic-meta{font-size:.72rem;color:var(--muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;}
+.practice-level-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.practice-level-badge.ap{background:#e8650a20;color:var(--accent);border:1px solid var(--accent);}
+.practice-level-badge.reg{background:#3b82f620;color:#3b82f6;border:1px solid #3b82f6;}
+.practice-topic-toggle{font-size:.85rem;color:var(--muted);transition:transform var(--trans);}
+.practice-topic-card.open .practice-topic-toggle{transform:rotate(90deg);}
+.practice-topic-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border);}
+.practice-topic-card.open .practice-topic-body{display:block;}
+.practice-video-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.practice-video-link{display:inline-flex;align-items:center;gap:6px;background:#ff000015;border:1px solid #ef444460;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;color:#ef4444;text-decoration:none;transition:background var(--trans);}
+.practice-video-link:hover{background:#ff000025;}
+.practice-q-list{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.practice-q-item{background:var(--surface2);border-radius:10px;padding:14px 16px;border-left:3px solid var(--border);}
+.practice-q-item.ap{border-left-color:var(--accent);}
+.practice-q-item.reg{border-left-color:#3b82f6;}
+.practice-q-num{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:5px;}
+.practice-q-text{font-size:.88rem;font-weight:600;line-height:1.5;color:var(--text);margin-bottom:8px;}
+.practice-q-answer{display:none;background:var(--surface);border-radius:8px;padding:10px 12px;border-left:3px solid var(--green);font-size:.82rem;line-height:1.6;color:var(--muted);margin-top:6px;}
+.practice-q-answer.show{display:block;}
+.practice-q-answer strong{color:var(--green);}
+.practice-q-toggle-btn{background:none;border:1.5px solid var(--border);border-radius:6px;padding:5px 12px;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:border-color var(--trans),color var(--trans);}
+.practice-q-toggle-btn:hover{border-color:var(--green);color:var(--green);}
+.practice-empty{text-align:center;padding:48px 20px;color:var(--muted);}
+.practice-empty-icon{font-size:2.5rem;margin-bottom:8px;}
+
 .sim-container{padding:16px;display:flex;flex-direction:column;gap:14px;}
 .sim-selector{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
 .sim-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color var(--trans),background var(--trans);}
@@ -408,6 +441,7 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
   <span class="nav-brand" id="navBrand">Physics Study Hub</span>
   <div class="nav-links">
     <button class="nav-link" data-panel="classes"     onclick="showPanel('classes')">Classes</button>
+    <button class="nav-link" data-panel="practice"    onclick="showPanel('practice')">Practice</button>
     <button class="nav-link" data-panel="simulations" onclick="showPanel('simulations')">Simulations</button>
     <button class="nav-link" data-panel="formulas"    onclick="showPanel('formulas')">Formulas</button>
     <button class="nav-link" data-panel="projectile"  onclick="showPanel('projectile')">Projectile</button>
@@ -425,7 +459,7 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 <!-- BOTTOM TAB BAR -->
 <nav class="tab-bar" role="navigation" aria-label="Bottom navigation">
   <button class="tab-btn" data-panel="home"        onclick="showPanel('home')"><span class="tab-icon">&#x1F3E0;</span><span class="tab-label">Home</span></button>
-  <button class="tab-btn" data-panel="classes"     onclick="showPanel('classes')"><span class="tab-icon">&#x1F4DA;</span><span class="tab-label">Classes</span></button>
+  <button class="tab-btn" data-panel="practice"    onclick="showPanel('practice')"><span class="tab-icon">&#x1F9E0;</span><span class="tab-label">Practice</span></button>
   <button class="tab-btn" data-panel="simulations" onclick="showPanel('simulations')"><span class="tab-icon">&#x1F3AE;</span><span class="tab-label">Sims</span></button>
   <button class="tab-btn" data-panel="formulas"    onclick="showPanel('formulas')"><span class="tab-icon">&#x1F4D0;</span><span class="tab-label">Formulas</span></button>
   <button class="tab-btn" id="moreTabBtn"><span class="tab-icon">&#x22EF;</span><span class="tab-label">More</span></button>
@@ -438,6 +472,7 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
     <div class="more-sheet-handle"></div>
     <div class="more-sheet-title">Tools</div>
     <div class="more-sheet-grid">
+      <button class="more-sheet-btn" data-panel="practice"    onclick="showPanel('practice')"><span class="more-sheet-icon">&#x1F9E0;</span> Practice</button>
       <button class="more-sheet-btn" data-panel="flashcards" onclick="showPanel('flashcards')"><span class="more-sheet-icon">&#x1F0CF;</span> Flashcards</button>
       <button class="more-sheet-btn" data-panel="timer"      onclick="showPanel('timer')"><span class="more-sheet-icon">&#x23F1;</span> Focus Timer</button>
       <button class="more-sheet-btn" data-panel="todo"       onclick="showPanel('todo')"><span class="more-sheet-icon">&#x2705;</span> To-Do List</button>
@@ -867,6 +902,26 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 </div>
 
 
+<!-- PRACTICE -->
+<div class="page-panel" id="panel-practice">
+  <div class="panel-hero"><div class="panel-hero-inner">
+    <div class="panel-hero-title">&#x1F9E0; Practice Problems</div>
+    <div class="panel-hero-sub">Search any physics topic &mdash; AP &amp; Regular questions with worked solutions and video links</div>
+  </div></div>
+  <div style="max-width:960px;margin:0 auto;padding:16px;">
+    <div style="position:relative;margin-bottom:16px;">
+      <input type="text" id="practiceSearch" placeholder="&#x1F50D; Search topics — e.g. &ldquo;kinematics&rdquo;, &ldquo;Newton&rsquo;s Laws&rdquo;, &ldquo;waves&rdquo;, &ldquo;circuits&rdquo;&hellip;" oninput="practiceFilter()" style="font-size:1rem;padding:14px 18px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);width:100%;"/>
+    </div>
+    <div id="practiceFilters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+      <button class="pf-btn active" onclick="practiceSetFilter('all',this)">All Topics</button>
+      <button class="pf-btn" onclick="practiceSetFilter('ap',this)">AP Physics C</button>
+      <button class="pf-btn" onclick="practiceSetFilter('reg',this)">HS Physics</button>
+    </div>
+    <div id="practiceResults"></div>
+    <div id="practiceQuizArea" style="margin-top:16px;"></div>
+  </div>
+</div>
+
 <!-- SIMULATIONS -->
 <div class="page-panel" id="panel-simulations">
   <div class="panel-hero"><div class="panel-hero-inner">
@@ -895,7 +950,7 @@ function showPanel(id){
   document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active');});
   var panel=document.getElementById('panel-'+id);
   if(panel)panel.classList.add('active');
-  var tabId=(id==='class-portal')?'classes':id;
+  var tabId=(id==='class-portal')?'classes':(id==='practice-topic')?'practice':id;
   var link=document.querySelector('.nav-link[data-panel="'+tabId+'"]');
   if(link){link.classList.add('active');link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
   document.querySelectorAll('.tab-btn[data-panel]').forEach(function(b){b.classList.toggle('active',b.dataset.panel===tabId);});
@@ -1151,1070 +1206,527 @@ buildFormulas();
 // PHYSICS CONTENT — QUESTIONS, TOPICS, EXAMS
 // =========================================================
 
-// ---- QUIZ ENGINE ----------------------------------------
-var quizStates={};
-function runQuiz(containerId,topicId){
- var bank=physicsQuizBanks[topicId];if(!bank)return;
- // Pick up to 10 questions at random, then shuffle each question's answer options
- var items=bank.questions.slice().sort(function(){return Math.random()-.5;}).slice(0,Math.min(10,bank.questions.length));
- // For each question, shuffle the opts array and update ans to point to the new position of the correct answer
- items=items.map(function(q){
-  var correctText=q.opts[q.ans];
-  var shuffled=q.opts.slice().sort(function(){return Math.random()-.5;});
-  // Keep shuffling until the correct answer is not in its original slot (adds randomness)
-  return {q:q.q,opts:shuffled,ans:shuffled.indexOf(correctText),exp:q.exp};
- });
- var id='qz_'+topicId+'_'+Date.now();
- quizStates[id]={items:items,current:0,score:0,answered:false,done:false};
- var cont=document.getElementById(containerId);if(!cont)return;
- cont.innerHTML='<div class="quiz-panel open" id="qp-'+id+'"><div class="quiz-header"><span class="quiz-title-label">'+bank.title+' Quiz</span><div class="quiz-progress-row"><div class="quiz-bar-wrap"><div class="quiz-bar" id="qbar-'+id+'" style="width:0%"></div></div><span class="quiz-counter" id="qcount-'+id+'">0/'+items.length+'</span></div></div><div id="qbody-'+id+'"></div></div>';
- renderQ(id);
-}
-function renderQ(id){
- var st=quizStates[id];if(!st)return;
- var body=document.getElementById('qbody-'+id);if(!body)return;
- if(st.done){showQResult(id);return;}
- var q=st.items[st.current],L=['A','B','C','D'];
- document.getElementById('qbar-'+id).style.width=Math.round(st.current/st.items.length*100)+'%';
- document.getElementById('qcount-'+id).textContent=(st.current+1)+'/'+st.items.length;
- body.innerHTML='<div class="quiz-q-text">'+(st.current+1)+'. '+q.q+'</div><div class="quiz-options" id="qopts-'+id+'">'+q.opts.map(function(o,i){return '<button class="quiz-option" id="qopt-'+id+'-'+i+'" onclick="answerQ(\''+id+'\','+i+')"><span class="quiz-option-letter">'+L[i]+'</span><span>'+o+'</span></button>';}).join('')+'</div><div class="quiz-explanation" id="qexp-'+id+'">'+q.exp+'</div><div class="quiz-nav"><button class="quiz-next-btn" id="qnext-'+id+'" onclick="nextQ(\''+id+'\')" style="display:none;">Next \u2192</button><button class="quiz-restart-btn" onclick="restartQ(\''+id+'\')">Restart</button></div>';
- st.answered=false;
-}
-function answerQ(id,chosen){
- var st=quizStates[id];if(!st||st.answered)return;st.answered=true;
- var q=st.items[st.current],right=chosen===q.ans;
- if(right)st.score++;
- document.querySelectorAll('#qopts-'+id+' .quiz-option').forEach(function(btn,i){btn.disabled=true;if(i===q.ans)btn.classList.add('reveal');if(i===chosen&&!right)btn.classList.add('wrong');if(i===chosen&&right){btn.classList.remove('reveal');btn.classList.add('correct');}});
- var exp=document.getElementById('qexp-'+id);if(exp)exp.classList.add('show');
- var nx=document.getElementById('qnext-'+id);if(nx){nx.style.display='';nx.textContent=st.current+1<st.items.length?'Next \u2192':'See Results \u2192';}
-}
-function nextQ(id){var st=quizStates[id];if(!st)return;st.current++;if(st.current>=st.items.length){st.done=true;showQResult(id);}else{renderQ(id);}}
-function showQResult(id){
- var st=quizStates[id];var body=document.getElementById('qbody-'+id);if(!body||!st)return;
- document.getElementById('qbar-'+id).style.width='100%';
- var pct=Math.round(st.score/st.items.length*100);
- var msg=pct>=90?'\uD83C\uDF89 Excellent!':pct>=70?'\uD83D\uDCAA Solid work \u2014 review explanations.':pct>=50?'\uD83D\uDCD6 Keep studying \u2014 focus on what you missed.':'&#x1F504; Review the material and try again.';
- body.innerHTML='<div class="quiz-result show"><div class="quiz-result-score">'+pct+'%</div><div class="quiz-result-label">'+st.score+' / '+st.items.length+' correct</div><div class="quiz-result-msg">'+msg+'</div><div class="quiz-result-breakdown"><div class="quiz-rb-item"><div class="quiz-rb-num" style="color:var(--green);">'+st.score+'</div><div class="quiz-rb-label">Correct</div></div><div class="quiz-rb-item"><div class="quiz-rb-num" style="color:var(--red);">'+(st.items.length-st.score)+'</div><div class="quiz-rb-label">Missed</div></div></div><button class="quiz-next-btn" onclick="restartQ(\''+id+'\')">Retake</button></div>';
-}
-function restartQ(id){var st=quizStates[id];if(!st)return;st.current=0;st.score=0;st.answered=false;st.done=false;for(var i=st.items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=st.items[i];st.items[i]=st.items[j];st.items[j]=tmp;}renderQ(id);}
 
-// ---- QUIZ BANKS -----------------------------------------
-var physicsQuizBanks = {
+// =========================================================
+// PRACTICE PROBLEMS — topic bank, search engine, quiz runner
+// =========================================================
 
- // === AP Physics C ===
+var practiceTopics = [
 
- 'apc_kinematics': {title:'AP Physics C \u2014 Kinematics', questions:[
-  {q:'A particle moves along the x-axis with velocity v(t) = 3t\u00B2 \u2212 6t m/s. What is the displacement from t = 0 to t = 3 s?',
-   opts:['9 m','0 m','\u22129 m','18 m'],ans:0,
-   exp:'x = \u222B(3t\u00B2\u22126t)dt = t\u00B3 \u2212 3t\u00B2. At t=3: 27\u221227 = 0. At t=0: 0. Displacement = 0\u22120 = 0? Wait: recalculate: [t\u00B3\u22123t\u00B2] from 0 to 3 = (27\u221227)\u2212(0) = 0 m. Correct answer is 0 m.'},
-  {q:'A particle has acceleration a(t) = 6t \u2212 4 m/s\u00B2 and v(0) = 2 m/s. What is v(2)?',
-   opts:['10 m/s','8 m/s','6 m/s','14 m/s'],ans:0,
-   exp:'v(t) = v(0) + \u222Ba dt = 2 + \u222B(6t\u22124)dt = 2 + 3t\u00B2\u22124t. At t=2: 2+12\u22128 = 6 m/s. Wait: 2 + 3(4) \u2212 4(2) = 2+12\u22128 = 6 m/s. Answer is 6 m/s.'},
-  {q:'A ball is thrown horizontally at 15 m/s from a 20 m cliff. How far from the base does it land? (g = 10 m/s\u00B2)',
-   opts:['30 m','20 m','15 m','60 m'],ans:0,
-   exp:'Time to fall: 20 = \u00BDgt\u00B2 \u2192 t = \u221A4 = 2 s. Horizontal range = 15 \u00D7 2 = 30 m.'},
-  {q:'Which of the following is a correct statement about an object in free fall (ignoring air resistance)?',
-   opts:['Its velocity increases by 9.8 m/s every second downward','Its acceleration decreases as it speeds up','Its speed is constant','Its acceleration is zero at the highest point'],ans:0,
-   exp:'Free fall means constant downward acceleration g = 9.8 m/s\u00B2. Speed increases by 9.8 m/s every second. Acceleration is constant at all points, including the highest.'},
-  {q:'A car accelerates from rest with a(t) = 2t m/s\u00B2. What is its velocity after 4 seconds?',
-   opts:['16 m/s','8 m/s','32 m/s','4 m/s'],ans:0,
-   exp:'v = \u222B2t dt = t\u00B2 + C. With v(0)=0: v = t\u00B2. At t=4: v = 16 m/s.'},
-  {q:'A projectile is launched at 30 m/s at 60\u00B0. What is the maximum height reached? (g = 10 m/s\u00B2)',
-   opts:['33.75 m','45 m','27 m','22.5 m'],ans:0,
-   exp:'Vy\u2080 = 30 sin60\u00B0 = 30(\u221A3/2) \u2248 25.98 m/s. H = Vy\u2080\u00B2/(2g) = (25.98)\u00B2/20 \u2248 675/20 = 33.75 m.'},
-  {q:'The slope of a velocity-time graph represents:',
-   opts:['Displacement','Acceleration','Speed','Force'],ans:1,
-   exp:'Slope of v-t graph = \u0394v/\u0394t = acceleration. Area under v-t graph = displacement.'},
-  {q:'A particle\u2019s position is x(t) = 4t\u00B3 \u2212 12t. At what time is the velocity zero?',
-   opts:['t = 1 s','t = 2 s','t = 3 s','t = 4 s'],ans:0,
-   exp:'v(t) = dx/dt = 12t\u00B2 \u2212 12. Set to zero: 12t\u00B2 = 12 \u2192 t\u00B2 = 1 \u2192 t = 1 s.'},
-  {q:'Two objects are dropped from rest from the same height but on different planets. Object A is on Earth (g=9.8) and Object B on Mars (g=3.7). After 2 s, Object A is falling faster by approximately:',
-   opts:['12.2 m/s','6.1 m/s','19.6 m/s','3.7 m/s'],ans:0,
-   exp:'\u0394v = g_A \u00D7 t \u2212 g_B \u00D7 t = (9.8\u22123.7) \u00D7 2 = 6.1 \u00D7 2 = 12.2 m/s.'},
-  {q:'A rock is thrown upward with v\u2080 = 20 m/s. How long until it returns to the launch point? (g = 10 m/s\u00B2)',
-   opts:['4 s','2 s','1 s','5 s'],ans:0,
-   exp:'Time to peak: t = v\u2080/g = 20/10 = 2 s. Total time (up and back) = 4 s.'},
- ]},
+// ============================================================
+// AP PHYSICS C: MECHANICS
+// ============================================================
+{
+ id:'apc-kinematics', level:'ap', icon:'📈',
+ name:'AP Physics C — Kinematics',
+ tags:['kinematics','velocity','acceleration','position','motion','calculus','integral','derivative'],
+ videos:[
+  {label:'Calculus-Based Kinematics (Khan Academy)',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
+  {label:'Position, Velocity, Acceleration with Calculus',url:'https://www.youtube.com/watch?v=MvtBQRnHLfo'},
+  {label:'AP Physics C Kinematics Review (Flipping Physics)',url:'https://www.youtube.com/watch?v=4SRiMuP9yAU'},
+ ],
+ questions:[
+  {level:'ap',q:'A particle has position x(t) = 3t³ − 12t + 5 m. Find (a) the velocity at t = 2 s, (b) the acceleration at t = 2 s, and (c) the time when the particle is at rest.',
+   a:'<strong>Solution:</strong><br>v(t) = dx/dt = 9t² − 12. At t = 2: <strong>v = 9(4) − 12 = 24 m/s</strong><br>a(t) = dv/dt = 18t. At t = 2: <strong>a = 36 m/s²</strong><br>At rest: v = 0 → 9t² = 12 → t = √(4/3) ≈ <strong>1.15 s</strong>'},
+  {level:'ap',q:'The acceleration of a particle is a(t) = 6t − 4 m/s². If v(0) = 2 m/s and x(0) = 0, find x(t).',
+   a:'<strong>Solution:</strong><br>Integrate: v(t) = ∫(6t−4)dt = 3t² − 4t + C. Apply v(0) = 2: C = 2, so v(t) = 3t² − 4t + 2.<br>Integrate again: x(t) = t³ − 2t² + 2t + C₂. Apply x(0) = 0: C₂ = 0.<br><strong>x(t) = t³ − 2t² + 2t</strong>'},
+  {level:'ap',q:'A particle moves along the x-axis with velocity v(t) = 4t − t² m/s. Find the displacement from t = 0 to t = 4 s, and the total distance traveled.',
+   a:'<strong>Solution:</strong><br>Displacement = ∫₀⁴(4t − t²)dt = [2t² − t³/3]₀⁴ = (32 − 64/3) − 0 = 32/3 ≈ <strong>10.67 m</strong><br>v = 0 at t = 0 and t = 4, positive throughout [0,4] since v(2) = 4 > 0.<br>Total distance = |displacement| = <strong>32/3 m</strong> (same since no direction change between 0 and 4)'},
+  {level:'ap',q:'A ball is launched upward with v₀ = 20 m/s from a cliff 45 m above the ground. Using kinematics, find the time when it hits the ground. (g = 10 m/s²)',
+   a:'<strong>Solution:</strong><br>Take upward positive, origin at launch point. y(t) = 20t − 5t² = −45 (ground level).<br>5t² − 20t − 45 = 0 → t² − 4t − 9 = 0 → t = (4 ± √(16+36))/2 = (4 ± √52)/2.<br>Positive root: t = (4 + 7.21)/2 ≈ <strong>5.6 s</strong>'},
+  {level:'ap',q:'A particle has acceleration a(t) = A cos(ωt) where A and ω are constants. If v(0) = 0 and x(0) = 0, find x(t).',
+   a:'<strong>Solution:</strong><br>v(t) = ∫A cos(ωt)dt = (A/ω)sin(ωt) + C. With v(0) = 0: C = 0, so v(t) = (A/ω)sin(ωt).<br>x(t) = ∫(A/ω)sin(ωt)dt = −(A/ω²)cos(ωt) + C₂. With x(0) = 0: C₂ = A/ω².<br><strong>x(t) = (A/ω²)(1 − cos(ωt))</strong>'},
+  {level:'ap',q:'Two objects are released from the same height on different planets. Object A is on Earth (g = 9.8 m/s²) and Object B is on Mars (g = 3.7 m/s²). Both start from rest and fall 50 m. By how many seconds does A land before B?',
+   a:'<strong>Solution:</strong><br>Use y = ½gt². t = √(2y/g).<br>t_A = √(100/9.8) = √10.20 ≈ 3.19 s<br>t_B = √(100/3.7) = √27.03 ≈ 5.20 s<br><strong>Δt = 5.20 − 3.19 ≈ 2.01 s</strong>'},
+ ]
+},
+{
+ id:'apc-newton', level:'ap', icon:'⚡',
+ name:"AP Physics C — Newton's Laws & Dynamics",
+ tags:["newton","force","friction","dynamics","free body","FBD","circular","centripetal","tension","incline"],
+ videos:[
+  {label:"Newton's Laws — Calculus Treatment (Flipping Physics)",url:'https://www.youtube.com/watch?v=A3c0tCMlhHA'},
+  {label:'AP Physics C Forces FRQ Walkthrough',url:'https://www.youtube.com/watch?v=q1XT9UlO4g8'},
+  {label:'Normal Force and Friction on Inclines',url:'https://www.youtube.com/watch?v=5kEQ4RWkr8w'},
+ ],
+ questions:[
+  {level:'ap',q:'A block of mass m = 5 kg sits on a surface with μₛ = 0.5 and μₖ = 0.3. A horizontal force F is applied. (a) Find the minimum force to start motion. (b) If F = 25 N is applied, find the acceleration.',
+   a:'<strong>(a)</strong> Max static friction = μₛmg = 0.5(5)(9.8) = <strong>24.5 N</strong>. Any F > 24.5 N starts motion.<br><strong>(b)</strong> Kinetic friction = μₖmg = 0.3(5)(9.8) = 14.7 N. F_net = 25 − 14.7 = 10.3 N. <strong>a = 10.3/5 = 2.06 m/s²</strong>'},
+  {level:'ap',q:'A 10 kg block is on a 37° incline with μₖ = 0.25. Find the acceleration as it slides down. (sin 37° = 0.6, cos 37° = 0.8, g = 9.8)',
+   a:'<strong>Solution:</strong><br>Forces along incline: weight component down = mg sin37° = 10(9.8)(0.6) = 58.8 N<br>Friction up (opposing motion) = μₖ(mg cos37°) = 0.25(10)(9.8)(0.8) = 19.6 N<br>F_net = 58.8 − 19.6 = 39.2 N<br><strong>a = F_net/m = 39.2/10 = 3.92 m/s²</strong> (down the incline)'},
+  {level:'ap',q:'A conical pendulum: a 2 kg ball on a 1.5 m string makes angle θ = 30° with the vertical. Find (a) the tension and (b) the speed of the ball.',
+   a:'<strong>(a)</strong> Vertical: T cosθ = mg → T = mg/cosθ = 2(9.8)/cos30° = 19.6/0.866 ≈ <strong>22.6 N</strong><br><strong>(b)</strong> Horizontal: T sinθ = mv²/r where r = L sinθ = 1.5(0.5) = 0.75 m<br>v² = T sinθ × r/m = 22.6(0.5)(0.75)/2 = 4.24 → <strong>v ≈ 2.06 m/s</strong>'},
+  {level:'ap',q:'Two blocks (m₁ = 3 kg and m₂ = 5 kg) are connected by a massless rope over a frictionless pulley (Atwood machine). Find the acceleration and the tension in the rope.',
+   a:'<strong>Solution:</strong><br>Net force = (m₂ − m₁)g = (5−3)(9.8) = 19.6 N. Total mass = 8 kg.<br><strong>a = 19.6/8 = 2.45 m/s²</strong><br>For m₁: T − m₁g = m₁a → T = m₁(g+a) = 3(9.8+2.45) = <strong>36.75 N</strong>'},
+  {level:'ap',q:'A 1500 kg car travels over a circular hill of radius 80 m at speed v. Find the maximum speed at which the car maintains contact with the hill at the top.',
+   a:'<strong>Solution:</strong><br>At the top of the hill, gravity provides centripetal force when contact is barely maintained (N = 0):<br>mg = mv²/r → v = √(gr) = √(9.8 × 80) = √784 = <strong>28 m/s</strong>'},
+  {level:'ap',q:'A rope of length L and mass M hangs from the ceiling. Find the tension at a point a distance x from the bottom.',
+   a:'<strong>Solution:</strong><br>The tension at distance x from the bottom supports only the rope below that point.<br>Mass of rope below = M(x/L).<br><strong>T(x) = Mg(x/L)</strong><br>At x = 0 (bottom): T = 0. At x = L (top): T = Mg. This makes physical sense.'},
+ ]
+},
+{
+ id:'apc-energy', level:'ap', icon:'⚡',
+ name:'AP Physics C — Work, Energy & Power',
+ tags:['work','energy','power','potential','kinetic','conservation','spring','variable force','integral'],
+ videos:[
+  {label:'Work Done by Variable Force (Calculus)',url:'https://www.youtube.com/watch?v=RrXqCBJHN4Y'},
+  {label:'Conservation of Energy — AP Physics C',url:'https://www.youtube.com/watch?v=FMHP1LQTBBA'},
+  {label:'Work-Energy Theorem Full Derivation',url:'https://www.youtube.com/watch?v=RPNXNB6pP6s'},
+ ],
+ questions:[
+  {level:'ap',q:'A force F(x) = (8x − 2x²) N acts on a 4 kg particle. Find (a) the work done from x = 0 to x = 3 m, and (b) the speed at x = 3 m if it starts from rest.',
+   a:'<strong>(a)</strong> W = ∫₀³(8x − 2x²)dx = [4x² − 2x³/3]₀³ = (36 − 18) − 0 = <strong>18 J</strong><br><strong>(b)</strong> W = ½mv² → v = √(2W/m) = √(36/4) = √9 = <strong>3 m/s</strong>'},
+  {level:'ap',q:'A spring (k = 400 N/m) compressed 0.3 m launches a 0.5 kg ball up a ramp inclined at 30°. The ramp has μₖ = 0.1. How far along the ramp does the ball travel before stopping?',
+   a:'<strong>Solution:</strong><br>Spring PE = ½kx² = ½(400)(0.09) = 18 J<br>Friction force = μₖ mg cos30° = 0.1(0.5)(9.8)(0.866) = 0.424 N<br>Gravity component along ramp = mg sin30° = 0.5(9.8)(0.5) = 2.45 N<br>Total opposing force = 2.45 + 0.424 = 2.874 N<br>Distance d: 2.874d = 18 → <strong>d ≈ 6.26 m</strong>'},
+  {level:'ap',q:'A 2 kg object is attached to a spring (k = 50 N/m) and moves on a surface with μₖ = 0.1. It is released from rest with the spring compressed 0.4 m. Find its speed when it passes through the equilibrium position.',
+   a:'<strong>Solution:</strong><br>Spring PE = ½(50)(0.4)² = 4 J<br>Energy lost to friction = μₖ mg d = 0.1(2)(9.8)(0.4) = 0.784 J<br>KE at equilibrium = 4 − 0.784 = 3.216 J<br>v = √(2KE/m) = √(6.432/2) = √3.216 ≈ <strong>1.79 m/s</strong>'},
+  {level:'ap',q:'A 1200 W motor lifts a 150 kg elevator at constant velocity. What is the velocity? Then find the minimum time to lift it 20 m from rest if the motor power is constant.',
+   a:'<strong>Constant velocity:</strong> P = Fv = mgv → v = P/mg = 1200/(150×9.8) = <strong>0.816 m/s</strong><br><strong>Lifting 20 m:</strong> Work needed = mgh = 150(9.8)(20) = 29,400 J<br>t = W/P = 29400/1200 = <strong>24.5 s</strong>'},
+  {level:'ap',q:'Derive the work-energy theorem starting from Newton\'s second law F = ma for a variable force along a straight line.',
+   a:'<strong>Derivation:</strong><br>Start: F = ma = m(dv/dt)<br>Use chain rule: a = dv/dt = (dv/dx)(dx/dt) = v(dv/dx)<br>So: F = mv(dv/dx)<br>Therefore: F dx = mv dv<br>Integrate both sides: ∫F dx = ∫mv dv = ½mv₂² − ½mv₁²<br><strong>W_net = ΔKE</strong> ✓'},
+ ]
+},
+{
+ id:'apc-momentum', level:'ap', icon:'💥',
+ name:'AP Physics C — Momentum, Impulse & Collisions',
+ tags:['momentum','impulse','collision','elastic','inelastic','center of mass','rocket','conservation'],
+ videos:[
+  {label:'Impulse and Momentum — AP Physics C',url:'https://www.youtube.com/watch?v=jVgTgTT2rek'},
+  {label:'Elastic and Inelastic Collision Problems',url:'https://www.youtube.com/watch?v=e_Tv5qTRJKY'},
+  {label:'Center of Mass Calculus Treatment',url:'https://www.youtube.com/watch?v=s_Bi6r2QKKA'},
+ ],
+ questions:[
+  {level:'ap',q:'A 0.15 kg baseball moving at 40 m/s is hit by a bat. The ball leaves at 50 m/s in the opposite direction. The contact lasts 0.001 s. Find (a) the impulse and (b) the average force.',
+   a:'<strong>(a)</strong> J = Δp = m(v_f − v_i) = 0.15(−50 − 40) = 0.15(−90) = <strong>−13.5 N·s</strong> (13.5 N·s in original direction)<br><strong>(b)</strong> F_avg = J/Δt = 13.5/0.001 = <strong>13,500 N</strong>'},
+  {level:'ap',q:'A 2 kg ball moving at 6 m/s right collides elastically with a 4 kg ball at rest. Find both final velocities.',
+   a:'<strong>Elastic collision formulas:</strong><br>v₁f = (m₁−m₂)/(m₁+m₂) × v₁ = (2−4)/6 × 6 = <strong>−2 m/s</strong> (bounces back)<br>v₂f = 2m₁/(m₁+m₂) × v₁ = 4/6 × 6 = <strong>4 m/s</strong> (forward)'},
+  {level:'ap',q:'A 5 kg block moving at 8 m/s right collides with a 3 kg block moving at 4 m/s left. They stick together (perfectly inelastic). Find the final velocity and kinetic energy lost.',
+   a:'<strong>Momentum conservation:</strong> 5(8) + 3(−4) = (5+3)v_f<br>40 − 12 = 8v_f → v_f = <strong>3.5 m/s right</strong><br>KE_before = ½(5)(64) + ½(3)(16) = 160 + 24 = 184 J<br>KE_after = ½(8)(3.5²) = ½(8)(12.25) = 49 J<br><strong>ΔKE = −135 J</strong>'},
+  {level:'ap',q:'Three equal masses m are arranged at positions x₁ = 0, x₂ = 2 m, x₃ = 5 m. Find the center of mass. Then one mass is removed from x = 2 m. Where does the CM move?',
+   a:'<strong>Original CM:</strong> x_cm = (m·0 + m·2 + m·5)/(3m) = 7/3 ≈ <strong>2.33 m</strong><br><strong>After removal:</strong> x_cm = (m·0 + m·5)/(2m) = 5/2 = <strong>2.5 m</strong><br>The CM shifts right by 0.17 m.'},
+  {level:'ap',q:'A rocket of mass M₀ ejects exhaust at speed v_e relative to itself at rate |dM/dt| = k. Derive the thrust force and write the rocket equation.',
+   a:'<strong>Thrust:</strong> F_thrust = v_e |dM/dt| = v_e · k<br><strong>Rocket equation (Tsiolkovsky):</strong><br>M(dv/dt) = F_thrust − Mg (in gravitational field)<br>Or in free space: M(dv/dt) = v_e |dM/dt|<br>Integrating: Δv = v_e ln(M₀/M_f) — the rocket equation.<br>Greater mass ratio M₀/M_f or higher v_e gives greater Δv.'},
+ ]
+},
+{
+ id:'apc-rotation', level:'ap', icon:'🌀',
+ name:'AP Physics C — Rotation, Torque & Angular Momentum',
+ tags:['rotation','torque','angular','moment of inertia','angular momentum','rolling','rotational kinetic energy'],
+ videos:[
+  {label:'Rotational Motion Calculus (Khan Academy)',url:'https://www.youtube.com/watch?v=YlO2D0p76bE'},
+  {label:'Moment of Inertia by Integration',url:'https://www.youtube.com/watch?v=FHHSrfM8nCo'},
+  {label:'Rolling Without Slipping — AP Physics C',url:'https://www.youtube.com/watch?v=Xh-GPXvFEBo'},
+ ],
+ questions:[
+  {level:'ap',q:'A solid disk (M = 3 kg, R = 0.4 m) has angular velocity ω₀ = 20 rad/s. A braking torque of 1.2 N·m is applied. (a) Find α. (b) Find time to stop. (c) Find total angle rotated.',
+   a:'<strong>I = ½MR² = ½(3)(0.16) = 0.24 kg·m²</strong><br><strong>(a)</strong> α = τ/I = −1.2/0.24 = <strong>−5 rad/s²</strong><br><strong>(b)</strong> ω = ω₀ + αt → 0 = 20 − 5t → <strong>t = 4 s</strong><br><strong>(c)</strong> θ = ω₀t + ½αt² = 20(4) + ½(−5)(16) = 80 − 40 = <strong>40 rad</strong>'},
+  {level:'ap',q:'Calculate the moment of inertia of a thin rod of mass M and length L about an axis perpendicular to the rod through (a) its center and (b) one end.',
+   a:'<strong>Setup:</strong> Linear mass density λ = M/L. Take origin at axis.<br><strong>(a) Through center:</strong> I = ∫_{−L/2}^{L/2} x² (M/L)dx = (M/L)[x³/3]_{−L/2}^{L/2} = (M/L)(L³/12) = <strong>ML²/12</strong><br><strong>(b) Through end:</strong> I = ∫₀^L x²(M/L)dx = (M/L)(L³/3) = <strong>ML²/3</strong><br>Check with parallel axis theorem: ML²/3 = ML²/12 + M(L/2)² ✓'},
+  {level:'ap',q:'A hollow sphere (I = 2/3 MR²) and a solid sphere (I = 2/5 MR²) of equal mass and radius start from rest at the top of an incline of height h. Which reaches the bottom first, and what are their speeds?',
+   a:'<strong>Energy conservation + rolling constraint:</strong><br>mgh = ½mv² + ½Iω² = ½mv²(1 + I/mR²)<br>v² = 2gh/(1 + I/mR²)<br><strong>Solid sphere:</strong> v = √(2gh/(1 + 2/5)) = √(10gh/7)<br><strong>Hollow sphere:</strong> v = √(2gh/(1 + 2/3)) = √(6gh/5)<br>Compare: 10/7 = 1.43 vs 6/5 = 1.20 → <strong>Solid sphere wins</strong> (lower I, more translational KE)'},
+  {level:'ap',q:'A figure skater has moment of inertia 3.5 kg·m² with arms out at ω₁ = 1.5 rad/s. She pulls in arms to I₂ = 1.2 kg·m². Find her new angular velocity and the change in KE.',
+   a:'<strong>Angular momentum conservation (τ_net = 0):</strong><br>I₁ω₁ = I₂ω₂ → ω₂ = I₁ω₁/I₂ = 3.5(1.5)/1.2 = <strong>4.375 rad/s</strong><br><strong>KE₁</strong> = ½(3.5)(1.5²) = 3.9375 J<br><strong>KE₂</strong> = ½(1.2)(4.375²) = 11.48 J<br><strong>ΔKE = +7.54 J</strong> (work done by skater pulling in arms)'},
+  {level:'ap',q:'A 2 kg solid cylinder (R = 0.1 m) is unwound from rest by hanging a 0.5 kg mass from its axle via a string. Find the acceleration of the hanging mass.',
+   a:'<strong>System:</strong> Hanging mass: mg − T = ma. Cylinder: TR = Iα = ½MR²(a/R) → T = ½Ma<br><strong>Substitute:</strong> mg − ½Ma = ma → a = mg/(m + M/2) = 0.5(9.8)/(0.5 + 1) = 4.9/1.5 = <strong>3.27 m/s²</strong>'},
+ ]
+},
+{
+ id:'apc-gravitation', level:'ap', icon:'🪐',
+ name:'AP Physics C — Gravitation & Orbital Mechanics',
+ tags:['gravity','gravitation','orbit','kepler','escape','potential','satellite','gravitational field'],
+ videos:[
+  {label:"Kepler's Laws and Orbital Energy",url:'https://www.youtube.com/watch?v=V3-UCsFOIl8'},
+  {label:'AP Physics C Gravitation FRQ Solutions',url:'https://www.youtube.com/watch?v=iCFfuR3UBSs'},
+  {label:'Gravitational Potential Energy General Case',url:'https://www.youtube.com/watch?v=MJNHQMHfSY8'},
+ ],
+ questions:[
+  {level:'ap',q:'A satellite orbits Earth at radius r₁ = 2R_E (R_E = 6.4×10⁶ m). It fires its engines to reach r₂ = 4R_E. Find (a) the ratio of orbital speeds v₁/v₂ and (b) the ratio of orbital periods T₂/T₁.',
+   a:'<strong>(a)</strong> v = √(GM/r) → v₁/v₂ = √(r₂/r₁) = √(4R/2R) = <strong>√2 ≈ 1.41</strong><br><strong>(b)</strong> T² ∝ r³ → T₂/T₁ = (r₂/r₁)^(3/2) = (4R/2R)^(3/2) = 2^(3/2) = <strong>2√2 ≈ 2.83</strong>'},
+  {level:'ap',q:'Calculate the escape speed from the surface of the Moon. (M_Moon = 7.34×10²² kg, R_Moon = 1.74×10⁶ m, G = 6.67×10⁻¹¹)',
+   a:'<strong>Escape speed:</strong> v_esc = √(2GM/R)<br>= √(2 × 6.67×10⁻¹¹ × 7.34×10²² / 1.74×10⁶)<br>= √(2 × 6.67 × 7.34 / 1.74 × 10⁻¹¹⁺²²⁻⁶)<br>= √(5.63×10⁶) ≈ <strong>2374 m/s ≈ 2.37 km/s</strong>'},
+  {level:'ap',q:'A spacecraft is at distance 3R_E from Earth\'s center. Find the gravitational field strength g at that point, and compare to the surface value g₀.',
+   a:'<strong>g at 3R_E:</strong> g = GM_E/(3R_E)² = GM_E/(9R_E²) = g₀/9<br>g₀ = 9.8 m/s² → <strong>g = 9.8/9 ≈ 1.09 m/s²</strong><br>The gravitational field falls off as 1/r², so tripling the distance reduces g by factor 9.'},
+  {level:'ap',q:'Derive the orbital speed for a circular orbit at radius r from first principles, then derive Kepler\'s 3rd law.',
+   a:'<strong>Orbital speed:</strong> Gravity provides centripetal force: GMm/r² = mv²/r → <strong>v = √(GM/r)</strong><br><strong>Period:</strong> T = 2πr/v = 2πr/√(GM/r) = 2π√(r³/GM)<br><strong>Kepler\'s 3rd:</strong> T² = (4π²/GM)r³ → <strong>T² ∝ r³</strong> ✓'},
+  {level:'ap',q:'Two stars of mass M and 2M orbit their common center of mass with separation d. Find the center of mass position and the period of the orbit.',
+   a:'<strong>CM position:</strong> from mass M: x_cm = (M·0 + 2M·d)/(3M) = 2d/3 from M (or d/3 from 2M)<br><strong>Period:</strong> Both orbit with same ω. For mass M at r₁ = 2d/3:<br>Grav. force = GMμ/d² where μ = M·2M/(3M) = 2M/3 (reduced mass approach)<br>Or use: G(M)(2M)/d² = M(2d/3)ω² → ω² = 3GM/d³ → <strong>T = 2π√(d³/3GM)</strong>'},
+ ]
+},
+{
+ id:'apc-shm', level:'ap', icon:'〰️',
+ name:'AP Physics C — Oscillations & Simple Harmonic Motion',
+ tags:['SHM','oscillation','spring','pendulum','period','frequency','amplitude','energy','damping'],
+ videos:[
+  {label:'SHM Differential Equation Solution',url:'https://www.youtube.com/watch?v=hmAHKr-S_6Q'},
+  {label:'AP Physics C SHM Complete Review',url:'https://www.youtube.com/watch?v=YFECLKicKUU'},
+  {label:'Energy in SHM',url:'https://www.youtube.com/watch?v=AP4v7bABd38'},
+ ],
+ questions:[
+  {level:'ap',q:'Show that x(t) = A cos(ωt + φ) satisfies the SHM differential equation d²x/dt² = −ω²x.',
+   a:'<strong>Verification:</strong><br>x = A cos(ωt + φ)<br>dx/dt = −Aω sin(ωt + φ)<br>d²x/dt² = −Aω² cos(ωt + φ) = −ω² · A cos(ωt + φ) = <strong>−ω²x ✓</strong>'},
+  {level:'ap',q:'A spring-mass system (k = 200 N/m, m = 0.5 kg) has amplitude A = 0.3 m. Find (a) ω, (b) T, (c) max speed, (d) max acceleration, (e) speed at x = 0.1 m.',
+   a:'<strong>(a)</strong> ω = √(k/m) = √(400) = <strong>20 rad/s</strong><br><strong>(b)</strong> T = 2π/ω = 2π/20 = <strong>π/10 ≈ 0.314 s</strong><br><strong>(c)</strong> v_max = Aω = 0.3×20 = <strong>6 m/s</strong><br><strong>(d)</strong> a_max = Aω² = 0.3×400 = <strong>120 m/s²</strong><br><strong>(e)</strong> v = ω√(A²−x²) = 20√(0.09−0.01) = 20√0.08 ≈ <strong>5.66 m/s</strong>'},
+  {level:'ap',q:'A 0.4 kg mass oscillates on a spring. At x = 0.2 m (from equilibrium), v = 1.5 m/s. At x = 0.3 m, v = 0. Find k and ω.',
+   a:'<strong>At turning point x = 0.3 m:</strong> This is the amplitude A = 0.3 m<br><strong>Energy conservation:</strong> ½mv² + ½kx² = ½kA²<br>½(0.4)(2.25) + ½k(0.04) = ½k(0.09)<br>0.45 = ½k(0.09 − 0.04) = ½k(0.05)<br>k = 0.45/0.025 = <strong>18 N/m</strong><br>ω = √(k/m) = √(45) ≈ <strong>6.71 rad/s</strong>'},
+  {level:'ap',q:'A pendulum of length L = 2 m swings on a planet where T = 4 s. Find the gravitational acceleration on that planet.',
+   a:'<strong>T = 2π√(L/g)</strong> → T² = 4π²L/g → g = 4π²L/T²<br>g = 4π²(2)/(16) = 8π²/16 = π²/2 ≈ <strong>4.93 m/s²</strong>'},
+  {level:'ap',q:'A spring-mass system loses 10% of its energy per complete oscillation due to damping. After 5 complete oscillations, what fraction of the original energy remains?',
+   a:'<strong>Each oscillation:</strong> E → 0.90E<br><strong>After n oscillations:</strong> E_n = E₀(0.90)ⁿ<br><strong>After 5:</strong> E₅ = E₀(0.90)⁵ = E₀(0.5905) ≈ <strong>59.1%</strong> of original energy remains.'},
+ ]
+},
 
- 'apc_newton': {title:'AP Physics C \u2014 Newton\u2019s Laws', questions:[
-  {q:'A 5 kg block on a frictionless surface is pushed with a force of 20 N at 30\u00B0 below horizontal. What is the acceleration?',
-   opts:['3.46 m/s\u00B2','4 m/s\u00B2','2 m/s\u00B2','5 m/s\u00B2'],ans:0,
-   exp:'Horizontal component: F_x = 20 cos30\u00B0 = 20(\u221A3/2) = 17.3 N. a = F_x/m = 17.3/5 = 3.46 m/s\u00B2.'},
-  {q:'A 10 kg block is on an incline at 37\u00B0 with \u03BC_k = 0.3. What is the net force down the incline? (sin37\u00B0=0.6, cos37\u00B0=0.8)',
-   opts:['35.4 N','60 N','23.5 N','82.4 N'],ans:0,
-   exp:'Weight along incline: mg sin37\u00B0 = 100(0.6)=60 N. Normal: mg cos37\u00B0 = 80 N. Friction: 0.3(80)=24 N. Net = 60\u221224 = 36 N \u2248 35.4 N.'},
-  {q:'Newton\u2019s Second Law in its most general form is best written as:',
-   opts:['\u03A3F = dp/dt','F = ma','F = mv','\u03A3F = m(dv/dt) only'],ans:0,
-   exp:'\u03A3F = dp/dt is the general form and handles variable mass. F = ma is a special case valid when mass is constant.'},
-  {q:'Two blocks (3 kg and 5 kg) are connected by a string on a frictionless surface. A 16 N force pulls the 5 kg block. What is the tension in the string?',
-   opts:['6 N','10 N','16 N','8 N'],ans:0,
-   exp:'Total mass = 8 kg. a = 16/8 = 2 m/s\u00B2. The string accelerates the 3 kg block: T = 3 \u00D7 2 = 6 N.'},
-  {q:'An elevator accelerates upward at 2 m/s\u00B2. If a 60 kg person stands inside, what does the scale read? (g = 10)',
-   opts:['720 N','600 N','480 N','660 N'],ans:0,
-   exp:'N \u2212 mg = ma. N = m(g+a) = 60(12) = 720 N. The scale reads more than their weight because the net force is upward.'},
-  {q:'A string pulls a 2 kg block with 10 N at 45\u00B0 above horizontal on a surface with \u03BC_k = 0.2. What is the net horizontal force?',
-   opts:['5.72 N','7.07 N','10 N','3.07 N'],ans:0,
-   exp:'F_x = 10cos45\u00B0 = 7.07 N. F_y = 10sin45\u00B0 = 7.07 N. N = mg \u2212 F_y = 20\u22127.07 = 12.93 N. Friction = 0.2(12.93) = 2.59 N. F_net = 7.07\u22122.59 \u2248 4.5 N. Closest: select 5.72 N as the nearest standard answer.'},
-  {q:'A 1 kg ball swings in a vertical circle on a 0.5 m string. At the bottom, the speed is 4 m/s. What is the tension at the bottom? (g=10)',
-   opts:['42 N','10 N','32 N','22 N'],ans:0,
-   exp:'At the bottom: T \u2212 mg = mv\u00B2/r. T = m(g + v\u00B2/r) = 1(10 + 16/0.5) = 1(10+32) = 42 N.'},
-  {q:'Which best describes why a car traveling at constant speed around a banked curve requires no friction?',
-   opts:['The horizontal component of normal force provides centripetal force','Gravity provides centripetal force','Friction is too small to matter','The car is not accelerating'],ans:0,
-   exp:'On a banked curve, the horizontal component of normal force (N sin\u03B8) equals mv\u00B2/r. At the ideal speed, no friction is needed.'},
-  {q:'A 4 kg block hangs from a spring scale inside an elevator. When the elevator decelerates downward at 3 m/s\u00B2, the scale reads:',
-   opts:['52 N','40 N','28 N','12 N'],ans:0,
-   exp:'Decelerating downward means accelerating upward. N = m(g+a) = 4(10+3) = 52 N.'},
-  {q:'A particle of mass m moves such that F(x) = \u22124x N. What type of motion does this describe?',
-   opts:['Simple harmonic motion','Uniform circular motion','Free fall','Projectile motion'],ans:0,
-   exp:'F = \u2212kx is the hallmark of SHM (Hooke\u2019s Law form). The restoring force is proportional to and opposite to displacement.'},
- ]},
+// ============================================================
+// HIGH SCHOOL PHYSICS
+// ============================================================
+{
+ id:'hs-kinematics', level:'reg', icon:'📐',
+ name:'HS Physics — Kinematics (1D & 2D)',
+ tags:['kinematics','velocity','acceleration','projectile','displacement','free fall','motion'],
+ videos:[
+  {label:'Kinematics Introduction (Khan Academy)',url:'https://www.youtube.com/watch?v=ZM8ECpBuQYE'},
+  {label:'Projectile Motion Explained',url:'https://www.youtube.com/watch?v=aY8z2qO44WA'},
+  {label:'Free Fall Problems',url:'https://www.youtube.com/watch?v=W4aCxTtxZkk'},
+ ],
+ questions:[
+  {level:'reg',q:'A car starts from rest and accelerates at 3 m/s² for 8 s. Find (a) final speed, (b) distance traveled, (c) average speed.',
+   a:'<strong>(a)</strong> v = v₀ + at = 0 + 3(8) = <strong>24 m/s</strong><br><strong>(b)</strong> x = ½at² = ½(3)(64) = <strong>96 m</strong><br><strong>(c)</strong> v_avg = (v₀ + v)/2 = (0+24)/2 = <strong>12 m/s</strong>'},
+  {level:'reg',q:'A ball is thrown horizontally at 15 m/s from a 20 m tall cliff. (a) How long until it hits the ground? (b) How far from the base? (g = 10 m/s²)',
+   a:'<strong>(a)</strong> Vertical: 20 = ½(10)t² → t² = 4 → <strong>t = 2 s</strong><br><strong>(b)</strong> Horizontal: x = v_x · t = 15(2) = <strong>30 m</strong>'},
+  {level:'reg',q:'A ball is thrown upward at 25 m/s. Find (a) max height, (b) time to reach max height, (c) total time in air. (g = 10 m/s²)',
+   a:'<strong>(a)</strong> v² = v₀² − 2gH → 0 = 625 − 20H → <strong>H = 31.25 m</strong><br><strong>(b)</strong> v = v₀ − gt → t = v₀/g = 25/10 = <strong>2.5 s</strong><br><strong>(c)</strong> Total time = 2 × 2.5 = <strong>5 s</strong> (symmetric flight)'},
+  {level:'reg',q:'A car traveling at 30 m/s brakes with a = −6 m/s². Find (a) stopping distance, (b) time to stop.',
+   a:'<strong>(a)</strong> v² = v₀² + 2ax → 0 = 900 − 12x → x = 900/12 = <strong>75 m</strong><br><strong>(b)</strong> v = v₀ + at → 0 = 30 − 6t → <strong>t = 5 s</strong>'},
+  {level:'reg',q:'A projectile is launched at 40 m/s at θ = 30° above horizontal. Find (a) max height, (b) range, (c) time of flight. (g = 10 m/s², sin30° = 0.5, cos30° = 0.866)',
+   a:'<strong>Components:</strong> v₀x = 40(0.866) = 34.64 m/s, v₀y = 40(0.5) = 20 m/s<br><strong>(a)</strong> H = v₀y²/(2g) = 400/20 = <strong>20 m</strong><br><strong>(b)</strong> T = 2v₀y/g = 40/10 = 4 s. R = v₀x·T = 34.64(4) = <strong>138.6 m</strong><br><strong>(c)</strong> <strong>T = 4 s</strong>'},
+  {level:'reg',q:'Two cars are 200 m apart. Car A moves at 15 m/s east; Car B moves at 25 m/s west (toward A). After how long and where do they meet (measured from A\'s start)?',
+   a:'<strong>Closing speed = 15 + 25 = 40 m/s</strong><br>Time to meet: t = 200/40 = <strong>5 s</strong><br>Distance traveled by A: 15 × 5 = <strong>75 m from A\'s start</strong>'},
+ ]
+},
+{
+ id:'hs-forces', level:'reg', icon:'🏋️',
+ name:"HS Physics — Forces & Newton's Laws",
+ tags:["newton","force","friction","free body","FBD","normal","tension","weight","gravity","incline"],
+ videos:[
+  {label:"Newton's Laws of Motion (Khan Academy)",url:'https://www.youtube.com/watch?v=ou9YMWlJgkE'},
+  {label:'Free Body Diagrams Step by Step',url:'https://www.youtube.com/watch?v=5qzxFmG2Tx8'},
+  {label:'Friction — Static vs Kinetic',url:'https://www.youtube.com/watch?v=UgDSiI9lIi0'},
+ ],
+ questions:[
+  {level:'reg',q:'A 10 kg box is pushed with 50 N on a surface with μₖ = 0.3. Find the acceleration. (g = 10 m/s²)',
+   a:'Normal force N = mg = 100 N<br>Friction f = μₖN = 0.3(100) = 30 N<br>F_net = 50 − 30 = 20 N<br><strong>a = F_net/m = 20/10 = 2 m/s²</strong>'},
+  {level:'reg',q:'A 5 kg block rests on a 25° frictionless incline. Find the acceleration. (sin25° ≈ 0.423, g = 10 m/s²)',
+   a:'Only gravity component along incline acts: F = mg sin25° = 5(10)(0.423) = 21.15 N<br><strong>a = F/m = 21.15/5 = 4.23 m/s²</strong> (down the incline)'},
+  {level:'reg',q:'Three boxes (1 kg, 2 kg, 3 kg) are connected in a line and pulled by 18 N on a frictionless surface. Find (a) the acceleration and (b) the tension between the 1 kg and 2 kg boxes.',
+   a:'<strong>(a)</strong> a = F_total/m_total = 18/6 = <strong>3 m/s²</strong><br><strong>(b)</strong> The tension between box 1 and box 2 must accelerate box 1 only:<br>T₁₂ = m₁ × a = 1 × 3 = <strong>3 N</strong>'},
+  {level:'reg',q:'A 60 kg person stands on a scale in an elevator. The scale reads 540 N. Find the acceleration of the elevator. (g = 10 m/s²)',
+   a:'Weight = mg = 60(10) = 600 N. Scale reads N = 540 N.<br>N − mg = ma → 540 − 600 = 60a → −60 = 60a<br><strong>a = −1 m/s²</strong> (decelerating upward or accelerating downward)'},
+  {level:'reg',q:'A rope pulls a 20 kg block at 40° above horizontal with tension T = 80 N on a surface with μₖ = 0.25. Find the acceleration.',
+   a:'F_x = 80cos40° = 61.3 N<br>F_y = 80sin40° = 51.4 N<br>N = mg − F_y = 200 − 51.4 = 148.6 N<br>Friction = 0.25(148.6) = 37.2 N<br>F_net = 61.3 − 37.2 = 24.1 N<br><strong>a = 24.1/20 = 1.21 m/s²</strong>'},
+  {level:'reg',q:'A traffic light (mass 15 kg) hangs by two cables at 60° and 45° from the vertical. Find the tension in each cable.',
+   a:'Let T₁ (60°) and T₂ (45°). Equilibrium:<br>Horizontal: T₁ sin60° = T₂ sin45° → T₁(0.866) = T₂(0.707) → T₁ = 0.816 T₂<br>Vertical: T₁ cos60° + T₂ cos45° = mg = 147 N<br>0.816T₂(0.5) + 0.707T₂ = 147 → 1.115T₂ = 147<br><strong>T₂ ≈ 131.8 N, T₁ ≈ 107.5 N</strong>'},
+ ]
+},
+{
+ id:'hs-energy', level:'reg', icon:'⚡',
+ name:'HS Physics — Energy, Work & Power',
+ tags:['energy','work','power','kinetic','potential','spring','conservation','efficiency'],
+ videos:[
+  {label:'Conservation of Energy (Khan Academy)',url:'https://www.youtube.com/watch?v=PlC0SkKvFD8'},
+  {label:'Work and Power Problems',url:'https://www.youtube.com/watch?v=frDRHPsODTs'},
+  {label:'Spring Potential Energy',url:'https://www.youtube.com/watch?v=HE5LJl4oSx0'},
+ ],
+ questions:[
+  {level:'reg',q:'A 2 kg ball falls from rest from 15 m. Find its speed just before hitting the ground. (g = 10 m/s²)',
+   a:'<strong>Energy conservation:</strong> mgh = ½mv²<br>v = √(2gh) = √(2 × 10 × 15) = √300 ≈ <strong>17.3 m/s</strong>'},
+  {level:'reg',q:'A spring with k = 500 N/m is compressed 0.2 m. It launches a 0.4 kg ball. Find the launch speed.',
+   a:'½kx² = ½mv²<br>v = x√(k/m) = 0.2√(500/0.4) = 0.2√1250 = 0.2(35.36) ≈ <strong>7.07 m/s</strong>'},
+  {level:'reg',q:'A 1200 kg car traveling at 20 m/s brakes to rest. Find the work done by friction. Then find μₖ if it stops in 40 m.',
+   a:'<strong>Work-energy theorem:</strong> W_friction = ΔKE = 0 − ½(1200)(400) = <strong>−240,000 J</strong><br>W_friction = −f·d → 240,000 = μₖ(1200)(10)(40) → μₖ = 240,000/480,000 = <strong>0.5</strong>'},
+  {level:'reg',q:'A 70 kg person climbs stairs (height 4 m) in 10 s at constant speed. Find (a) the work done against gravity and (b) the minimum power required.',
+   a:'<strong>(a)</strong> W = mgh = 70(10)(4) = <strong>2800 J</strong><br><strong>(b)</strong> P = W/t = 2800/10 = <strong>280 W</strong>'},
+  {level:'reg',q:'A pendulum bob of mass 0.3 kg is released from a height 0.5 m above the lowest point. Find (a) its speed at the bottom and (b) the tension in the string at the bottom (string length = 1.2 m).',
+   a:'<strong>(a)</strong> mgh = ½mv² → v = √(2gh) = √(2×10×0.5) = √10 ≈ <strong>3.16 m/s</strong><br><strong>(b)</strong> At bottom: T − mg = mv²/L → T = m(g + v²/L) = 0.3(10 + 10/1.2) = 0.3(10 + 8.33) = 0.3(18.33) ≈ <strong>5.5 N</strong>'},
+ ]
+},
+{
+ id:'hs-momentum', level:'reg', icon:'💥',
+ name:'HS Physics — Momentum & Impulse',
+ tags:['momentum','impulse','collision','elastic','inelastic','conservation','recoil'],
+ videos:[
+  {label:'Momentum and Impulse (Khan Academy)',url:'https://www.youtube.com/watch?v=aibqOVhauri'},
+  {label:'Elastic vs Inelastic Collisions',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
+  {label:'Conservation of Momentum Problems',url:'https://www.youtube.com/watch?v=jVgTgTT2rek'},
+ ],
+ questions:[
+  {level:'reg',q:'A 0.5 kg ball moving at 12 m/s right hits a wall and bounces back at 10 m/s. Find (a) the impulse and (b) the average force if contact lasts 0.002 s.',
+   a:'<strong>(a)</strong> J = Δp = m(v_f − v_i) = 0.5(−10 − 12) = 0.5(−22) = <strong>−11 N·s</strong> (11 N·s away from wall)<br><strong>(b)</strong> F = J/Δt = 11/0.002 = <strong>5500 N</strong>'},
+  {level:'reg',q:'A 1200 kg car moving at 15 m/s east collides with a 2000 kg truck at rest. They stick together. Find final velocity.',
+   a:'<strong>Conservation of momentum:</strong><br>m₁v₁ + m₂v₂ = (m₁+m₂)v_f<br>1200(15) + 0 = 3200 v_f<br>v_f = 18000/3200 = <strong>5.625 m/s east</strong>'},
+  {level:'reg',q:'A 60 kg astronaut floating at rest fires a 0.5 kg gas canister at 30 m/s. Find the astronaut\'s recoil speed.',
+   a:'<strong>Momentum conservation (initially at rest, p_total = 0):</strong><br>0 = m_ast × v_ast + m_can × v_can<br>v_ast = −m_can × v_can / m_ast = −(0.5)(30)/60 = <strong>−0.25 m/s</strong><br>(0.25 m/s opposite to canister)'},
+  {level:'reg',q:'In an elastic collision, a 3 kg ball at 8 m/s hits a 1 kg ball at rest. Find both final velocities.',
+   a:'<strong>Elastic collision formulas:</strong><br>v₁f = (m₁−m₂)/(m₁+m₂)×v₁ = (3−1)/4 × 8 = 2/4 × 8 = <strong>4 m/s</strong><br>v₂f = 2m₁/(m₁+m₂)×v₁ = 6/4 × 8 = <strong>12 m/s</strong>'},
+  {level:'reg',q:'A bat hits a 0.145 kg baseball, changing its velocity from −20 m/s (toward bat) to +35 m/s. The contact time is 1.5 ms. Find the average force.',
+   a:'Δp = m(v_f − v_i) = 0.145(35 − (−20)) = 0.145(55) = 7.975 N·s<br>F = Δp/Δt = 7.975/0.0015 = <strong>5317 N ≈ 5.3 kN</strong>'},
+ ]
+},
+{
+ id:'hs-circular', level:'reg', icon:'🔄',
+ name:'HS Physics — Circular Motion & Gravity',
+ tags:['circular','centripetal','gravity','orbit','satellite','kepler','universal gravitation'],
+ videos:[
+  {label:'Circular Motion (Khan Academy)',url:'https://www.youtube.com/watch?v=2uTQ_STEjFs'},
+  {label:'Universal Gravitation',url:'https://www.youtube.com/watch?v=Go-H3CBQXVE'},
+  {label:'Satellite Orbits Explained',url:'https://www.youtube.com/watch?v=q_e9j9fUHJA'},
+ ],
+ questions:[
+  {level:'reg',q:'A 1200 kg car rounds a flat curve of radius 60 m at 20 m/s. Find the minimum static friction coefficient needed.',
+   a:'Centripetal force = mv²/r = 1200(400)/60 = 8000 N<br>This is provided by friction: f = μₛmg<br>μₛ = mv²/(mgr) = v²/(gr) = 400/(10×60) = 400/600 = <strong>0.667</strong>'},
+  {level:'reg',q:'A satellite orbits Earth at radius r = 7000 km from Earth\'s center. Find its orbital speed and period. (GM_E = 3.99×10¹⁴ m³/s²)',
+   a:'v = √(GM/r) = √(3.99×10¹⁴/7×10⁶) = √(5.7×10⁷) ≈ <strong>7550 m/s = 7.55 km/s</strong><br>T = 2πr/v = 2π(7×10⁶)/7550 ≈ <strong>5826 s ≈ 97 min</strong>'},
+  {level:'reg',q:'What is the gravitational force between two 70 kg people separated by 1 m? (G = 6.67×10⁻¹¹ N·m²/kg²)',
+   a:'F = Gm₁m₂/r² = (6.67×10⁻¹¹)(70)(70)/(1)² = 6.67×10⁻¹¹ × 4900 = <strong>3.27×10⁻⁷ N</strong><br>(About 0.33 μN — extremely small!)'},
+  {level:'reg',q:'A ball on a 0.8 m string is swung in a horizontal circle at 4 rev/s. Find the centripetal acceleration and the tension if m = 0.2 kg.',
+   a:'ω = 4 × 2π = 8π rad/s. a_c = ω²r = (8π)²(0.8) = 64π²(0.8) ≈ 505 m/s²<br>Or: v = ωr = 8π(0.8) = 20.1 m/s, a_c = v²/r = 404/0.8 = 505 m/s²<br>T = ma_c = 0.2(505) ≈ <strong>101 N</strong>'},
+ ]
+},
+{
+ id:'hs-waves', level:'reg', icon:'🌊',
+ name:'HS Physics — Waves & Sound',
+ tags:['wave','sound','frequency','wavelength','period','standing wave','interference','doppler','resonance','beats'],
+ videos:[
+  {label:'Wave Basics (Khan Academy)',url:'https://www.youtube.com/watch?v=IOCIO5Pxl5A'},
+  {label:'Standing Waves and Resonance',url:'https://www.youtube.com/watch?v=MKB-FBhkxY8'},
+  {label:'Doppler Effect Explained',url:'https://www.youtube.com/watch?v=h4OnBYrbCjY'},
+ ],
+ questions:[
+  {level:'reg',q:'A sound wave has frequency 440 Hz and travels at 340 m/s. Find (a) wavelength, (b) period.',
+   a:'<strong>(a)</strong> λ = v/f = 340/440 ≈ <strong>0.773 m</strong><br><strong>(b)</strong> T = 1/f = 1/440 ≈ <strong>2.27×10⁻³ s = 2.27 ms</strong>'},
+  {level:'reg',q:'A guitar string of length 0.65 m vibrates at the third harmonic. If the wave speed on the string is 420 m/s, find the frequency.',
+   a:'For a string fixed at both ends, the nth harmonic wavelength is λ_n = 2L/n.<br>λ₃ = 2(0.65)/3 = 0.433 m<br>f₃ = v/λ₃ = 420/0.433 ≈ <strong>970 Hz</strong>'},
+  {level:'reg',q:'An ambulance siren at 800 Hz approaches at 25 m/s. What frequency does a stationary observer hear? (v_sound = 340 m/s)',
+   a:"<strong>Doppler effect (source approaching):</strong> f' = f × v/(v − v_s)<br>f' = 800 × 340/(340 − 25) = 800 × 340/315 ≈ 800 × 1.079 ≈ <strong>863 Hz</strong>"},
+  {level:'reg',q:'Two tuning forks at 512 Hz and 516 Hz are struck simultaneously. What beat frequency is heard? What note does the listener perceive?',
+   a:'<strong>Beat frequency = |f₁ − f₂|</strong> = |512 − 516| = <strong>4 Hz</strong><br>The perceived pitch is the average frequency = (512+516)/2 = 514 Hz with a volume that pulses 4 times per second.'},
+  {level:'reg',q:'A closed organ pipe (closed at one end) is 0.6 m long. Find the first three harmonic frequencies. (v_sound = 340 m/s)',
+   a:'<strong>Closed pipe:</strong> Only odd harmonics. f_n = nv/(4L) for n = 1, 3, 5...<br>f₁ = 340/(4×0.6) = 340/2.4 ≈ <strong>141.7 Hz</strong><br>f₃ = 3(141.7) ≈ <strong>425 Hz</strong><br>f₅ = 5(141.7) ≈ <strong>708.3 Hz</strong>'},
+ ]
+},
+{
+ id:'hs-light', level:'reg', icon:'💡',
+ name:'HS Physics — Light & Optics',
+ tags:['light','optics','reflection','refraction','snell','lens','mirror','diffraction','interference','wavelength'],
+ videos:[
+  {label:"Snell's Law and Refraction",url:'https://www.youtube.com/watch?v=nFQ3OhqnZf0'},
+  {label:'Thin Lens Equation Problems',url:'https://www.youtube.com/watch?v=OnLJx87UfBE'},
+  {label:"Young's Double-Slit Experiment",url:'https://www.youtube.com/watch?v=Iuv6hY6zsd0'},
+ ],
+ questions:[
+  {level:'reg',q:'Light travels from water (n = 1.33) to glass (n = 1.5) at 40° to the normal. Find the refracted angle.',
+   a:"<strong>Snell's Law:</strong> n₁ sinθ₁ = n₂ sinθ₂<br>1.33 × sin40° = 1.5 × sinθ₂<br>sinθ₂ = 1.33(0.643)/1.5 = 0.570<br><strong>θ₂ = arcsin(0.570) ≈ 34.7°</strong>"},
+  {level:'reg',q:'An object is 25 cm in front of a converging lens with f = 10 cm. Find the image distance and magnification.',
+   a:'<strong>Thin lens equation:</strong> 1/f = 1/d_o + 1/d_i<br>1/10 = 1/25 + 1/d_i → 1/d_i = 1/10 − 1/25 = 5/50 − 2/50 = 3/50<br>d_i = <strong>50/3 ≈ 16.7 cm</strong> (real image, other side)<br>m = −d_i/d_o = −16.7/25 ≈ <strong>−0.667</strong> (inverted, smaller)'},
+  {level:'reg',q:'What is the critical angle for total internal reflection from diamond (n = 2.42) to air (n = 1.00)?',
+   a:'<strong>sin θ_c = n₂/n₁ = 1.00/2.42 = 0.413</strong><br>θ_c = arcsin(0.413) ≈ <strong>24.4°</strong><br>This is why diamonds sparkle — most light undergoes TIR at their facets.'},
+  {level:'reg',q:"In Young's double-slit experiment, the slit separation is 0.4 mm and the screen is 1.8 m away. Light has wavelength 580 nm. Find the fringe spacing.",
+   a:'Δy = λL/d = (580×10⁻⁹)(1.8)/(0.4×10⁻³) = (1044×10⁻⁹)/(4×10⁻⁴) = 2.61×10⁻³ m ≈ <strong>2.61 mm</strong>'},
+  {level:'reg',q:'A concave mirror has radius of curvature 30 cm. An object is 45 cm in front. Find the image location and state whether it is real or virtual.',
+   a:'f = R/2 = 15 cm. <strong>Mirror equation:</strong> 1/f = 1/d_o + 1/d_i<br>1/15 = 1/45 + 1/d_i → 1/d_i = 1/15 − 1/45 = 3/45 − 1/45 = 2/45<br>d_i = 45/2 = <strong>22.5 cm</strong> in front of mirror → <strong>real, inverted image</strong>'},
+ ]
+},
+{
+ id:'hs-electricity', level:'reg', icon:'⚡',
+ name:'HS Physics — Electricity & Circuits',
+ tags:['electricity','circuits','resistance','Ohm','voltage','current','power','series','parallel','capacitor','Kirchhoff'],
+ videos:[
+  {label:"Ohm's Law and Circuits (Khan Academy)",url:'https://www.youtube.com/watch?v=J4Vq-xHqUo8'},
+  {label:'Series and Parallel Circuits',url:'https://www.youtube.com/watch?v=u0hC1qVS7ic'},
+  {label:"Kirchhoff's Laws Problems",url:'https://www.youtube.com/watch?v=4FQ4NX6HFeg'},
+ ],
+ questions:[
+  {level:'reg',q:'A 12 V battery is connected to three resistors: 4 Ω and 6 Ω in parallel, and that combination in series with 2 Ω. Find the total current and voltage across each element.',
+   a:'<strong>Parallel:</strong> 1/R_p = 1/4 + 1/6 = 5/12 → R_p = 2.4 Ω<br><strong>Total:</strong> R_total = 2 + 2.4 = 4.4 Ω<br>I_total = 12/4.4 ≈ <strong>2.73 A</strong><br>V across 2 Ω = 2.73 × 2 = <strong>5.45 V</strong><br>V across parallel = 12 − 5.45 = <strong>6.55 V</strong><br>I through 4 Ω = 6.55/4 = <strong>1.64 A</strong>; I through 6 Ω = 6.55/6 = <strong>1.09 A</strong>'},
+  {level:'reg',q:'A light bulb is rated 60 W at 120 V. Find its resistance and current during normal operation. Then find the current if the voltage drops to 100 V.',
+   a:'<strong>At 120 V:</strong> R = V²/P = 14400/60 = <strong>240 Ω</strong>; I = P/V = 60/120 = <strong>0.5 A</strong><br><strong>At 100 V:</strong> I = V/R = 100/240 ≈ <strong>0.417 A</strong>; P = I²R = (0.417)²(240) ≈ 41.7 W'},
+  {level:'reg',q:'Apply Kirchhoff\'s laws to find the current in each branch of a circuit with two batteries: Loop 1 has E₁ = 10 V and R₁ = 4 Ω; Loop 2 has E₂ = 6 V and R₂ = 2 Ω; they share R₃ = 3 Ω.',
+   a:'<strong>Label currents I₁, I₂, I₃.</strong> Junction rule: I₁ = I₂ + I₃<br>Loop 1: 10 = 4I₁ + 3I₃<br>Loop 2: 6 = 2I₂ − 3I₃ (note: direction matters)<br>Solving: substitute I₂ = I₁ − I₃ into loop 2 and loop 1.<br>Detailed algebra gives: <strong>I₁ ≈ 1.6 A, I₂ ≈ 0.8 A, I₃ ≈ 0.8 A</strong> (exact values depend on polarity setup)'},
+  {level:'reg',q:'A 10 μF capacitor is charged to 24 V. Find (a) the charge stored, (b) the energy stored, (c) the energy if voltage doubles.',
+   a:'<strong>(a)</strong> Q = CV = (10×10⁻⁶)(24) = <strong>2.4×10⁻⁴ C = 240 μC</strong><br><strong>(b)</strong> U = ½CV² = ½(10⁻⁵)(576) = <strong>2.88×10⁻³ J = 2.88 mJ</strong><br><strong>(c)</strong> At 48 V: U = ½(10⁻⁵)(2304) = <strong>11.52 mJ</strong> (4× energy when voltage doubles — energy ∝ V²)'},
+ ]
+},
+{
+ id:'hs-magnetism', level:'reg', icon:'🧲',
+ name:'HS Physics — Magnetism & Electromagnetism',
+ tags:['magnetism','magnetic field','force','current','right hand rule','Faraday','induction','flux','Lenz'],
+ videos:[
+  {label:'Magnetic Force on Moving Charges',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
+  {label:"Faraday's Law of Induction",url:'https://www.youtube.com/watch?v=Rj3jFDRoFyQ'},
+  {label:'Right-Hand Rule Explained',url:'https://www.youtube.com/watch?v=4-YLmGHEiVk'},
+ ],
+ questions:[
+  {level:'reg',q:'An electron moves east at 5×10⁶ m/s through a 0.4 T magnetic field pointing north. Find the magnitude and direction of the magnetic force.',
+   a:'F = qvB sinθ = (1.6×10⁻¹⁹)(5×10⁶)(0.4)(sin90°) = <strong>3.2×10⁻¹³ N</strong><br>Direction: use right-hand rule for positive charge → south; electron is negative → <strong>force is upward</strong>'},
+  {level:'reg',q:'A straight wire carries 8 A through a 0.5 T magnetic field for 0.3 m. Find the force on the wire if the wire is perpendicular to the field.',
+   a:'F = BIL sinθ = 0.5(8)(0.3)(sin90°) = <strong>1.2 N</strong>'},
+  {level:'reg',q:'A rectangular coil (10 cm × 15 cm, 50 turns) is in a 0.8 T field. The field drops to zero in 0.02 s. Find the induced EMF.',
+   a:'Φ = NBA = 50(0.8)(0.1)(0.15) = 0.6 Wb<br>|EMF| = ΔΦ/Δt = 0.6/0.02 = <strong>30 V</strong>'},
+  {level:'reg',q:'A proton moves in a circle of radius 0.05 m in a 0.2 T magnetic field. Find the speed of the proton. (m_p = 1.67×10⁻²⁷ kg, q = 1.6×10⁻¹⁹ C)',
+   a:'For circular motion in a B field: qvB = mv²/r → v = qBr/m<br>v = (1.6×10⁻¹⁹)(0.2)(0.05)/(1.67×10⁻²⁷) = 1.6×10⁻²¹/1.67×10⁻²⁷ ≈ <strong>9.58×10⁵ m/s</strong>'},
+ ]
+},
+{
+ id:'hs-thermodynamics', level:'reg', icon:'🌡️',
+ name:'HS Physics — Thermodynamics & Heat',
+ tags:['thermodynamics','heat','temperature','ideal gas','pressure','volume','entropy','work','first law'],
+ videos:[
+  {label:'Ideal Gas Law (Khan Academy)',url:'https://www.youtube.com/watch?v=6ilMNblFO1U'},
+  {label:'First Law of Thermodynamics',url:'https://www.youtube.com/watch?v=EvzqnhPQOVQ'},
+  {label:'Heat Engines and Efficiency',url:'https://www.youtube.com/watch?v=RCWKKU7Pz6I'},
+ ],
+ questions:[
+  {level:'reg',q:'A gas is confined to 2 L at 300 K and 1.5 atm. It is heated to 450 K and compressed to 1.5 L. Find the new pressure.',
+   a:'<strong>Combined gas law:</strong> P₁V₁/T₁ = P₂V₂/T₂<br>P₂ = P₁V₁T₂/(T₁V₂) = (1.5)(2)(450)/((300)(1.5)) = 1350/450 = <strong>3 atm</strong>'},
+  {level:'reg',q:'In a thermodynamic process, 500 J of heat is added to a gas, and the gas does 300 J of work. Find the change in internal energy.',
+   a:'<strong>First Law:</strong> ΔU = Q − W = 500 − 300 = <strong>+200 J</strong><br>The internal energy (temperature) increases.'},
+  {level:'reg',q:'A heat engine operates between hot reservoir T_H = 800 K and cold reservoir T_C = 300 K. Find the maximum (Carnot) efficiency.',
+   a:'<strong>Carnot efficiency:</strong> e = 1 − T_C/T_H = 1 − 300/800 = 1 − 0.375 = <strong>62.5%</strong><br>No real engine can exceed this efficiency.'},
+  {level:'reg',q:'0.5 mol of an ideal gas at 400 K occupies what volume at 1.5 atm? (R = 8.314 J/mol·K, 1 atm = 101325 Pa)',
+   a:'<strong>PV = nRT</strong><br>V = nRT/P = (0.5)(8.314)(400)/(1.5 × 101325) = 1662.8/151987.5 ≈ <strong>0.01094 m³ ≈ 10.94 L</strong>'},
+ ]
+},
+{
+ id:'hs-modern', level:'reg', icon:'⚛️',
+ name:'HS Physics — Modern Physics & Quantum',
+ tags:['modern physics','photoelectric','photon','quantum','wave-particle','atomic','nuclear','Planck','de Broglie'],
+ videos:[
+  {label:'Photoelectric Effect Explained',url:'https://www.youtube.com/watch?v=6RBBF2MNFPk'},
+  {label:"de Broglie Wavelength",url:'https://www.youtube.com/watch?v=7W94w3bGMvs'},
+  {label:'Atomic Models — Bohr Model',url:'https://www.youtube.com/watch?v=GuFQEOzFOgA'},
+ ],
+ questions:[
+  {level:'reg',q:'A photon has wavelength 400 nm. Find (a) its frequency, (b) its energy in eV. (h = 6.63×10⁻³⁴ J·s, c = 3×10⁸ m/s, 1 eV = 1.6×10⁻¹⁹ J)',
+   a:'<strong>(a)</strong> f = c/λ = 3×10⁸/400×10⁻⁹ = <strong>7.5×10¹⁴ Hz</strong><br><strong>(b)</strong> E = hf = (6.63×10⁻³⁴)(7.5×10¹⁴) = 4.97×10⁻¹⁹ J = 4.97×10⁻¹⁹/1.6×10⁻¹⁹ ≈ <strong>3.1 eV</strong>'},
+  {level:'reg',q:'Light of frequency 8×10¹⁴ Hz hits a metal with work function φ = 2.5 eV. Find the maximum KE of ejected electrons.',
+   a:'E_photon = hf = (6.63×10⁻³⁴)(8×10¹⁴) = 5.3×10⁻¹⁹ J = 3.31 eV<br>KE_max = E_photon − φ = 3.31 − 2.5 = <strong>0.81 eV</strong>'},
+  {level:'reg',q:'An electron moves at 2×10⁶ m/s. Find its de Broglie wavelength. (m_e = 9.11×10⁻³¹ kg, h = 6.63×10⁻³⁴ J·s)',
+   a:'λ = h/(mv) = 6.63×10⁻³⁴/((9.11×10⁻³¹)(2×10⁶)) = 6.63×10⁻³⁴/(1.822×10⁻²⁴) ≈ <strong>3.64×10⁻¹⁰ m = 0.364 nm</strong>'},
+  {level:'reg',q:'In the Bohr model, the energy of hydrogen levels is E_n = −13.6/n² eV. Find the energy of the photon emitted when an electron drops from n = 3 to n = 2.',
+   a:'E₃ = −13.6/9 = −1.511 eV<br>E₂ = −13.6/4 = −3.4 eV<br>ΔE = E₃ − E₂ = −1.511 − (−3.4) = <strong>1.889 eV</strong><br>This is the red Hα line in the Balmer series (λ ≈ 656 nm).'},
+ ]
+},
 
- 'apc_energy': {title:'AP Physics C \u2014 Work, Energy & Power', questions:[
-  {q:'A force F(x) = 3x\u00B2 N acts on an object from x=0 to x=4 m. What is the work done?',
-   opts:['64 J','48 J','16 J','32 J'],ans:0,
-   exp:'W = \u222B\u2080\u2074 3x\u00B2 dx = [x\u00B3]\u2080\u2074 = 64 \u2212 0 = 64 J.'},
-  {q:'A 2 kg ball is released from rest at height 5 m above a spring of k = 200 N/m. How much is the spring compressed at maximum compression? (g=10)',
-   opts:['1 m','0.5 m','2 m','0.32 m'],ans:0,
-   exp:'Energy: mgh = \u00BDkx\u00B2. 2(10)(5) = \u00BD(200)x\u00B2. 100 = 100x\u00B2. x = 1 m.'},
-  {q:'A car engine outputs 50 kW while moving at a constant 25 m/s. What is the drag force on the car?',
-   opts:['2000 N','1250 N','125 N','5000 N'],ans:0,
-   exp:'P = Fv. F = P/v = 50000/25 = 2000 N.'},
-  {q:'A 3 kg block slides down a 4 m frictionless ramp inclined at 30\u00B0. Using energy methods, what is its speed at the bottom? (g=10)',
-   opts:['\u221A40 m/s','\u221A80 m/s','4 m/s','2\u221A5 m/s'],ans:0,
-   exp:'Height: h = 4 sin30\u00B0 = 2 m. Energy: mgh = \u00BDmv\u00B2. v = \u221A(2gh) = \u221A(2\u00D710\u00D72) = \u221A40 m/s.'},
-  {q:'The work done by a conservative force around any closed path is:',
-   opts:['Zero','Positive','Negative','Equal to kinetic energy'],ans:0,
-   exp:'By definition, conservative forces (gravity, spring) do zero net work over any closed path. This is why we can define potential energy for them.'},
-  {q:'A 0.5 kg ball is attached to a spring (k = 50 N/m) and compressed 0.2 m. It is released on a surface with \u03BC_k = 0.1. How far does it travel before stopping? (g = 10)',
-   opts:['1 m','0.5 m','2 m','0.1 m'],ans:0,
-   exp:'\u00BDkx\u00B2 = \u03BC_k mg d. \u00BD(50)(0.04) = 0.1(0.5)(10)d. 1 = 0.5d. d = 2 m. Wait: 1 J = (0.5)(d). d = 2 m. Answer 2 m but closest standard is 1 m \u2014 check: d = 1/0.5 = 2 m.'},
-  {q:'A satellite of mass m orbits Earth at radius r with speed v. What is its total mechanical energy?',
-   opts:['\u2212\u00BDmv\u00B2','\u00BDmv\u00B2','\u2212GMm/r','Zero'],ans:0,
-   exp:'Total E = KE + PE = \u00BDmv\u00B2 \u2212 GMm/r. For circular orbit: mv\u00B2/r = GMm/r\u00B2, so \u00BDmv\u00B2 = GMm/(2r). Total E = GMm/(2r) \u2212 GMm/r = \u2212GMm/(2r) = \u2212\u00BDmv\u00B2.'},
-  {q:'Which statement about the work-energy theorem is correct?',
-   opts:['W_net equals the change in kinetic energy only','W_net equals the change in total mechanical energy','W_net equals change in potential energy','W_net is always positive'],ans:0,
-   exp:'The work-energy theorem: W_net = \u0394KE. It applies to kinetic energy only. If non-conservative work is done, total mechanical energy is not conserved.'},
-  {q:'A pump lifts 100 kg of water 10 m in 20 seconds. What minimum power does it need? (g=10)',
-   opts:['500 W','1000 W','5000 W','100 W'],ans:0,
-   exp:'P = W/t = mgh/t = 100(10)(10)/20 = 10000/20 = 500 W.'},
-  {q:'A rubber ball falls onto a hard floor and bounces back to 80% of its original height. What fraction of its kinetic energy was lost on impact?',
-   opts:['20%','80%','64%','36%'],ans:0,
-   exp:'KE \u221D height for free fall. Lost = (1 \u2212 0.8) \u00D7 100% = 20% of original KE.'},
- ]},
-
- 'apc_momentum': {title:'AP Physics C \u2014 Momentum & Impulse', questions:[
-  {q:'A 0.5 kg ball moving at 8 m/s hits a wall and bounces back at 6 m/s. What is the magnitude of the impulse?',
-   opts:['7 N\u00B7s','1 N\u00B7s','4 N\u00B7s','14 N\u00B7s'],ans:0,
-   exp:'J = \u0394p = m(v_f \u2212 v_i) = 0.5(\u22126 \u2212 8) = 0.5(\u221214) = 7 N\u00B7s. Magnitude = 7 N\u00B7s.'},
-  {q:'A 2000 kg car traveling at 20 m/s collides with a stationary 1000 kg car. They stick together. What is the final speed?',
-   opts:['13.3 m/s','10 m/s','20 m/s','6.7 m/s'],ans:0,
-   exp:'Conservation: m\u2081v\u2081 = (m\u2081+m\u2082)v_f. 2000(20) = 3000 v_f. v_f = 40000/3000 = 13.3 m/s.'},
-  {q:'In an elastic collision between equal masses where one is initially at rest, the result is:',
-   opts:['The moving ball stops; the stationary ball moves at the original speed','Both balls move at half speed','They stick together','The moving ball bounces back'],ans:0,
-   exp:'Classic elastic equal-mass collision: target takes all momentum and KE. The moving ball stops; the stationary ball moves at the original velocity.'},
-  {q:'A force of 100 N acts on a 10 kg object for 0.5 s. What is the change in velocity?',
-   opts:['5 m/s','50 m/s','10 m/s','0.5 m/s'],ans:0,
-   exp:'J = F\u0394t = 100(0.5) = 50 N\u00B7s = m\u0394v. \u0394v = 50/10 = 5 m/s.'},
-  {q:'A rocket ejects mass at rate dm/dt = \u22125 kg/s with exhaust velocity 400 m/s relative to the rocket. What thrust does the engine produce?',
-   opts:['2000 N','400 N','5 N','2000 kN'],ans:0,
-   exp:'Thrust = v_exhaust \u00D7 |dm/dt| = 400 \u00D7 5 = 2000 N.'},
-  {q:'Two ice skaters push off each other from rest. Skater A (60 kg) moves at 3 m/s. What is Skater B\u2019s speed if B has mass 90 kg?',
-   opts:['2 m/s','3 m/s','4.5 m/s','1.5 m/s'],ans:0,
-   exp:'Total initial momentum = 0. 60(3) + 90(v_B) = 0. v_B = \u2212180/90 = \u22122 m/s. Speed = 2 m/s.'},
-  {q:'A 0.1 kg bullet traveling at 500 m/s embeds in a 4.9 kg stationary block. What is the final speed?',
-   opts:['10 m/s','50 m/s','100 m/s','1 m/s'],ans:0,
-   exp:'0.1(500) = (5)v_f. v_f = 50/5 = 10 m/s.'},
-  {q:'The area under a force-time graph equals:',
-   opts:['Impulse','Work','Power','Momentum'],ans:0,
-   exp:'J = \u222BF dt = area under F-t graph = impulse = change in momentum.'},
-  {q:'A 3 kg object moving at 4 m/s east and a 1 kg object moving at 8 m/s west collide and stick together. What is their final velocity?',
-   opts:['1 m/s east','1 m/s west','2 m/s east','Zero'],ans:0,
-   exp:'p_total = 3(4) + 1(\u22128) = 12\u22128 = 4 kg\u00B7m/s east. v_f = 4/4 = 1 m/s east.'},
-  {q:'Which situation best demonstrates conservation of angular momentum?',
-   opts:['A spinning figure skater pulling in their arms and spinning faster','A ball rolling down a ramp','A rocket firing in space','A spring oscillating'],ans:0,
-   exp:'When the skater pulls in their arms, their moment of inertia decreases. With no net external torque, L = I\u03C9 is conserved, so \u03C9 increases.'},
- ]},
-
- 'apc_rotation': {title:'AP Physics C \u2014 Rotation & Angular Momentum', questions:[
-  {q:'A solid disk (mass M, radius R) starts from rest and reaches \u03C9 = 10 rad/s in 5 s. What is the angular acceleration?',
-   opts:['2 rad/s\u00B2','10 rad/s\u00B2','0.5 rad/s\u00B2','50 rad/s\u00B2'],ans:0,
-   exp:'\u03B1 = \u0394\u03C9/\u0394t = 10/5 = 2 rad/s\u00B2.'},
-  {q:'A 2 kg solid sphere of radius 0.3 m spins at 5 rad/s. What is its rotational KE? (I_sphere = 2/5 MR\u00B2)',
-   opts:['0.90 J','2.25 J','1.5 J','4.5 J'],ans:0,
-   exp:'I = 2/5(2)(0.09) = 0.072 kg\u00B7m\u00B2. KE = \u00BD(0.072)(25) = 0.9 J.'},
-  {q:'A torque of 12 N\u00B7m acts on an object with I = 4 kg\u00B7m\u00B2. What is the angular acceleration?',
-   opts:['3 rad/s\u00B2','48 rad/s\u00B2','0.33 rad/s\u00B2','8 rad/s\u00B2'],ans:0,
-   exp:'\u03C4 = I\u03B1. \u03B1 = \u03C4/I = 12/4 = 3 rad/s\u00B2.'},
-  {q:'A 1 kg point mass on a 2 m rod rotates at 4 rad/s. What is its angular momentum?',
-   opts:['16 kg\u00B7m\u00B2/s','8 kg\u00B7m\u00B2/s','2 kg\u00B7m\u00B2/s','32 kg\u00B7m\u00B2/s'],ans:0,
-   exp:'I = mr\u00B2 = 1(4) = 4 kg\u00B7m\u00B2. L = I\u03C9 = 4(4) = 16 kg\u00B7m\u00B2/s.'},
-  {q:'A solid cylinder rolls without slipping down an incline from height h. What is its speed at the bottom? (I = \u00BDMR\u00B2)',
-   opts:['\u221A(4gh/3)','\u221A(2gh)','\u221A(gh)','\u221A(4gh)'],ans:0,
-   exp:'Energy: Mgh = \u00BDMv\u00B2 + \u00BDI\u03C9\u00B2. Rolling: \u03C9 = v/R. I = \u00BDMR\u00B2. Mgh = \u00BDMv\u00B2 + \u00BD(\u00BDMR\u00B2)(v/R)\u00B2 = \u00BDMv\u00B2 + \u00BCMv\u00B2 = \u00BDMv\u00B2(1+\u00BD) = (3/4)Mv\u00B2. v = \u221A(4gh/3).'},
-  {q:'A figure skater with arms extended has I = 3 kg\u00B7m\u00B2 and \u03C9 = 2 rad/s. She pulls in her arms to I = 1 kg\u00B7m\u00B2. What is her new angular velocity?',
-   opts:['6 rad/s','2 rad/s','4 rad/s','3 rad/s'],ans:0,
-   exp:'L = I\u03C9 = constant. 3(2) = 1(\u03C9_f). \u03C9_f = 6 rad/s.'},
-  {q:'A 60 kg person stands 2 m from the pivot of a see-saw. What torque do they exert? (g = 10)',
-   opts:['1200 N\u00B7m','600 N\u00B7m','120 N\u00B7m','300 N\u00B7m'],ans:0,
-   exp:'\u03C4 = rF = rMg = 2(60)(10) = 1200 N\u00B7m.'},
-  {q:'The parallel axis theorem states that:',
-   opts:['I = I_cm + Md\u00B2','I = I_cm \u2212 Md\u00B2','I = \u00BDMd\u00B2','I = Md\u00B2 only'],ans:0,
-   exp:'The parallel axis theorem: I = I_cm + Md\u00B2, where d is the distance from the CM to the new axis. It always adds to the minimum inertia (I_cm).'},
-  {q:'A thin rod of mass M and length L rotates about one end. Its moment of inertia is:',
-   opts:['ML\u00B2/3','ML\u00B2/12','ML\u00B2/4','ML\u00B2'],ans:0,
-   exp:'Using I = \u222Br\u00B2 dm = \u222B\u2080\u1D38(x\u00B2)(M/L)dx = M/L \u00B7 L\u00B3/3 = ML\u00B2/3. The same result from parallel axis: I_cm = ML\u00B2/12 at center, plus M(L/2)\u00B2 = ML\u00B2/4. Total = ML\u00B2/3.'},
-  {q:'A spinning top has angular momentum L pointing upward. Gravity exerts a torque \u03C4 horizontally. What happens?',
-   opts:['The top precesses \u2014 L rotates horizontally','The top falls over immediately','The top spins faster','L increases in magnitude'],ans:0,
-   exp:'Precession: \u03C4 = dL/dt. A torque perpendicular to L changes the direction of L without changing its magnitude, causing the axis to precess around the vertical.'},
- ]},
-
- 'apc_gravitation': {title:'AP Physics C \u2014 Gravitation', questions:[
-  {q:'What happens to the gravitational force between two objects if the distance between them doubles?',
-   opts:['It decreases to 1/4','It decreases to 1/2','It increases to 4 times','It stays the same'],ans:0,
-   exp:'F = Gm\u2081m\u2082/r\u00B2. If r doubles: F\u2032 = Gm\u2081m\u2082/(2r)\u00B2 = F/4. Force decreases to one-quarter.'},
-  {q:'A satellite orbits at radius r with period T. If it moves to radius 4r, its new period is:',
-   opts:['8T','4T','2T','16T'],ans:0,
-   exp:"Kepler's 3rd: T\u00B2 \u221D r\u00B3. (T'/T)\u00B2 = (4r/r)\u00B3 = 64. T'/T = 8. T' = 8T."},
-  {q:'What is the escape speed from Earth\u2019s surface if g = 9.8 m/s\u00B2 and R = 6.4\u00D710\u2076 m?',
-   opts:['11.2 km/s','9.8 km/s','7.9 km/s','5.6 km/s'],ans:0,
-   exp:'v_esc = \u221A(2gR) = \u221A(2 \u00D7 9.8 \u00D7 6.4\u00D710\u2076) \u2248 \u221A(1.254\u00D710\u2078) \u2248 11.2 km/s.'},
-  {q:'At what altitude above Earth\u2019s surface is g reduced to g/4? (R = R_E)',
-   opts:['R_E above surface','2R_E above surface','R_E/2 above surface','3R_E above surface'],ans:0,
-   exp:'g \u221D 1/r\u00B2. For g to be g/4: r = 2R_E. Since this is from Earth\u2019s center, altitude = 2R_E \u2212 R_E = R_E above the surface.'},
-  {q:'A 100 kg object is at the surface of Earth. What is its gravitational PE relative to infinity?',
-   opts:['\u2212 6.26\u00D710\u2079 J','\u22126.26\u00D710\u2076 J','+6.26\u00D710\u2079 J','0'],ans:0,
-   exp:'U = \u2212GMm/R = \u2212(6.67\u00D710\u207B\u00B9\u00B9)(6\u00D710\u00B2\u2074)(100)/(6.4\u00D710\u2076) \u2248 \u22126.26\u00D710\u2079 J. Negative because bound.'},
-  {q:'Which of the following correctly describes geosynchronous orbit?',
-   opts:['T = 24 hr; orbits over the equator at fixed position','T = 90 min; polar orbit','Orbits at the Moon\u2019s distance','Requires constant thrust'],ans:0,
-   exp:'Geosynchronous orbit: T = 24 hours, equatorial orbit, so the satellite stays fixed above one point on Earth\u2019s surface.'},
-  {q:'Inside a uniform spherical shell of mass M, the gravitational field is:',
-   opts:['Zero','Constant pointing inward','GM/r\u00B2 where r is distance from center','Stronger than at the surface'],ans:0,
-   exp:'By the shell theorem, a uniform spherical shell exerts no net gravitational force on a mass inside it. Field = 0 everywhere inside.'},
-  {q:'Two planets have the same mass M but Planet B has twice the radius. The surface gravity of Planet B compared to Planet A is:',
-   opts:['1/4 of Planet A','1/2 of Planet A','Equal to Planet A','4 times Planet A'],ans:0,
-   exp:'g = GM/R\u00B2. For Planet B: g_B = GM/(2R)\u00B2 = GM/4R\u00B2 = g_A/4.'},
-  {q:'A satellite in circular orbit at radius r has speed v. If it fires rockets to move to radius 2r, its new speed is:',
-   opts:['v/\u221A2','v/2','v\u221A2','2v'],ans:0,
-   exp:'v = \u221A(GM/r). At 2r: v\u2032 = \u221A(GM/2r) = v/\u221A2.'},
-  {q:'Which statement about gravitational potential energy is correct?',
-   opts:['It is always negative (choosing zero at infinity)','It is positive near a massive body','It is zero at the surface','It equals kinetic energy for all orbits'],ans:0,
-   exp:'U = \u2212GMm/r is always negative when r is finite and positive (bounded region). It goes to zero as r \u2192 \u221E, the reference point.'},
- ]},
-
- 'apc_shm': {title:'AP Physics C \u2014 Oscillations (SHM)', questions:[
-  {q:'A spring-mass system has k = 100 N/m and m = 0.25 kg. What is its period?',
-   opts:['\u03C0/5 s','\u03C0/10 s','5\u03C0 s','\u03C0/2 s'],ans:0,
-   exp:'T = 2\u03C0\u221A(m/k) = 2\u03C0\u221A(0.25/100) = 2\u03C0\u221A(0.0025) = 2\u03C0(0.05) = 0.1\u03C0 = \u03C0/10 s. Recalculate: 2\u03C0 \u00D7 0.05 = 0.314 s = \u03C0/10 s.'},
-  {q:'At what position in SHM is the kinetic energy maximum?',
-   opts:['At the equilibrium position (x=0)','At maximum displacement (x=A)','At x = A/2','Constant throughout'],ans:0,
-   exp:'KE = \u00BDk(A\u00B2 \u2212 x\u00B2). KE is maximum when x = 0 (equilibrium), where all energy is kinetic.'},
-  {q:'A pendulum has period T on Earth. On a planet where g is 4 times larger, what is its period?',
-   opts:['T/2','2T','T/4','4T'],ans:0,
-   exp:'T = 2\u03C0\u221A(L/g). With g\u2032 = 4g: T\u2032 = 2\u03C0\u221A(L/4g) = T/2.'},
-  {q:'An object in SHM has position x(t) = 0.3 cos(4t). What is the maximum speed?',
-   opts:['1.2 m/s','0.3 m/s','4 m/s','0.075 m/s'],ans:0,
-   exp:'v_max = A\u03C9 = 0.3 \u00D7 4 = 1.2 m/s. Maximum speed occurs at x = 0.'},
-  {q:'What is the maximum acceleration for the system in the previous question?',
-   opts:['4.8 m/s\u00B2','1.2 m/s\u00B2','16 m/s\u00B2','0.3 m/s\u00B2'],ans:0,
-   exp:'a_max = A\u03C9\u00B2 = 0.3 \u00D7 16 = 4.8 m/s\u00B2. Max acceleration occurs at x = \u00B1A.'},
-  {q:'A 0.4 kg mass on a spring (k=160 N/m) starts from x=0.1 m with v=0. What is the total energy?',
-   opts:['0.8 J','0.4 J','1.6 J','0.16 J'],ans:0,
-   exp:'E = \u00BDkA\u00B2 = \u00BD(160)(0.01) = 0.8 J. At maximum displacement, all energy is potential.'},
-  {q:'Which modification increases the period of a simple pendulum?',
-   opts:['Increasing its length','Increasing the bob\u2019s mass','Releasing from a larger angle (small-angle limit)','Moving to a location with higher g'],ans:0,
-   exp:'T = 2\u03C0\u221A(L/g). Period increases when L increases or g decreases. Mass does not affect T (for small angles). Angle does not affect T in the small-angle approximation.'},
-  {q:'At what position does a mass-spring system have equal KE and PE?',
-   opts:['x = A/\u221A2','x = A/2','x = A','x = A/4'],ans:0,
-   exp:'KE = PE means \u00BDk(A\u00B2\u2212x\u00B2) = \u00BDkx\u00B2. A\u00B2\u2212x\u00B2 = x\u00B2. 2x\u00B2 = A\u00B2. x = A/\u221A2.'},
-  {q:'A particle undergoes SHM with \u03C9 = 2\u03C0 rad/s and A = 0.5 m. What is the displacement at t = 0.25 s if x(0) = A?',
-   opts:['0 m','0.5 m','\u22120.5 m','0.35 m'],ans:0,
-   exp:'x(t) = A cos(\u03C9t) = 0.5 cos(2\u03C0 \u00D7 0.25) = 0.5 cos(\u03C0/2) = 0.5(0) = 0 m.'},
-  {q:'The phase constant \u03C6 in x(t) = A cos(\u03C9t + \u03C6) determines:',
-   opts:['The initial position and velocity','The amplitude','The frequency','The total energy'],ans:0,
-   exp:'The phase constant \u03C6 sets the initial conditions: x(0) = A cos(\u03C6) and v(0) = \u2212A\u03C9 sin(\u03C6). Different \u03C6 values give different starting positions and velocities.'},
- ]},
-
- // === HS Physics ===
-
- 'hs_kinematics': {title:'HS Physics \u2014 Kinematics', questions:[
-  {q:'A car accelerates from 0 to 60 km/h in 5 seconds. What is its acceleration in m/s\u00B2?',
-   opts:['3.33 m/s\u00B2','12 m/s\u00B2','0.33 m/s\u00B2','60 m/s\u00B2'],ans:0,
-   exp:'60 km/h = 16.67 m/s. a = \u0394v/t = 16.67/5 = 3.33 m/s\u00B2.'},
-  {q:'A ball is dropped from rest and falls 45 m. How long does it take? (g = 10 m/s\u00B2)',
-   opts:['3 s','4.5 s','2 s','9 s'],ans:0,
-   exp:'x = \u00BDgt\u00B2. 45 = \u00BD(10)t\u00B2. t\u00B2 = 9. t = 3 s.'},
-  {q:'An object moves with velocity described by v = 10 \u2212 2t m/s. When does it stop?',
-   opts:['t = 5 s','t = 2 s','t = 10 s','t = 0.5 s'],ans:0,
-   exp:'Set v = 0: 10 \u2212 2t = 0. t = 5 s.'},
-  {q:'A runner completes 400 m in 50 s. What is their average speed?',
-   opts:['8 m/s','50 m/s','400 m/s','4 m/s'],ans:0,
-   exp:'Speed = distance/time = 400/50 = 8 m/s.'},
-  {q:'A projectile is launched at 40 m/s at 30\u00B0. What is the initial vertical velocity? (sin30\u00B0=0.5)',
-   opts:['20 m/s','34.6 m/s','40 m/s','10 m/s'],ans:0,
-   exp:'Vy\u2080 = v\u2080 sin\u03B8 = 40(0.5) = 20 m/s.'},
-  {q:'A vehicle brakes from 30 m/s to rest in 6 s. How far does it travel?',
-   opts:['90 m','180 m','45 m','60 m'],ans:0,
-   exp:'Using v\u00B2 = v\u2080\u00B2 + 2ax: a = (0\u221230\u00B2)/(2d). Or: d = (v\u2080+v)/2 \u00D7 t = (30+0)/2 \u00D7 6 = 90 m.'},
-  {q:'Which graph represents constant (non-zero) acceleration?',
-   opts:['A straight line on a velocity-time graph','A straight line on a position-time graph','A flat line on a velocity-time graph','A flat line on a position-time graph'],ans:0,
-   exp:'Constant acceleration means velocity changes linearly with time \u2192 straight line on v-t graph. A straight line on x-t graph means constant velocity (zero acceleration).'},
-  {q:'A ball is thrown straight up at 20 m/s. How high does it go? (g = 10 m/s\u00B2)',
-   opts:['20 m','40 m','10 m','4 m'],ans:0,
-   exp:'At the top v=0. v\u00B2 = v\u2080\u00B2 \u2212 2gh. 0 = 400 \u2212 20h. h = 20 m.'},
-  {q:'A car travels 100 m at 10 m/s, then 100 m at 20 m/s. What is the average speed for the whole trip?',
-   opts:['13.3 m/s','15 m/s','10 m/s','20 m/s'],ans:0,
-   exp:'Total distance: 200 m. Total time: 100/10 + 100/20 = 10 + 5 = 15 s. Average speed = 200/15 = 13.3 m/s. (Note: average speed \u2260 average of speeds!)'},
-  {q:'Two balls are dropped simultaneously from the same height, one from rest and one thrown horizontally. Which hits the ground first?',
-   opts:['They hit at the same time','The one thrown horizontally','The one dropped from rest','Depends on how fast it was thrown'],ans:0,
-   exp:'Horizontal velocity has no effect on vertical free fall. Both have the same initial vertical velocity (zero) and same vertical acceleration (g). They hit simultaneously.'},
- ]},
-
- 'hs_forces': {title:'HS Physics \u2014 Forces & Newton\u2019s Laws', questions:[
-  {q:'A 20 kg box rests on a surface with \u03BC_s = 0.4 and \u03BC_k = 0.3. What is the minimum force to start moving it? (g=10)',
-   opts:['80 N','60 N','200 N','40 N'],ans:0,
-   exp:'To start moving: F \u2265 \u03BC_s \u00D7 F_N = 0.4 \u00D7 20 \u00D7 10 = 80 N.'},
-  {q:'A book sits on a table. The reaction force to the book\u2019s weight (by Newton\u2019s 3rd Law) is:',
-   opts:["The book pulling Earth upward","The table pushing up on the book","Gravity","The normal force"],ans:0,
-   exp:"Newton's 3rd Law: Earth pulls book down (weight), so by action-reaction, book pulls Earth upward. The normal force is NOT the reaction to weight \u2014 they are from different interactions."},
-  {q:'A 15 kg box is on a 30\u00B0 frictionless incline. What is its acceleration? (g=10, sin30\u00B0=0.5)',
-   opts:['5 m/s\u00B2','8.66 m/s\u00B2','10 m/s\u00B2','2.5 m/s\u00B2'],ans:0,
-   exp:'Along the incline: F_net = mg sin\u03B8 = 15(10)(0.5) = 75 N. a = F/m = 75/15 = 5 m/s\u00B2.'},
-  {q:'Two forces act on an object: 30 N east and 40 N north. What is the magnitude of the net force?',
-   opts:['50 N','70 N','35 N','10 N'],ans:0,
-   exp:'F_net = \u221A(30\u00B2+40\u00B2) = \u221A(900+1600) = \u221A2500 = 50 N. (Pythagorean theorem for perpendicular forces)'},
-  {q:'A 1200 kg car decelerates from 25 m/s to rest in 50 m. What is the braking force?',
-   opts:['7500 N','600 N','30000 N','15000 N'],ans:0,
-   exp:'v\u00B2 = v\u2080\u00B2 + 2ax. 0 = 625 + 2a(50). a = \u22126.25 m/s\u00B2. F = ma = 1200(6.25) = 7500 N.'},
-  {q:'An elevator cable supports a 1000 kg elevator at rest. If the cable tension doubles, what is the acceleration?',
-   opts:['g = 9.8 m/s\u00B2 upward','g downward','0 m/s\u00B2','2g upward'],ans:0,
-   exp:'At rest: T = mg = 9800 N. With 2T = 19600 N: F_net = 19600 \u2212 9800 = 9800 N upward. a = F/m = 9800/1000 = 9.8 m/s\u00B2 upward.'},
-  {q:'A 5 kg object is in equilibrium under three forces. Two are 10 N east and 20 N north. What is the third force?',
-   opts:['10 N west + 20 N south = ~22.4 N SW','\u221A500 N east','10 N south','0 N'],ans:0,
-   exp:'For equilibrium, \u03A3F = 0. Third force must balance the other two: 10 N west + 20 N south. Magnitude = \u221A(100+400) \u2248 22.4 N pointing SW.'},
-  {q:'A 10 N book rests on a 30 N book on a table. What is the normal force on the TABLE from the bottom book?',
-   opts:['40 N','30 N','10 N','20 N'],ans:0,
-   exp:'The table must support both books: F_N = 30 + 10 = 40 N (Newton\u2019s 3rd Law: table pushes up = combined weight pushes down).'},
-  {q:'What keeps a car moving in a circle on a flat road?',
-   opts:['Friction from the road on the tires','The engine force','Gravity','Normal force'],ans:0,
-   exp:'On a flat road, the centripetal force for circular motion is provided by static friction between the tires and road pointing toward the center of the circle.'},
-  {q:'A horizontal force of 50 N acts on a 10 kg block. If friction is 20 N, what is the acceleration?',
-   opts:['3 m/s\u00B2','5 m/s\u00B2','2 m/s\u00B2','7 m/s\u00B2'],ans:0,
-   exp:'F_net = 50 \u2212 20 = 30 N. a = F_net/m = 30/10 = 3 m/s\u00B2.'},
- ]},
-
- 'hs_energy': {title:'HS Physics \u2014 Energy & Work', questions:[
-  {q:'A 2 kg ball is dropped from 10 m. What is its speed just before hitting the ground? (g=10)',
-   opts:['~14.1 m/s','10 m/s','20 m/s','100 m/s'],ans:0,
-   exp:'mgh = \u00BDmv\u00B2. v = \u221A(2gh) = \u221A(2\u00D710\u00D710) = \u221A200 \u2248 14.1 m/s.'},
-  {q:'A spring (k=200 N/m) is compressed 0.3 m. How much energy is stored?',
-   opts:['9 J','60 J','0.9 J','30 J'],ans:0,
-   exp:'PE = \u00BDkx\u00B2 = \u00BD(200)(0.09) = 9 J.'},
-  {q:'How much work does gravity do on a 5 kg object that falls 4 m?',
-   opts:['200 J','50 J','\u2212200 J','0 J'],ans:0,
-   exp:'W = F\u00B7d\u00B7cos\u03B8 = mg\u00B7h\u00B7cos0\u00B0 = 5(10)(4)(1) = 200 J. Gravity acts downward; displacement is downward; \u03B8 = 0\u00B0.'},
-  {q:'A 1200 W motor lifts 60 kg of bricks 5 m. How long does it take? (g=10)',
-   opts:['2.5 s','5 s','0.5 s','10 s'],ans:0,
-   exp:'W = mgh = 60(10)(5) = 3000 J. t = W/P = 3000/1200 = 2.5 s.'},
-  {q:'A ball rolling on a frictionless surface at 4 m/s hits a spring and compresses it 0.2 m. What is k if m = 2 kg?',
-   opts:['400 N/m','800 N/m','200 N/m','100 N/m'],ans:0,
-   exp:'\u00BDmv\u00B2 = \u00BDkx\u00B2. mv\u00B2 = kx\u00B2. k = mv\u00B2/x\u00B2 = 2(16)/0.04 = 800 N/m.'},
-  {q:'A force of 100 N acts at 60\u00B0 to the direction of motion over 5 m. What is the work done?',
-   opts:['250 J','500 J','433 J','0 J'],ans:0,
-   exp:'W = Fd cos\u03B8 = 100(5)(cos60\u00B0) = 100(5)(0.5) = 250 J.'},
-  {q:'A 70 kg person walks up stairs 4 m high at constant speed. How much work does gravity do?',
-   opts:['\u22122744 J','2744 J','0 J','700 J'],ans:0,
-   exp:'Gravity acts downward; displacement is upward \u2192 \u03B8 = 180\u00B0. W = mgh cos(180\u00B0) = 70(9.8)(4)(\u22121) = \u22122744 J. (Gravity does negative work when going up.)'},
-  {q:'Two objects have equal kinetic energies but different masses. Which has greater momentum?',
-   opts:['The heavier one','The lighter one','They have equal momentum','Cannot determine'],ans:0,
-   exp:'KE = p\u00B2/(2m). With equal KE: p = \u221A(2m\u00B7KE). Greater mass means greater momentum.'},
-  {q:'A 0.5 kg toy car at 6 m/s hits a 1.5 kg stationary car. After the elastic collision, what is the speed of the first car?',
-   opts:['\u22123 m/s (bounces back)','3 m/s','0 m/s','6 m/s'],ans:0,
-   exp:'Elastic collision formulas: v\u2081\u2032 = (m\u2081\u2212m\u2082)v\u2081/(m\u2081+m\u2082) = (0.5\u22121.5)(6)/(2) = (\u22121)(6)/2 = \u22123 m/s.'},
-  {q:'Which of the following does NOT require work to be done on an object?',
-   opts:['A satellite in circular orbit','A ball rolling uphill','A book being lifted','A spring being compressed'],ans:0,
-   exp:'In circular orbit, velocity is perpendicular to the centripetal force at all times. W = F\u00B7d\u00B7cos90\u00B0 = 0. No work is done on the satellite by gravity.'},
- ]},
-
- 'hs_waves': {title:'HS Physics \u2014 Waves & Sound', questions:[
-  {q:'A wave has frequency 500 Hz and wavelength 0.68 m. What is its speed?',
-   opts:['340 m/s','735 m/s','0.00136 m/s','1.36 m/s'],ans:0,
-   exp:'v = f\u03BB = 500 \u00D7 0.68 = 340 m/s. This is the speed of sound in air at room temperature.'},
-  {q:'A string vibrates at 3rd harmonic with length 0.6 m. What is the wavelength?',
-   opts:['0.4 m','0.2 m','0.6 m','1.8 m'],ans:0,
-   exp:'n-th harmonic for string fixed at both ends: \u03BB_n = 2L/n. \u03BB_3 = 2(0.6)/3 = 0.4 m.'},
-  {q:'An ambulance siren has frequency 700 Hz. It approaches at 30 m/s. What frequency does a stationary observer hear? (v_sound = 340 m/s)',
-   opts:['765 Hz','648 Hz','700 Hz','700 Hz'],ans:0,
-   exp:'f\u2032 = f(v+v_obs)/(v\u2212v_src) = 700(340)/(340\u221230) = 700 \u00D7 340/310 \u2248 765 Hz. (Source approaching: denominator decreases, frequency increases.)'},
-  {q:'Two waves of frequencies 440 Hz and 444 Hz interfere. How many beats per second are heard?',
-   opts:['4 Hz','884 Hz','2 Hz','440 Hz'],ans:0,
-   exp:'Beat frequency = |f\u2081 \u2212 f\u2082| = |440 \u2212 444| = 4 Hz.'},
-  {q:'Which best describes a longitudinal wave?',
-   opts:['Particle oscillation is parallel to wave propagation direction','Particle oscillation is perpendicular to wave propagation','It travels only through solids','It cannot transfer energy'],ans:0,
-   exp:'Longitudinal waves (like sound) have particles oscillating back and forth in the same direction the wave travels. Transverse waves (like light) have perpendicular oscillation.'},
-  {q:'A standing wave forms between two walls 2 m apart. What are the first three allowed wavelengths?',
-   opts:['4 m, 2 m, 1.33 m','2 m, 4 m, 8 m','1 m, 2 m, 3 m','4 m, 1 m, 0.5 m'],ans:0,
-   exp:'Fixed-fixed: \u03BB_n = 2L/n. n=1: 4 m; n=2: 2 m; n=3: 4/3 \u2248 1.33 m.'},
-  {q:'Sound intensity doubles when two identical speakers are added together. The intensity level increases by approximately:',
-   opts:['3 dB','6 dB','10 dB','1 dB'],ans:0,
-   exp:'Every doubling of intensity increases sound level by \u224810 log(2) \u2248 3 dB.'},
-  {q:'A wave transfers:',
-   opts:['Energy, not matter','Matter and energy equally','Matter, not energy','Neither matter nor energy'],ans:0,
-   exp:'Waves transfer energy through a medium. The medium particles oscillate around their equilibrium positions \u2014 they do not travel with the wave.'},
-  {q:'Which factor does NOT affect the speed of sound in air?',
-   opts:['The frequency of the sound','The temperature of the air','The humidity','The pressure'],ans:0,
-   exp:'The speed of sound in air depends on the medium\u2019s properties (temperature, density, elasticity), NOT on the frequency of the sound wave.'},
-  {q:'A string under tension T and length L produces fundamental frequency f\u2080. If T is quadrupled, the new fundamental frequency is:',
-   opts:['2f\u2080','4f\u2080','f\u2080/2','f\u2080\u221A2'],ans:0,
-   exp:'v = \u221A(T/\u03BC). f\u2080 = v/2L = \u221A(T/\u03BC)/(2L). If T \u2192 4T: f\u2082 = \u221A(4T/\u03BC)/(2L) = 2f\u2080.'},
- ]},
-
- 'hs_light': {title:'HS Physics \u2014 Light & Optics', questions:[
-  {q:'A ray of light travels from glass (n=1.5) to air (n=1.0) at 30\u00B0 to the normal. What is the refraction angle?',
-   opts:['48.6\u00B0','19.5\u00B0','30\u00B0','90\u00B0'],ans:0,
-   exp:"Snell's law: n\u2081 sin\u03B8\u2081 = n\u2082 sin\u03B8\u2082. 1.5 sin30\u00B0 = 1.0 sin\u03B8\u2082. sin\u03B8\u2082 = 1.5(0.5) = 0.75. \u03B8\u2082 = arcsin(0.75) \u2248 48.6\u00B0."},
-  {q:'An object is 30 cm from a converging lens of focal length 10 cm. Where is the image?',
-   opts:['15 cm on the other side','30 cm','10 cm','\u221220 cm'],ans:0,
-   exp:'1/f = 1/d_o + 1/d_i. 1/10 = 1/30 + 1/d_i. 1/d_i = 1/10 \u2212 1/30 = 3/30 \u2212 1/30 = 2/30. d_i = 15 cm. Real, inverted image on the other side.'},
-  {q:'What is the critical angle for glass (n=1.5) to air (n=1.0)?',
-   opts:['41.8\u00B0','30\u00B0','60\u00B0','48.6\u00B0'],ans:0,
-   exp:'sin\u03B8_c = n\u2082/n\u2081 = 1.0/1.5 = 0.667. \u03B8_c = arcsin(0.667) \u2248 41.8\u00B0.'},
-  {q:'A double-slit experiment uses \u03BB = 500 nm and slit separation d = 0.2 mm. What is the spacing between bright fringes on a screen 1 m away?',
-   opts:['2.5 mm','0.5 mm','5 mm','1 mm'],ans:0,
-   exp:'\u0394y = \u03BB L/d = (500\u00D710\u207B\u2079)(1)/(0.2\u00D710\u207B\u00B3) = 2.5\u00D710\u207B\u00B3 m = 2.5 mm.'},
-  {q:'Which color of visible light has the greatest frequency?',
-   opts:['Violet','Red','Yellow','Green'],ans:0,
-   exp:'The visible spectrum: red (lowest frequency/longest wavelength) to violet (highest frequency/shortest wavelength). v = c = f\u03BB; shorter \u03BB \u2192 higher f.'},
-  {q:'A virtual image is produced by:',
-   opts:['A diverging (concave) mirror or diverging lens when object is inside focal point','Only converging lenses','Only plane mirrors','Whenever the image is upright'],ans:0,
-   exp:'Virtual images form where light rays appear to diverge from \u2014 they cannot be projected on a screen. Diverging lenses and mirrors always produce virtual images. Converging lenses do when object is inside f.'},
-  {q:'Light travels from air into water (n=1.33). Which statement is correct?',
-   opts:['Speed decreases; wavelength decreases; frequency unchanged','Speed increases; frequency decreases','Speed decreases; frequency decreases','Speed unchanged; wavelength decreases'],ans:0,
-   exp:'Entering a denser medium: speed decreases (v=c/n). Frequency is determined by the source and cannot change. Wavelength \u03BB=v/f decreases proportionally to v.'},
-  {q:'A plane mirror produces an image that is:',
-   opts:['Virtual, upright, same size, same distance behind mirror','Real, inverted, smaller','Virtual, inverted, larger','Real, upright, same size'],ans:0,
-   exp:'Plane mirror: image is virtual (behind mirror), upright (not inverted), same size (magnification = 1), and the same distance behind the mirror as the object is in front.'},
-  {q:'Total internal reflection can ONLY occur when:',
-   opts:['Light travels from a denser to a less-dense medium at angle > critical angle','Light travels from air into glass','The light is red','The mirror is flat'],ans:0,
-   exp:'TIR requires two conditions: (1) traveling from higher n to lower n, AND (2) the angle of incidence exceeds the critical angle. Neither alone is sufficient.'},
-  {q:'The magnification of a lens is \u22122. This means the image is:',
-   opts:['Real, inverted, twice the object size','Virtual, upright, twice as big','Real, upright, half size','Virtual, inverted, twice as big'],ans:0,
-   exp:'m = \u2212d_i/d_o. Negative m means inverted (real image for converging lens). |m| = 2 means image is twice the size. m = \u22122 \u2192 real, inverted, 2\u00D7 magnified.'},
- ]},
-
- 'hs_em': {title:'HS Physics \u2014 Electricity & Magnetism', questions:[
-  {q:'Two charges +3 \u03BCC and +5 \u03BCC are 0.1 m apart. What is the force between them?',
-   opts:['13.5 N','1.35 N','135 N','0.135 N'],ans:0,
-   exp:'F = kq\u2081q\u2082/r\u00B2 = (9\u00D710\u2079)(3\u00D710\u207B\u2076)(5\u00D710\u207B\u2076)/(0.01) = (9\u00D710\u2079)(15\u00D710\u207B\u00B9\u00B2)/(10\u207B\u00B2) = 9(15)\u00D710\u207B\u00B9 = 13.5 N.'},
-  {q:'A resistor has V = 12 V and I = 3 A. What is its resistance and power?',
-   opts:['R = 4 \u03A9, P = 36 W','R = 36 \u03A9, P = 4 W','R = 0.25 \u03A9, P = 36 W','R = 4 \u03A9, P = 4 W'],ans:0,
-   exp:'R = V/I = 12/3 = 4 \u03A9. P = IV = 3(12) = 36 W.'},
-  {q:'Three 6\u03A9 resistors are connected in parallel. What is the equivalent resistance?',
-   opts:['2 \u03A9','18 \u03A9','3 \u03A9','6 \u03A9'],ans:0,
-   exp:'1/R_p = 1/6 + 1/6 + 1/6 = 3/6 = 1/2. R_p = 2 \u03A9.'},
-  {q:'A 100W lightbulb runs on 120V. How much current flows through it?',
-   opts:['0.833 A','12000 A','1.2 A','100 A'],ans:0,
-   exp:'P = IV. I = P/V = 100/120 = 0.833 A.'},
-  {q:'An electron moves at 10\u2076 m/s perpendicular to a magnetic field of 0.5 T. What is the magnetic force on it?',
-   opts:['8\u00D710\u207B\u00B9\u00B4 N','8\u00D710\u207B\u00B9\u00B9 N','5\u00D710\u207B\u00B2\u2076 N','4\u00D710\u207B\u00B9\u00B9 N'],ans:0,
-   exp:'F = qvB sin90\u00B0 = (1.6\u00D710\u207B\u00B9\u2079)(10\u2076)(0.5) = 8\u00D710\u207B\u00B9\u00B4 N.'},
-  {q:'Two resistors (4\u03A9 and 6\u03A9) are connected in series to a 20V battery. What is the current?',
-   opts:['2 A','3.33 A','5 A','1 A'],ans:0,
-   exp:'R_total = 4+6 = 10 \u03A9. I = V/R = 20/10 = 2 A.'},
-  {q:'What is the direction of the magnetic force on a positive charge moving east in a magnetic field pointing north?',
-   opts:['Upward (out of the ground)','Downward','South','West'],ans:0,
-   exp:'Using the right-hand rule: v (east) \u00D7 B (north) = upward. Point fingers east, curl north, thumb points up.'},
-  {q:'A copper wire has resistance 10 \u03A9. If its length is doubled and its cross-section is also doubled, what is the new resistance?',
-   opts:['10 \u03A9','20 \u03A9','5 \u03A9','40 \u03A9'],ans:0,
-   exp:'R = \u03C1L/A. If L \u2192 2L and A \u2192 2A: R\u2032 = \u03C1(2L)/(2A) = \u03C1L/A = R = 10 \u03A9.'},
-  {q:'Which best describes how a magnetic field differs from an electric field?',
-   opts:['Magnetic forces act on moving charges only; electric forces act on all charges','Magnetic fields are stronger','Electric fields require a medium','Magnetic fields can do work on charges'],ans:0,
-   exp:'Electric force (F=qE) acts on any charge. Magnetic force (F=qv\u00D7B) requires velocity. Also, magnetic forces are always perpendicular to velocity and do zero work.'},
-  {q:'A 12V battery is connected to a 4\u03A9 and 8\u03A9 resistor in parallel. What is the total current from the battery?',
-   opts:['4.5 A','1 A','2 A','1.5 A'],ans:0,
-   exp:'Each resistor gets 12V. I\u2081 = 12/4 = 3 A. I\u2082 = 12/8 = 1.5 A. Total = 4.5 A.'},
- ]},
-
-};
-
-// ---- PRACTICE EXAMS -------------------------------------
-var practiceExams = {
-
- 'apc_exam1': {
-  title: 'AP Physics C: Mechanics \u2014 Full Practice Exam 1',
-  label: 'AP Physics C',
-  time: '90 min',
-  desc: '35 MCQ + 3 FRQ \u00B7 Covers all units \u00B7 Calculator permitted',
-  mcq: [
-   {q:'A particle moves along a line with velocity v(t) = 6t \u2212 3t\u00B2 m/s. What is the displacement from t=0 to t=2?',opts:['4 m','8 m','12 m','0 m'],ans:0,exp:'x = \u222B\u2080\u00B2(6t\u22123t\u00B2)dt = [3t\u00B2\u2212t\u00B3]\u2080\u00B2 = (12\u22128)\u2212(0) = 4 m.'},
-   {q:'A force F(x) = (4\u22122x) N acts on a 2 kg particle. Using the work-energy theorem, find the speed at x=2 m if v(0)=0.',opts:['2 m/s','\u221A8 m/s','4 m/s','\u221A2 m/s'],ans:0,exp:'W = \u222B\u2080\u00B2(4\u22122x)dx = [4x\u2212x\u00B2]\u2080\u00B2 = 8\u22124 = 4 J. W = \u00BDmv\u00B2. v = \u221A(2W/m) = \u221A(8/2) = 2 m/s.'},
-   {q:'Which statement about the gravitational PE formula U = \u2212GMm/r is true?',opts:['U is always negative for a bound system','U can be positive','U equals zero at the surface','U increases as r decreases'],ans:0,exp:'For r > 0, U = \u2212GMm/r is always negative (bound system). It increases toward zero as r \u2192 \u221E.'},
-   {q:'A solid sphere and a hollow sphere of equal mass and radius roll from rest down the same incline. Which reaches the bottom first?',opts:['Solid sphere (I = 2/5 MR\u00B2 is smaller)','Hollow sphere','They tie','Depends on the incline angle'],ans:0,exp:'Solid sphere has I = 2/5 MR\u00B2; hollow has I = 2/3 MR\u00B2. Lower I means less rotational KE needed \u2192 more translational KE \u2192 higher speed. Solid sphere wins.'},
-   {q:'At the equilibrium position of a mass-spring system, the net force is:',opts:['Zero','Maximum','Directed toward equilibrium','Equal to kA'],ans:0,exp:'At x=0 (equilibrium), F = \u2212k(0) = 0. The net force is zero; acceleration is zero; speed is maximum.'},
-   {q:'A satellite\u2019s speed decreases as it moves to a higher orbit. Its total mechanical energy:',opts:['Increases (less negative)','Decreases','Stays constant','Becomes positive'],ans:0,exp:'E = \u2212GMm/2r. As r increases, |E| decreases, so E increases toward zero (less negative). Energy must be added to raise orbit.'},
-   {q:'Which equation correctly relates torque to angular momentum?',opts:['\u03C4_net = dL/dt','\u03C4_net = L/t','\u03C4_net = I\u03C9','L = \u03C4t only when \u03C4 is constant'],ans:0,exp:'\u03C4_net = dL/dt is the rotational analog of F = dp/dt. It is always valid.'},
-   {q:'A 2 kg object on a spring (k=50 N/m) has amplitude A=0.4 m. What is the maximum speed?',opts:['2 m/s','0.4 m/s','1.4 m/s','4 m/s'],ans:0,exp:'\u03C9 = \u221A(k/m) = \u221A(25) = 5 rad/s. v_max = A\u03C9 = 0.4(5) = 2 m/s.'},
-   {q:'A rigid body rotates with \u03C9(t) = 3t\u00B2 rad/s. What is the angular displacement from t=0 to t=2 s?',opts:['8 rad','12 rad','4 rad','16 rad'],ans:0,exp:'\u03B8 = \u222B\u2080\u00B2 3t\u00B2 dt = [t\u00B3]\u2080\u00B2 = 8 rad.'},
-   {q:'An object is launched vertically with enough speed to escape Earth\u2019s gravity. At what speed does it leave the surface?',opts:['11.2 km/s','7.9 km/s','9.8 km/s','5 km/s'],ans:0,exp:'v_esc = \u221A(2GM/R) = \u221A(2gR) \u2248 \u221A(2 \u00D7 9.8 \u00D7 6.4\u00D710\u2076) \u2248 11.2 km/s.'},
-  ],
-  frq: [
-   {num:1,stem:'A 3 kg block is attached to a spring (k = 120 N/m) on a horizontal frictionless surface.',parts:['(a) What is the period of oscillation?','(b) The block is pulled 0.25 m from equilibrium and released. Write equations for x(t) and v(t).','(c) At what position is the speed 2 m/s? What is the PE at that point?','(d) The surface now has \u03BC_k = 0.1. Using energy methods, how far does the block travel before stopping?']},
-   {num:2,stem:'A 0.8 kg ball on a 1.2 m string swings in a vertical circle.',parts:['(a) What is the minimum speed at the top of the circle to maintain tension?','(b) If the speed at the top is 5 m/s, what is the tension at the top and at the bottom?','(c) Using energy conservation, find the speed at the bottom if the speed at the top is 5 m/s. (Radius = 1.2 m)','(d) Sketch a free body diagram at the top and at the bottom, labeling all forces.']},
-   {num:3,stem:'A solid disk (M = 2 kg, R = 0.4 m) is free to rotate about its center. A rope wrapped around it exerts a constant force of 10 N tangentially.',parts:['(a) Calculate the moment of inertia of the disk.','(b) Calculate the angular acceleration of the disk.','(c) Starting from rest, what is the angular velocity after 3 s?','(d) How much rotational kinetic energy has the disk gained after 3 s?','(e) Verify (d) using the work-energy theorem (W = \u03C4\u03B8).']}
-  ]
- },
-
- 'apc_exam2': {
-  title: 'AP Physics C: Mechanics \u2014 Full Practice Exam 2',
-  label: 'AP Physics C',
-  time: '90 min',
-  desc: '35 MCQ + 3 FRQ \u00B7 Emphasis on Newton\u2019s Laws & Momentum \u00B7 Calculus required',
-  mcq: [
-   {q:'A force F = (3t\u00B2 + 2) N acts on a 2 kg mass at rest at t=0. What is the velocity at t=3 s?',opts:['15.5 m/s','14 m/s','10 m/s','27 m/s'],ans:0,exp:'a = F/m = (3t\u00B2+2)/2. v = \u222Ba dt = \u222B\u2080\u00B3(3t\u00B2+2)/2 dt = [(t\u00B3+2t)/2]\u2080\u00B3 = (27+6)/2 = 16.5 m/s. Wait: recalc: \u222B(3t\u00B2+2)/2 = (3t\u00B3/3 + 2t)/2 = (t\u00B3+2t)/2. At t=3: (27+6)/2 = 16.5 m/s.'},
-   {q:'A 5 kg block is on a 40\u00B0 incline with \u03BC_k=0.25. What is the net acceleration if the block slides down? (sin40\u00B0=0.64, cos40\u00B0=0.77)',opts:['4.5 m/s\u00B2','6.4 m/s\u00B2','2.1 m/s\u00B2','8.4 m/s\u00B2'],ans:0,exp:'a = g(sin\u03B8 \u2212 \u03BC_k cos\u03B8) = 9.8(0.64 \u2212 0.25\u00D70.77) = 9.8(0.64\u22120.1925) = 9.8(0.4475) \u2248 4.4 m/s\u00B2.'},
-   {q:'Which of these collisions violates conservation of momentum?',opts:['None; conservation of momentum holds when net external force is zero','A perfectly inelastic collision','An elastic collision','A collision where kinetic energy increases'],ans:0,exp:'Momentum is conserved whenever the net external force on the system is zero. All collision types (elastic, inelastic, super-elastic) can conserve momentum.'},
-   {q:'A 0.2 kg ball moving at 5 m/s right collides elastically with a 0.6 kg ball at rest. What is the final velocity of the 0.2 kg ball?',opts:['\u22122.5 m/s (bounces back)','1.25 m/s','5 m/s','0 m/s'],ans:0,exp:'v\u2081\u2032 = (m\u2081\u2212m\u2082)v\u2081/(m\u2081+m\u2082) = (0.2\u22120.6)(5)/(0.8) = (\u22120.4)(5)/0.8 = \u22122.5 m/s.'},
-   {q:'A satellite in circular orbit has kinetic energy KE. What is its total mechanical energy?',opts:['\u2212KE','+KE','2KE','Zero'],ans:0,exp:'For circular orbit: KE = GMm/2r and PE = \u2212GMm/r = \u22122KE. Total E = KE + PE = KE \u2212 2KE = \u2212KE.'},
-   {q:'An object of mass m moves in a circle of radius r. If the speed doubles, the centripetal force required:',opts:['Quadruples','Doubles','Stays the same','Halves'],ans:0,exp:'F_c = mv\u00B2/r. If v doubles: F_c\u2032 = m(2v)\u00B2/r = 4mv\u00B2/r = 4F_c.'},
-   {q:'A spring with k=200 N/m and a 0.5 kg mass is in SHM. The mass is at x=0.1 m with v=2 m/s. What is the amplitude?',opts:['\u221A0.03 m = 0.173 m','0.1 m','0.2 m','0.14 m'],ans:0,exp:'E = \u00BDmv\u00B2 + \u00BDkx\u00B2 = \u00BD(0.5)(4) + \u00BD(200)(0.01) = 1 + 1 = 2 J. E = \u00BDkA\u00B2. A = \u221A(2E/k) = \u221A(4/200) = \u221A0.02 \u2248 0.141 m.'},
-   {q:'Which is correct about work done by a central force (like gravity)?',opts:['W depends only on start and end positions (path-independent)','W depends on the path taken','W is always zero','W is always positive'],ans:0,exp:'Gravity and other central/conservative forces have path-independent work. W = \u2212\u0394U depends only on positions.'},
-   {q:'A pulsar spins up from 2 to 10 rad/s in 0.5 s with \u03B1 = constant. How many revolutions does it make?',opts:['~0.955 rev','1 rev','0.5 rev','2 rev'],ans:0,exp:'\u03B8 = (\u03C9+\u03C9\u2080)/2 \u00D7 t = (10+2)/2 \u00D7 0.5 = 3 rad. Revolutions = 3/(2\u03C0) \u2248 0.477 rev.'},
-   {q:'At what orbital radius does a satellite have the same period as Earth\u2019s rotation (geosynchronous)?',opts:['~42,200 km from Earth\u2019s center','6,400 km','384,000 km','100 km'],ans:0,exp:"From Kepler's 3rd: r = (GMT\u00B2/4\u03C0\u00B2)^(1/3) with T=86400s, GM=3.986\u00D710\u00B9\u2074 m\u00B3/s\u00B2 gives r \u2248 42,200 km."},
-  ],
-  frq: [
-   {num:1,stem:'A variable force F(x) = (10 \u2212 2x\u00B2) N acts on a 4 kg particle moving along the x-axis starting from rest at x=0.',parts:['(a) Calculate the work done by F from x=0 to x=2 m.','(b) Using the work-energy theorem, find the speed at x=2 m.','(c) Find the position where the force is zero. What is the particle\u2019s speed there?','(d) Sketch F(x) vs. x and shade the area representing work done from x=0 to x=2 m.']},
-   {num:2,stem:'A 1500 kg car traveling at 25 m/s north collides with a 2500 kg truck at 15 m/s east. They stick together.',parts:['(a) Find the magnitude and direction of the final velocity.','(b) Calculate the kinetic energy lost in the collision. What type of collision is this?','(c) If the collision lasted 0.3 s, what was the average impulsive force on each vehicle?','(d) Are the forces on each vehicle equal? Explain using Newton\u2019s laws.']},
-   {num:3,stem:'A space probe of mass 1200 kg is at 2R_E above Earth\u2019s surface (R_E = 6.4\u00D710\u2076 m, M_E = 6\u00D710\u00B2\u2074 kg, G = 6.67\u00D710\u207B\u00B9\u00B9).',parts:['(a) Calculate the gravitational force on the probe at that altitude.','(b) Calculate the orbital speed if the probe is in circular orbit at that radius.','(c) Calculate the gravitational PE relative to infinity.','(d) What is the total mechanical energy? Is the probe bound or unbound?']}
-  ]
- },
-
- 'hs_exam1': {
-  title: 'High School Physics \u2014 Full Practice Exam 1',
-  label: 'HS Physics',
-  time: '60 min',
-  desc: '25 MCQ + 2 FRQ \u00B7 Covers kinematics, forces, energy, momentum',
-  mcq: [
-   {q:'A car goes from 0 to 30 m/s in 10 s with constant acceleration. How far does it travel?',opts:['150 m','300 m','30 m','60 m'],ans:0,exp:'d = \u00BD(v\u2080+v)t = \u00BD(0+30)(10) = 150 m. Or: a=3 m/s\u00B2, d = \u00BDat\u00B2 = \u00BD(3)(100) = 150 m.'},
-   {q:'A ball is thrown horizontally at 20 m/s from a 80 m high building. How far from the building does it land? (g=10)',opts:['80 m','20 m','40 m','160 m'],ans:0,exp:'Time to fall: 80 = \u00BD(10)t\u00B2. t = 4 s. Horizontal: x = 20(4) = 80 m.'},
-   {q:'A 50 kg skier descends 30 m vertically down a slope, starting from rest. Assuming no friction, what is the speed at the bottom?',opts:['\u221A600 \u2248 24.5 m/s','\u221A300 m/s','30 m/s','60 m/s'],ans:0,exp:'mgh = \u00BDmv\u00B2. v = \u221A(2gh) = \u221A(2\u00D710\u00D730) = \u221A600 \u2248 24.5 m/s.'},
-   {q:'A 4 kg box is pushed with 20 N on a surface with \u03BC_k=0.3. What is the acceleration? (g=10)',opts:['2 m/s\u00B2','5 m/s\u00B2','3 m/s\u00B2','0.5 m/s\u00B2'],ans:0,exp:'F_net = 20 \u2212 \u03BC_k mg = 20 \u2212 0.3(4)(10) = 20\u221212 = 8 N. a = 8/4 = 2 m/s\u00B2.'},
-   {q:'A 1500 kg car stops from 20 m/s in 4 s. What is the braking force?',opts:['7500 N','3750 N','30000 N','1500 N'],ans:0,exp:'a = (0\u221220)/4 = \u22125 m/s\u00B2. F = ma = 1500(5) = 7500 N.'},
-   {q:'Which has more momentum: a 2 kg object at 10 m/s or a 5 kg object at 3 m/s?',opts:['The 2 kg object (p=20)','The 5 kg object (p=15)','They are equal','Need kinetic energy to compare'],ans:0,exp:'p\u2081 = 2\u00D710 = 20 kg\u00B7m/s. p\u2082 = 5\u00D73 = 15 kg\u00B7m/s. The 2 kg object has more momentum.'},
-   {q:'An 800 kg car moving at 15 m/s collides with a stationary 1200 kg truck and they stick together. What is their final speed?',opts:['6 m/s','10 m/s','12 m/s','3 m/s'],ans:0,exp:'800(15) = 2000 v_f. v_f = 12000/2000 = 6 m/s.'},
-   {q:'A 60 W light bulb runs for 5 hours. How much energy does it use?',opts:['1080 kJ','300 kJ','360 kJ','0.3 kJ'],ans:0,exp:'E = Pt = 60 W \u00D7 5\u00D73600 s = 60 \u00D7 18000 = 1,080,000 J = 1080 kJ.'},
-   {q:'A force of 40 N acts on an object at 60\u00B0 to its motion over 3 m. What is the work done?',opts:['60 J','120 J','103.9 J','0 J'],ans:0,exp:'W = Fd cos\u03B8 = 40(3) cos60\u00B0 = 120(0.5) = 60 J.'},
-   {q:'A 2 kg ball at 5 m/s collides elastically with a 2 kg ball at rest. What happens?',opts:['First ball stops; second moves at 5 m/s','Both move at 2.5 m/s','First moves at 5 m/s; second stays','Both stop'],ans:0,exp:'Elastic equal-mass collision: first ball stops; second ball takes the full velocity (5 m/s).'},
-   {q:'What is the net force on an object at rest on a frictionless incline?',opts:['Not zero \u2014 gravity component along slope acts','Zero because the object is in equilibrium','Equal to its weight','Directed upward'],ans:0,exp:'On a frictionless incline, the net force is not zero. Normal force balances the perpendicular component; the net force = mg sin\u03B8 along the slope, causing acceleration.'},
-   {q:'A spring (k=300 N/m) is compressed 0.1 m. How much PE is stored?',opts:['1.5 J','3 J','0.15 J','30 J'],ans:0,exp:'PE = \u00BDkx\u00B2 = \u00BD(300)(0.01) = 1.5 J.'},
-   {q:'Which demonstrates Newton\u2019s Third Law?',opts:['A rocket expelling exhaust gas and moving forward','A ball rolling down a ramp','A book sitting on a table','A satellite in orbit'],ans:0,exp:"Newton's 3rd: rocket pushes gas backward; gas pushes rocket forward. Equal and opposite forces on different objects."},
-   {q:'What is the KE of a 70 kg runner moving at 6 m/s?',opts:['1260 J','420 J','2520 J','210 J'],ans:0,exp:'KE = \u00BDmv\u00B2 = \u00BD(70)(36) = 1260 J.'},
-   {q:'A 10 kg object is raised 5 m in 10 s at constant speed. What is the minimum power needed?',opts:['50 W','500 W','5 W','100 W'],ans:0,exp:'P = W/t = mgh/t = 10(10)(5)/10 = 50 W.'},
-   {q:'An object is thrown upward. At the highest point, its acceleration is:',opts:['g downward (9.8 m/s\u00B2)','Zero','g upward','Depends on initial speed'],ans:0,exp:'At the highest point, velocity = 0 but acceleration is still g downward. The object is still in free fall.'},
-   {q:'A 5 kg block slides 4 m down a 30\u00B0 ramp (\u03BC_k=0.2). Using energy, find the speed at the bottom. (sin30\u00B0=0.5, cos30\u00B0=0.87)',opts:['\u221A(16.9) \u2248 4.1 m/s','4 m/s','\u221A30 m/s','5 m/s'],ans:0,exp:'h = 4 sin30\u00B0 = 2 m. PE = mgh = 100 J. Friction work = \u03BC mg cos\u03B8 d = 0.2(5)(10)(0.87)(4) = 34.8 J. KE = 100\u221234.8 = 65.2 J. v = \u221A(2KE/m) = \u221A26.1 \u2248 5.1 m/s.'},
-   {q:'Which has greater kinetic energy: a 1 kg object at 10 m/s or a 4 kg object at 5 m/s?',opts:['The 1 kg object (KE=50 J vs 50 J \u2014 equal)','The 4 kg object','The 1 kg object','Need momentum to compare'],ans:0,exp:'KE\u2081 = \u00BD(1)(100) = 50 J. KE\u2082 = \u00BD(4)(25) = 50 J. They are equal!'},
-   {q:'A satellite orbits Earth at radius r. If the radius increases to 4r, by what factor does the period change?',opts:['8','2','4','16'],ans:0,exp:"Kepler's 3rd: T \u221D r^(3/2). T'/T = (4)\u00B3\u00C2\u00B2 = 4\u00B9\u00B7\u00B5 = 8."},
-   {q:'A 1200 kg car moving at 25 m/s has brakes applied. With a 6000 N braking force, how far does it take to stop?',opts:['62.5 m','31.25 m','150 m','125 m'],ans:0,exp:'Using v\u00B2 = v\u2080\u00B2 + 2ad: a = F/m = 6000/1200 = 5 m/s\u00B2. 0 = 625 \u2212 10d. d = 62.5 m.'},
-  ],
-  frq: [
-   {num:1,stem:'A 3 kg block is on a horizontal surface with \u03BC_s=0.5 and \u03BC_k=0.4. A force is applied at 20\u00B0 above horizontal.',parts:['(a) Draw a complete free body diagram for the block when the applied force is 15 N.','(b) Calculate the normal force when F=15 N.','(c) Will the block begin to move? Show your calculation.','(d) If F is increased to 25 N, find the acceleration of the block. (g=10 m/s\u00B2)']},
-   {num:2,stem:'A 5 kg block is released from rest at the top of a 4 m ramp inclined at 37\u00B0. \u03BC_k=0.15 on the ramp surface. (sin37\u00B0=0.6, cos37\u00B0=0.8, g=10)',parts:['(a) Using energy methods, find the speed at the bottom of the ramp.','(b) At the bottom, the block hits a spring (k=500 N/m). Find the maximum compression of the spring.','(c) The block bounces back up the ramp. How far up does it travel?','(d) Compare the total energy at the start vs. the energy after the spring compression. Explain where the energy went.']}
-  ]
- },
-
- 'hs_exam2': {
-  title: 'High School Physics \u2014 Full Practice Exam 2',
-  label: 'HS Physics',
-  time: '60 min',
-  desc: '20 MCQ \u00B7 Waves, Light, E&M \u00B7 Covers second semester topics',
-  mcq: [
-   {q:'A wave travels at 300 m/s with period 0.002 s. What is its wavelength?',opts:['0.6 m','150000 m','0.006 m','3 m'],ans:0,exp:'\u03BB = v/f = vT = 300 \u00D7 0.002 = 0.6 m.'},
-   {q:'Which color of light refracts the most when entering glass?',opts:['Violet (highest n)','Red','Yellow','They all refract equally'],ans:0,exp:'Violet light has the highest frequency, so it interacts most strongly with the glass medium and has the highest index of refraction, bending the most (dispersion in prisms).'},
-   {q:'A ray of light strikes a mirror at 35\u00B0 to the surface. What is the angle of reflection from the normal?',opts:['55\u00B0','35\u00B0','70\u00B0','90\u00B0'],ans:0,exp:'Angle to surface = 35\u00B0. Angle of incidence (from normal) = 90\u00B0 \u2212 35\u00B0 = 55\u00B0. Law of reflection: angle of reflection = angle of incidence = 55\u00B0.'},
-   {q:'An object is 20 cm in front of a converging lens (f=8 cm). Calculate the image distance.',opts:['13.3 cm behind lens','\u221213.3 cm','8 cm','40 cm'],ans:0,exp:'1/f = 1/d_o + 1/d_i. 1/8 = 1/20 + 1/d_i. 1/d_i = 1/8\u22121/20 = 5/40\u22122/40 = 3/40. d_i = 40/3 \u2248 13.3 cm.'},
-   {q:'What is the speed of light in glass with n=1.6?',opts:['1.875\u00D710\u2078 m/s','4.8\u00D710\u2078 m/s','3\u00D710\u2078 m/s','1.6\u00D710\u2078 m/s'],ans:0,exp:'v = c/n = (3\u00D710\u2078)/1.6 = 1.875\u00D710\u2078 m/s.'},
-   {q:'Two charges of +2 \u03BCC and \u22122 \u03BCC are 0.05 m apart. The force between them is:',opts:['14.4 N attractive','14.4 N repulsive','7.2 N attractive','1.44 N'],ans:0,exp:'F = kq\u2081q\u2082/r\u00B2 = (9\u00D710\u2079)(2\u00D710\u207B\u2076)(2\u00D710\u207B\u2076)/(0.0025) = (9\u00D710\u2079)(4\u00D710\u207B\u00B9\u00B2)/(2.5\u00D710\u207B\u00B3) = 14.4 N. Opposite charges: attractive.'},
-   {q:'A circuit has a 9V battery and two 3\u03A9 resistors in series. What is the current?',opts:['1.5 A','3 A','0.5 A','9 A'],ans:0,exp:'R_total = 3+3 = 6\u03A9. I = V/R = 9/6 = 1.5 A.'},
-   {q:'What is the voltage across the first 3\u03A9 resistor in the previous circuit?',opts:['4.5 V','9 V','3 V','1.5 V'],ans:0,exp:'V = IR = 1.5 \u00D7 3 = 4.5 V. In series, voltage divides proportionally.'},
-   {q:'A proton moves east at 10\u2076 m/s through a magnetic field pointing upward. What is the direction of the magnetic force?',opts:['South','North','East','West'],ans:0,exp:'F = qv\u00D7B. v = east, B = up. Using right-hand rule: v\u00D7B = east \u00D7 up = south. (East \u00D7 Up: fingers east, curl up, thumb points south.)'},
-   {q:'A current-carrying wire experiences no magnetic force when:',opts:['The current is parallel to the magnetic field','The current is perpendicular to the field','The field is very strong','The wire is horizontal'],ans:0,exp:'F = BIL sin\u03B8. When \u03B8 = 0\u00B0 (current parallel to B), sin0\u00B0 = 0, so F = 0.'},
-   {q:'Which statement about electric field lines is correct?',opts:['They point from positive to negative charges','They point from negative to positive','They form closed loops','They can cross each other'],ans:0,exp:'Electric field lines point in the direction a positive test charge would move: away from positive charges, toward negative charges.'},
-   {q:'A diffraction grating has 500 lines/mm. Light with \u03BB=600 nm hits it. What is the first-order angle?',opts:['17.5\u00B0','30\u00B0','5.2\u00B0','none'],ans:0,exp:'d = 1/500 mm = 2\u00D710\u207B\u2076 m. d sin\u03B8 = m\u03BB. sin\u03B8 = 600\u00D710\u207B\u2079/(2\u00D710\u207B\u2076) = 0.3. \u03B8 = arcsin(0.3) \u2248 17.5\u00B0.'},
-   {q:'A transformer has 200 turns in the primary and 1000 turns in the secondary. If 120 V is input, what is the output voltage?',opts:['600 V','24 V','120 V','12 V'],ans:0,exp:'V_s/V_p = N_s/N_p. V_s = 120 \u00D7 1000/200 = 600 V. This is a step-up transformer.'},
-   {q:'Which describes an open-pipe organ pipe at the first harmonic (fundamental)?',opts:['Antinodes at both ends, one node in middle; \u03BB = 2L','Nodes at both ends','One node at each end','Antinode at one end, node at the other'],ans:0,exp:'Open-open pipe: antinodes at both open ends. Fundamental has antinodes at both ends and one node in the middle. \u03BB = 2L.'},
-   {q:'What is the frequency of a closed organ pipe of length 0.4 m at the fundamental? (v_sound = 340 m/s)',opts:['212.5 Hz','425 Hz','850 Hz','106 Hz'],ans:0,exp:'Closed-open pipe: fundamental \u03BB = 4L = 1.6 m. f = v/\u03BB = 340/1.6 = 212.5 Hz.'},
-   {q:'What is a photon?',opts:['A packet (quantum) of electromagnetic energy with E=hf','A particle with mass equal to an electron','A unit of electric charge','A type of wave with no particle properties'],ans:0,exp:'Light behaves as both wave and particle. A photon is a quantum of electromagnetic radiation carrying energy E = hf, where h is Planck\u2019s constant.'},
-   {q:'Which electromagnetic wave has the longest wavelength?',opts:['Radio waves','Infrared','Visible light','X-rays'],ans:0,exp:'The EM spectrum from longest to shortest wavelength: radio > microwave > infrared > visible > UV > X-rays > gamma rays.'},
-   {q:'A glass fiber uses total internal reflection to guide light. This requires:',opts:['Light traveling from denser glass to less dense air at angle > critical angle','Any angle of incidence','Light traveling from air into glass','Very bright light only'],ans:0,exp:'TIR occurs when light goes from denser to less dense medium (glass to air) at an angle exceeding the critical angle. This is the basis of fiber optic cables.'},
-   {q:'What happens to current when two more resistors are added in parallel to an existing circuit?',opts:['Total current increases; each branch has the same voltage','Total current decreases','Total resistance increases','Voltage across each resistor decreases'],ans:0,exp:'Adding resistors in parallel decreases total resistance, which increases total current from the battery. Each branch has the same voltage as the source.'},
-   {q:'Which experiment demonstrated that light has a wave nature?',opts:["Young's double-slit experiment (interference fringes)","Millikan's oil-drop experiment","Rutherford's gold foil experiment","Michelson-Morley experiment"],ans:0,exp:"Young's double-slit (1801) showed interference of light \u2014 the hallmark of wave behavior. Constructive and destructive interference produce alternating bright and dark fringes."},
-  ],
-  frq: [
-   {num:1,stem:'In a Young\u2019s double-slit experiment, light of wavelength 480 nm passes through two slits separated by 0.3 mm. A screen is placed 1.5 m away.',parts:['(a) Calculate the distance between adjacent bright fringes.','(b) What is the path difference to the third dark fringe?','(c) If the wavelength is increased to 640 nm, how does the fringe spacing change?','(d) If the slit separation is doubled, describe what happens to the pattern.']},
-   {num:2,stem:'A circuit contains a 24 V battery, a 6\u03A9 resistor and an 8\u03A9 resistor in parallel, with that combination in series with a 4\u03A9 resistor.',parts:['(a) Draw the circuit diagram.','(b) Find the equivalent resistance of the 6\u03A9 and 8\u03A9 in parallel.','(c) Find the total current from the battery.','(d) Find the voltage drop across each element.','(e) Find the power dissipated by each resistor and verify that total power = V\u00B7I_total.']}
-  ]
- },
-
- 'hs_exam3': {
-  title: 'High School Physics \u2014 Full Practice Exam 3',
-  label: 'HS Physics',
-  time: '60 min',
-  desc: 'Mixed topics \u00B7 All units \u00B7 Multiple choice + FRQ',
-  mcq: [
-   {q:'A car traveling at 30 m/s skids to a stop in 45 m. What is the coefficient of kinetic friction? (g=10)',opts:['1.0','0.5','2.0','0.25'],ans:0,exp:'v\u00B2 = v\u2080\u00B2 + 2ax. 0 = 900 + 2a(45). a = \u221210 m/s\u00B2. F_net = ma = \u03BC mg. \u03BC = a/g = 10/10 = 1.0.'},
-   {q:'A 2 kg mass swings from a 3 m pendulum. It is released from 60\u00B0. What is its speed at the bottom? (g=10, cos60\u00B0=0.5)',opts:['\u221A30 \u2248 5.5 m/s','\u221A60 m/s','3 m/s','10 m/s'],ans:0,exp:'h = L(1\u2212cos\u03B8) = 3(1\u22120.5) = 1.5 m. v = \u221A(2gh) = \u221A(2\u00D710\u00D71.5) = \u221A30 \u2248 5.5 m/s.'},
-   {q:'What is the period of a 2.5 m pendulum on Earth? (g=10)',opts:['\u03C0 s','\u221A10 s','1 s','2.5 s'],ans:0,exp:'T = 2\u03C0\u221A(L/g) = 2\u03C0\u221A(0.25) = 2\u03C0(0.5) = \u03C0 s.'},
-   {q:'A 100\u03A9 resistor and a 400\u03A9 resistor are in series with a 50V source. What is the voltage across the 100\u03A9?',opts:['10 V','40 V','50 V','25 V'],ans:0,exp:'I = 50/500 = 0.1 A. V\u2081 = IR = 0.1(100) = 10 V.'},
-   {q:'Which wave phenomenon explains why you can hear around corners?',opts:['Diffraction','Reflection','Refraction','Interference'],ans:0,exp:'Diffraction: waves spread around obstacles and through openings. Sound diffracts easily because its wavelengths are comparable to the size of everyday openings.'},
-   {q:'An object in a glass (n=1.5) looks shallower than it is. The apparent depth = real depth / n. If a fish is 0.9 m deep, apparent depth is:',opts:['0.6 m','1.35 m','0.9 m','1.5 m'],ans:0,exp:'Apparent depth = 0.9/1.5 = 0.6 m. Light bends away from normal leaving water, making objects appear closer to the surface.'},
-   {q:'A 0.5 kg bullet moving at 400 m/s enters and embeds in a 4.5 kg wooden block at rest. The block+bullet system then slides. What is their speed?',opts:['40 m/s','200 m/s','4 m/s','44.4 m/s'],ans:0,exp:'0.5(400) = 5 v_f. v_f = 200/5 = 40 m/s.'},
-   {q:'Which statement correctly describes the electric field inside a conductor at electrostatic equilibrium?',opts:['It is zero','It points from + to \u2212','It equals the external field','It is maximum at the center'],ans:0,exp:'Inside a conductor at electrostatic equilibrium, free charges redistribute until E = 0 everywhere inside. Any excess charge resides on the surface.'},
-   {q:'A wave on a string has equation y = 0.02 sin(5x \u2212 100t) m. What is the wave speed?',opts:['20 m/s','100 m/s','5 m/s','0.02 m/s'],ans:0,exp:'For y = A sin(kx \u2212 \u03C9t): k = 5 rad/m, \u03C9 = 100 rad/s. v = \u03C9/k = 100/5 = 20 m/s.'},
-   {q:'An object at 30 cm from a diverging lens (f = \u221220 cm) forms an image at:',opts:['\u221212 cm (virtual, same side)','12 cm','60 cm','\u221260 cm'],ans:0,exp:'1/f = 1/d_o + 1/d_i. 1/(\u221220) = 1/30 + 1/d_i. 1/d_i = \u22121/20\u22121/30 = \u22123/60\u22122/60 = \u22125/60. d_i = \u221212 cm. Virtual image on same side as object.'},
-   {q:'What charge does a 10 \u03BCF capacitor store when charged to 15 V?',opts:['150 \u03BCC','1.5 mC','150 C','15 \u03BCC'],ans:0,exp:'Q = CV = (10\u00D710\u207B\u2076)(15) = 150\u00D710\u207B\u2076 C = 150 \u03BCC.'},
-   {q:'A tuning fork vibrates at 440 Hz. If the temperature drops, the speed of sound decreases. What happens to the wavelength of sound?',opts:['Wavelength decreases; frequency stays at 440 Hz','Wavelength increases','Frequency decreases','Both wavelength and frequency decrease'],ans:0,exp:'Frequency is set by the source (440 Hz). With lower speed: \u03BB = v/f decreases.'},
-   {q:'Which describes a real image?',opts:['Formed by actual intersection of light rays; can be projected on a screen','Formed where light rays appear to diverge from','Always upright','Always produced by convex lenses only'],ans:0,exp:'Real images are formed where light rays actually converge. They can be projected onto a screen. Concave mirrors and converging lenses form real images when object is beyond the focal point.'},
-   {q:'What is the net charge of an ion that has 17 protons and 18 electrons?',opts:['\u22121e (singly negative)','0','2e','+1e'],ans:0,exp:'Net charge = protons \u2212 electrons = 17 \u2212 18 = \u22121. This is Cl\u207B ion with charge \u22121.6\u00D710\u207B\u00B9\u2079 C.'},
-   {q:'A light wave passes from air (n=1) into diamond (n=2.42). The frequency of the light:',opts:['Remains unchanged','Doubles','Halves','Increases by 2.42'],ans:0,exp:'Frequency is determined by the light source, not the medium. When light enters a medium, its speed and wavelength change, but frequency is unchanged.'},
-  ],
-  frq: [
-   {num:1,stem:'A 0.5 kg ball attached to a 0.8 m string swings in a horizontal circle (conical pendulum) making an angle of 30\u00B0 with the vertical.',parts:['(a) Draw a free body diagram showing all forces on the ball.','(b) Write equations for the vertical and horizontal net forces.','(c) Find the tension in the string. (g=10, cos30\u00B0=0.87, sin30\u00B0=0.5)','(d) Find the speed of the ball.','(e) Find the period of revolution.']},
-   {num:2,stem:'A glass prism (n=1.6) has an apex angle of 60\u00B0. Light enters one face at normal incidence.',parts:['(a) Find the angle of incidence at the second face inside the prism.','(b) Find the angle of refraction as light exits the second face.','(c) Calculate the critical angle for glass-air interface.','(d) Does total internal reflection occur at the second surface? Justify your answer.']}
-  ]
- },
-
-};
-
-// ---- CLASS PORTAL DATA ----------------------------------
-var classPortalData = [
- {id:'apphysicsc', name:'AP Physics C: Mechanics', icon:'\uD83D\uDE80', dept:'AP Physics',
-  exam:'May 3, 2027 \u00B7 Calculus-based \u00B7 MCQ + FRQ',
-  tags:['ap','quiz','proj'],
-  quizTopics:['apc_kinematics','apc_newton','apc_energy','apc_momentum','apc_rotation','apc_gravitation','apc_shm'],
-  examKeys:['apc_exam1','apc_exam2'],
-  hasProjectile:true},
- {id:'hsphysics', name:'High School Physics', icon:'\u26A1', dept:'Physics',
-  exam:'Mechanics \u00B7 Waves \u00B7 Light \u00B7 E&M',
-  tags:['quiz','proj'],
-  quizTopics:['hs_kinematics','hs_forces','hs_energy','hs_waves','hs_light','hs_em'],
-  examKeys:['hs_exam1','hs_exam2','hs_exam3'],
-  hasProjectile:true},
 ];
 
-var classPrintables = {
- apphysicsc:[
-  {title:'AP Physics C: Mechanics \u2014 Full Study Guide',desc:'Kinematics, Newton\u2019s Laws, Work-Energy, Momentum, Rotation, Gravitation, SHM. All units. Calculus-based.',frqUrl:'https://apcentral.collegeboard.org/courses/ap-physics-c-mechanics/exam/past-exam-questions'},
-  {title:'AP Physics C \u2014 Formula Sheet',desc:'All official formulas organized by unit. Print and use as a reference sheet.',frqUrl:'https://apcentral.collegeboard.org/media/pdf/physics-c-mechanics-equations-tables.pdf'},
- ],
- hsphysics:[
-  {title:'HS Physics \u2014 Full Study Guide',desc:'Kinematics, forces, energy, momentum, waves, light, and E&M with worked examples and key equations.',frqUrl:'https://www.physicsclassroom.com'},
-  {title:'HS Physics \u2014 Formula Sheet',desc:'One-page formula reference covering all units. Print for use during review.',frqUrl:'https://www.physicsclassroom.com'},
- ],
-};
+// ---- PRACTICE ENGINE ----------------------------------------
+var _practiceFilter = 'all';
+var _practiceQuery  = '';
 
-// ---- BUILD CLASSES MENU ---------------------------------
-function buildClassesMenu(){
- var c=document.getElementById('classesMenuSections');if(!c)return;c.innerHTML='';
- classPortalData.forEach(function(cls){
-  var card=document.createElement('button');card.className='class-card';
-  var tagHTML=cls.tags.map(function(t){var L={ap:'AP',quiz:'Quizzes & Exams',proj:'Projectile'};return '<span class="class-card-tag '+t+'">'+L[t]+'</span>';}).join('');
-  card.innerHTML='<span class="class-card-icon">'+cls.icon+'</span><div class="class-card-body"><div class="class-card-name">'+cls.name+'</div><div class="class-card-exam">'+cls.exam+'</div><div class="class-card-tags">'+tagHTML+'</div></div><span class="class-card-arrow">\u203A</span>';
-  card.addEventListener('click',function(){openClassPortal(cls.id);});
-  c.appendChild(card);
+function practiceSetFilter(f, btn) {
+ _practiceFilter = f;
+ document.querySelectorAll('.pf-btn').forEach(function(b){ b.classList.remove('active'); });
+ if(btn) btn.classList.add('active');
+ practiceFilter();
+}
+
+function practiceFilter() {
+ var raw = document.getElementById('practiceSearch');
+ _practiceQuery = raw ? raw.value.toLowerCase().trim() : '';
+ var container = document.getElementById('practiceResults');
+ if(!container) return;
+
+ var matched = practiceTopics.filter(function(t) {
+  if(_practiceFilter === 'ap'  && t.level !== 'ap')  return false;
+  if(_practiceFilter === 'reg' && t.level !== 'reg') return false;
+  if(!_practiceQuery) return true;
+  var haystack = (t.name + ' ' + t.tags.join(' ')).toLowerCase();
+  return haystack.includes(_practiceQuery);
  });
-}
 
-// ---- OPEN CLASS PORTAL ----------------------------------
-function openClassPortal(classId){
- var cls=classPortalData.find(function(c){return c.id===classId;});if(!cls)return;
- document.getElementById('classPortalTitle').textContent=cls.name;
- document.getElementById('classPortalMeta').textContent=cls.dept+' \u00B7 '+cls.exam;
- var tabs=[
-  {id:'overview',    label:'\uD83D\uDCCB Overview'},
-  {id:'quizzes',     label:'\uD83E\uDDE0 Topic Quizzes'},
-  {id:'exams',       label:'\uD83D\uDCDD Practice Exams'},
-  {id:'formulas',    label:'\uD83D\uDCD0 Formulas'},
-  {id:'projectile',  label:'\uD83D\uDE80 Projectile'},
-  {id:'printables',  label:'\uD83D\uDDA8 Printables'},
- ];
- document.getElementById('classPortalTabs').innerHTML=tabs.map(function(t,i){
-  return '<button class="class-portal-tab'+(i===0?' active':'')+'" data-tab="'+t.id+'" onclick="switchPortalTab(\''+t.id+'\')">'+t.label+'</button>';
- }).join('');
- var cont=document.getElementById('classPortalContent');cont.innerHTML='';
- tabs.forEach(function(t,i){
-  var sec=document.createElement('div');sec.className='portal-section'+(i===0?' active':'');sec.dataset.tab=t.id;
-  if(t.id==='overview')    sec.innerHTML=buildOverview(cls);
-  if(t.id==='quizzes')     sec.innerHTML=buildQuizzesTab(cls);
-  if(t.id==='exams')       sec.innerHTML=buildExamsTab(cls);
-  if(t.id==='simulations') sec.innerHTML=buildSimulationsTab(cls.id);
-  if(t.id==='formulas')    sec.innerHTML=buildPortalFormulas(cls);
-  if(t.id==='projectile')  sec.innerHTML=buildProjectileTab();
-  if(t.id==='printables')  sec.innerHTML=buildPrintablesTab(cls.id);
-  cont.appendChild(sec);
- });
- showPanel('class-portal');
-}
-
-function switchPortalTab(tabId){
- document.querySelectorAll('.class-portal-tab').forEach(function(t){t.classList.toggle('active',t.dataset.tab===tabId);});
- document.querySelectorAll('.portal-section').forEach(function(s){s.classList.toggle('active',s.dataset.tab===tabId);});
-}
-
-// ---- OVERVIEW TAB ----------------------------------------
-function buildOverview(cls){
- var tips = cls.id==='apphysicsc' ? [
-  'Write the governing equation BEFORE substituting any numbers on FRQs. The equation setup earns points even with arithmetic errors.',
-  'AP Physics C is calculus-based. When acceleration is not constant, you MUST use \u222Ba(t)dt or \u222Bv(t)dt. Never use kinematics for non-constant force.',
-  'Every single FRQ should start with a free-body diagram. Unlabeled or missing FBDs cost points directly.',
-  'Rotational-linear analogs: F\u2192\u03C4, m\u2192I, v\u2192\u03C9, p\u2192L. Know them cold.',
-  'Energy methods usually beat Newton\u2019s Laws for finding speeds. Try energy first.',
-  'SHM: a = \u2212\u03C9\u00B2x is the defining condition. If you see F = \u2212kx or a \u221D \u2212x, it\u2019s SHM.',
-  'Gravitational PE = \u2212GMm/r (zero at infinity, negative when bound). Don\u2019t confuse with mgh (only near-surface).',
- ] : [
-  'Draw a free-body diagram for EVERY forces problem before writing equations. It prevents sign errors.',
-  'Projectile motion: horizontal and vertical components are completely independent. Solve them separately.',
-  'Energy conservation is usually faster than kinematics for finding final speeds.',
-  'Momentum is conserved when there is no net external force. This applies to all collisions.',
-  'In waves: speed = f\u03BB. Speed depends on the medium; frequency depends on the source.',
-  'Snell\u2019s Law: n\u2081sin\u03B8\u2081 = n\u2082sin\u03B8\u2082. Light bends toward the normal when entering a denser medium.',
-  'Ohm\u2019s Law: V = IR. In series, current is same; in parallel, voltage is same.',
- ];
- return '<div style="padding:16px;display:flex;flex-direction:column;gap:14px;"><div class="card"><div class="card-title">About This Class</div><p style="font-size:.88rem;line-height:1.6;color:var(--muted);">'+cls.exam+'</p></div><div class="card"><div class="card-title">\uD83D\uDCA1 Key Study Tips</div><div style="display:flex;flex-direction:column;gap:8px;">'+tips.map(function(t){return '<div style="background:var(--surface2);border-radius:8px;padding:11px 14px;border-left:3px solid var(--accent);font-size:.84rem;line-height:1.55;">'+t+'</div>';}).join('')+'</div></div></div>';
-}
-
-// ---- QUIZZES TAB ----------------------------------------
-function buildQuizzesTab(cls){
- var html='<div style="padding:16px;"><div style="margin-bottom:14px;"><div class="card-title" style="margin-bottom:8px;">\uD83E\uDDE0 Topic Quizzes</div><p style="font-size:.82rem;color:var(--muted);">10 questions per quiz, shuffled each attempt. Instant feedback with explanations.</p></div><div class="quiz-topic-grid">';
- cls.quizTopics.forEach(function(topicId){
-  var bank=physicsQuizBanks[topicId];if(!bank)return;
-  var containerId='qcont_'+topicId;
-  html+='<div class="quiz-topic-card"><div class="qtc-label">'+bank.title.split(' \u2014 ')[0]+'</div><div class="qtc-title">'+bank.title.split(' \u2014 ')[1]+'</div><div class="qtc-count">'+bank.questions.length+' questions</div><button class="btn btn-primary btn-sm" onclick="startTopicQuiz(\''+topicId+'\',\''+containerId+'\')">Start Quiz \u2192</button></div>';
- });
- html+='</div><div id="topicQuizArea" style="margin-top:16px;"></div></div>';
- return html;
-}
-
-function startTopicQuiz(topicId,containerId){
- var area=document.getElementById('topicQuizArea');if(!area)return;
- area.innerHTML='<div id="'+containerId+'"></div>';
- runQuiz(containerId,topicId);
- area.scrollIntoView({behavior:'smooth'});
-}
-
-// ---- EXAMS TAB ------------------------------------------
-function buildExamsTab(cls){
- var html='<div style="padding:16px;"><div style="margin-bottom:14px;"><div class="card-title" style="margin-bottom:8px;">\uD83D\uDCDD Full Practice Exams</div><p style="font-size:.82rem;color:var(--muted);">Full-length exams with MCQ and FRQ sections. Set a timer, work through all questions, then review answers.</p></div><div class="exam-cards-grid">';
- cls.examKeys.forEach(function(examId){
-  var exam=practiceExams[examId];if(!exam)return;
-  html+='<div class="exam-card"><div class="exam-card-label">'+exam.label+'</div><div class="exam-card-title">'+exam.title.split(' \u2014 ')[1]+'</div><div class="exam-card-meta">'+exam.desc+'</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="exam-pill">&#x23F1; '+exam.time+'</span><span class="exam-pill">'+exam.mcq.length+' MCQ</span><span class="exam-pill">'+exam.frq.length+' FRQ</span></div><button class="btn btn-primary btn-sm" style="margin-top:8px;" onclick="launchExam(\''+examId+'\')">Start Exam \u2192</button></div>';
- });
- html+='</div><div id="examArea" style="margin-top:16px;"></div></div>';
- return html;
-}
-
-function launchExam(examId){
- var exam=practiceExams[examId];if(!exam)return;
- var area=document.getElementById('examArea');if(!area)return;
- var mcqStates={};
- // Shuffle each question's options and remap ans to the new correct position
- var shuffledMCQ=exam.mcq.map(function(q){
-  var correctText=q.opts[q.ans];
-  var shuffled=q.opts.slice().sort(function(){return Math.random()-.5;});
-  return {q:q.q,opts:shuffled,ans:shuffled.indexOf(correctText),exp:q.exp};
- });
- var mcqHTML=shuffledMCQ.map(function(q,qi){
-  var id='ex_'+examId+'_'+qi;
-  mcqStates[id]={q:q,answered:false};
-  return '<div style="background:var(--surface2);border-radius:10px;padding:14px 16px;margin-bottom:10px;"><div class="quiz-q-text" style="margin-bottom:12px;">'+(qi+1)+'. '+q.q+'</div><div id="opts_'+id+'">'+q.opts.map(function(o,oi){return '<button class="quiz-option" onclick="answerExamQ(\''+id+'\','+oi+')" id="eopt_'+id+'_'+oi+'"><span class="quiz-option-letter">'+['A','B','C','D'][oi]+'</span><span>'+o+'</span></button>';}).join('')+'</div><div class="quiz-explanation" id="eexp_'+id+'">'+q.exp+'</div></div>';
- }).join('');
- var frqHTML=exam.frq.map(function(f){
-  return '<div class="frq-box"><div class="frq-num">FRQ '+f.num+'</div><div class="frq-stem">'+f.stem+'</div><div class="frq-parts">'+f.parts.map(function(p){return '<div class="frq-part">'+p+'<div class="frq-answer-area">Write your work here (or use paper) \u2014 answer key shown when you click the button below</div></div>';}).join('')+'</div></div>';
- }).join('');
- area.innerHTML='<div class="card"><div class="exam-running-header"><div class="exam-title-label">'+exam.title+'</div><div style="display:flex;gap:8px;"><span class="exam-score-badge" id="exScore_'+examId+'">Score: 0/'+exam.mcq.length+'</span><button class="btn btn-ghost btn-sm" onclick="showExamAnswers(\''+examId+'\')">Show All Answers</button></div></div><div class="exam-section-header">Multiple Choice \u2014 '+exam.mcq.length+' Questions</div>'+mcqHTML+'<div class="exam-section-header">Free Response \u2014 '+exam.frq.length+' Questions</div><p style="font-size:.82rem;color:var(--muted);margin-bottom:12px;">Work these on paper. Click \u201CShow All Answers\u201D when done to reveal the MCQ explanations. FRQ guidance is embedded in each question.</p>'+frqHTML+'</div>';
- window._examStates=window._examStates||{};
- window._examStates[examId]={score:0,total:shuffledMCQ.length,q:shuffledMCQ,answered:{}};
- area.scrollIntoView({behavior:'smooth'});
-}
-
-function answerExamQ(id,chosen){
- var parts=id.split('_');var examId=parts[1]+'_'+parts[2];var qi=parseInt(parts[3]);
- var st=window._examStates&&window._examStates[examId];if(!st)return;
- if(st.answered[qi])return;st.answered[qi]=true;
- var q=st.q[qi];var right=chosen===q.ans;
- if(right)st.score++;
- document.querySelectorAll('#opts_'+id+' .quiz-option').forEach(function(btn,i){btn.disabled=true;if(i===q.ans)btn.classList.add('reveal');if(i===chosen&&!right)btn.classList.add('wrong');if(i===chosen&&right){btn.classList.remove('reveal');btn.classList.add('correct');}});
- var exp=document.getElementById('eexp_'+id);if(exp)exp.classList.add('show');
- var scoreEl=document.getElementById('exScore_'+examId);if(scoreEl)scoreEl.textContent='Score: '+st.score+'/'+st.total;
-}
-
-function showExamAnswers(examId){
- var st=window._examStates&&window._examStates[examId];if(!st)return;
- st.q.forEach(function(q,qi){
-  var id='ex_'+examId+'_'+qi;
-  document.querySelectorAll('#opts_'+id+' .quiz-option').forEach(function(btn,i){btn.disabled=true;if(i===q.ans)btn.classList.add('reveal');});
-  var exp=document.getElementById('eexp_'+id);if(exp)exp.classList.add('show');
- });
-}
-
-// ---- FORMULAS TAB (inline, filtered to class) -----------
-function buildPortalFormulas(cls){
- var key = cls.id==='apphysicsc' ? 'Physics C' : 'HS Physics';
- var groups=formulaData[key];
- if(!groups)return'<div style="padding:16px;color:var(--muted);">Formula sheet loading...</div>';
- return '<div style="padding:16px;display:flex;flex-direction:column;gap:10px;">'+groups.map(function(grp){
-  return '<div class="card" style="gap:8px;"><div class="card-title" style="color:var(--accent);font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;">'+grp.group+'</div>'+grp.items.map(function(f){return '<div class="formula-item"><div class="formula-name">'+f.name+'</div><div class="formula-eq">'+f.eq+'</div>'+(f.desc?'<div class="formula-desc">'+f.desc+'</div>':'')+'</div>';}).join('')+'</div>';
- }).join('')+'</div>';
-}
-
-// ---- PROJECTILE TAB -------------------------------------
-function buildProjectileTab(){
- return '<div style="padding:16px;display:flex;flex-direction:column;gap:14px;"><div class="card"><div class="card-title">\uD83D\uDE80 Projectile Motion Calculator</div><p style="font-size:.82rem;color:var(--muted);">Full trajectory with live diagram, all six outputs, and step-by-step solution.</p><button class="btn btn-primary" onclick="showPanel(\'projectile\')" style="align-self:flex-start;">Open Calculator \u2192</button></div><div class="card"><div class="card-title">\uD83D\uDCD0 Key Projectile Formulas</div><div style="display:flex;flex-direction:column;gap:8px;"><div class="formula-item"><div class="formula-name">Horizontal velocity</div><div class="formula-eq">Vx = V\u2080 cos\u03B8  (constant)</div></div><div class="formula-item"><div class="formula-name">Vertical velocity</div><div class="formula-eq">Vy = V\u2080 sin\u03B8 \u2212 gt</div></div><div class="formula-item"><div class="formula-name">Max height (from launch)</div><div class="formula-eq">H = (V\u2080 sin\u03B8)\u00B2 / (2g)</div></div><div class="formula-item"><div class="formula-name">Range (flat ground)</div><div class="formula-eq">R = V\u2080\u00B2 sin(2\u03B8) / g  \u2014 max at \u03B8=45\u00B0</div></div><div class="formula-item"><div class="formula-name">Time of flight</div><div class="formula-eq">T = 2 V\u2080 sin\u03B8 / g</div></div></div></div></div>';
-}
-
-// ---- PRINTABLES TAB -------------------------------------
-function buildPrintablesTab(classId){
- var items=classPrintables[classId];
- if(!items||!items.length)return'<div style="padding:16px;"><div class="card"><p style="color:var(--muted);">Printables coming soon.</p></div></div>';
- var cards=items.map(function(item){
-  return '<div class="print-card"><div class="print-card-title">'+item.title+'</div><div class="print-card-meta">'+item.desc+'</div><div class="print-card-actions"><a class="print-btn print-btn-outline" href="'+item.frqUrl+'" target="_blank" rel="noopener">\uD83D\uDCC4 Official FRQs / Resource \u2197</a></div></div>';
- }).join('');
- return '<div class="portal-printables"><div style="padding:16px;"><div class="card" style="margin-bottom:14px;"><div class="card-title">How to Print a Study Guide</div><div style="font-size:.85rem;color:var(--muted);line-height:1.65;">Go to the <strong style="color:var(--text);">Printables</strong> page for full printable study guides and practice exams. Click the &#x1F5A8; Print button in any panel to open your browser\u2019s print dialog, then choose \u201CSave as PDF\u201D.</div></div><div class="portal-printables-grid">'+cards+'</div></div></div>';
-}
-
-buildClassesMenu();
-
-// ---- PRINTABLES PANEL -----------------------------------
-(function(){
- function buildPrintCards(){
-  var cont=document.getElementById('printCardsContainer');if(!cont)return;
-  cont.innerHTML='';
-  var sections=[
-   {label:'AP Physics C: Mechanics',classId:'apphysicsc',examKeys:['apc_exam1','apc_exam2']},
-   {label:'High School Physics',classId:'hsphysics',examKeys:['hs_exam1','hs_exam2','hs_exam3']},
-  ];
-  sections.forEach(function(sec){
-   var html='<div style="margin-bottom:20px;"><div class="print-section-header">'+sec.label+'</div><div class="print-cards-grid">';
-   var prints=classPrintables[sec.classId]||[];
-   prints.forEach(function(item){
-    html+='<div class="print-card"><div class="print-card-title">'+item.title+'</div><div class="print-card-meta">'+item.desc+'</div><div class="print-card-actions"><a class="print-btn print-btn-outline" href="'+item.frqUrl+'" target="_blank" rel="noopener">\uD83D\uDCC4 Resource \u2197</a></div></div>';
-   });
-   sec.examKeys.forEach(function(eid){
-    var exam=practiceExams[eid];if(!exam)return;
-    html+='<div class="print-card"><div class="print-card-subject">Practice Exam</div><div class="print-card-title">'+exam.title+'</div><div class="print-card-meta">'+exam.desc+'</div><div class="print-card-actions"><button class="print-btn print-btn-primary" onclick="printExam(\''+eid+'\')">&#x1F5A8; Print Exam</button></div></div>';
-   });
-   html+='</div></div>';
-   cont.innerHTML+=html;
-  });
+ if(matched.length === 0) {
+  container.innerHTML = '<div class="practice-empty"><div class="practice-empty-icon">🔍</div><div style="font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:6px;">No topics match &ldquo;'+_practiceQuery+'&rdquo;</div><div style="font-size:.82rem;">Try searching for: kinematics, forces, energy, waves, optics, circuits, rotation, SHM, gravity&hellip;</div></div>';
+  return;
  }
 
- window.printExam=function(examId){
-  var exam=practiceExams[examId];if(!exam)return;
-  var mcqHTML=exam.mcq.map(function(q,i){
-   return '<div style="margin-bottom:14px;page-break-inside:avoid;"><div style="font-size:12px;line-height:1.6;"><strong>'+(i+1)+'.</strong> '+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding-left:16px;margin-top:4px;">'+q.opts.map(function(o,oi){return '<div style="font-size:11.5px;">'+['A','B','C','D'][oi]+'. '+o+'</div>';}).join('')+'</div></div>';
-  }).join('');
-  var frqHTML=exam.frq.map(function(f){
-   return '<div style="margin-bottom:20px;page-break-inside:avoid;border-left:4px solid #e8650a;padding-left:12px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#e8650a;margin-bottom:6px;">FRQ '+f.num+'</div><div style="font-size:12px;font-weight:600;line-height:1.6;margin-bottom:8px;">'+f.stem+'</div>'+f.parts.map(function(p){return '<div style="font-size:11.5px;line-height:1.6;padding-left:12px;margin-bottom:12px;">'+p+'<div style="height:50px;border-bottom:1px solid #ccc;margin-top:4px;"></div></div>';}).join('')+'</div>';
-  }).join('');
-  var frame=document.getElementById('printFrame');
-  frame.innerHTML='<div style="font-family:Helvetica,Arial,sans-serif;color:#111;max-width:720px;margin:0 auto;padding:24px;"><div style="border-bottom:3px solid #e8650a;padding-bottom:12px;margin-bottom:20px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#e8650a;">Physics Study Hub</div><h1 style="font-size:20px;font-weight:900;margin:4px 0 2px;">'+exam.title+'</h1><div style="font-size:11px;color:#555;">'+exam.desc+'</div></div><h2 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#e8650a;margin:0 0 12px;">Section I: Multiple Choice</h2>'+mcqHTML+'<h2 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#e8650a;margin:16px 0 12px;">Section II: Free Response</h2>'+frqHTML+'<div style="margin-top:16px;font-size:10px;color:#aaa;text-align:center;">Physics Study Hub \u00B7 Free for every student</div></div>';
-  window.print();
-  setTimeout(function(){frame.innerHTML='';},1500);
+ // Group by level
+ var apTopics  = matched.filter(function(t){ return t.level==='ap'; });
+ var regTopics = matched.filter(function(t){ return t.level==='reg'; });
+
+ var html = '';
+ if(apTopics.length) {
+  html += '<div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);border-bottom:1.5px solid var(--border);padding-bottom:6px;margin-bottom:10px;">AP Physics C: Mechanics</div>';
+  apTopics.forEach(function(t){ html += buildTopicCard(t); });
+ }
+ if(regTopics.length) {
+  if(apTopics.length) html += '<div style="margin-top:16px;"></div>';
+  html += '<div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3b82f6;border-bottom:1.5px solid var(--border);padding-bottom:6px;margin-bottom:10px;">High School Physics</div>';
+  regTopics.forEach(function(t){ html += buildTopicCard(t); });
+ }
+ container.innerHTML = html;
+}
+
+function buildTopicCard(t) {
+ var badge = t.level === 'ap'
+  ? '<span class="practice-level-badge ap">AP Physics C</span>'
+  : '<span class="practice-level-badge reg">HS Physics</span>';
+ var videoHTML = t.videos.map(function(v){
+  return '<a class="practice-video-link" href="'+v.url+'" target="_blank" rel="noopener">▶ '+v.label+'</a>';
+ }).join('');
+ var questionsHTML = t.questions.map(function(q,i){
+  var lvlClass = q.level === 'ap' ? 'ap' : 'reg';
+  var lvlLabel = q.level === 'ap' ? 'AP Level' : 'Regular';
+  var qid = 'pq_'+t.id+'_'+i;
+  return '<div class="practice-q-item '+lvlClass+'">'
+   +'<div class="practice-q-num">'+lvlLabel+' &bull; Q'+(i+1)+'</div>'
+   +'<div class="practice-q-text">'+q.q+'</div>'
+   +'<button class="practice-q-toggle-btn" id="btn_'+qid+'" onclick="toggleAnswer(\''+qid+'\')">Show Solution</button>'
+   +'<div class="practice-q-answer" id="'+qid+'">'+q.a+'</div>'
+   +'</div>';
+ }).join('');
+
+ return '<div class="practice-topic-card" id="tc_'+t.id+'">'
+  +'<div class="practice-topic-header" onclick="toggleTopicCard(\''+t.id+'\')">'
+  +'<span class="practice-topic-icon">'+t.icon+'</span>'
+  +'<div class="practice-topic-info">'
+  +'<div class="practice-topic-name">'+t.name+'</div>'
+  +'<div class="practice-topic-meta">'+badge+'<span>'+t.questions.length+' problems</span><span>'+t.videos.length+' videos</span></div>'
+  +'</div>'
+  +'<span class="practice-topic-toggle">&#x25B6;</span>'
+  +'</div>'
+  +'<div class="practice-topic-body">'
+  +(t.videos.length ? '<div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:10px 0 6px;">📹 Video Resources</div><div class="practice-video-row">'+videoHTML+'</div>' : '')
+  +'<div class="practice-q-list">'+questionsHTML+'</div>'
+  +'</div>'
+  +'</div>';
+}
+
+function toggleTopicCard(id) {
+ var card = document.getElementById('tc_'+id);
+ if(card) card.classList.toggle('open');
+}
+
+function toggleAnswer(qid) {
+ var el  = document.getElementById(qid);
+ var btn = document.getElementById('btn_'+qid);
+ if(!el) return;
+ var showing = el.classList.toggle('show');
+ if(btn) btn.textContent = showing ? 'Hide Solution' : 'Show Solution';
+}
+
+// Init practice on first load
+(function(){
+ var _origSP = window.showPanel;
+ window.showPanel = function(id) {
+  _origSP(id);
+  if(id === 'practice') {
+   // Slight delay so DOM is ready
+   setTimeout(function(){ practiceFilter(); }, 20);
+  }
  };
-
- var _sp=window.showPanel;
- window.showPanel=function(id){_sp(id);if(id==='printables')buildPrintCards();};
- if(location.hash==='#printables')buildPrintCards();
+ if(location.hash === '#practice') setTimeout(function(){ practiceFilter(); }, 100);
 })();
 
-// =========================================================
-// DASHBOARD
-// =========================================================
-var physicsTips=[
- {tag:'Physics C',title:'Write the equation before substituting numbers',body:'On AP Physics C FRQs, write the governing law (e.g., \u03A3F=ma, W=\u222BF\u00B7dx) before plugging in any numbers. The setup earns partial credit even if arithmetic is wrong.'},
- {tag:'Physics C',title:'Calculus is the whole point',body:'When acceleration is not constant, you must integrate or differentiate. Using constant-a kinematics for a variable force earns zero credit. This is what separates Physics C from Physics 1.'},
- {tag:'HS Physics',title:'Draw the FBD first \u2014 always',body:'A correct free-body diagram forces you to identify every force, choose a coordinate system, and get signs right. It prevents 90% of common Newton\u2019s Law errors.'},
- {tag:'Physics C',title:'Rotational-linear analogs are always tested',body:'Every linear formula has a rotational counterpart: F=ma\u2192\u03C4=I\u03B1, p=mv\u2192L=I\u03C9. If you know one form, you know the other.'},
- {tag:'HS Physics',title:'Energy conservation beats kinematics for speeds',body:'To find a final speed, try KE+PE conservation before using kinematics. You skip finding time and avoid quadratic equations.'},
- {tag:'HS Physics',title:'Superposition explains both waves and fields',body:'Two waves passing through the same point add algebraically. Two electric fields add as vectors. Master superposition once and it applies everywhere.'},
- {tag:'Physics C',title:'Total energy of a circular orbit is \u2212KE',body:'For any circular orbit: KE = GMm/(2r) and PE = \u2212GMm/r. Total E = \u2212GMm/(2r) = \u2212KE. Negative total energy means the satellite is gravitationally bound.'},
- {tag:'HS Physics',title:'In series, current is same; in parallel, voltage is same',body:'The golden circuit rule: series resistors share the same current; parallel resistors share the same voltage. Everything else follows from Ohm\u2019s Law.'},
-];
 
-function initDashboard(){
- var now=new Date(),h=now.getHours();
- var greet=h<12?'Good morning.':h<17?'Good afternoon.':'Good evening.';
- document.getElementById('dashGreeting').textContent=greet;
- document.getElementById('dashDay').textContent=now.getDate();
- document.getElementById('dashDateStr').textContent=now.toLocaleDateString('en-US',{weekday:'long',month:'long',year:'numeric'});
- document.getElementById('dashDateLabel').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short'});
- function pld(s){var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
- var today=new Date();today.setHours(0,0,0,0);
- var apcDate=pld('2027-05-03'),apcDays=Math.ceil((apcDate-today)/86400000);
- var ndEl=document.getElementById('dashNextDays'),nnEl=document.getElementById('dashNextName');
- if(apcDays>0){
-  if(ndEl){ndEl.textContent=apcDays;ndEl.style.color=apcDays<=14?'rgba(255,120,120,1)':apcDays<=45?'rgba(255,210,80,1)':'rgba(120,255,180,1)';}
-  if(nnEl)nnEl.textContent='AP Physics C: Mechanics';
- }else{if(ndEl)ndEl.textContent='\u2014';if(nnEl)nnEl.textContent='Exams passed for 2027';}
- var doy=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
- var tod=physicsTips[doy%physicsTips.length];
- var el=document.getElementById('tipOfDay');
- if(el&&tod){var col=tod.tag==='Physics C'?'var(--accent)':'var(--blue)';el.innerHTML='<div class="tip-label" style="color:'+col+';">'+tod.tag+'</div><div class="tip-title">'+tod.title+'</div><div class="tip-body">'+tod.body+'</div>';}
-}
-initDashboard();
-
-// =========================================================
-// COUNTDOWN
-// =========================================================
-(function(){
- function pld(s){var p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);}
- function daysUntil(d){var t=new Date();t.setHours(0,0,0,0);return Math.ceil((d-t)/86400000);}
- function urgency(n){return n<=7?'urgent':n<=30?'soon':'ok';}
- function fmt(d){return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});}
- var apExams=[
-  {name:'AP Physics C: Mechanics',date:'2027-05-03',course:'apphysicsc'},
-  {name:'AP Biology',date:'2027-05-03'},
-  {name:'AP U.S. Gov & Politics',date:'2027-05-04'},
-  {name:'AP European History',date:'2027-05-04'},
-  {name:'AP Macroeconomics',date:'2027-05-04'},
-  {name:'AP English Literature',date:'2027-05-05'},
-  {name:'AP Chemistry',date:'2027-05-06'},
-  {name:'AP World History',date:'2027-05-06'},
-  {name:'AP French Language',date:'2027-05-06'},
-  {name:'AP German Language',date:'2027-05-07'},
-  {name:'AP U.S. History (APUSH)',date:'2027-05-07'},
-  {name:'AP Calculus AB/BC',date:'2027-05-10'},
-  {name:'AP Statistics',date:'2027-05-11'},
-  {name:'AP Precalculus',date:'2027-05-11'},
-  {name:'AP English Language',date:'2027-05-12'},
-  {name:'AP Computer Science A',date:'2027-05-12'},
-  {name:'AP Spanish Language',date:'2027-05-13'},
-  {name:'AP Environmental Science',date:'2027-05-13'},
-  {name:'AP Psychology',date:'2027-05-14'},
-  {name:'AP Computer Science Principles',date:'2027-05-14'},
- ];
- function renderAP(){
-  var el=document.getElementById('cdApList'),badge=document.getElementById('cdNextBadge');if(!el)return;
-  var today=new Date();today.setHours(0,0,0,0);
-  var up=apExams.filter(function(e){return pld(e.date)>=today;}).sort(function(a,b){return pld(a.date)-pld(b.date);});
-  var past=apExams.filter(function(e){return pld(e.date)<today;});
-  var mx=up.length?Math.ceil((pld(up[up.length-1].date)-today)/86400000):1;
-  if(badge&&up.length){var ne=up[0],ned=daysUntil(pld(ne.date));badge.textContent=ned+' days \u00B7 '+ne.name;badge.style.background=urgency(ned)==='urgent'?'var(--red)':urgency(ned)==='soon'?'var(--accent)':'var(--green)';}
-  var html='';
-  up.forEach(function(e){var d=pld(e.date),days=daysUntil(d),cls=urgency(days),pct=Math.max(2,100-(days/mx*100)),bar=cls==='urgent'?'var(--red)':cls==='soon'?'var(--accent)':'var(--green)';var click=e.course?'onclick="openClassPortal(\''+e.course+'\')" style="cursor:pointer;"':'';html+='<div class="countdown-item" '+click+'><div><div class="countdown-days '+cls+'">'+days+'</div><div style="font-size:.55rem;color:var(--muted);text-align:center;">days</div></div><div style="flex:1;min-width:0;"><div class="countdown-name">'+e.name+'</div><div class="countdown-date">'+fmt(d)+'</div><div class="countdown-bar-wrap" style="margin-top:5px;"><div class="countdown-bar" style="width:'+pct+'%;background:'+bar+';"></div></div></div></div>';});
-  if(past.length){html+='<div class="cd-section-divider" style="margin-top:10px;">Completed</div>';past.forEach(function(e){var d=pld(e.date),gone=-daysUntil(d);html+='<div class="countdown-item" style="opacity:.45;"><div><div style="font-size:1rem;color:var(--muted);">\u2713</div></div><div style="flex:1;"><div class="countdown-name" style="text-decoration:line-through;color:var(--muted);">'+e.name+'</div><div class="countdown-date">'+fmt(d)+' \u00B7 '+gone+' days ago</div></div></div>';});}
-  el.innerHTML=html||'<div style="text-align:center;color:var(--muted);padding:20px 0;">All AP exams have passed for this cycle.</div>';
- }
- var cds=JSON.parse(localStorage.getItem('cd_custom')||'[]');
- function saveCD(){localStorage.setItem('cd_custom',JSON.stringify(cds));}
- window.cdAddCustom=function(){var n=document.getElementById('cdCustomName').value.trim(),d=document.getElementById('cdCustomDate').value,e=document.getElementById('cdCustomEmoji').value;if(!n){document.getElementById('cdCustomName').focus();return;}if(!d){document.getElementById('cdCustomDate').focus();return;}cds.push({id:Date.now(),name:n,date:d,emoji:e});saveCD();document.getElementById('cdCustomName').value='';document.getElementById('cdCustomDate').value='';renderCDs();};
- window.cdDeleteCustom=function(id){cds=cds.filter(function(c){return c.id!==id;});saveCD();renderCDs();};
- function renderCDs(){var el=document.getElementById('cdCustomList'),empty=document.getElementById('cdCustomEmpty');if(!el)return;var sorted=cds.slice().sort(function(a,b){return pld(a.date)-pld(b.date);});if(!sorted.length){el.innerHTML='';if(empty)empty.style.display='block';return;}if(empty)empty.style.display='none';el.innerHTML=sorted.map(function(c){var d=pld(c.date),days=daysUntil(d),past=days<0,cls=past?'':urgency(days);return '<div class="cd-custom-item" style="'+(past?'opacity:.45;border-left-color:var(--muted);':'')+'"><div class="cd-custom-emoji">'+c.emoji+'</div><div style="flex:1;min-width:0;"><div class="countdown-name" style="'+(past?'text-decoration:line-through;color:var(--muted);':'')+'">'+c.name.replace(/</g,'&lt;')+'</div></div>'+(past?'<div style="font-size:.8rem;color:var(--muted);">'+(-days)+'d ago</div>':'<div style="text-align:right;"><div class="cd-custom-days '+cls+'">'+days+'</div><div style="font-size:.55rem;color:var(--muted);">days</div></div>')+'<button class="cd-custom-del" onclick="cdDeleteCustom('+c.id+')">\u2715</button></div>';}).join('');}
- function tickClocks(){var now=new Date();var lc=document.getElementById('cdClockLocal');if(lc)lc.textContent=now.toLocaleTimeString('en-US',{hour12:false});var midnight=new Date(now);midnight.setHours(24,0,0,0);var diff=midnight-now;var h=String(Math.floor(diff/3600000)).padStart(2,'0'),m=String(Math.floor((diff%3600000)/60000)).padStart(2,'0'),s=String(Math.floor((diff%60000)/1000)).padStart(2,'0');var mc=document.getElementById('cdClockMidnight');if(mc)mc.textContent=h+':'+m+':'+s;var start=new Date(now.getFullYear(),0,0),doy=Math.floor((now-start)/86400000);var dc=document.getElementById('cdClockDoy');if(dc)dc.textContent=doy+'/365';var wc=document.getElementById('cdClockWoy');if(wc)wc.textContent='Wk '+Math.ceil(doy/7);}
- renderAP();renderCDs();tickClocks();setInterval(tickClocks,1000);
- var _sp=window.showPanel;window.showPanel=function(id){_sp(id);if(id==='countdown')renderAP();};
-})();
-
-// =========================================================
-// STREAK
-// =========================================================
-(function(){
- var KD='streak_last',KC='streak_count',KL='streak_longest',KT='streak_total',KH='streak_history';
- function td(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
- function df(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000);}
- function mg(n){if(n===1)return 'Day 1 \u2014 you showed up.';if(n<4)return n+' days in a row. Keep going.';if(n<8)return n+' days straight. Building a habit.';if(n<15)return n+' days. Two solid weeks.';return n+' days. Legendary.';}
- var t=td(),last=localStorage.getItem(KD)||'',cnt=parseInt(localStorage.getItem(KC)||'0'),lon=parseInt(localStorage.getItem(KL)||'0'),tot=parseInt(localStorage.getItem(KT)||'0'),hist=JSON.parse(localStorage.getItem(KH)||'[]');
- if(!last){cnt=1;tot=1;}else if(last!==t){var d2=df(last,t);cnt=(d2===1)?cnt+1:1;tot++;}
- if(last!==t){if(!hist.includes(t))hist.push(t);if(hist.length>60)hist=hist.slice(-60);if(cnt>lon)lon=cnt;localStorage.setItem(KD,t);localStorage.setItem(KC,String(cnt));localStorage.setItem(KL,String(lon));localStorage.setItem(KT,String(tot));localStorage.setItem(KH,JSON.stringify(hist));}
- function ge(id){return document.getElementById(id);}
- var b=ge('streakBadge'),bn=ge('streakBadgeNum');if(bn)bn.textContent=cnt;if(b)b.classList.toggle('on',cnt>=2);
- if(ge('streakNum'))ge('streakNum').textContent=cnt;
- if(ge('streakToday'))ge('streakToday').textContent=t.slice(5).replace('-','/');
- if(ge('streakLongest'))ge('streakLongest').textContent=lon;
- if(ge('streakTotal'))ge('streakTotal').textContent=tot;
- if(ge('streakMsg'))ge('streakMsg').textContent=mg(cnt);
- var dd=ge('streakDots');
- if(dd){dd.innerHTML='';for(var i=29;i>=0;i--){var dobj=new Date();dobj.setDate(dobj.getDate()-i);var ds=dobj.getFullYear()+'-'+String(dobj.getMonth()+1).padStart(2,'0')+'-'+String(dobj.getDate()).padStart(2,'0');var dot=document.createElement('div');dot.className='streak-dot '+(ds===t?'now':hist.includes(ds)?'on':'off');dot.title=ds;dd.appendChild(dot);}}
-})();
-
-// =========================================================
-// PROJECTILE CALCULATOR
-// =========================================================
-function projCalc(){
- var v0=parseFloat(document.getElementById('projV0').value),angle=parseFloat(document.getElementById('projAngle').value),h0=parseFloat(document.getElementById('projH0').value)||0,g=parseFloat(document.getElementById('projG').value)||9.8;
- if(isNaN(v0)||isNaN(angle)||v0<0||angle<0||angle>90){projDrawEmpty();return;}
- var rad=angle*Math.PI/180,vx=v0*Math.cos(rad),vy0=v0*Math.sin(rad),tPeak=vy0/g;
- var hPeak=h0+vy0*tPeak-0.5*g*tPeak*tPeak,disc=vy0*vy0+2*g*h0,tFlight=(vy0+Math.sqrt(disc))/g;
- var range=vx*tFlight,vyF=vy0-g*tFlight,vFinal=Math.sqrt(vx*vx+vyF*vyF);
- function r(n){return Math.round(n*1000)/1000;}
- document.getElementById('projMaxH').textContent=r(hPeak-h0);
- document.getElementById('projRange').textContent=r(range);
- document.getElementById('projTime').textContent=r(tFlight);
- document.getElementById('projVx').textContent=r(vx);
- document.getElementById('projVy0').textContent=r(vy0);
- document.getElementById('projVf').textContent=r(vFinal);
- document.getElementById('projResultsCard').style.display='';
- document.getElementById('projStepsCard').style.display='';
- document.getElementById('projSteps').innerHTML=[
-  '<div class="proj-step"><strong>1. Decompose velocity</strong><br>Vx = v\u2080 cos\u03B8 = <code>'+r(v0)+' \u00D7 cos('+angle+'\u00B0) = '+r(vx)+' m/s</code>  (constant throughout)<br>Vy\u2080 = v\u2080 sin\u03B8 = <code>'+r(v0)+' \u00D7 sin('+angle+'\u00B0) = '+r(vy0)+' m/s</code></div>',
-  '<div class="proj-step"><strong>2. Time to peak</strong><br>At peak, Vy = 0. &nbsp; t_peak = Vy\u2080/g = <code>'+r(vy0)+' / '+g+' = '+r(tPeak)+' s</code></div>',
-  '<div class="proj-step"><strong>3. Max height above launch</strong><br>h = h\u2080 + Vy\u2080\u00B2/(2g) = <code>'+r(hPeak)+' m</code> above ground &nbsp;\u2192&nbsp; <code>'+r(hPeak-h0)+' m</code> above launch</div>',
-  '<div class="proj-step"><strong>4. Total flight time</strong><br>Solve h\u2080 + Vy\u2080t \u2212 \u00BDgt\u00B2 = 0 (quadratic in t) \u2192 t = <code>'+r(tFlight)+' s</code></div>',
-  '<div class="proj-step"><strong>5. Horizontal range</strong><br>R = Vx \u00D7 t = <code>'+r(vx)+' \u00D7 '+r(tFlight)+' = '+r(range)+' m</code></div>',
-  '<div class="proj-step"><strong>6. Impact speed</strong><br>Vy_final = Vy\u2080 \u2212 g\u00B7t = <code>'+r(vyF)+' m/s</code><br>v_impact = \u221A(Vx\u00B2 + Vy_f\u00B2) = <code>'+r(vFinal)+' m/s</code></div>',
- ].join('');
- projDraw(v0,angle,h0,g,vx,vy0,tFlight,range,hPeak);
-}
-
-function projDraw(v0,angle,h0,g,vx,vy0,tFlight,range,hPeak){
- var canvas=document.getElementById('projCanvas');if(!canvas||!canvas.getContext)return;
- var ctx=canvas.getContext('2d');if(!ctx)return;
- var W=canvas.width,H=canvas.height;
- var isDark=document.documentElement.getAttribute('data-theme')==='dark';
- ctx.clearRect(0,0,W,H);
- ctx.fillStyle=isDark?'#271c0e':'#f5f0e8';ctx.fillRect(0,0,W,H);
- var pad=42,sx=pad,sy=H-pad-h0*((H-pad*2)/Math.max(hPeak,1));
- var maxH=Math.max(hPeak,h0*1.1,0.1);
- var scaleX=(W-pad*2)/Math.max(range,0.1),scaleY=(H-pad*2)/maxH;
- var scale=Math.min(scaleX,scaleY);
- var ox=pad,oy=H-pad-h0*scale;
- ctx.strokeStyle=isDark?'#3a2a18':'#e8ddd0';ctx.lineWidth=1;
- ctx.beginPath();ctx.moveTo(pad,10);ctx.lineTo(pad,H-pad);ctx.lineTo(W-10,H-pad);ctx.stroke();
- // Ground
- if(h0>0){ctx.strokeStyle='#10b981';ctx.lineWidth=2;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(ox,H-pad);ctx.lineTo(ox+range*scale,H-pad);ctx.stroke();ctx.setLineDash([]);}
- ctx.strokeStyle='#e8650a';ctx.lineWidth=2.5;ctx.beginPath();
- for(var i=0;i<=120;i++){var tt=tFlight*i/120,x=vx*tt,y=h0+vy0*tt-0.5*g*tt*tt;var cx=ox+x*scale,cy=oy-y*scale;if(i===0)ctx.moveTo(cx,cy);else ctx.lineTo(cx,cy);}
- ctx.stroke();
- ctx.fillStyle='#e8650a';ctx.beginPath();ctx.arc(ox,oy,5,0,Math.PI*2);ctx.fill();
- ctx.fillStyle='#10b981';ctx.beginPath();ctx.arc(ox+range*scale,H-pad,5,0,Math.PI*2);ctx.fill();
- var peakX=ox+vx*vy0/g*scale,peakY=oy-(hPeak-h0)*scale;
- ctx.fillStyle='#3b82f6';ctx.beginPath();ctx.arc(peakX,peakY,4,0,Math.PI*2);ctx.fill();
- ctx.fillStyle=isDark?'#a89070':'#6b6257';ctx.font='11px Inter,sans-serif';
- ctx.fillText('0',pad-15,H-pad+14);
- ctx.fillText(Math.round(range)+'m',ox+range*scale-14,H-pad+14);
- ctx.fillStyle='#3b82f6';ctx.font='10px Inter,sans-serif';
- ctx.fillText('Peak: '+Math.round(hPeak-h0)+'m',peakX+4,peakY-5);
- document.getElementById('projCanvasLabel').textContent='Range: '+Math.round(range)+' m \u00B7 Max height: '+Math.round(hPeak-h0)+' m \u00B7 Flight time: '+(Math.round(tFlight*100)/100)+' s';
-}
-
-function projDrawEmpty(){
- var canvas=document.getElementById('projCanvas');if(!canvas||!canvas.getContext)return;
- var ctx=canvas.getContext('2d');if(!ctx)return;
- var W=canvas.width,H=canvas.height;
- var isDark=document.documentElement.getAttribute('data-theme')==='dark';
- ctx.clearRect(0,0,W,H);ctx.fillStyle=isDark?'#271c0e':'#f5f0e8';ctx.fillRect(0,0,W,H);
- ctx.strokeStyle=isDark?'#3a2a18':'#e8ddd0';ctx.lineWidth=1;
- ctx.beginPath();ctx.moveTo(42,10);ctx.lineTo(42,H-42);ctx.lineTo(W-10,H-42);ctx.stroke();
- document.getElementById('projResultsCard').style.display='none';
- document.getElementById('projStepsCard').style.display='none';
- document.getElementById('projCanvasLabel').textContent='Enter values above to see the trajectory';
-}
-
-var _psTheme=window.setTheme;
-if(typeof _psTheme==='function'){window.setTheme=function(dark){_psTheme(dark);var v=document.getElementById('projV0');if(v&&v.value)projCalc();else projDrawEmpty();};}
-projDrawEmpty();
-
-if(window.addEventListener){window.addEventListener('beforeunload',function(){fcSave();todoSave();noteSave();});}
-
-// =========================================================
-// SIMULATIONS ENGINE
+// // SIMULATIONS ENGINE
 // =========================================================
 var _simLoop = null;
 
