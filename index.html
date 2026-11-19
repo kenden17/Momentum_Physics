@@ -389,8 +389,8 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 .practice-topic-body{display:none;padding:0 18px 18px;border-top:1px solid var(--border);}
 .practice-topic-card.open .practice-topic-body{display:block;}
 .practice-video-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
-.practice-video-link{display:inline-flex;align-items:center;gap:6px;background:#ff000015;border:1px solid #ef444460;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;color:#ef4444;text-decoration:none;transition:background var(--trans);}
-.practice-video-link:hover{background:#ff000025;}
+.practice-video-link{display:inline-flex;align-items:center;gap:6px;background:#14b89815;border:1px solid #14b89860;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;color:#0d9488;text-decoration:none;transition:background var(--trans);}
+.practice-video-link:hover{background:#14b89825;}
 .practice-q-list{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
 .practice-q-item{background:var(--surface2);border-radius:10px;padding:14px 16px;border-left:3px solid var(--border);}
 .practice-q-item.ap{border-left-color:var(--accent);}
@@ -405,31 +405,19 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 .practice-empty{text-align:center;padding:48px 20px;color:var(--muted);}
 .practice-empty-icon{font-size:2.5rem;margin-bottom:8px;}
 
-.sim-container{padding:16px;display:flex;flex-direction:column;gap:14px;}
-.sim-selector{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.sim-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color var(--trans),background var(--trans);}
-.sim-btn:hover{border-color:var(--accent);background:var(--surface2);}
-.sim-btn-icon{font-size:2rem;}
-.sim-btn-label{font-size:.82rem;font-weight:700;text-align:center;color:var(--text);}
-.sim-btn-desc{font-size:.7rem;color:var(--muted);text-align:center;line-height:1.4;}
-.sim-active{display:none;flex-direction:column;gap:12px;}
-.sim-active.show{display:flex;}
-.sim-canvas-wrap{background:#1a1a2e;border-radius:var(--radius);overflow:hidden;position:relative;border:1.5px solid var(--border);}
-.sim-canvas{display:block;width:100%;cursor:crosshair;}
-.sim-controls{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
-.sim-control{display:flex;flex-direction:column;gap:4px;}
-.sim-control label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
-.sim-control input[type=range]{padding:4px 0;background:transparent;-webkit-appearance:none;height:6px;border:none;}
-.sim-control input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;}
-.sim-control input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--border);border-radius:99px;}
-.sim-val{font-size:.8rem;font-weight:700;color:var(--accent);}
-.sim-readouts{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;}
-.sim-readout{background:var(--surface2);border-radius:8px;padding:10px 12px;border:1.5px solid var(--border);}
-.sim-readout-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px;}
-.sim-readout-val{font-size:1.1rem;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums;}
-.sim-readout-unit{font-size:.65rem;color:var(--muted);}
-.sim-info{background:var(--surface2);border-radius:10px;padding:12px 14px;border-left:3px solid var(--blue);font-size:.82rem;line-height:1.55;color:var(--muted);}
-.sim-info strong{color:var(--text);}
+
+/* PHET SIMULATIONS */
+.phet-section-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);border-bottom:1.5px solid var(--border);padding-bottom:6px;margin-bottom:10px;margin-top:4px;}
+.phet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px;}
+.phet-card{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 16px;text-decoration:none;color:var(--text);transition:border-color var(--trans),background var(--trans),transform .1s;cursor:pointer;}
+.phet-card:hover{border-color:var(--accent);background:var(--surface2);transform:translateY(-2px);}
+.phet-icon{font-size:2rem;line-height:1;}
+.phet-name{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.25;}
+.phet-desc{font-size:.78rem;color:var(--muted);line-height:1.5;flex:1;}
+.phet-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:2px;}
+.phet-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:99px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.phet-card:hover .phet-tag{border-color:var(--accent);color:var(--accent);background:#e8650a10;}
+@media(min-width:600px){.phet-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}}
 </style>
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JC6N3JF1J"></script>
@@ -924,21 +912,63 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
 <!-- SIMULATIONS -->
 <div class="page-panel" id="panel-simulations">
   <div class="panel-hero"><div class="panel-hero-inner">
-    <div class="panel-hero-title">&#x1F3AE; Physics Simulations</div>
-    <div class="panel-hero-sub">Interactive simulations governed by real physics. Adjust parameters and watch them update live.</div>
+    <div class="panel-hero-title">&#x1F9EA; PhET Simulations</div>
+    <div class="panel-hero-sub">Interactive physics simulations by University of Colorado Boulder &#x2014; click any to open in a new tab</div>
   </div></div>
   <div class="panel-inner wide">
-    <div class="sim-selector">
-      <button class="sim-btn" onclick="launchSim('incline','main')"><span class="sim-btn-icon">&#x1F4E6;</span><div class="sim-btn-label">Block on Incline</div><div class="sim-btn-desc">Newton&rsquo;s Laws, friction, normal force</div></button>
-      <button class="sim-btn" onclick="launchSim('spring','main')"><span class="sim-btn-icon">&#x1F300;</span><div class="sim-btn-label">Spring-Mass SHM</div><div class="sim-btn-desc">Hooke&rsquo;s Law, simple harmonic motion</div></button>
-      <button class="sim-btn" onclick="launchSim('pendulum','main')"><span class="sim-btn-icon">&#x23F1;</span><div class="sim-btn-label">Pendulum</div><div class="sim-btn-desc">SHM, period vs length vs gravity</div></button>
-      <button class="sim-btn" onclick="launchSim('collision','main')"><span class="sim-btn-icon">&#x1F697;</span><div class="sim-btn-label">1D Collision</div><div class="sim-btn-desc">Elastic &amp; inelastic, momentum</div></button>
-      <button class="sim-btn" onclick="launchSim('circular','main')"><span class="sim-btn-icon">&#x1F4BF;</span><div class="sim-btn-label">Circular Motion</div><div class="sim-btn-desc">Centripetal force, velocity, radius</div></button>
-      <button class="sim-btn" onclick="launchSim('orbit','main')"><span class="sim-btn-icon">&#x1FA90;</span><div class="sim-btn-label">Orbital / Gravity</div><div class="sim-btn-desc">Gravity, Kepler&rsquo;s laws, orbital speed</div></button>
+    <div class="card" style="gap:8px;padding:14px 18px;">
+      <div style="font-size:.88rem;line-height:1.6;color:var(--muted);"><strong style="color:var(--text);">PhET Interactive Simulations</strong> are free, research-based physics sims from the University of Colorado Boulder. Used in AP and college physics courses worldwide. Click any card to open the simulation.</div>
     </div>
-    <div class="sim-active show" id="simActive_main"></div>
+
+    <div class="phet-section-label">Mechanics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/forces-and-motion-basics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4E6;</div><div class="phet-name">Forces &amp; Motion</div><div class="phet-desc">Push boxes, apply friction, explore Newton&#x2019;s 2nd Law with real-time graphs</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Laws</span><span class="phet-tag">Friction</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/the-ramp" target="_blank" rel="noopener"><div class="phet-icon">&#x26F0;&#xFE0F;</div><div class="phet-name">The Ramp</div><div class="phet-desc">Friction, normal force, incline plane &#x2014; drag objects up a ramp and measure forces</div><div class="phet-tags"><span class="phet-tag">Incline</span><span class="phet-tag">Energy</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/energy-skate-park" target="_blank" rel="noopener"><div class="phet-icon">&#x1F6F9;</div><div class="phet-name">Energy Skate Park</div><div class="phet-desc">Conservation of energy &#x2014; KE, PE, thermal energy with real-time bar charts</div><div class="phet-tags"><span class="phet-tag">Energy</span><span class="phet-tag">Conservation</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/collision-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F697;</div><div class="phet-name">Collision Lab</div><div class="phet-desc">1D and 2D elastic &amp; inelastic collisions &#x2014; momentum and KE before and after</div><div class="phet-tags"><span class="phet-tag">Momentum</span><span class="phet-tag">Collisions</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/projectile-motion" target="_blank" rel="noopener"><div class="phet-icon">&#x1F680;</div><div class="phet-name">Projectile Motion</div><div class="phet-desc">Launch projectiles, adjust angle &amp; speed, with and without air resistance</div><div class="phet-tags"><span class="phet-tag">Kinematics</span><span class="phet-tag">2D Motion</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/torque" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4BF;</div><div class="phet-name">Torque</div><div class="phet-desc">Apply forces at different lever arms, see angular acceleration and moment of inertia</div><div class="phet-tags"><span class="phet-tag">Rotation</span><span class="phet-tag">Torque</span></div></a>
+    </div>
+
+    <div class="phet-section-label">Oscillations &amp; Waves</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/masses-and-springs" target="_blank" rel="noopener"><div class="phet-icon">&#x1F300;</div><div class="phet-name">Masses &amp; Springs</div><div class="phet-desc">Hang masses on springs, measure period, explore SHM and energy conservation</div><div class="phet-tags"><span class="phet-tag">SHM</span><span class="phet-tag">Hooke&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/pendulum-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x23F1;</div><div class="phet-name">Pendulum Lab</div><div class="phet-desc">Adjust length, mass, gravity &#x2014; measure period and verify T&#x2009;=&#x2009;2&#x03C0;&#x221A;(L/g)</div><div class="phet-tags"><span class="phet-tag">Pendulum</span><span class="phet-tag">SHM</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-on-a-string" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4CA;</div><div class="phet-name">Wave on a String</div><div class="phet-desc">Standing waves, wavelength, frequency, amplitude &#x2014; fixed and free ends</div><div class="phet-tags"><span class="phet-tag">Waves</span><span class="phet-tag">Standing Waves</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/sound" target="_blank" rel="noopener"><div class="phet-icon">&#x1F3B5;</div><div class="phet-name">Sound</div><div class="phet-desc">Visualize sound waves, change frequency and amplitude, explore the Doppler effect</div><div class="phet-tags"><span class="phet-tag">Sound</span><span class="phet-tag">Doppler</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-interference" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A7;</div><div class="phet-name">Wave Interference</div><div class="phet-desc">Two-source interference patterns, double-slit diffraction with water, sound, and light</div><div class="phet-tags"><span class="phet-tag">Interference</span><span class="phet-tag">Double-Slit</span></div></a>
+    </div>
+
+    <div class="phet-section-label">Gravity &amp; Orbital Mechanics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-and-orbits" target="_blank" rel="noopener"><div class="phet-icon">&#x1FA90;</div><div class="phet-name">Gravity &amp; Orbits</div><div class="phet-desc">Star, planet, moon, satellite &#x2014; adjust mass and distance, see Kepler&#x2019;s laws live</div><div class="phet-tags"><span class="phet-tag">Gravity</span><span class="phet-tag">Kepler&#x2019;s Laws</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-force-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Gravity Force Lab</div><div class="phet-desc">Measure gravitational force between two masses &#x2014; verify F&#x2009;=&#x2009;Gm&#x2081;m&#x2082;/r&#xB2;</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Law of Gravity</span><span class="phet-tag">Inverse Square</span></div></a>
+    </div>
+
+    <div class="phet-section-label">Electricity &amp; Magnetism</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" rel="noopener"><div class="phet-icon">&#x26A1;</div><div class="phet-name">Circuit Construction Kit</div><div class="phet-desc">Build DC circuits with resistors, batteries, switches &#x2014; measure voltage, current, resistance</div><div class="phet-tags"><span class="phet-tag">Circuits</span><span class="phet-tag">Ohm&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/charges-and-fields" target="_blank" rel="noopener"><div class="phet-icon">&#x271A;</div><div class="phet-name">Charges &amp; Fields</div><div class="phet-desc">Place charges, visualize electric field lines and equipotential surfaces</div><div class="phet-tags"><span class="phet-tag">Electric Field</span><span class="phet-tag">Coulomb&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/faradays-law" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Faraday&#x2019;s Law</div><div class="phet-desc">Move a magnet through a coil &#x2014; see induced EMF and Lenz&#x2019;s Law live</div><div class="phet-tags"><span class="phet-tag">Induction</span><span class="phet-tag">EMF</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/magnets-and-electromagnets" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Magnets &amp; Electromagnets</div><div class="phet-desc">Explore magnetic field lines from bar magnets and current-carrying coils</div><div class="phet-tags"><span class="phet-tag">Magnetism</span><span class="phet-tag">B-Field</span></div></a>
+    </div>
+
+    <div class="phet-section-label">Optics &amp; Light</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/bending-light" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A1;</div><div class="phet-name">Bending Light</div><div class="phet-desc">Snell&#x2019;s Law, total internal reflection &#x2014; drag the ray and watch it bend at any interface</div><div class="phet-tags"><span class="phet-tag">Snell&#x2019;s Law</span><span class="phet-tag">Refraction</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/geometric-optics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F50D;</div><div class="phet-name">Geometric Optics</div><div class="phet-desc">Converging and diverging lenses &#x2014; move the object, find image location and magnification</div><div class="phet-tags"><span class="phet-tag">Lenses</span><span class="phet-tag">Thin Lens Equation</span></div></a>
+    </div>
+
+    <div class="phet-section-label">Thermodynamics &amp; Modern Physics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gas-properties" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A8;</div><div class="phet-name">Gas Properties</div><div class="phet-desc">Pump gas into a container, change temperature and volume &#x2014; see PV&#x2009;=&#x2009;nRT live</div><div class="phet-tags"><span class="phet-tag">Ideal Gas Law</span><span class="phet-tag">Thermodynamics</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/photoelectric-effect" target="_blank" rel="noopener"><div class="phet-icon">&#x2697;&#xFE0F;</div><div class="phet-name">Photoelectric Effect</div><div class="phet-desc">Shine light on a metal, change frequency and intensity, measure ejected electrons</div><div class="phet-tags"><span class="phet-tag">Quantum</span><span class="phet-tag">Photons</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/models-of-the-hydrogen-atom" target="_blank" rel="noopener"><div class="phet-icon">&#x269B;&#xFE0F;</div><div class="phet-name">Hydrogen Atom Models</div><div class="phet-desc">Bohr model, de Broglie, Schr&#xF6;dinger &#x2014; shoot photons at hydrogen and watch transitions</div><div class="phet-tags"><span class="phet-tag">Bohr Model</span><span class="phet-tag">Energy Levels</span></div></a>
+    </div>
+
   </div>
 </div>
+
 <footer>Physics Study Hub &#x00B7; Free for every student &#x00B7; <button style="background:none;border:none;color:var(--accent);font-size:.8rem;cursor:pointer;font-family:inherit;" onclick="showPanel('home')">Home</button></footer>
 <script>
 // =========================================================
@@ -1220,9 +1250,9 @@ var practiceTopics = [
  name:'AP Physics C — Kinematics',
  tags:['kinematics','velocity','acceleration','position','motion','calculus','integral','derivative'],
  videos:[
-  {label:'Calculus-Based Kinematics (Khan Academy)',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
-  {label:'Position, Velocity, Acceleration with Calculus',url:'https://www.youtube.com/watch?v=MvtBQRnHLfo'},
-  {label:'AP Physics C Kinematics Review (Flipping Physics)',url:'https://www.youtube.com/watch?v=4SRiMuP9yAU'},
+  {label:'Khan Academy: Calculus-Based Kinematics',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:kinematics'},
+  {label:'Position, Velocity & Acceleration (Calculus)',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:kinematics'},
+  {label:'AP Physics C Kinematics (Khan Academy)',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:kinematics'},
  ],
  questions:[
   {level:'ap',q:'A particle has position x(t) = 3t³ − 12t + 5 m. Find (a) the velocity at t = 2 s, (b) the acceleration at t = 2 s, and (c) the time when the particle is at rest.',
@@ -1244,9 +1274,9 @@ var practiceTopics = [
  name:"AP Physics C — Newton's Laws & Dynamics",
  tags:["newton","force","friction","dynamics","free body","FBD","circular","centripetal","tension","incline"],
  videos:[
-  {label:"Newton's Laws — Calculus Treatment (Flipping Physics)",url:'https://www.youtube.com/watch?v=A3c0tCMlhHA'},
-  {label:'AP Physics C Forces FRQ Walkthrough',url:'https://www.youtube.com/watch?v=q1XT9UlO4g8'},
-  {label:'Normal Force and Friction on Inclines',url:'https://www.youtube.com/watch?v=5kEQ4RWkr8w'},
+  {label:"Newton's Laws — Calculus Treatment (Flipping Physics)",url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:newtons-laws-of-motion'},
+  {label:'Newtons Laws of Motion — Khan Academy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:newtons-laws-of-motion'},
+  {label:'Normal Force & Friction on Inclines',url:'https://www.khanacademy.org/science/physics/forces-newtons-laws/inclined-planes-friction/v/inclined-plane-force-components'},
  ],
  questions:[
   {level:'ap',q:'A block of mass m = 5 kg sits on a surface with μₛ = 0.5 and μₖ = 0.3. A horizontal force F is applied. (a) Find the minimum force to start motion. (b) If F = 25 N is applied, find the acceleration.',
@@ -1268,9 +1298,9 @@ var practiceTopics = [
  name:'AP Physics C — Work, Energy & Power',
  tags:['work','energy','power','potential','kinetic','conservation','spring','variable force','integral'],
  videos:[
-  {label:'Work Done by Variable Force (Calculus)',url:'https://www.youtube.com/watch?v=RrXqCBJHN4Y'},
-  {label:'Conservation of Energy — AP Physics C',url:'https://www.youtube.com/watch?v=FMHP1LQTBBA'},
-  {label:'Work-Energy Theorem Full Derivation',url:'https://www.youtube.com/watch?v=RPNXNB6pP6s'},
+  {label:'Khan Academy: Work Done by a Variable Force',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
+  {label:'Khan Academy: Conservation of Energy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
+  {label:'Khan Academy: Work & Energy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
  ],
  questions:[
   {level:'ap',q:'A force F(x) = (8x − 2x²) N acts on a 4 kg particle. Find (a) the work done from x = 0 to x = 3 m, and (b) the speed at x = 3 m if it starts from rest.',
@@ -1290,9 +1320,9 @@ var practiceTopics = [
  name:'AP Physics C — Momentum, Impulse & Collisions',
  tags:['momentum','impulse','collision','elastic','inelastic','center of mass','rocket','conservation'],
  videos:[
-  {label:'Impulse and Momentum — AP Physics C',url:'https://www.youtube.com/watch?v=jVgTgTT2rek'},
-  {label:'Elastic and Inelastic Collision Problems',url:'https://www.youtube.com/watch?v=e_Tv5qTRJKY'},
-  {label:'Center of Mass Calculus Treatment',url:'https://www.youtube.com/watch?v=s_Bi6r2QKKA'},
+  {label:'Khan Academy: Impulse and Momentum',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
+  {label:'Khan Academy: Elastic & Inelastic Collisions',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
+  {label:'Khan Academy: Center of Mass',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
  ],
  questions:[
   {level:'ap',q:'A 0.15 kg baseball moving at 40 m/s is hit by a bat. The ball leaves at 50 m/s in the opposite direction. The contact lasts 0.001 s. Find (a) the impulse and (b) the average force.',
@@ -1312,9 +1342,9 @@ var practiceTopics = [
  name:'AP Physics C — Rotation, Torque & Angular Momentum',
  tags:['rotation','torque','angular','moment of inertia','angular momentum','rolling','rotational kinetic energy'],
  videos:[
-  {label:'Rotational Motion Calculus (Khan Academy)',url:'https://www.youtube.com/watch?v=YlO2D0p76bE'},
-  {label:'Moment of Inertia by Integration',url:'https://www.youtube.com/watch?v=FHHSrfM8nCo'},
-  {label:'Rolling Without Slipping — AP Physics C',url:'https://www.youtube.com/watch?v=Xh-GPXvFEBo'},
+  {label:'Khan Academy: Rotational Motion',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:rotation'},
+  {label:'Khan Academy: Moment of Inertia',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:rotation'},
+  {label:'Khan Academy: Rolling Without Slipping',url:'https://www.khanacademy.org/science/physics/forces-newtons-laws/inclined-planes-friction/v/inclined-plane-force-components'},
  ],
  questions:[
   {level:'ap',q:'A solid disk (M = 3 kg, R = 0.4 m) has angular velocity ω₀ = 20 rad/s. A braking torque of 1.2 N·m is applied. (a) Find α. (b) Find time to stop. (c) Find total angle rotated.',
@@ -1334,9 +1364,9 @@ var practiceTopics = [
  name:'AP Physics C — Gravitation & Orbital Mechanics',
  tags:['gravity','gravitation','orbit','kepler','escape','potential','satellite','gravitational field'],
  videos:[
-  {label:"Kepler's Laws and Orbital Energy",url:'https://www.youtube.com/watch?v=V3-UCsFOIl8'},
-  {label:'AP Physics C Gravitation FRQ Solutions',url:'https://www.youtube.com/watch?v=iCFfuR3UBSs'},
-  {label:'Gravitational Potential Energy General Case',url:'https://www.youtube.com/watch?v=MJNHQMHfSY8'},
+  {label:"Kepler's Laws and Orbital Energy",url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:gravitation'},
+  {label:'Khan Academy: Gravitation',url:'https://www.khanacademy.org/science/physics/quantum-physics'},
+  {label:'Khan Academy: Gravitational PE',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:gravitation'},
  ],
  questions:[
   {level:'ap',q:'A satellite orbits Earth at radius r₁ = 2R_E (R_E = 6.4×10⁶ m). It fires its engines to reach r₂ = 4R_E. Find (a) the ratio of orbital speeds v₁/v₂ and (b) the ratio of orbital periods T₂/T₁.',
@@ -1356,9 +1386,9 @@ var practiceTopics = [
  name:'AP Physics C — Oscillations & Simple Harmonic Motion',
  tags:['SHM','oscillation','spring','pendulum','period','frequency','amplitude','energy','damping'],
  videos:[
-  {label:'SHM Differential Equation Solution',url:'https://www.youtube.com/watch?v=hmAHKr-S_6Q'},
-  {label:'AP Physics C SHM Complete Review',url:'https://www.youtube.com/watch?v=YFECLKicKUU'},
-  {label:'Energy in SHM',url:'https://www.youtube.com/watch?v=AP4v7bABd38'},
+  {label:'Khan Academy: Simple Harmonic Motion',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:simple-harmonic-motion'},
+  {label:'Khan Academy: SHM Review',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:simple-harmonic-motion'},
+  {label:'Khan Academy: Energy in SHM',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:simple-harmonic-motion'},
  ],
  questions:[
   {level:'ap',q:'Show that x(t) = A cos(ωt + φ) satisfies the SHM differential equation d²x/dt² = −ω²x.',
@@ -1382,9 +1412,9 @@ var practiceTopics = [
  name:'HS Physics — Kinematics (1D & 2D)',
  tags:['kinematics','velocity','acceleration','projectile','displacement','free fall','motion'],
  videos:[
-  {label:'Kinematics Introduction (Khan Academy)',url:'https://www.youtube.com/watch?v=ZM8ECpBuQYE'},
-  {label:'Projectile Motion Explained',url:'https://www.youtube.com/watch?v=aY8z2qO44WA'},
-  {label:'Free Fall Problems',url:'https://www.youtube.com/watch?v=W4aCxTtxZkk'},
+  {label:'Khan Academy: Kinematics Introduction',url:'https://www.khanacademy.org/science/physics/one-dimensional-motion'},
+  {label:'Khan Academy: Projectile Motion',url:'https://www.khanacademy.org/science/physics/two-dimensional-motion'},
+  {label:'Khan Academy: Free Fall',url:'https://www.khanacademy.org/science/physics/one-dimensional-motion'},
  ],
  questions:[
   {level:'reg',q:'A car starts from rest and accelerates at 3 m/s² for 8 s. Find (a) final speed, (b) distance traveled, (c) average speed.',
@@ -1406,9 +1436,9 @@ var practiceTopics = [
  name:"HS Physics — Forces & Newton's Laws",
  tags:["newton","force","friction","free body","FBD","normal","tension","weight","gravity","incline"],
  videos:[
-  {label:"Newton's Laws of Motion (Khan Academy)",url:'https://www.youtube.com/watch?v=ou9YMWlJgkE'},
-  {label:'Free Body Diagrams Step by Step',url:'https://www.youtube.com/watch?v=5qzxFmG2Tx8'},
-  {label:'Friction — Static vs Kinetic',url:'https://www.youtube.com/watch?v=UgDSiI9lIi0'},
+  {label:"Newton's Laws of Motion (Khan Academy)",url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:newtons-laws-of-motion'},
+  {label:'Newtons Laws & FBDs — Khan Academy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:newtons-laws-of-motion'},
+  {label:'Khan Academy: Friction',url:'https://www.khanacademy.org/science/physics/forces-newtons-laws/inclined-planes-friction/v/inclined-plane-force-components'},
  ],
  questions:[
   {level:'reg',q:'A 10 kg box is pushed with 50 N on a surface with μₖ = 0.3. Find the acceleration. (g = 10 m/s²)',
@@ -1430,9 +1460,9 @@ var practiceTopics = [
  name:'HS Physics — Energy, Work & Power',
  tags:['energy','work','power','kinetic','potential','spring','conservation','efficiency'],
  videos:[
-  {label:'Conservation of Energy (Khan Academy)',url:'https://www.youtube.com/watch?v=PlC0SkKvFD8'},
-  {label:'Work and Power Problems',url:'https://www.youtube.com/watch?v=frDRHPsODTs'},
-  {label:'Spring Potential Energy',url:'https://www.youtube.com/watch?v=HE5LJl4oSx0'},
+  {label:'Khan Academy: Conservation of Energy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
+  {label:'Khan Academy: Work & Power',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
+  {label:'Khan Academy: Spring Potential Energy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'},
  ],
  questions:[
   {level:'reg',q:'A 2 kg ball falls from rest from 15 m. Find its speed just before hitting the ground. (g = 10 m/s²)',
@@ -1452,9 +1482,9 @@ var practiceTopics = [
  name:'HS Physics — Momentum & Impulse',
  tags:['momentum','impulse','collision','elastic','inelastic','conservation','recoil'],
  videos:[
-  {label:'Momentum and Impulse (Khan Academy)',url:'https://www.youtube.com/watch?v=aibqOVhauri'},
-  {label:'Elastic vs Inelastic Collisions',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
-  {label:'Conservation of Momentum Problems',url:'https://www.youtube.com/watch?v=jVgTgTT2rek'},
+  {label:'Khan Academy: Momentum & Impulse',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
+  {label:'Khan Academy: Elastic & Inelastic Collisions',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
+  {label:'Khan Academy: Conservation of Momentum',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
  ],
  questions:[
   {level:'reg',q:'A 0.5 kg ball moving at 12 m/s right hits a wall and bounces back at 10 m/s. Find (a) the impulse and (b) the average force if contact lasts 0.002 s.',
@@ -1474,9 +1504,9 @@ var practiceTopics = [
  name:'HS Physics — Circular Motion & Gravity',
  tags:['circular','centripetal','gravity','orbit','satellite','kepler','universal gravitation'],
  videos:[
-  {label:'Circular Motion (Khan Academy)',url:'https://www.youtube.com/watch?v=2uTQ_STEjFs'},
-  {label:'Universal Gravitation',url:'https://www.youtube.com/watch?v=Go-H3CBQXVE'},
-  {label:'Satellite Orbits Explained',url:'https://www.youtube.com/watch?v=q_e9j9fUHJA'},
+  {label:'Khan Academy: Circular Motion',url:'https://www.khanacademy.org/science/physics/centripetal-force-and-gravitation'},
+  {label:'Khan Academy: Universal Gravitation',url:'https://www.khanacademy.org/science/physics/centripetal-force-and-gravitation'},
+  {label:'Khan Academy: Satellite Orbits',url:'https://www.khanacademy.org/science/physics/centripetal-force-and-gravitation'},
  ],
  questions:[
   {level:'reg',q:'A 1200 kg car rounds a flat curve of radius 60 m at 20 m/s. Find the minimum static friction coefficient needed.',
@@ -1494,9 +1524,9 @@ var practiceTopics = [
  name:'HS Physics — Waves & Sound',
  tags:['wave','sound','frequency','wavelength','period','standing wave','interference','doppler','resonance','beats'],
  videos:[
-  {label:'Wave Basics (Khan Academy)',url:'https://www.youtube.com/watch?v=IOCIO5Pxl5A'},
-  {label:'Standing Waves and Resonance',url:'https://www.youtube.com/watch?v=MKB-FBhkxY8'},
-  {label:'Doppler Effect Explained',url:'https://www.youtube.com/watch?v=h4OnBYrbCjY'},
+  {label:'Khan Academy: Wave Basics',url:'https://www.khanacademy.org/science/physics/mechanical-waves-and-sound'},
+  {label:'Khan Academy: Standing Waves',url:'https://www.khanacademy.org/science/physics/mechanical-waves-and-sound'},
+  {label:'Khan Academy: Doppler Effect',url:'https://www.khanacademy.org/science/physics/mechanical-waves-and-sound/sound-topic/v/doppler-effect'},
  ],
  questions:[
   {level:'reg',q:'A sound wave has frequency 440 Hz and travels at 340 m/s. Find (a) wavelength, (b) period.',
@@ -1516,9 +1546,9 @@ var practiceTopics = [
  name:'HS Physics — Light & Optics',
  tags:['light','optics','reflection','refraction','snell','lens','mirror','diffraction','interference','wavelength'],
  videos:[
-  {label:"Snell's Law and Refraction",url:'https://www.youtube.com/watch?v=nFQ3OhqnZf0'},
-  {label:'Thin Lens Equation Problems',url:'https://www.youtube.com/watch?v=OnLJx87UfBE'},
-  {label:"Young's Double-Slit Experiment",url:'https://www.youtube.com/watch?v=Iuv6hY6zsd0'},
+  {label:"Snell's Law and Refraction",url:'https://www.khanacademy.org/science/physics/geometric-optics'},
+  {label:'Khan Academy: Thin Lens Equation',url:'https://www.khanacademy.org/science/physics/geometric-optics'},
+  {label:"Young's Double-Slit Experiment",url:'https://www.khanacademy.org/science/physics/light-waves'},
  ],
  questions:[
   {level:'reg',q:'Light travels from water (n = 1.33) to glass (n = 1.5) at 40° to the normal. Find the refracted angle.',
@@ -1538,9 +1568,9 @@ var practiceTopics = [
  name:'HS Physics — Electricity & Circuits',
  tags:['electricity','circuits','resistance','Ohm','voltage','current','power','series','parallel','capacitor','Kirchhoff'],
  videos:[
-  {label:"Ohm's Law and Circuits (Khan Academy)",url:'https://www.youtube.com/watch?v=J4Vq-xHqUo8'},
-  {label:'Series and Parallel Circuits',url:'https://www.youtube.com/watch?v=u0hC1qVS7ic'},
-  {label:"Kirchhoff's Laws Problems",url:'https://www.youtube.com/watch?v=4FQ4NX6HFeg'},
+  {label:"Ohm's Law and Circuits (Khan Academy)",url:'https://www.khanacademy.org/science/physics/circuits-topic'},
+  {label:'Khan Academy: Series & Parallel Circuits',url:'https://www.khanacademy.org/science/physics/circuits-topic'},
+  {label:"Kirchhoff's Laws Problems",url:'https://www.khanacademy.org/science/physics/circuits-topic'},
  ],
  questions:[
   {level:'reg',q:'A 12 V battery is connected to three resistors: 4 Ω and 6 Ω in parallel, and that combination in series with 2 Ω. Find the total current and voltage across each element.',
@@ -1558,9 +1588,9 @@ var practiceTopics = [
  name:'HS Physics — Magnetism & Electromagnetism',
  tags:['magnetism','magnetic field','force','current','right hand rule','Faraday','induction','flux','Lenz'],
  videos:[
-  {label:'Magnetic Force on Moving Charges',url:'https://www.youtube.com/watch?v=e3lHqRCMEVw'},
-  {label:"Faraday's Law of Induction",url:'https://www.youtube.com/watch?v=Rj3jFDRoFyQ'},
-  {label:'Right-Hand Rule Explained',url:'https://www.youtube.com/watch?v=4-YLmGHEiVk'},
+  {label:'Khan Academy: Magnetic Force',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
+  {label:"Faraday's Law of Induction",url:'https://www.khanacademy.org/science/physics/magnetic-forces-and-magnetic-fields'},
+  {label:'Khan Academy: Right-Hand Rule',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:linear-momentum'},
  ],
  questions:[
   {level:'reg',q:'An electron moves east at 5×10⁶ m/s through a 0.4 T magnetic field pointing north. Find the magnitude and direction of the magnetic force.',
@@ -1578,9 +1608,9 @@ var practiceTopics = [
  name:'HS Physics — Thermodynamics & Heat',
  tags:['thermodynamics','heat','temperature','ideal gas','pressure','volume','entropy','work','first law'],
  videos:[
-  {label:'Ideal Gas Law (Khan Academy)',url:'https://www.youtube.com/watch?v=6ilMNblFO1U'},
-  {label:'First Law of Thermodynamics',url:'https://www.youtube.com/watch?v=EvzqnhPQOVQ'},
-  {label:'Heat Engines and Efficiency',url:'https://www.youtube.com/watch?v=RCWKKU7Pz6I'},
+  {label:'Khan Academy: Ideal Gas Law',url:'https://www.khanacademy.org/science/physics/thermodynamics'},
+  {label:'Khan Academy: First Law of Thermodynamics',url:'https://www.khanacademy.org/science/physics/thermodynamics'},
+  {label:'Khan Academy: Heat Engines',url:'https://www.khanacademy.org/science/physics/thermodynamics'},
  ],
  questions:[
   {level:'reg',q:'A gas is confined to 2 L at 300 K and 1.5 atm. It is heated to 450 K and compressed to 1.5 L. Find the new pressure.',
@@ -1598,9 +1628,9 @@ var practiceTopics = [
  name:'HS Physics — Modern Physics & Quantum',
  tags:['modern physics','photoelectric','photon','quantum','wave-particle','atomic','nuclear','Planck','de Broglie'],
  videos:[
-  {label:'Photoelectric Effect Explained',url:'https://www.youtube.com/watch?v=6RBBF2MNFPk'},
-  {label:"de Broglie Wavelength",url:'https://www.youtube.com/watch?v=7W94w3bGMvs'},
-  {label:'Atomic Models — Bohr Model',url:'https://www.youtube.com/watch?v=GuFQEOzFOgA'},
+  {label:'Khan Academy: Photoelectric Effect',url:'https://www.khanacademy.org/science/physics/quantum-physics'},
+  {label:"de Broglie Wavelength",url:'https://www.khanacademy.org/science/physics/quantum-physics'},
+  {label:'Khan Academy: Bohr Model',url:'https://www.khanacademy.org/science/physics/quantum-physics'},
  ],
  questions:[
   {level:'reg',q:'A photon has wavelength 400 nm. Find (a) its frequency, (b) its energy in eV. (h = 6.63×10⁻³⁴ J·s, c = 3×10⁸ m/s, 1 eV = 1.6×10⁻¹⁹ J)',
@@ -1668,7 +1698,7 @@ function buildTopicCard(t) {
   ? '<span class="practice-level-badge ap">AP Physics C</span>'
   : '<span class="practice-level-badge reg">HS Physics</span>';
  var videoHTML = t.videos.map(function(v){
-  return '<a class="practice-video-link" href="'+v.url+'" target="_blank" rel="noopener">▶ '+v.label+'</a>';
+  return '<a class="practice-video-link" href="'+v.url+'" target="_blank" rel="noopener">\uD83C\uDF93 '+v.label+' \u2192</a>';
  }).join('');
  var questionsHTML = t.questions.map(function(q,i){
   var lvlClass = q.level === 'ap' ? 'ap' : 'reg';
@@ -1730,277 +1760,8 @@ function toggleAnswer(qid) {
 var _simLoop = null;
 
 function buildSimulationsTab(classId){
- return '<div class="sim-container"><p style="font-size:.88rem;color:var(--muted);margin-bottom:12px;">Physics simulations are now their own section. Click the button below or use the Simulations nav link.</p><button class="btn btn-primary" onclick="showPanel(\'simulations\')">&#x1F3AE; Open Simulations &#x2192;</button></div>';
+ return '<div style="padding:16px;"><div class="card"><div class="card-title">&#x1F9EA; PhET Simulations</div><p style="font-size:.85rem;color:var(--muted);line-height:1.6;">Interactive physics simulations from the University of Colorado Boulder.</p><button class="btn btn-primary" onclick="showPanel(\'simulations\')" style="align-self:flex-start;margin-top:8px;">Open PhET Simulations &#x2192;</button></div></div>';
 }
-
-function launchSim(type,classId){
- if(_simLoop){cancelAnimationFrame(_simLoop);_simLoop=null;}
- var cid='simActive_'+(classId||'main');
- var wrap=document.getElementById(cid)||document.getElementById('simActive_main');
- if(!wrap)return;
- wrap.className='sim-active show';wrap.innerHTML='';
- if(type==='incline')buildInclineSim(wrap);
- else if(type==='spring')buildSpringSim(wrap);
- else if(type==='pendulum')buildPendulumSim(wrap);
- else if(type==='collision')buildCollisionSim(wrap);
- else if(type==='circular')buildCircularSim(wrap);
- else if(type==='orbit')buildOrbitSim(wrap);
- wrap.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function _arr(ctx,x1,y1,x2,y2,col,w){
- var dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);if(len<2)return;
- ctx.strokeStyle=col;ctx.lineWidth=w||2;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
- var a=Math.atan2(dy,dx),s=9;ctx.fillStyle=col;ctx.beginPath();
- ctx.moveTo(x2,y2);ctx.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
- ctx.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));ctx.closePath();ctx.fill();
-}
-
-// ---- INCLINE (corrected vectors) ----
-function buildInclineSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x1F4E6; Block on Incline</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="incBtn" onclick="incToggle()">&#x25B6; Start</button><button class="btn btn-ghost btn-sm" onclick="incReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="incCanvas" class="sim-canvas" height="260"></canvas></div><div class="sim-controls"><div class="sim-control"><label>Angle &theta;</label><input type="range" id="incAngle" min="5" max="80" value="30" oninput="incDraw()"/><span class="sim-val" id="incAV">30&deg;</span></div><div class="sim-control"><label>Mass (kg)</label><input type="range" id="incMass" min="0.5" max="20" step="0.5" value="5" oninput="incDraw()"/><span class="sim-val" id="incMV">5 kg</span></div><div class="sim-control"><label>&mu; kinetic</label><input type="range" id="incMu" min="0" max="0.9" step="0.05" value="0.2" oninput="incDraw()"/><span class="sim-val" id="incMuV">0.20</span></div><div class="sim-control"><label>g (m/s&sup2;)</label><input type="range" id="incG" min="1.6" max="25" step="0.2" value="9.8" oninput="incDraw()"/><span class="sim-val" id="incGV">9.8</span></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">F&#x2099;&#x2091;&#x209C;</div><div class="sim-readout-val" id="incFn">-</div><div class="sim-readout-unit">N</div></div><div class="sim-readout"><div class="sim-readout-label">Accel.</div><div class="sim-readout-val" id="incAcc">-</div><div class="sim-readout-unit">m/s&sup2;</div></div><div class="sim-readout"><div class="sim-readout-label">Speed</div><div class="sim-readout-val" id="incSpd">0.00</div><div class="sim-readout-unit">m/s</div></div><div class="sim-readout"><div class="sim-readout-label">Normal F</div><div class="sim-readout-val" id="incNF">-</div><div class="sim-readout-unit">N</div></div></div><div class="sim-info"><strong>Vectors:</strong> <span style="color:#ef4444;">mg</span> straight down &bull; <span style="color:#3b82f6;">F&#x2099;</span> perpendicular to surface &bull; <span style="color:#10b981;">F&#x2099;&#x2091;&#x209C;</span> along slope. &nbsp; F&#x2099;&#x2091;&#x209C; = mg sin&theta; &minus; &mu;mg cos&theta;</div></div>';
- var iS={x:0.08,v:0,run:false},lt=null;
- function iP(){var ad=parseFloat(document.getElementById('incAngle').value);return{a:ad*Math.PI/180,ad,m:parseFloat(document.getElementById('incMass').value),mu:parseFloat(document.getElementById('incMu').value),g:parseFloat(document.getElementById('incG').value)};}
- window.incDraw=function(){
-  var c=document.getElementById('incCanvas');if(!c||!c.getContext)return;
-  var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=iP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0f172a';ctx.fillRect(0,0,W,H);
-  // Incline: origin at bottom-left corner
-  var ox=W*0.08,oy=H*0.88,rx=W*0.88;
-  var px=ox,py=oy-(rx-ox)*Math.tan(p.a);
-  if(py<H*0.08){var sc2=(oy-H*0.08)/((rx-ox)*Math.tan(p.a));rx=ox+(rx-ox)*sc2;py=H*0.08;}
-  ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(rx,oy);ctx.lineTo(px,py);ctx.closePath();
-  ctx.fillStyle='#1e3a5f';ctx.fill();ctx.strokeStyle='#60a5fa';ctx.lineWidth=2;ctx.stroke();
-  // Angle arc
-  ctx.beginPath();ctx.arc(ox,oy,36,0,-p.a,true);ctx.strokeStyle='#f59e0b';ctx.lineWidth=1.5;ctx.stroke();
-  ctx.fillStyle='#f59e0b';ctx.font='13px Inter,sans-serif';ctx.fillText(Math.round(p.ad)+'\u00B0',ox+26,oy-12);
-  // Block on slope
-  var sLen=Math.sqrt((rx-px)*(rx-px)+(oy-py)*(oy-py));
-  var t=Math.min(0.90,Math.max(0.05,iS.x));
-  var sUx=(rx-px)/sLen,sUy=(oy-py)/sLen; // unit vec down the slope
-  var bSize=Math.min(W,H)*0.09;
-  var bcx=px+sLen*t*sUx,bcy=py+sLen*t*sUy; // block center on surface
-  // Normal direction: 90deg CW from slope direction = (sUy, -sUx) — points away from incline surface (upward-right)
-  var nUx=sUy,nUy=-sUx;
-  // Draw block as rotated rectangle
-  ctx.save();ctx.translate(bcx+nUx*bSize*0.5,bcy+nUy*bSize*0.5);ctx.rotate(-p.a);
-  ctx.fillStyle='#e8650a';ctx.fillRect(-bSize/2,-bSize,bSize,bSize);
-  ctx.strokeStyle='rgba(255,255,255,0.8)';ctx.lineWidth=1.5;ctx.strokeRect(-bSize/2,-bSize,bSize,bSize);
-  ctx.restore();
-  // Vector origin = block center
-  var vcx=bcx+nUx*bSize,vcy=bcy+nUy*bSize;
-  var sc3=Math.min(W,H)*0.004;
-  // 1. Weight mg — straight DOWN (0,+1)
-  var mgLen=p.m*p.g*sc3;
-  _arr(ctx,vcx,vcy,vcx,vcy+mgLen,'#ef4444',2.5);
-  ctx.fillStyle='#ef4444';ctx.font='12px Inter';ctx.fillText('mg',vcx+5,vcy+mgLen*0.6);
-  // 2. Normal force — perpendicular to slope, pointing AWAY from surface (nUx,nUy direction)
-  var nLen=p.m*p.g*Math.cos(p.a)*sc3;
-  _arr(ctx,vcx,vcy,vcx+nUx*nLen,vcy+nUy*nLen,'#3b82f6',2.5);
-  ctx.fillStyle='#3b82f6';ctx.font='12px Inter';ctx.fillText('F\u2099',vcx+nUx*nLen+5,vcy+nUy*nLen-4);
-  // 3. Net force along slope — positive means DOWN the slope (sUx,sUy direction)
-  var fnet=p.m*p.g*Math.sin(p.a)-p.mu*p.m*p.g*Math.cos(p.a);
-  if(Math.abs(fnet)>0.3){
-   var fLen=Math.abs(fnet)*sc3,fDir=fnet>0?1:-1;
-   _arr(ctx,vcx,vcy,vcx+fDir*fLen*sUx,vcy+fDir*fLen*sUy,'#10b981',2.5);
-   ctx.fillStyle='#10b981';ctx.font='12px Inter';ctx.fillText('F\u2099\u2091\u209C',vcx+fDir*fLen*sUx+5,vcy+fDir*fLen*sUy-4);
-  }
-  var r=function(n){return Math.round(n*100)/100;};
-  document.getElementById('incFn').textContent=r(fnet);
-  document.getElementById('incAcc').textContent=r(fnet/p.m);
-  document.getElementById('incNF').textContent=r(p.m*p.g*Math.cos(p.a));
-  document.getElementById('incSpd').textContent=Math.abs(iS.v).toFixed(2);
-  document.getElementById('incAV').textContent=Math.round(p.ad)+'\u00B0';
-  document.getElementById('incMV').textContent=p.m+' kg';
-  document.getElementById('incMuV').textContent=p.mu.toFixed(2);
-  document.getElementById('incGV').textContent=p.g.toFixed(1);
- };
- function iLoop(ts){if(!iS.run)return;if(lt===null)lt=ts;var dt=Math.min((ts-lt)/1000,0.04);lt=ts;var p=iP();var fn=p.m*p.g*Math.sin(p.a)-p.mu*p.m*p.g*Math.cos(p.a);iS.v=Math.max(0,iS.v+fn/p.m*dt);iS.x+=iS.v*dt*0.25;if(iS.x>=0.90){iS.x=0.90;iS.v=0;iS.run=false;document.getElementById('incBtn').textContent='\u25B6 Start';}window.incDraw();if(iS.run)_simLoop=requestAnimationFrame(iLoop);}
- window.incToggle=function(){iS.run=!iS.run;document.getElementById('incBtn').textContent=iS.run?'\u23F8 Pause':'\u25B6 Start';if(iS.run){lt=null;_simLoop=requestAnimationFrame(iLoop);}else{cancelAnimationFrame(_simLoop);_simLoop=null;}};
- window.incReset=function(){iS.x=0.08;iS.v=0;iS.run=false;cancelAnimationFrame(_simLoop);_simLoop=null;lt=null;document.getElementById('incBtn').textContent='\u25B6 Start';window.incDraw();};
- window.incDraw();
-}
-
-// ---- SPRING SIM ----
-function buildSpringSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x1F300; Spring-Mass (SHM)</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="spBtn" onclick="spToggle()">&#x25B6; Start</button><button class="btn btn-ghost btn-sm" onclick="spReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="spCanvas" class="sim-canvas" height="200"></canvas></div><div class="sim-controls"><div class="sim-control"><label>k (N/m)</label><input type="range" id="spK" min="10" max="500" value="100" oninput="spDraw()"/><span class="sim-val" id="spKV">100</span></div><div class="sim-control"><label>Mass (kg)</label><input type="range" id="spM" min="0.1" max="10" step="0.1" value="1" oninput="spDraw()"/><span class="sim-val" id="spMV">1.0</span></div><div class="sim-control"><label>Amplitude (m)</label><input type="range" id="spA" min="0.05" max="0.5" step="0.01" value="0.2" oninput="spReset()"/><span class="sim-val" id="spAV">0.20</span></div><div class="sim-control"><label>Damping b</label><input type="range" id="spB" min="0" max="5" step="0.1" value="0" oninput="spDraw()"/><span class="sim-val" id="spBV">0.0</span></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">x</div><div class="sim-readout-val" id="spXR">-</div><div class="sim-readout-unit">m</div></div><div class="sim-readout"><div class="sim-readout-label">v</div><div class="sim-readout-val" id="spVR">-</div><div class="sim-readout-unit">m/s</div></div><div class="sim-readout"><div class="sim-readout-label">KE</div><div class="sim-readout-val" id="spKER">-</div><div class="sim-readout-unit">J</div></div><div class="sim-readout"><div class="sim-readout-label">PE</div><div class="sim-readout-val" id="spPER">-</div><div class="sim-readout-unit">J</div></div><div class="sim-readout"><div class="sim-readout-label">T</div><div class="sim-readout-val" id="spTR">-</div><div class="sim-readout-unit">s</div></div><div class="sim-readout"><div class="sim-readout-label">&omega;</div><div class="sim-readout-val" id="spWR">-</div><div class="sim-readout-unit">rad/s</div></div></div><div class="sim-info"><strong>SHM:</strong> F = &minus;kx &bull; &omega; = &radic;(k/m) &bull; T = 2&pi;/&omega; &bull; E = &frac12;kA&sup2;</div></div>';
- var sS={x:0,v:0,run:false},lt2=null;
- function sP(){var k=parseFloat(document.getElementById('spK').value),m=parseFloat(document.getElementById('spM').value),A=parseFloat(document.getElementById('spA').value),b=parseFloat(document.getElementById('spB').value),w=Math.sqrt(k/m);return{k,m,A,b,w,T:2*Math.PI/w};}
- window.spDraw=function(){
-  var c=document.getElementById('spCanvas');if(!c||!c.getContext)return;var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=sP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0f172a';ctx.fillRect(0,0,W,H);
-  var wX=36,eX=W/2,bS=48,bx=eX+sS.x*(W*0.33);
-  ctx.fillStyle='#374151';ctx.fillRect(0,0,wX,H);
-  for(var y=4;y<H;y+=14){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(wX,y+14);ctx.strokeStyle='#1f2937';ctx.lineWidth=1;ctx.stroke();}
-  var sL=wX,sR=bx-bS/2,co=10,sw=sR-sL;
-  ctx.beginPath();ctx.moveTo(sL,H/2);
-  for(var i=0;i<=co*2;i++){var sx=sL+sw*i/(co*2),sy=H/2+(i===0||i===co*2?0:(i%2===0?-12:12));ctx.lineTo(sx,sy);}
-  ctx.strokeStyle=sS.x>0.01?'#f87171':sS.x<-0.01?'#60a5fa':'#4ade80';ctx.lineWidth=2.5;ctx.stroke();
-  ctx.fillStyle='#e8650a';ctx.fillRect(bx-bS/2,H/2-bS/2,bS,bS);ctx.strokeStyle='rgba(255,255,255,0.7)';ctx.lineWidth=1.5;ctx.strokeRect(bx-bS/2,H/2-bS/2,bS,bS);
-  ctx.setLineDash([4,4]);ctx.strokeStyle='rgba(255,255,255,0.15)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(eX,8);ctx.lineTo(eX,H-8);ctx.stroke();ctx.setLineDash([]);
-  ctx.fillStyle='rgba(255,255,255,0.3)';ctx.font='10px Inter';ctx.fillText('eq',eX+3,H-8);
-  var r=function(n){return Math.round(n*1000)/1000;};
-  document.getElementById('spXR').textContent=r(sS.x);document.getElementById('spVR').textContent=r(sS.v);
-  document.getElementById('spKER').textContent=r(0.5*p.m*sS.v*sS.v);document.getElementById('spPER').textContent=r(0.5*p.k*sS.x*sS.x);
-  document.getElementById('spTR').textContent=r(p.T);document.getElementById('spWR').textContent=r(p.w);
-  document.getElementById('spKV').textContent=p.k;document.getElementById('spMV').textContent=p.m.toFixed(1);
-  document.getElementById('spAV').textContent=p.A.toFixed(2);document.getElementById('spBV').textContent=p.b.toFixed(1);
- };
- function sLoop(ts){if(!sS.run)return;if(lt2===null)lt2=ts;var dt=Math.min((ts-lt2)/1000,0.03);lt2=ts;var p=sP();sS.v+=(-p.k/p.m*sS.x-p.b/p.m*sS.v)*dt;sS.x+=sS.v*dt;window.spDraw();_simLoop=requestAnimationFrame(sLoop);}
- window.spToggle=function(){sS.run=!sS.run;document.getElementById('spBtn').textContent=sS.run?'\u23F8 Pause':'\u25B6 Start';if(sS.run){lt2=null;_simLoop=requestAnimationFrame(sLoop);}else{cancelAnimationFrame(_simLoop);_simLoop=null;}};
- window.spReset=function(){var p=sP();sS.x=p.A;sS.v=0;sS.run=false;cancelAnimationFrame(_simLoop);_simLoop=null;lt2=null;document.getElementById('spBtn').textContent='\u25B6 Start';window.spDraw();};
- sS.x=sP().A;window.spDraw();
-}
-
-// ---- PENDULUM ----
-function buildPendulumSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x23F1; Pendulum</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="pdBtn" onclick="pdToggle()">&#x25B6; Start</button><button class="btn btn-ghost btn-sm" onclick="pdReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="pdCanvas" class="sim-canvas" height="260"></canvas></div><div class="sim-controls"><div class="sim-control"><label>Length L (m)</label><input type="range" id="pdL" min="0.2" max="3" step="0.1" value="1" oninput="pdDraw()"/><span class="sim-val" id="pdLV">1.0 m</span></div><div class="sim-control"><label>g (m/s&sup2;)</label><input type="range" id="pdG" min="1.6" max="25" step="0.2" value="9.8" oninput="pdDraw()"/><span class="sim-val" id="pdGV">9.8</span></div><div class="sim-control"><label>Start angle</label><input type="range" id="pdA0" min="5" max="60" value="20" oninput="pdReset()"/><span class="sim-val" id="pdA0V">20&deg;</span></div><div class="sim-control"><label>Damping</label><input type="range" id="pdDamp" min="0" max="0.5" step="0.01" value="0" oninput="pdDraw()"/><span class="sim-val" id="pdDampV">0.00</span></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">&theta;</div><div class="sim-readout-val" id="pdTh">-</div><div class="sim-readout-unit">deg</div></div><div class="sim-readout"><div class="sim-readout-label">&omega;</div><div class="sim-readout-val" id="pdOm">-</div><div class="sim-readout-unit">rad/s</div></div><div class="sim-readout"><div class="sim-readout-label">T (small)</div><div class="sim-readout-val" id="pdT">-</div><div class="sim-readout-unit">s</div></div><div class="sim-readout"><div class="sim-readout-label">speed</div><div class="sim-readout-val" id="pdSpd">-</div><div class="sim-readout-unit">m/s</div></div></div><div class="sim-info"><strong>Pendulum:</strong> &alpha; = &minus;(g/L) sin&theta; &bull; T = 2&pi;&radic;(L/g) <em>(small angle)</em></div></div>';
- var pS={th:20*Math.PI/180,om:0,run:false},lt3=null;
- function pP(){var L=parseFloat(document.getElementById('pdL').value),g=parseFloat(document.getElementById('pdG').value),d=parseFloat(document.getElementById('pdDamp').value);return{L,g,d,T:2*Math.PI*Math.sqrt(L/g)};}
- window.pdDraw=function(){
-  var c=document.getElementById('pdCanvas');if(!c||!c.getContext)return;var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=pP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0f172a';ctx.fillRect(0,0,W,H);
-  var pivX=W/2,pivY=28,ppm=Math.min((H-60)/p.L,(W/2-20)/p.L);
-  var bx=pivX+ppm*p.L*Math.sin(pS.th),by=pivY+ppm*p.L*Math.cos(pS.th);
-  ctx.fillStyle='#1e293b';ctx.fillRect(0,0,W,pivY+2);
-  ctx.beginPath();ctx.arc(pivX,pivY,6,0,Math.PI*2);ctx.fillStyle='#94a3b8';ctx.fill();
-  ctx.beginPath();ctx.moveTo(pivX,pivY);ctx.lineTo(bx,by);ctx.strokeStyle='#64748b';ctx.lineWidth=2;ctx.stroke();
-  // Weight mg — straight down
-  _arr(ctx,bx,by,bx,by+50,'#ef4444',2);
-  ctx.fillStyle='#ef4444';ctx.font='11px Inter';ctx.fillText('mg',bx+5,by+42);
-  // Tension — along rod toward pivot
-  var tl=55,tdx=(pivX-bx)/(ppm*p.L),tdy=(pivY-by)/(ppm*p.L);
-  _arr(ctx,bx,by,bx+tl*tdx,by+tl*tdy,'#3b82f6',2);
-  ctx.fillStyle='#3b82f6';ctx.font='11px Inter';ctx.fillText('T',bx+tl*tdx+4,by+tl*tdy-4);
-  ctx.beginPath();ctx.arc(bx,by,13,0,Math.PI*2);ctx.fillStyle='#e8650a';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
-  ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='11px Inter';ctx.fillText('L='+p.L.toFixed(1)+'m',pivX+8,pivY+ppm*p.L/2);
-  var r=function(n){return Math.round(n*100)/100;};
-  document.getElementById('pdTh').textContent=r(pS.th*180/Math.PI);document.getElementById('pdOm').textContent=r(pS.om);
-  document.getElementById('pdT').textContent=r(p.T);document.getElementById('pdSpd').textContent=r(Math.abs(pS.om*p.L));
-  document.getElementById('pdLV').textContent=p.L.toFixed(1)+' m';document.getElementById('pdGV').textContent=p.g.toFixed(1);
-  document.getElementById('pdA0V').textContent=Math.round(parseFloat(document.getElementById('pdA0').value))+'\u00B0';
-  document.getElementById('pdDampV').textContent=p.d.toFixed(2);
- };
- function pLoop(ts){if(!pS.run)return;if(lt3===null)lt3=ts;var dt=Math.min((ts-lt3)/1000,0.03);lt3=ts;var p=pP();pS.om+=(-p.g/p.L*Math.sin(pS.th)-p.d*pS.om)*dt;pS.th+=pS.om*dt;window.pdDraw();_simLoop=requestAnimationFrame(pLoop);}
- window.pdToggle=function(){pS.run=!pS.run;document.getElementById('pdBtn').textContent=pS.run?'\u23F8 Pause':'\u25B6 Start';if(pS.run){lt3=null;_simLoop=requestAnimationFrame(pLoop);}else{cancelAnimationFrame(_simLoop);_simLoop=null;}};
- window.pdReset=function(){pS.th=parseFloat(document.getElementById('pdA0').value)*Math.PI/180;pS.om=0;pS.run=false;cancelAnimationFrame(_simLoop);_simLoop=null;lt3=null;document.getElementById('pdBtn').textContent='\u25B6 Start';window.pdDraw();};
- window.pdDraw();
-}
-
-// ---- COLLISION ----
-function buildCollisionSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x1F697; 1D Collision</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="clBtn" onclick="clStart()">&#x25B6; Launch</button><button class="btn btn-ghost btn-sm" onclick="clReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="clCanvas" class="sim-canvas" height="140"></canvas></div><div class="sim-controls"><div class="sim-control"><label>Mass 1 (kg)</label><input type="range" id="clM1" min="0.5" max="10" step="0.5" value="2" oninput="clDraw()"/><span class="sim-val" id="clM1V">2</span></div><div class="sim-control"><label>Velocity 1 (m/s)</label><input type="range" id="clV1" min="1" max="20" value="8" oninput="clDraw()"/><span class="sim-val" id="clV1V">8</span></div><div class="sim-control"><label>Mass 2 (kg)</label><input type="range" id="clM2" min="0.5" max="10" step="0.5" value="4" oninput="clDraw()"/><span class="sim-val" id="clM2V">4</span></div><div class="sim-control"><label>Type</label><select id="clType" style="font-size:.85rem;" onchange="clDraw()"><option value="elastic">Elastic (KE conserved)</option><option value="inelastic">Perfectly Inelastic</option><option value="partial">Partially Inelastic</option></select></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">p before</div><div class="sim-readout-val" id="clPB">-</div><div class="sim-readout-unit">kg&#x00B7;m/s</div></div><div class="sim-readout"><div class="sim-readout-label">p after</div><div class="sim-readout-val" id="clPA">-</div><div class="sim-readout-unit">kg&#x00B7;m/s</div></div><div class="sim-readout"><div class="sim-readout-label">KE before</div><div class="sim-readout-val" id="clKEB">-</div><div class="sim-readout-unit">J</div></div><div class="sim-readout"><div class="sim-readout-label">KE after</div><div class="sim-readout-val" id="clKEA">-</div><div class="sim-readout-unit">J</div></div><div class="sim-readout"><div class="sim-readout-label">v1&prime;</div><div class="sim-readout-val" id="clV1f">-</div><div class="sim-readout-unit">m/s</div></div><div class="sim-readout"><div class="sim-readout-label">v2&prime;</div><div class="sim-readout-val" id="clV2f">-</div><div class="sim-readout-unit">m/s</div></div></div><div class="sim-info"><strong>p conserved always</strong> &bull; KE conserved only in elastic collisions.</div></div>';
- var cS={x1:0.12,x2:0.65,hit:false,run:false},lt4=null,cv1=0,cv2=0;
- function cP(){return{m1:parseFloat(document.getElementById('clM1').value),v1:parseFloat(document.getElementById('clV1').value),m2:parseFloat(document.getElementById('clM2').value),type:document.getElementById('clType').value};}
- function cPost(p){if(p.type==='elastic'){return{v1f:(p.m1-p.m2)*p.v1/(p.m1+p.m2),v2f:2*p.m1*p.v1/(p.m1+p.m2)};}else if(p.type==='inelastic'){var vf=p.m1*p.v1/(p.m1+p.m2);return{v1f:vf,v2f:vf};}else{var vf=p.m1*p.v1/(p.m1+p.m2);return{v1f:vf-0.5*p.m2/(p.m1+p.m2)*p.v1,v2f:vf+0.5*p.m1/(p.m1+p.m2)*p.v1};}}
- function cReadout(v1f,v2f,p){var r=function(n){return Math.round(n*100)/100;};document.getElementById('clPB').textContent=r(p.m1*p.v1);document.getElementById('clPA').textContent=r(p.m1*v1f+p.m2*v2f);document.getElementById('clKEB').textContent=r(0.5*p.m1*p.v1*p.v1);document.getElementById('clKEA').textContent=r(0.5*p.m1*v1f*v1f+0.5*p.m2*v2f*v2f);document.getElementById('clV1f').textContent=r(v1f);document.getElementById('clV2f').textContent=r(v2f);}
- window.clDraw=function(vc1,vc2,hit){
-  var c=document.getElementById('clCanvas');if(!c||!c.getContext)return;var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=cP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0f172a';ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='#1e3a5f';ctx.fillRect(0,H*0.6,W,H*0.1);
-  var s1=Math.max(26,Math.min(56,p.m1*7)),s2=Math.max(26,Math.min(56,p.m2*7)),yb=H*0.6;
-  ctx.fillStyle=(hit)?'#8b5cf6':'#e8650a';ctx.fillRect(cS.x1*W-s1/2,yb-s1,s1,s1);ctx.strokeStyle='rgba(255,255,255,0.6)';ctx.lineWidth=1;ctx.strokeRect(cS.x1*W-s1/2,yb-s1,s1,s1);
-  var curV=vc1!==undefined?vc1:p.v1;if(Math.abs(curV)>0.1){var aLen=Math.min(60,Math.abs(curV)*4)*Math.sign(curV);ctx.strokeStyle='#10b981';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cS.x1*W,yb-s1/2);ctx.lineTo(cS.x1*W+aLen,yb-s1/2);ctx.stroke();}
-  ctx.fillStyle=(hit)?'#8b5cf6':'#3b82f6';ctx.fillRect(cS.x2*W-s2/2,yb-s2,s2,s2);ctx.strokeStyle='rgba(255,255,255,0.6)';ctx.lineWidth=1;ctx.strokeRect(cS.x2*W-s2/2,yb-s2,s2,s2);
-  ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='bold 11px Inter';ctx.textAlign='center';ctx.fillText(p.m1+'kg',cS.x1*W,yb-s1-4);ctx.fillText(p.m2+'kg',cS.x2*W,yb-s2-4);ctx.textAlign='left';
-  document.getElementById('clM1V').textContent=p.m1;document.getElementById('clM2V').textContent=p.m2;document.getElementById('clV1V').textContent=p.v1;
-  var post=cPost(p);cReadout(post.v1f,post.v2f,p);
- };
- function cLoop(ts){if(!cS.run)return;if(lt4===null)lt4=ts;var dt=Math.min((ts-lt4)/1000,0.03);lt4=ts;var p=cP();cS.x1+=cv1*dt*0.08;cS.x2+=cv2*dt*0.08;if(!cS.hit&&cS.x1>=cS.x2-0.07){cS.hit=true;var post=cPost({m1:p.m1,v1:p.v1,m2:p.m2,type:p.type});cv1=post.v1f;cv2=post.v2f;if(p.type==='inelastic')cS.x2=cS.x1;cReadout(post.v1f,post.v2f,{m1:p.m1,m2:p.m2,v1:p.v1});}if(cS.x1>1.1&&cS.x2>1.1){cS.run=false;document.getElementById('clBtn').textContent='\u25B6 Launch';cancelAnimationFrame(_simLoop);_simLoop=null;}window.clDraw(cv1,cv2,cS.hit);if(cS.run)_simLoop=requestAnimationFrame(cLoop);}
- window.clStart=function(){cS.hit=false;cS.run=true;cS.x1=0.12;cS.x2=0.65;var p=cP();cv1=p.v1;cv2=0;lt4=null;document.getElementById('clBtn').textContent='Running\u2026';_simLoop=requestAnimationFrame(cLoop);};
- window.clReset=function(){cS.run=false;cS.hit=false;cS.x1=0.12;cS.x2=0.65;cancelAnimationFrame(_simLoop);_simLoop=null;lt4=null;var p=cP();cv1=p.v1;cv2=0;document.getElementById('clBtn').textContent='\u25B6 Launch';window.clDraw(p.v1,0,false);};
- window.clDraw();
-}
-
-// ---- CIRCULAR ----
-function buildCircularSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x1F4BF; Circular Motion</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="crBtn" onclick="crToggle()">&#x25B6; Start</button><button class="btn btn-ghost btn-sm" onclick="crReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="crCanvas" class="sim-canvas" height="260"></canvas></div><div class="sim-controls"><div class="sim-control"><label>Radius r (m)</label><input type="range" id="crR" min="0.5" max="5" step="0.1" value="2" oninput="crDraw()"/><span class="sim-val" id="crRV">2.0 m</span></div><div class="sim-control"><label>Speed v (m/s)</label><input type="range" id="crV" min="0.5" max="20" step="0.5" value="5" oninput="crDraw()"/><span class="sim-val" id="crVV">5.0 m/s</span></div><div class="sim-control"><label>Mass (kg)</label><input type="range" id="crM" min="0.5" max="20" step="0.5" value="2" oninput="crDraw()"/><span class="sim-val" id="crMV">2 kg</span></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">F&#x1D9C;</div><div class="sim-readout-val" id="crFc">-</div><div class="sim-readout-unit">N</div></div><div class="sim-readout"><div class="sim-readout-label">a&#x1D9C;</div><div class="sim-readout-val" id="crAc">-</div><div class="sim-readout-unit">m/s&sup2;</div></div><div class="sim-readout"><div class="sim-readout-label">T</div><div class="sim-readout-val" id="crT">-</div><div class="sim-readout-unit">s</div></div><div class="sim-readout"><div class="sim-readout-label">f</div><div class="sim-readout-val" id="crF">-</div><div class="sim-readout-unit">Hz</div></div></div><div class="sim-info"><strong>Circular:</strong> a&#x1D9C; = v&sup2;/r &bull; F&#x1D9C; = mv&sup2;/r &bull; <span style="color:#ef4444;">&#x2015; centripetal (inward)</span> &bull; <span style="color:#10b981;">&#x2015; velocity (tangent)</span></div></div>';
- var ciS={th:0,run:false},lt5=null;
- function crP(){var r=parseFloat(document.getElementById('crR').value),v=parseFloat(document.getElementById('crV').value),m=parseFloat(document.getElementById('crM').value);return{r,v,m,ac:v*v/r,Fc:m*v*v/r,T:2*Math.PI*r/v};}
- window.crDraw=function(){
-  var c=document.getElementById('crCanvas');if(!c||!c.getContext)return;var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=crP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0f172a';ctx.fillRect(0,0,W,H);
-  var cx=W/2,cy=H/2,sc=Math.min(W,H)*0.36/p.r,rx=p.r*sc;
-  ctx.beginPath();ctx.arc(cx,cy,rx,0,Math.PI*2);ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
-  ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fillStyle='#4a5568';ctx.fill();
-  var bx=cx+rx*Math.cos(ciS.th),by=cy+rx*Math.sin(ciS.th);
-  // Trail
-  ctx.beginPath();for(var i=0;i<50;i++){var ta=ciS.th-i*0.07;ctx.lineTo(cx+rx*Math.cos(ta),cy+rx*Math.sin(ta));}ctx.strokeStyle='rgba(232,101,10,0.2)';ctx.lineWidth=3;ctx.stroke();
-  ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(bx,by);ctx.strokeStyle='rgba(255,255,255,0.2)';ctx.lineWidth=1;ctx.stroke();
-  // Centripetal (toward center)
-  var as=Math.min(55,p.Fc*1.5),fcx=-(bx-cx)/rx*as,fcy=-(by-cy)/rx*as;
-  _arr(ctx,bx,by,bx+fcx,by+fcy,'#ef4444',2);
-  ctx.fillStyle='#ef4444';ctx.font='10px Inter';ctx.fillText('F\u1D9C',bx+fcx+4,by+fcy-3);
-  // Velocity (tangent)
-  var vs=Math.min(55,p.v*4),vx2=-Math.sin(ciS.th)*vs,vy2=Math.cos(ciS.th)*vs;
-  _arr(ctx,bx,by,bx+vx2,by+vy2,'#10b981',2);
-  ctx.fillStyle='#10b981';ctx.font='10px Inter';ctx.fillText('v',bx+vx2+4,by+vy2-3);
-  ctx.beginPath();ctx.arc(bx,by,13,0,Math.PI*2);ctx.fillStyle='#e8650a';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
-  ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='10px Inter';ctx.fillText('r='+p.r+'m',cx+5,cy-8);
-  var r=function(n){return Math.round(n*100)/100;};
-  document.getElementById('crFc').textContent=r(p.Fc);document.getElementById('crAc').textContent=r(p.ac);
-  document.getElementById('crT').textContent=r(p.T);document.getElementById('crF').textContent=r(1/p.T);
-  document.getElementById('crRV').textContent=p.r.toFixed(1)+' m';document.getElementById('crVV').textContent=p.v.toFixed(1)+' m/s';document.getElementById('crMV').textContent=p.m+' kg';
- };
- function crLoop(ts){if(!ciS.run)return;if(lt5===null)lt5=ts;var dt=Math.min((ts-lt5)/1000,0.03);lt5=ts;ciS.th+=crP().v/crP().r*dt;window.crDraw();_simLoop=requestAnimationFrame(crLoop);}
- window.crToggle=function(){ciS.run=!ciS.run;document.getElementById('crBtn').textContent=ciS.run?'\u23F8 Pause':'\u25B6 Start';if(ciS.run){lt5=null;_simLoop=requestAnimationFrame(crLoop);}else{cancelAnimationFrame(_simLoop);_simLoop=null;}};
- window.crReset=function(){ciS.th=0;ciS.run=false;cancelAnimationFrame(_simLoop);_simLoop=null;lt5=null;document.getElementById('crBtn').textContent='\u25B6 Start';window.crDraw();};
- window.crDraw();
-}
-
-// ---- ORBITAL WITH SPEED CONTROL ----
-function buildOrbitSim(wrap){
- wrap.innerHTML='<div class="card" style="gap:10px;"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;"><div class="card-title">&#x1FA90; Orbital / Gravity</div><div style="display:flex;gap:8px;"><button class="btn btn-primary btn-sm" id="orBtn" onclick="orToggle()">&#x25B6; Start</button><button class="btn btn-ghost btn-sm" onclick="orReset()">&#x21BA; Reset</button></div></div><div class="sim-canvas-wrap"><canvas id="orCanvas" class="sim-canvas" height="300"></canvas></div><div class="sim-controls"><div class="sim-control"><label>Orbital radius (AU)</label><input type="range" id="orR" min="0.3" max="4" step="0.1" value="1" oninput="orDraw()"/><span class="sim-val" id="orRV">1.0 AU</span></div><div class="sim-control"><label>Planet mass (&times;10&sup2;&sup4; kg)</label><input type="range" id="orM" min="1" max="20" step="0.5" value="6" oninput="orDraw()"/><span class="sim-val" id="orMV">6.0</span></div><div class="sim-control"><label>Eccentricity</label><input type="range" id="orE" min="0" max="0.85" step="0.01" value="0" oninput="orReset()"/><span class="sim-val" id="orEV">0.00</span></div><div class="sim-control"><label>&#x26A1; Time speed-up</label><input type="range" id="orSpd" min="1" max="300" step="1" value="80" oninput="document.getElementById(\'orSpdV\').textContent=this.value+\'&times;\'"/><span class="sim-val" id="orSpdV">80&times;</span></div></div><div class="sim-readouts"><div class="sim-readout"><div class="sim-readout-label">Speed</div><div class="sim-readout-val" id="orV">-</div><div class="sim-readout-unit">km/s</div></div><div class="sim-readout"><div class="sim-readout-label">Period</div><div class="sim-readout-val" id="orT">-</div><div class="sim-readout-unit">years</div></div><div class="sim-readout"><div class="sim-readout-label">Grav. F</div><div class="sim-readout-val" id="orFg">-</div><div class="sim-readout-unit">&times;10&sup2;&sup2; N</div></div><div class="sim-readout"><div class="sim-readout-label">Distance</div><div class="sim-readout-val" id="orDist">-</div><div class="sim-readout-unit">AU</div></div></div><div class="sim-info"><strong>Orbital mechanics:</strong> v = &radic;(GM/r) for circular orbit &bull; T&sup2; = (4&pi;&sup2;/GM)r&sup3; &bull; Use speed-up to see the orbit move visibly.</div></div>';
- var G=6.674e-11,AU=1.496e11,yr=3.156e7;
- var oS={px:0,py:0,vx:0,vy:0,run:false,trail:[]},lt6=null;
- function orP(){var r=parseFloat(document.getElementById('orR').value)*AU,M=parseFloat(document.getElementById('orM').value)*1e24,e=parseFloat(document.getElementById('orE').value),v=Math.sqrt(G*M/r),T=2*Math.PI*Math.sqrt(r*r*r/(G*M));return{r,M,e,v,T,rAU:r/AU,Fg:G*M*5.97e24/r/r};}
- function orResetState(){var p=orP(),rp=p.r*(1-p.e);oS.px=rp;oS.py=0;var vp=p.e===0?p.v:Math.sqrt(G*p.M*(2/rp-1/p.r));oS.vx=0;oS.vy=vp;oS.trail=[];}
- window.orDraw=function(){
-  var c=document.getElementById('orCanvas');if(!c||!c.getContext)return;var ctx=c.getContext('2d');if(!ctx)return;
-  c.width=c.offsetWidth||600;var W=c.width,H=c.height,p=orP();
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#030712';ctx.fillRect(0,0,W,H);
-  for(var i=0;i<100;i++){ctx.beginPath();ctx.arc(i*137.5%W,i*97.3%H,0.7,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+(0.15+0.3*(i%3)/3)+')';ctx.fill();}
-  var maxR=p.r*(1+p.e),sc=Math.min(W,H)*0.42/maxR,cx=W/2,cy=H/2;
-  var a=p.r*sc,b=p.r*Math.sqrt(1-p.e*p.e)*sc,fd=p.e*a;
-  ctx.save();ctx.translate(cx-fd,cy);ctx.beginPath();ctx.ellipse(0,0,a,b,0,0,Math.PI*2);ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;ctx.stroke();ctx.restore();
-  var sg=ctx.createRadialGradient(cx,cy,0,cx,cy,26);sg.addColorStop(0,'#fffde7');sg.addColorStop(0.5,'#fbbf24');sg.addColorStop(1,'rgba(251,191,36,0)');
-  ctx.beginPath();ctx.arc(cx,cy,26,0,Math.PI*2);ctx.fillStyle=sg;ctx.fill();
-  if(oS.trail.length>1){ctx.beginPath();ctx.moveTo(cx+oS.trail[0][0]*sc,cy-oS.trail[0][1]*sc);for(var j=1;j<oS.trail.length;j++)ctx.lineTo(cx+oS.trail[j][0]*sc,cy-oS.trail[j][1]*sc);ctx.strokeStyle='rgba(96,165,250,0.3)';ctx.lineWidth=1.5;ctx.stroke();}
-  var bx=cx+oS.px*sc,by=cy-oS.py*sc;
-  // Gravity arrow toward sun
-  var dist2=Math.sqrt(oS.px*oS.px+oS.py*oS.py)||1;
-  var fLen=Math.max(5,Math.min(50,p.Fg/1e22*4));
-  _arr(ctx,bx,by,bx+(cx-bx)/dist2*sc*fLen*0.00001*AU,by+(cy-by)/dist2*sc*fLen*0.00001*AU,'#ef4444',1.5);
-  // Actually just draw toward center
-  var nx2=cx-bx,ny2=cy-by,nm2=Math.sqrt(nx2*nx2+ny2*ny2)||1;
-  var fl2=Math.max(8,Math.min(45,p.Fg/1e22*3));
-  _arr(ctx,bx,by,bx+nx2/nm2*fl2,by+ny2/nm2*fl2,'#ef4444',1.5);
-  ctx.beginPath();ctx.arc(bx,by,10,0,Math.PI*2);ctx.fillStyle='#60a5fa';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.stroke();
-  var r=function(n){return Math.round(n*100)/100;};
-  var cv=Math.sqrt(oS.vx*oS.vx+oS.vy*oS.vy),cd=Math.sqrt(oS.px*oS.px+oS.py*oS.py)/AU;
-  document.getElementById('orV').textContent=r(cv/1000);document.getElementById('orT').textContent=r(p.T/yr);
-  document.getElementById('orFg').textContent=r(p.Fg/1e22);document.getElementById('orDist').textContent=r(cd);
-  document.getElementById('orRV').textContent=p.rAU.toFixed(1)+' AU';document.getElementById('orMV').textContent=(p.M/1e24).toFixed(1);
-  document.getElementById('orEV').textContent=p.e.toFixed(2);
- };
- function orLoop(ts){
-  if(!oS.run)return;if(lt6===null)lt6=ts;var dt=Math.min((ts-lt6)/1000,0.04);lt6=ts;
-  var p=orP(),spd=parseFloat(document.getElementById('orSpd').value),rDt=dt*spd*86400;
-  var steps=40,sub=rDt/steps;
-  for(var i=0;i<steps;i++){var r2=Math.sqrt(oS.px*oS.px+oS.py*oS.py)||1,ag=G*p.M/(r2*r2);oS.vx-=ag*oS.px/r2*sub;oS.vy-=ag*oS.py/r2*sub;oS.px+=oS.vx*sub;oS.py+=oS.vy*sub;}
-  oS.trail.push([oS.px,oS.py]);if(oS.trail.length>250)oS.trail.shift();
-  window.orDraw();_simLoop=requestAnimationFrame(orLoop);
- }
- window.orToggle=function(){oS.run=!oS.run;document.getElementById('orBtn').textContent=oS.run?'\u23F8 Pause':'\u25B6 Start';if(oS.run){lt6=null;_simLoop=requestAnimationFrame(orLoop);}else{cancelAnimationFrame(_simLoop);_simLoop=null;}};
- window.orReset=function(){orResetState();oS.run=false;cancelAnimationFrame(_simLoop);_simLoop=null;lt6=null;document.getElementById('orBtn').textContent='\u25B6 Start';window.orDraw();};
- orResetState();window.orDraw();
-}
-
 
 // ADDITIONAL EXAM QUESTIONS (expand practice tests)
 // =========================================================
@@ -2249,7 +2010,7 @@ if(window.addEventListener){window.addEventListener('beforeunload',function(){fc
 var _simLoop = null;
 
 function buildSimulationsTab(classId){
- return '<div class="sim-container"><p style="font-size:.88rem;color:var(--muted);margin-bottom:12px;">Physics simulations are now their own section. Click the button below or use the Simulations nav link.</p><button class="btn btn-primary" onclick="showPanel(\'simulations\')">&#x1F3AE; Open Simulations &#x2192;</button></div>';
+ return '<div style="padding:16px;"><div class="card"><div class="card-title">&#x1F9EA; PhET Simulations</div><p style="font-size:.85rem;color:var(--muted);line-height:1.6;">Interactive physics simulations from the University of Colorado Boulder.</p><button class="btn btn-primary" onclick="showPanel(\'simulations\')" style="align-self:flex-start;margin-top:8px;">Open PhET Simulations &#x2192;</button></div></div>';
 }
 
 function launchSim(type,classId){
