@@ -431,9 +431,7 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
     <button class="nav-link" data-panel="practice"    onclick="showPanel('practice')">Practice</button>
     <button class="nav-link" data-panel="simulations" onclick="showPanel('simulations')">Simulations</button>
     <button class="nav-link" data-panel="formulas"    onclick="showPanel('formulas')">Formulas</button>
-    <button class="nav-link" data-panel="projectile"  onclick="showPanel('projectile')">Projectile</button>
     <button class="nav-link" data-panel="timer"       onclick="showPanel('timer')">Timer</button>
-    <button class="nav-link" data-panel="flashcards"  onclick="showPanel('flashcards')">Flashcards</button>
     <button class="nav-link" data-panel="countdown"   onclick="showPanel('countdown')">Countdown</button>
   </div>
   <div class="nav-right">
@@ -460,12 +458,10 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
     <div class="more-sheet-title">Tools</div>
     <div class="more-sheet-grid">
       <button class="more-sheet-btn" data-panel="practice"    onclick="showPanel('practice')"><span class="more-sheet-icon">&#x1F9E0;</span> Practice</button>
-      <button class="more-sheet-btn" data-panel="flashcards" onclick="showPanel('flashcards')"><span class="more-sheet-icon">&#x1F0CF;</span> Flashcards</button>
       <button class="more-sheet-btn" data-panel="timer"      onclick="showPanel('timer')"><span class="more-sheet-icon">&#x23F1;</span> Focus Timer</button>
       <button class="more-sheet-btn" data-panel="todo"       onclick="showPanel('todo')"><span class="more-sheet-icon">&#x2705;</span> To-Do List</button>
       <button class="more-sheet-btn" data-panel="notes"      onclick="showPanel('notes')"><span class="more-sheet-icon">&#x1F4DD;</span> Notes</button>
       <button class="more-sheet-btn" data-panel="simulations" onclick="showPanel('simulations')"><span class="more-sheet-icon">&#x1F3AE;</span> Simulations</button>
-      <button class="more-sheet-btn" data-panel="projectile"  onclick="showPanel('projectile')"><span class="more-sheet-icon">&#x1F680;</span> Projectile</button>
       <button class="more-sheet-btn" data-panel="hotline"    onclick="showPanel('hotline')" style="border-color:#6366f1;color:#6366f1;"><span class="more-sheet-icon">&#x1F4DE;</span> Hotline</button>
       <button class="more-sheet-btn" data-panel="gpa"        onclick="showPanel('gpa')"><span class="more-sheet-icon">&#x1F393;</span> GPA</button>
       <button class="more-sheet-btn" data-panel="countdown"  onclick="showPanel('countdown')"><span class="more-sheet-icon">&#x23F3;</span> Countdown</button>
@@ -644,42 +640,6 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
   </div>
 </div>
 
-<!-- FLASHCARDS -->
-<div class="page-panel" id="panel-flashcards">
-  <div class="panel-hero"><div class="panel-hero-inner">
-    <div class="panel-hero-title">Flashcards</div>
-    <div class="panel-hero-sub">Build your own deck, tap to flip</div>
-  </div></div>
-  <div class="panel-inner" style="max-width:580px;">
-    <section class="card">
-      <div class="fc-scene" id="fcScene" role="button" tabindex="0" onclick="fcFlip()" onkeydown="if(event.key==='Enter'||event.key===' ')fcFlip()">
-        <div class="fc-card" id="fcCard">
-          <div class="fc-face fc-front" id="fcFront">Tap &quot;+ Add a card&quot; below to get started</div>
-          <div class="fc-face fc-back" id="fcBack">Answer side</div>
-        </div>
-      </div>
-      <p class="fc-hint">Tap to flip &#x00B7; Use arrows to navigate</p>
-      <div class="fc-nav">
-        <button class="btn btn-ghost btn-sm" onclick="fcPrev()">&#x2190; Prev</button>
-        <span class="fc-counter" id="fcCounter">0 / 0</span>
-        <button class="btn btn-ghost btn-sm" onclick="fcNext()">Next &#x2192;</button>
-      </div>
-      <details>
-        <summary style="cursor:pointer;font-size:.88rem;font-weight:600;color:var(--accent);user-select:none;padding:4px 0;">+ Add a card</summary>
-        <div class="fc-add" style="margin-top:12px;">
-          <input type="text" id="fcQuestion" placeholder="Question / term"/>
-          <textarea id="fcAnswer" placeholder="Answer / definition" rows="3"></textarea>
-          <div class="fc-add-row">
-            <button class="btn btn-primary btn-sm" onclick="fcAdd()">Add Card</button>
-            <button class="btn btn-ghost btn-sm" onclick="fcClear()">Clear All</button>
-          </div>
-        </div>
-      </details>
-      <div class="fc-list" id="fcList"></div>
-    </section>
-  </div>
-</div>
-
 <!-- TO-DO -->
 <div class="page-panel" id="panel-todo">
   <div class="panel-hero"><div class="panel-hero-inner">
@@ -841,134 +801,6 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
   </div>
 </div>
 
-<!-- PROJECTILE -->
-<div class="page-panel" id="panel-projectile">
-  <div class="panel-hero"><div class="panel-hero-inner">
-    <div class="panel-hero-title">&#x1F680; Projectile Calculator</div>
-    <div class="panel-hero-sub">Enter launch conditions &#x2014; get full trajectory analysis with live diagram and step-by-step solution</div>
-  </div></div>
-  <div class="panel-inner" style="max-width:580px;">
-    <div class="card">
-      <div class="card-title">Launch Conditions</div>
-      <div class="proj-grid">
-        <div class="proj-field"><label class="proj-label" for="projV0">Initial Speed</label><input type="number" id="projV0" placeholder="20" min="0" max="1000" step="0.1" oninput="projCalc()"/><div class="proj-unit">m/s</div></div>
-        <div class="proj-field"><label class="proj-label" for="projAngle">Launch Angle</label><input type="number" id="projAngle" placeholder="45" min="0" max="90" step="0.5" oninput="projCalc()"/><div class="proj-unit">degrees (0&#x2013;90)</div></div>
-        <div class="proj-field"><label class="proj-label" for="projH0">Initial Height</label><input type="number" id="projH0" placeholder="0" min="0" max="10000" step="0.1" oninput="projCalc()"/><div class="proj-unit">m (0 = ground level)</div></div>
-        <div class="proj-field"><label class="proj-label" for="projG">Gravity</label>
-          <select id="projG" onchange="projCalc()">
-            <option value="9.8">9.8 m/s&#x00B2; &#x2014; Earth</option>
-            <option value="9.81">9.81 m/s&#x00B2; &#x2014; Earth (precise)</option>
-            <option value="1.62">1.62 m/s&#x00B2; &#x2014; Moon</option>
-            <option value="3.72">3.72 m/s&#x00B2; &#x2014; Mars</option>
-            <option value="24.8">24.8 m/s&#x00B2; &#x2014; Jupiter</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="proj-canvas-wrap card" style="padding:12px;">
-      <div class="card-title" style="margin-bottom:8px;">Trajectory Diagram</div>
-      <canvas class="proj-canvas" id="projCanvas" width="600" height="300"></canvas>
-      <div style="font-size:.7rem;color:var(--muted);text-align:center;margin-top:6px;" id="projCanvasLabel">Enter values above to see the trajectory</div>
-    </div>
-    <div class="card" id="projResultsCard" style="display:none;">
-      <div class="card-title">Results</div>
-      <div class="proj-results">
-        <div class="proj-result-card"><div class="proj-result-label">Max Height</div><div class="proj-result-val" id="projMaxH">&#x2014;</div><div class="proj-result-unit">m above launch</div></div>
-        <div class="proj-result-card"><div class="proj-result-label">Range</div><div class="proj-result-val" id="projRange">&#x2014;</div><div class="proj-result-unit">m horizontal</div></div>
-        <div class="proj-result-card"><div class="proj-result-label">Flight Time</div><div class="proj-result-val" id="projTime">&#x2014;</div><div class="proj-result-unit">seconds</div></div>
-        <div class="proj-result-card"><div class="proj-result-label">Vx</div><div class="proj-result-val" id="projVx">&#x2014;</div><div class="proj-result-unit">m/s constant</div></div>
-        <div class="proj-result-card"><div class="proj-result-label">Vy initial</div><div class="proj-result-val" id="projVy0">&#x2014;</div><div class="proj-result-unit">m/s upward</div></div>
-        <div class="proj-result-card"><div class="proj-result-label">Impact Speed</div><div class="proj-result-val" id="projVf">&#x2014;</div><div class="proj-result-unit">m/s</div></div>
-      </div>
-    </div>
-    <div class="card" id="projStepsCard" style="display:none;">
-      <div class="card-title">Step-by-Step Solution</div>
-      <div class="proj-steps" id="projSteps"></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- PRACTICE -->
-<div class="page-panel" id="panel-practice">
-  <div class="panel-hero"><div class="panel-hero-inner">
-    <div class="panel-hero-title">&#x1F9E0; Practice Problems</div>
-    <div class="panel-hero-sub">Search any physics topic &mdash; AP &amp; Regular questions with worked solutions and video links</div>
-  </div></div>
-  <div style="max-width:960px;margin:0 auto;padding:16px;">
-    <div style="position:relative;margin-bottom:16px;">
-      <input type="text" id="practiceSearch" placeholder="&#x1F50D; Search topics — e.g. &ldquo;kinematics&rdquo;, &ldquo;Newton&rsquo;s Laws&rdquo;, &ldquo;waves&rdquo;, &ldquo;circuits&rdquo;&hellip;" oninput="practiceFilter()" style="font-size:1rem;padding:14px 18px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);width:100%;"/>
-    </div>
-    <div id="practiceFilters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-      <button class="pf-btn active" onclick="practiceSetFilter('all',this)">All Topics</button>
-      <button class="pf-btn" onclick="practiceSetFilter('ap',this)">AP Physics C</button>
-      <button class="pf-btn" onclick="practiceSetFilter('reg',this)">HS Physics</button>
-    </div>
-    <div id="practiceResults"></div>
-    <div id="practiceQuizArea" style="margin-top:16px;"></div>
-  </div>
-</div>
-
-<!-- SIMULATIONS -->
-<div class="page-panel" id="panel-simulations">
-  <div class="panel-hero"><div class="panel-hero-inner">
-    <div class="panel-hero-title">&#x1F9EA; PhET Simulations</div>
-    <div class="panel-hero-sub">Interactive physics simulations by University of Colorado Boulder &#x2014; click any to open in a new tab</div>
-  </div></div>
-  <div class="panel-inner wide">
-    <div class="card" style="gap:8px;padding:14px 18px;">
-      <div style="font-size:.88rem;line-height:1.6;color:var(--muted);"><strong style="color:var(--text);">PhET Interactive Simulations</strong> are free, research-based physics sims from the University of Colorado Boulder. Used in AP and college physics courses worldwide. Click any card to open the simulation.</div>
-    </div>
-
-    <div class="phet-section-label">Mechanics</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/forces-and-motion-basics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4E6;</div><div class="phet-name">Forces &amp; Motion</div><div class="phet-desc">Push boxes, apply friction, explore Newton&#x2019;s 2nd Law with real-time graphs</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Laws</span><span class="phet-tag">Friction</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/the-ramp" target="_blank" rel="noopener"><div class="phet-icon">&#x26F0;&#xFE0F;</div><div class="phet-name">The Ramp</div><div class="phet-desc">Friction, normal force, incline plane &#x2014; drag objects up a ramp and measure forces</div><div class="phet-tags"><span class="phet-tag">Incline</span><span class="phet-tag">Energy</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/energy-skate-park" target="_blank" rel="noopener"><div class="phet-icon">&#x1F6F9;</div><div class="phet-name">Energy Skate Park</div><div class="phet-desc">Conservation of energy &#x2014; KE, PE, thermal energy with real-time bar charts</div><div class="phet-tags"><span class="phet-tag">Energy</span><span class="phet-tag">Conservation</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/collision-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F697;</div><div class="phet-name">Collision Lab</div><div class="phet-desc">1D and 2D elastic &amp; inelastic collisions &#x2014; momentum and KE before and after</div><div class="phet-tags"><span class="phet-tag">Momentum</span><span class="phet-tag">Collisions</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/projectile-motion" target="_blank" rel="noopener"><div class="phet-icon">&#x1F680;</div><div class="phet-name">Projectile Motion</div><div class="phet-desc">Launch projectiles, adjust angle &amp; speed, with and without air resistance</div><div class="phet-tags"><span class="phet-tag">Kinematics</span><span class="phet-tag">2D Motion</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/torque" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4BF;</div><div class="phet-name">Torque</div><div class="phet-desc">Apply forces at different lever arms, see angular acceleration and moment of inertia</div><div class="phet-tags"><span class="phet-tag">Rotation</span><span class="phet-tag">Torque</span></div></a>
-    </div>
-
-    <div class="phet-section-label">Oscillations &amp; Waves</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/masses-and-springs" target="_blank" rel="noopener"><div class="phet-icon">&#x1F300;</div><div class="phet-name">Masses &amp; Springs</div><div class="phet-desc">Hang masses on springs, measure period, explore SHM and energy conservation</div><div class="phet-tags"><span class="phet-tag">SHM</span><span class="phet-tag">Hooke&#x2019;s Law</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/pendulum-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x23F1;</div><div class="phet-name">Pendulum Lab</div><div class="phet-desc">Adjust length, mass, gravity &#x2014; measure period and verify T&#x2009;=&#x2009;2&#x03C0;&#x221A;(L/g)</div><div class="phet-tags"><span class="phet-tag">Pendulum</span><span class="phet-tag">SHM</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-on-a-string" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4CA;</div><div class="phet-name">Wave on a String</div><div class="phet-desc">Standing waves, wavelength, frequency, amplitude &#x2014; fixed and free ends</div><div class="phet-tags"><span class="phet-tag">Waves</span><span class="phet-tag">Standing Waves</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/sound" target="_blank" rel="noopener"><div class="phet-icon">&#x1F3B5;</div><div class="phet-name">Sound</div><div class="phet-desc">Visualize sound waves, change frequency and amplitude, explore the Doppler effect</div><div class="phet-tags"><span class="phet-tag">Sound</span><span class="phet-tag">Doppler</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-interference" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A7;</div><div class="phet-name">Wave Interference</div><div class="phet-desc">Two-source interference patterns, double-slit diffraction with water, sound, and light</div><div class="phet-tags"><span class="phet-tag">Interference</span><span class="phet-tag">Double-Slit</span></div></a>
-    </div>
-
-    <div class="phet-section-label">Gravity &amp; Orbital Mechanics</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-and-orbits" target="_blank" rel="noopener"><div class="phet-icon">&#x1FA90;</div><div class="phet-name">Gravity &amp; Orbits</div><div class="phet-desc">Star, planet, moon, satellite &#x2014; adjust mass and distance, see Kepler&#x2019;s laws live</div><div class="phet-tags"><span class="phet-tag">Gravity</span><span class="phet-tag">Kepler&#x2019;s Laws</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-force-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Gravity Force Lab</div><div class="phet-desc">Measure gravitational force between two masses &#x2014; verify F&#x2009;=&#x2009;Gm&#x2081;m&#x2082;/r&#xB2;</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Law of Gravity</span><span class="phet-tag">Inverse Square</span></div></a>
-    </div>
-
-    <div class="phet-section-label">Electricity &amp; Magnetism</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" rel="noopener"><div class="phet-icon">&#x26A1;</div><div class="phet-name">Circuit Construction Kit</div><div class="phet-desc">Build DC circuits with resistors, batteries, switches &#x2014; measure voltage, current, resistance</div><div class="phet-tags"><span class="phet-tag">Circuits</span><span class="phet-tag">Ohm&#x2019;s Law</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/charges-and-fields" target="_blank" rel="noopener"><div class="phet-icon">&#x271A;</div><div class="phet-name">Charges &amp; Fields</div><div class="phet-desc">Place charges, visualize electric field lines and equipotential surfaces</div><div class="phet-tags"><span class="phet-tag">Electric Field</span><span class="phet-tag">Coulomb&#x2019;s Law</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/faradays-law" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Faraday&#x2019;s Law</div><div class="phet-desc">Move a magnet through a coil &#x2014; see induced EMF and Lenz&#x2019;s Law live</div><div class="phet-tags"><span class="phet-tag">Induction</span><span class="phet-tag">EMF</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/magnets-and-electromagnets" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Magnets &amp; Electromagnets</div><div class="phet-desc">Explore magnetic field lines from bar magnets and current-carrying coils</div><div class="phet-tags"><span class="phet-tag">Magnetism</span><span class="phet-tag">B-Field</span></div></a>
-    </div>
-
-    <div class="phet-section-label">Optics &amp; Light</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/bending-light" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A1;</div><div class="phet-name">Bending Light</div><div class="phet-desc">Snell&#x2019;s Law, total internal reflection &#x2014; drag the ray and watch it bend at any interface</div><div class="phet-tags"><span class="phet-tag">Snell&#x2019;s Law</span><span class="phet-tag">Refraction</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/geometric-optics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F50D;</div><div class="phet-name">Geometric Optics</div><div class="phet-desc">Converging and diverging lenses &#x2014; move the object, find image location and magnification</div><div class="phet-tags"><span class="phet-tag">Lenses</span><span class="phet-tag">Thin Lens Equation</span></div></a>
-    </div>
-
-    <div class="phet-section-label">Thermodynamics &amp; Modern Physics</div>
-    <div class="phet-grid">
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gas-properties" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A8;</div><div class="phet-name">Gas Properties</div><div class="phet-desc">Pump gas into a container, change temperature and volume &#x2014; see PV&#x2009;=&#x2009;nRT live</div><div class="phet-tags"><span class="phet-tag">Ideal Gas Law</span><span class="phet-tag">Thermodynamics</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/photoelectric-effect" target="_blank" rel="noopener"><div class="phet-icon">&#x2697;&#xFE0F;</div><div class="phet-name">Photoelectric Effect</div><div class="phet-desc">Shine light on a metal, change frequency and intensity, measure ejected electrons</div><div class="phet-tags"><span class="phet-tag">Quantum</span><span class="phet-tag">Photons</span></div></a>
-      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/models-of-the-hydrogen-atom" target="_blank" rel="noopener"><div class="phet-icon">&#x269B;&#xFE0F;</div><div class="phet-name">Hydrogen Atom Models</div><div class="phet-desc">Bohr model, de Broglie, Schr&#xF6;dinger &#x2014; shoot photons at hydrogen and watch transitions</div><div class="phet-tags"><span class="phet-tag">Bohr Model</span><span class="phet-tag">Energy Levels</span></div></a>
-    </div>
-
-  </div>
-</div>
-
 <footer>Physics Study Hub &#x00B7; Free for every student &#x00B7; <button style="background:none;border:none;color:var(--accent);font-size:.8rem;cursor:pointer;font-family:inherit;" onclick="showPanel('home')">Home</button></footer>
 <script>
 // =========================================================
@@ -1014,24 +846,7 @@ function pomoToggle(){if(pomoRunning){clearInterval(pomoInterval);pomoRunning=fa
 pomoReset();
 
 // =========================================================
-// FLASHCARDS
-// =========================================================
-var fcCards=JSON.parse(localStorage.getItem('fc_cards')||'[]'),fcIndex=0,fcFlipped=false;
-function fcRender(){if(fcCards.length===0){document.getElementById('fcFront').textContent='Add cards below to get started';document.getElementById('fcBack').textContent='';document.getElementById('fcCounter').textContent='0 / 0';return;}var c=fcCards[fcIndex];document.getElementById('fcFront').textContent=c.q;document.getElementById('fcBack').textContent=c.a;document.getElementById('fcCounter').textContent=(fcIndex+1)+' / '+fcCards.length;document.getElementById('fcCard').classList.remove('flipped');fcFlipped=false;renderFcList();}
-function fcFlip(){if(!fcCards.length)return;fcFlipped=!fcFlipped;document.getElementById('fcCard').classList.toggle('flipped',fcFlipped);}
-function fcNext(){if(!fcCards.length)return;fcIndex=(fcIndex+1)%fcCards.length;fcRender();}
-function fcPrev(){if(!fcCards.length)return;fcIndex=(fcIndex-1+fcCards.length)%fcCards.length;fcRender();}
-function fcAdd(){var q=document.getElementById('fcQuestion').value.trim(),a=document.getElementById('fcAnswer').value.trim();if(!q||!a)return alert('Fill in both fields.');fcCards.push({q:q,a:a});document.getElementById('fcQuestion').value='';document.getElementById('fcAnswer').value='';fcIndex=fcCards.length-1;fcRender();fcSave();}
-function fcDelete(i){fcCards.splice(i,1);fcIndex=Math.min(fcIndex,fcCards.length-1);fcRender();fcSave();}
-function fcClear(){if(fcCards.length&&confirm('Delete all cards?')){fcCards=[];fcIndex=0;fcRender();fcSave();}}
-function fcSave(){try{localStorage.setItem('fc_cards',JSON.stringify(fcCards));}catch(e){}}
-function renderFcList(){var el=document.getElementById('fcList');if(!fcCards.length){el.innerHTML='';return;}el.innerHTML=fcCards.map(function(c,i){return '<div class="fc-item"><span><strong>'+c.q+'</strong> \u2014 '+c.a+'</span><button onclick="fcDelete('+i+')">\u2715</button></div>';}).join('');}
-fcRender();
-
-// =========================================================
-// GPA
-// =========================================================
-var gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
+// var gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
 var grades=Object.keys(gradeMap);
 function makeGpaRow(cid,fn,name){var row=document.createElement('div');row.className='gpa-row';var ni=document.createElement('input');ni.type='text';ni.placeholder='Course';if(name)ni.value=name;var gs=document.createElement('select');grades.forEach(function(g){var o=document.createElement('option');o.value=g;o.textContent=g;gs.appendChild(o);});gs.addEventListener('change',fn);var ts=document.createElement('select');[['reg','Regular/Honors'],['ap','AP (+1.0)']].forEach(function(v){var o=document.createElement('option');o.value=v[0];o.textContent=v[1];ts.appendChild(o);});if(name&&name.indexOf('AP')===0)ts.value='ap';ts.addEventListener('change',fn);var db=document.createElement('button');db.textContent='\u2715';db.addEventListener('click',function(){row.remove();fn();});row.appendChild(ni);row.appendChild(gs);row.appendChild(ts);row.appendChild(db);document.getElementById(cid).appendChild(row);fn();}
 function gpaAddRow(){makeGpaRow('gpaRows',gpaCalc);}
@@ -2203,6 +2018,31 @@ initDashboard();
 // =========================================================
 // PROJECTILE CALCULATOR
 // =========================================================
+// // =========================================================
+// STREAK
+// =========================================================
+(function(){
+ var KD='streak_last',KC='streak_count',KL='streak_longest',KT='streak_total',KH='streak_history';
+ function td(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+ function df(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000);}
+ function mg(n){if(n===1)return 'Day 1 \u2014 you showed up.';if(n<4)return n+' days in a row. Keep going.';if(n<8)return n+' days straight. Building a habit.';if(n<15)return n+' days. Two solid weeks.';return n+' days. Legendary.';}
+ var t=td(),last=localStorage.getItem(KD)||'',cnt=parseInt(localStorage.getItem(KC)||'0'),lon=parseInt(localStorage.getItem(KL)||'0'),tot=parseInt(localStorage.getItem(KT)||'0'),hist=JSON.parse(localStorage.getItem(KH)||'[]');
+ if(!last){cnt=1;tot=1;}else if(last!==t){var d2=df(last,t);cnt=(d2===1)?cnt+1:1;tot++;}
+ if(last!==t){if(!hist.includes(t))hist.push(t);if(hist.length>60)hist=hist.slice(-60);if(cnt>lon)lon=cnt;localStorage.setItem(KD,t);localStorage.setItem(KC,String(cnt));localStorage.setItem(KL,String(lon));localStorage.setItem(KT,String(tot));localStorage.setItem(KH,JSON.stringify(hist));}
+ function ge(id){return document.getElementById(id);}
+ var b=ge('streakBadge'),bn=ge('streakBadgeNum');if(bn)bn.textContent=cnt;if(b)b.classList.toggle('on',cnt>=2);
+ if(ge('streakNum'))ge('streakNum').textContent=cnt;
+ if(ge('streakToday'))ge('streakToday').textContent=t.slice(5).replace('-','/');
+ if(ge('streakLongest'))ge('streakLongest').textContent=lon;
+ if(ge('streakTotal'))ge('streakTotal').textContent=tot;
+ if(ge('streakMsg'))ge('streakMsg').textContent=mg(cnt);
+ var dd=ge('streakDots');
+ if(dd){dd.innerHTML='';for(var i=29;i>=0;i--){var dobj=new Date();dobj.setDate(dobj.getDate()-i);var ds=dobj.getFullYear()+'-'+String(dobj.getMonth()+1).padStart(2,'0')+'-'+String(dobj.getDate()).padStart(2,'0');var dot=document.createElement('div');dot.className='streak-dot '+(ds===t?'now':hist.includes(ds)?'on':'off');dot.title=ds;dd.appendChild(dot);}}
+})();
+
+// =========================================================
+// PROJECTILE CALCULATOR
+// =========================================================
 function projCalc(){
  var v0=parseFloat(document.getElementById('projV0').value),angle=parseFloat(document.getElementById('projAngle').value),h0=parseFloat(document.getElementById('projH0').value)||0,g=parseFloat(document.getElementById('projG').value)||9.8;
  if(isNaN(v0)||isNaN(angle)||v0<0||angle<0||angle>90){projDrawEmpty();return;}
@@ -2277,7 +2117,7 @@ var _psTheme=window.setTheme;
 if(typeof _psTheme==='function'){window.setTheme=function(dark){_psTheme(dark);var v=document.getElementById('projV0');if(v&&v.value)projCalc();else projDrawEmpty();};}
 projDrawEmpty();
 
-if(window.addEventListener){window.addEventListener('beforeunload',function(){fcSave();todoSave();noteSave();});}
+if(window.addEventListener){window.addEventListener('beforeunload',function(){todoSave();noteSave();});}
 
 // =========================================================
 // SIMULATIONS ENGINE
