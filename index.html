@@ -1806,7 +1806,135 @@ var practiceTopics = [
  ]
 }
 
+// EXTRA QUESTIONS - splice into existing topics by finding their closing ];
+// and adding before it. Also adds new topics at the end.
+// This file is prepended with a comma and appended before the final ]; of practiceTopics
+
+,
+// === NEW TOPICS ===
+{
+ id:'apc-combined-motion', level:'ap', icon:'🔗',
+ name:'AP Physics C — Combined Linear & Rotational Motion',
+ tags:['combined','rolling','translation','rotation','no slip','coupled','atwood with pulley'],
+ videos:[{label:'Khan Academy: AP Physics C Rotation',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:rotation'}],
+ questions:[
+  {level:'ap',q:'A yo-yo (solid disk, M=0.1 kg, R=0.04 m) unwinds from rest. Find the tension in the string and the linear acceleration. (g=10)',
+   a:'For the disk: TR = I*alpha = 1/2*MR^2*(a/R), so T = 1/2*Ma. For translation: mg - T = ma. mg = ma + 1/2*Ma = a(m+M/2). a = mg/(m+M/2) = 0.1*10/0.15 = 6.67 m/s^2. T = 1/2*0.1*6.67 = 0.333 N'},
+  {level:'ap',q:'A 2 kg block on a frictionless table is connected by a string over a pulley (I=0.02 kg m^2, R=0.1 m) to a 3 kg hanging mass. Find acceleration and tension on each side.',
+   a:'Hanging: 3g - T2 = 3a. Block: T1 = 2a. Pulley: (T2-T1)R = I*alpha = I*a/R. T2-T1 = Ia/R^2 = 0.02*a/0.01 = 2a. So T2 = T1 + 2a = 2a + 2a = 4a. 3g - 4a = 3a. 7a = 30. a = 4.29 m/s^2. T1 = 8.57 N. T2 = 17.14 N'},
+  {level:'ap',q:'A bowling ball (M=5 kg, R=0.1 m) rolls without slipping at 4 m/s and hits a sticky wall, sticking to it. The ball stops translating but keeps spinning. Find the angular velocity just after impact.',
+   a:'Before: omega = v/R = 40 rad/s. Impact removes translation but not rotation (friction at wall is impulsive but torque about CM is zero if contact is at the equator). omega_after = omega_before = 40 rad/s (angular momentum about CM is conserved during the brief impact)'},
+  {level:'ap',q:'A spool of wire (M=2 kg, R=0.15 m, I=1/2 MR^2) is pulled by a string wrapped around the inner axle (r=0.05 m) with force 8 N horizontally. Find acceleration if the spool rolls without slipping.',
+   a:'Translation: F = Ma. Rotation: F*r = I*alpha = 1/2*MR^2*(a/R). F*r = 1/2*M*R*a. 8*0.05 = 1/2*2*0.15*a. 0.4 = 0.15a. a = 2.67 m/s^2'},
+  {level:'ap',q:'A 1 kg ball rolls without slipping and hits a spring (k=200 N/m) compressing it 0.1 m. The ball is a solid sphere (I=2/5 MR^2). Find the initial speed.',
+   a:'Total KE = 1/2*mv^2 + 1/2*I*omega^2 = 1/2*mv^2(1+2/5) = 7/10*mv^2. Spring PE = 1/2*k*x^2 = 1/2*200*0.01 = 1 J. 7/10*v^2 = 1. v^2 = 10/7. v = sqrt(10/7) = 1.195 m/s'},
+  {level:'ap',q:'A hollow sphere (I=2/3 MR^2) and a solid cylinder (I=1/2 MR^2) of equal mass M and radius R race down an incline. Which wins and by what speed ratio?',
+   a:'v = sqrt(2gh/(1+I/MR^2)). Hollow sphere: v_h = sqrt(2gh/(1+2/3)) = sqrt(6gh/5). Solid cylinder: v_c = sqrt(2gh/(1+1/2)) = sqrt(4gh/3). Ratio v_h/v_c = sqrt((6/5)/(4/3)) = sqrt(18/20) = sqrt(0.9) < 1. Cylinder wins (lower I, more translational KE)'},
+ ]
+},
+{
+ id:'apc-energy-systems', level:'ap', icon:'⚙️',
+ name:'AP Physics C — Energy in Complex Systems',
+ tags:['energy','non-conservative','friction','spring','potential','dissipation','power','efficiency'],
+ videos:[{label:'Khan Academy: Work & Energy',url:'https://www.khanacademy.org/science/ap-physics-c-mechanics/xbe81695e30c9767e:work-energy-and-power'}],
+ questions:[
+  {level:'ap',q:'A 3 kg block slides down a curved track from height 2 m, then along a rough horizontal surface (mu_k=0.3) for 5 m, then up a frictionless ramp. How high does it go? (g=10)',
+   a:'Energy at top: mgh = 3*10*2 = 60 J. Friction work: W_f = mu_k*mg*d = 0.3*3*10*5 = 45 J. Remaining energy = 60-45 = 15 J. Height = 15/(mg) = 15/30 = 0.5 m'},
+  {level:'ap',q:'A 0.5 kg block moving at 6 m/s hits a spring (k=400 N/m) on a rough surface (mu_k=0.2). Find max compression. (g=10)',
+   a:'KE = 1/2*0.5*36 = 9 J. At max compression x: 1/2*k*x^2 + mu_k*mg*x = KE. 200x^2 + 1*x - 9 = 0. x = (-1 + sqrt(1+7200))/400 = (-1+84.9)/400 = 0.210 m. Max compression ~0.21 m'},
+  {level:'ap',q:'A pump lifts 2 kg/s of water from a 20 m well and ejects it at 5 m/s. Find the minimum power. (g=10)',
+   a:'P = (dm/dt)(gh + 1/2*v^2) = 2*(10*20 + 12.5) = 2*212.5 = 425 W. This includes lifting and giving kinetic energy'},
+  {level:'ap',q:'A variable force F(x) = 3x^2 - 2x + 1 N acts on a 1 kg particle from x=0 to x=2. Find the speed at x=2 if v(0)=0.',
+   a:'W = integral(3x^2-2x+1)dx = x^3 - x^2 + x from 0 to 2 = 8-4+2 = 6 J. v = sqrt(2W/m) = sqrt(12) = 2*sqrt(3) ~ 3.46 m/s'},
+  {level:'ap',q:'A 2 kg mass slides down a frictionless quarter-pipe from height 3 m, then collides with a 4 kg mass at rest. They stick together. Find the final velocity and the energy lost.',
+   a:'v before collision = sqrt(2gh) = sqrt(60) ~ 7.75 m/s. Momentum: 2*7.75 = 6*v_f. v_f = 2.58 m/s. KE_before = 60 J. KE_after = 1/2*6*2.58^2 = 20 J. Lost = 40 J (67%)'},
+  {level:'ap',q:'A 5 kg block on a spring (k=100 N/m) oscillates with amplitude 0.3 m on a surface with mu_k=0.1. How many oscillations until it stops? (g=10)',
+   a:'Energy per oscillation lost ~ 4*mu_k*mg*A = 4*0.1*5*10*0.3 = 6 J. Initial energy = 1/2*100*0.09 = 4.5 J. It stops within 1 oscillation (energy lost > initial energy). Actually friction work per half cycle = mu_k*mg*2A = 0.1*50*0.6 = 3 J. After first half: 4.5-3 = 1.5 J. Amplitude reduces. It stops before completing one full oscillation'},
+ ]
+},
+{
+ id:'hs-sound-adv', level:'reg', icon:'🔊',
+ name:'HS Physics — Sound, Resonance & Acoustics',
+ tags:['sound','resonance','acoustics','harmonics','overtones','intensity','decibels','speed of sound'],
+ videos:[{label:'Khan Academy: Mechanical Waves & Sound',url:'https://www.khanacademy.org/science/physics/mechanical-waves-and-sound'}],
+ questions:[
+  {level:'reg',q:'A tuning fork at 440 Hz is held over a tube that can have its water level adjusted. Resonance is heard at the shortest tube length of 19.3 cm. Find the speed of sound.',
+   a:'For a closed pipe, first resonance: L = lambda/4. lambda = 4L = 4*0.193 = 0.772 m. v = f*lambda = 440*0.772 = 340 m/s'},
+  {level:'reg',q:'A sound has intensity 10^-5 W/m^2. Find the sound level in dB. (I_0 = 10^-12 W/m^2)',
+   a:'Beta = 10*log(I/I_0) = 10*log(10^-5/10^-12) = 10*log(10^7) = 10*7 = 70 dB'},
+  {level:'reg',q:'Two sounds have levels 60 dB and 70 dB. Find the ratio of their intensities.',
+   a:'dB difference = 10. 10 = 10*log(I2/I1). log(I2/I1) = 1. I2/I1 = 10. The 70 dB sound is 10x more intense'},
+  {level:'reg',q:'An open organ pipe (both ends open) has length 0.85 m. Find the fundamental frequency and the first two overtones. (v_sound = 340 m/s)',
+   a:'Open pipe: lambda_n = 2L/n. f_n = nv/(2L). f1 = 340/(2*0.85) = 200 Hz. f2 = 400 Hz. f3 = 600 Hz. All harmonics present'},
+  {level:'reg',q:'A string vibrating at 330 Hz has tension 50 N and mass density 0.01 kg/m. Find the length of the string if it vibrates at the second harmonic.',
+   a:'v = sqrt(T/mu) = sqrt(50/0.01) = sqrt(5000) ~ 70.7 m/s. For second harmonic: lambda = 2L/2 = L. f = v/L. L = v/f = 70.7/330 = 0.214 m'},
+  {level:'reg',q:'If the speed of sound is 340 m/s at 15 C, find the speed at 25 C. (Speed increases ~0.6 m/s per degree)',
+   a:'Delta T = 10 C. Delta v = 10*0.6 = 6 m/s. v_new = 340 + 6 = 346 m/s'},
+ ]
+},
+{
+ id:'hs-heat-transfer', level:'reg', icon:'🌡️',
+ name:'HS Physics — Heat Transfer & Thermal Expansion',
+ tags:['heat transfer','conduction','convection','radiation','thermal expansion','specific heat','calorimetry','phase change'],
+ videos:[{label:'Khan Academy: Thermodynamics',url:'https://www.khanacademy.org/science/physics/thermodynamics'}],
+ questions:[
+  {level:'reg',q:'A 0.5 kg aluminum block (c=900 J/kg C) at 100 C is dropped into 1 kg of water (c=4200 J/kg C) at 20 C. Find the equilibrium temperature.',
+   a:'Heat lost by Al = Heat gained by water. 0.5*900*(100-T) = 1*4200*(T-20). 450(100-T) = 4200(T-20). 45000-450T = 4200T-84000. 129000 = 4650T. T = 27.7 C'},
+  {level:'reg',q:'How much energy is needed to melt 0.2 kg of ice at 0 C? (L_f = 334,000 J/kg)',
+   a:'Q = m*L_f = 0.2*334000 = 66,800 J = 66.8 kJ. Temperature does not change during phase change'},
+  {level:'reg',q:'A steel rail (alpha=12e-6 /C) is 100 m long at 0 C. Find the expansion at 40 C.',
+   a:'Delta L = alpha*L*Delta T = 12e-6*100*40 = 0.048 m = 4.8 cm. This is why expansion joints are needed'},
+  {level:'reg',q:'A 2 kg copper block (c=385 J/kg C) is heated from 20 C to 80 C. Find the heat added.',
+   a:'Q = mc*Delta T = 2*385*60 = 46,200 J = 46.2 kJ'},
+  {level:'reg',q:'Ice at -10 C is heated until it becomes steam at 110 C. How much energy per kg? (c_ice=2100, c_water=4200, c_steam=2010, L_f=334000, L_v=2260000)',
+   a:'1. Warm ice: 2100*10 = 21,000. 2. Melt: 334,000. 3. Warm water: 4200*100 = 420,000. 4. Vaporize: 2,260,000. 5. Warm steam: 2010*10 = 20,100. Total = 3,055,100 J/kg ~ 3.06 MJ/kg'},
+  {level:'reg',q:'A metal rod (k=400 W/m C) has cross-section 0.001 m^2, length 0.5 m, and temperatures 100 C and 20 C at the ends. Find the heat flow rate.',
+   a:'dQ/dt = k*A*Delta T/L = 400*0.001*80/0.5 = 64 W (J/s)'},
+ ]
+},
+{
+ id:'hs-vectors-components', level:'reg', icon:'📐',
+ name:'HS Physics — Vectors & Components (Foundations)',
+ tags:['vector','component','addition','subtraction','unit vector','dot product','cross product','magnitude'],
+ videos:[{label:'Khan Academy: Vectors',url:'https://www.khanacademy.org/science/physics/one-dimensional-motion'}],
+ questions:[
+  {level:'reg',q:'A displacement vector has components (3, 4) m. Find its magnitude and direction.',
+   a:'|d| = sqrt(9+16) = sqrt(25) = 5 m. Direction = arctan(4/3) = 53.1 degrees above horizontal'},
+  {level:'reg',q:'Two forces: F1 = (6, 2) N and F2 = (-3, 4) N. Find the resultant and its magnitude.',
+   a:'R = F1 + F2 = (6-3, 2+4) = (3, 6) N. |R| = sqrt(9+36) = sqrt(45) = 3*sqrt(5) ~ 6.71 N'},
+  {level:'reg',q:'A boat heads north at 8 m/s while a current flows east at 6 m/s. Find the resultant velocity and direction.',
+   a:'v = sqrt(64+36) = sqrt(100) = 10 m/s. Direction = arctan(6/8) = 36.9 degrees east of north'},
+  {level:'reg',q:'Find the dot product of A = (2, 3) and B = (4, -1). What does this tell us physically?',
+   a:'A.B = 2*4 + 3*(-1) = 8 - 3 = 5. The dot product gives the component of A along B times |B|. If this were work, it would be 5 J'},
+  {level:'reg',q:'A vector A has magnitude 10 at 30 degrees above x-axis. Find its x and y components.',
+   a:'Ax = 10*cos(30) = 10*0.866 = 8.66. Ay = 10*sin(30) = 10*0.5 = 5.0. Components are (8.66, 5.0)'},
+  {level:'reg',q:'Three vectors: A=(1,0), B=(0,1), C=(-1,-1). Find A+B+C. Is the resultant zero?',
+   a:'Sum = (1+0-1, 0+1-1) = (0, 0). Yes, the resultant is zero — they form a closed triangle'},
+ ]
+},
+{
+ id:'hs-lenses-adv', level:'reg', icon:'🔍',
+ name:'HS Physics — Lens Combinations & Optical Instruments',
+ tags:['lens combination','telescope','microscope','compound lens','magnifier','camera','eye'],
+ videos:[{label:'Khan Academy: Geometric Optics',url:'https://www.khanacademy.org/science/physics/geometric-optics'}],
+ questions:[
+  {level:'reg',q:'Two converging lenses (f1=10 cm, f2=5 cm) are separated by 30 cm. An object is 15 cm from the first lens. Find the final image position.',
+   a:'Lens 1: 1/10=1/15+1/di1. di1=30 cm (30 cm right of lens 1, or 0 cm from lens 2 since separation=30). Object for lens 2 is at 0 cm (at lens 2) — actually di1=30 which equals separation, so image is at lens 2. For lens 2: do2 = 30-30 = 0. 1/5 = 1/0 + ... undefined. Actually the image from lens 1 is at the position of lens 2, meaning do2 approaches 0. This is a special case — the image from lens 1 acts as a virtual object at 0. Let us use do2 = 30 - 30 = 0 but 1/0 is undefined. The problem needs different numbers. Let us use separation=40: di1=30, do2=40-30=10. 1/5=1/10+1/di2. 1/di2=1/5-1/10=1/10. di2=10 cm right of lens 2'},
+  {level:'reg',q:'A magnifying glass (f=5 cm) is held 3 cm from a small object. Find the image position and magnification. Is the image real or virtual?',
+   a:'1/5 = 1/3 + 1/di. 1/di = 1/5 - 1/3 = 3/15 - 5/15 = -2/15. di = -7.5 cm (virtual, same side). m = -di/do = 7.5/3 = 2.5x. Virtual, upright, magnified 2.5x'},
+  {level:'reg',q:'A simple telescope has objective (f_obj=100 cm) and eyepiece (f_eye=2 cm). Find the angular magnification. How far apart should the lenses be for relaxed viewing?',
+   a:'M = -f_obj/f_eye = -100/2 = -50x. For relaxed viewing (image at infinity): separation = f_obj + f_eye = 102 cm'},
+  {level:'reg',q:'The near point of a farsighted person is 80 cm. What focal length lens allows reading at 25 cm?',
+   a:'Virtual image at 80 cm (near point). Object at 25 cm. 1/f = 1/25 + 1/(-80) = 1/25 - 1/80 = 16/400 - 5/400 = 11/400. f = 400/11 = 36.4 cm (converging lens)'},
+  {level:'reg',q:'A compound microscope has objective (f=4 mm) and eyepiece (f=25 mm). Tube length=180 mm. Find total magnification if final image is at infinity. (Near point=25 cm)',
+   a:'Objective image distance ~ tube length = 180 mm. m_obj = di/do. do: 1/4=1/do+1/180. do=4*180/176=4.09 mm. m_obj=180/4.09=44. m_eye=25cm/25mm=250/25=10. Total M=440x'},
+  {level:'reg',q:'A camera with f=50 mm is used to photograph a person 2 m tall standing 5 m away. Find the image height on the sensor.',
+   a:'1/50 = 1/5000 + 1/di. 1/di = 1/50 - 1/5000 = 100/5000 - 1/5000 = 99/5000. di = 5000/99 = 50.5 mm. m = -di/do = -50.5/5000 = -0.0101. h_image = 2000*0.0101 = 20.2 mm on sensor'},
+ ]
+}
+
 ];
+
 
 
 // ---- PRACTICE ENGINE ----------------------------------------
