@@ -801,6 +801,79 @@ footer{text-align:center;padding:24px 16px;font-size:.8rem;color:var(--muted);bo
   </div>
 </div>
 
+
+<!-- PRACTICE -->
+<div class="page-panel" id="panel-practice">
+  <div class="panel-hero"><div class="panel-hero-inner">
+    <div class="panel-hero-title">&#x1F9E0; Practice Problems</div>
+    <div class="panel-hero-sub">Search any physics topic &mdash; AP &amp; Regular questions with worked solutions and video links</div>
+  </div></div>
+  <div style="max-width:960px;margin:0 auto;padding:16px;">
+    <div style="position:relative;margin-bottom:16px;">
+      <input type="text" id="practiceSearch" placeholder="&#x1F50D; Search topics &mdash; kinematics, forces, waves, circuits, rotation, SHM&hellip;" oninput="practiceFilter()" style="font-size:1rem;padding:14px 18px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);width:100%;"/>
+    </div>
+    <div id="practiceFilters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+      <button class="pf-btn active" onclick="practiceSetFilter('all',this)">All Topics</button>
+      <button class="pf-btn" onclick="practiceSetFilter('ap',this)">AP Physics C</button>
+      <button class="pf-btn" onclick="practiceSetFilter('reg',this)">HS Physics</button>
+    </div>
+    <div id="practiceResults"></div>
+    <div id="practiceQuizArea" style="margin-top:16px;"></div>
+  </div>
+</div>
+
+<!-- SIMULATIONS -->
+<div class="page-panel" id="panel-simulations">
+  <div class="panel-hero"><div class="panel-hero-inner">
+    <div class="panel-hero-title">&#x1F9EA; PhET Simulations</div>
+    <div class="panel-hero-sub">Interactive physics simulations by University of Colorado Boulder &mdash; click any to open in a new tab</div>
+  </div></div>
+  <div class="panel-inner wide">
+    <div class="card" style="gap:8px;padding:14px 18px;">
+      <div style="font-size:.88rem;line-height:1.6;color:var(--muted);"><strong style="color:var(--text);">PhET Interactive Simulations</strong> are free, research-based physics sims from the University of Colorado Boulder. Used in AP and college physics courses worldwide. Click any card to open the simulation.</div>
+    </div>
+    <div class="phet-section-label">Mechanics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/forces-and-motion-basics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4E6;</div><div class="phet-name">Forces &amp; Motion</div><div class="phet-desc">Push boxes, apply friction, explore Newton&#x2019;s 2nd Law with real-time graphs</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Laws</span><span class="phet-tag">Friction</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/the-ramp" target="_blank" rel="noopener"><div class="phet-icon">&#x26F0;&#xFE0F;</div><div class="phet-name">The Ramp</div><div class="phet-desc">Friction, normal force, incline plane &mdash; drag objects up a ramp and measure forces</div><div class="phet-tags"><span class="phet-tag">Incline</span><span class="phet-tag">Energy</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/energy-skate-park" target="_blank" rel="noopener"><div class="phet-icon">&#x1F6F9;</div><div class="phet-name">Energy Skate Park</div><div class="phet-desc">Conservation of energy &mdash; KE, PE, thermal energy with real-time bar charts</div><div class="phet-tags"><span class="phet-tag">Energy</span><span class="phet-tag">Conservation</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/collision-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F697;</div><div class="phet-name">Collision Lab</div><div class="phet-desc">1D and 2D elastic &amp; inelastic collisions &mdash; momentum and KE before and after</div><div class="phet-tags"><span class="phet-tag">Momentum</span><span class="phet-tag">Collisions</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/projectile-motion" target="_blank" rel="noopener"><div class="phet-icon">&#x1F680;</div><div class="phet-name">Projectile Motion</div><div class="phet-desc">Launch projectiles, adjust angle &amp; speed, with and without air resistance</div><div class="phet-tags"><span class="phet-tag">Kinematics</span><span class="phet-tag">2D Motion</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/torque" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4BF;</div><div class="phet-name">Torque</div><div class="phet-desc">Apply forces at different lever arms, see angular acceleration and moment of inertia</div><div class="phet-tags"><span class="phet-tag">Rotation</span><span class="phet-tag">Torque</span></div></a>
+    </div>
+    <div class="phet-section-label">Oscillations &amp; Waves</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/masses-and-springs" target="_blank" rel="noopener"><div class="phet-icon">&#x1F300;</div><div class="phet-name">Masses &amp; Springs</div><div class="phet-desc">Hang masses on springs, measure period, explore SHM and energy conservation</div><div class="phet-tags"><span class="phet-tag">SHM</span><span class="phet-tag">Hooke&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/pendulum-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x23F1;</div><div class="phet-name">Pendulum Lab</div><div class="phet-desc">Adjust length, mass, gravity &mdash; measure period and verify T&#x2009;=&#x2009;2&#x03C0;&#x221A;(L/g)</div><div class="phet-tags"><span class="phet-tag">Pendulum</span><span class="phet-tag">SHM</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-on-a-string" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4CA;</div><div class="phet-name">Wave on a String</div><div class="phet-desc">Standing waves, wavelength, frequency, amplitude &mdash; fixed and free ends</div><div class="phet-tags"><span class="phet-tag">Waves</span><span class="phet-tag">Standing Waves</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/sound" target="_blank" rel="noopener"><div class="phet-icon">&#x1F3B5;</div><div class="phet-name">Sound</div><div class="phet-desc">Visualize sound waves, change frequency and amplitude, explore the Doppler effect</div><div class="phet-tags"><span class="phet-tag">Sound</span><span class="phet-tag">Doppler</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/wave-interference" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A7;</div><div class="phet-name">Wave Interference</div><div class="phet-desc">Two-source interference patterns, double-slit diffraction with water, sound, and light</div><div class="phet-tags"><span class="phet-tag">Interference</span><span class="phet-tag">Double-Slit</span></div></a>
+    </div>
+    <div class="phet-section-label">Gravity &amp; Orbital Mechanics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-and-orbits" target="_blank" rel="noopener"><div class="phet-icon">&#x1FA90;</div><div class="phet-name">Gravity &amp; Orbits</div><div class="phet-desc">Star, planet, moon, satellite &mdash; adjust mass and distance, see Kepler&#x2019;s laws live</div><div class="phet-tags"><span class="phet-tag">Gravity</span><span class="phet-tag">Kepler&#x2019;s Laws</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gravity-force-lab" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Gravity Force Lab</div><div class="phet-desc">Measure gravitational force between two masses &mdash; verify F&#x2009;=&#x2009;Gm&#x2081;m&#x2082;/r&#xB2;</div><div class="phet-tags"><span class="phet-tag">Newton&#x2019;s Law of Gravity</span><span class="phet-tag">Inverse Square</span></div></a>
+    </div>
+    <div class="phet-section-label">Electricity &amp; Magnetism</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" rel="noopener"><div class="phet-icon">&#x26A1;</div><div class="phet-name">Circuit Construction Kit</div><div class="phet-desc">Build DC circuits with resistors, batteries, switches &mdash; measure voltage, current, resistance</div><div class="phet-tags"><span class="phet-tag">Circuits</span><span class="phet-tag">Ohm&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/charges-and-fields" target="_blank" rel="noopener"><div class="phet-icon">&#x271A;</div><div class="phet-name">Charges &amp; Fields</div><div class="phet-desc">Place charges, visualize electric field lines and equipotential surfaces</div><div class="phet-tags"><span class="phet-tag">Electric Field</span><span class="phet-tag">Coulomb&#x2019;s Law</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/faradays-law" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Faraday&#x2019;s Law</div><div class="phet-desc">Move a magnet through a coil &mdash; see induced EMF and Lenz&#x2019;s Law live</div><div class="phet-tags"><span class="phet-tag">Induction</span><span class="phet-tag">EMF</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/magnets-and-electromagnets" target="_blank" rel="noopener"><div class="phet-icon">&#x1F9F2;</div><div class="phet-name">Magnets &amp; Electromagnets</div><div class="phet-desc">Explore magnetic field lines from bar magnets and current-carrying coils</div><div class="phet-tags"><span class="phet-tag">Magnetism</span><span class="phet-tag">B-Field</span></div></a>
+    </div>
+    <div class="phet-section-label">Optics &amp; Light</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/bending-light" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A1;</div><div class="phet-name">Bending Light</div><div class="phet-desc">Snell&#x2019;s Law, total internal reflection &mdash; drag the ray and watch it bend at any interface</div><div class="phet-tags"><span class="phet-tag">Snell&#x2019;s Law</span><span class="phet-tag">Refraction</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/geometric-optics" target="_blank" rel="noopener"><div class="phet-icon">&#x1F50D;</div><div class="phet-name">Geometric Optics</div><div class="phet-desc">Converging and diverging lenses &mdash; move the object, find image location and magnification</div><div class="phet-tags"><span class="phet-tag">Lenses</span><span class="phet-tag">Thin Lens Equation</span></div></a>
+    </div>
+    <div class="phet-section-label">Thermodynamics &amp; Modern Physics</div>
+    <div class="phet-grid">
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/gas-properties" target="_blank" rel="noopener"><div class="phet-icon">&#x1F4A8;</div><div class="phet-name">Gas Properties</div><div class="phet-desc">Pump gas into a container, change temperature and volume &mdash; see PV&#x2009;=&#x2009;nRT live</div><div class="phet-tags"><span class="phet-tag">Ideal Gas Law</span><span class="phet-tag">Thermodynamics</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/photoelectric-effect" target="_blank" rel="noopener"><div class="phet-icon">&#x2697;&#xFE0F;</div><div class="phet-name">Photoelectric Effect</div><div class="phet-desc">Shine light on a metal, change frequency and intensity, measure ejected electrons</div><div class="phet-tags"><span class="phet-tag">Quantum</span><span class="phet-tag">Photons</span></div></a>
+      <a class="phet-card" href="https://phet.colorado.edu/en/simulations/models-of-the-hydrogen-atom" target="_blank" rel="noopener"><div class="phet-icon">&#x269B;&#xFE0F;</div><div class="phet-name">Hydrogen Atom Models</div><div class="phet-desc">Bohr model, de Broglie, Schr&#xF6;dinger &mdash; shoot photons at hydrogen and watch transitions</div><div class="phet-tags"><span class="phet-tag">Bohr Model</span><span class="phet-tag">Energy Levels</span></div></a>
+    </div>
+  </div>
+</div>
 <footer>Physics Study Hub &#x00B7; Free for every student &#x00B7; <button style="background:none;border:none;color:var(--accent);font-size:.8rem;cursor:pointer;font-family:inherit;" onclick="showPanel('home')">Home</button></footer>
 <script>
 // =========================================================
