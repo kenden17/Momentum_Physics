@@ -846,7 +846,7 @@ function pomoToggle(){if(pomoRunning){clearInterval(pomoInterval);pomoRunning=fa
 pomoReset();
 
 // =========================================================
-// var gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
+var gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0};
 var grades=Object.keys(gradeMap);
 function makeGpaRow(cid,fn,name){var row=document.createElement('div');row.className='gpa-row';var ni=document.createElement('input');ni.type='text';ni.placeholder='Course';if(name)ni.value=name;var gs=document.createElement('select');grades.forEach(function(g){var o=document.createElement('option');o.value=g;o.textContent=g;gs.appendChild(o);});gs.addEventListener('change',fn);var ts=document.createElement('select');[['reg','Regular/Honors'],['ap','AP (+1.0)']].forEach(function(v){var o=document.createElement('option');o.value=v[0];o.textContent=v[1];ts.appendChild(o);});if(name&&name.indexOf('AP')===0)ts.value='ap';ts.addEventListener('change',fn);var db=document.createElement('button');db.textContent='\u2715';db.addEventListener('click',function(){row.remove();fn();});row.appendChild(ni);row.appendChild(gs);row.appendChild(ts);row.appendChild(db);document.getElementById(cid).appendChild(row);fn();}
 function gpaAddRow(){makeGpaRow('gpaRows',gpaCalc);}
